@@ -1,1 +1,11 @@
-ReadMe
+Tomcat available on server located on www.xoft.cloud:8080  
+	-foundamental is www on url for dns resolution
+	-credentials:
+		user:admin
+		pwd:sadmin
+
+
+MySql database is available on x.x.x.x hosted on google cloud
+	-credentials:
+		user:user	
+		pwd:suser
