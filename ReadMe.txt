@@ -5,7 +5,7 @@ Tomcat available on server located on www.xoft.cloud:8080
 		pwd:sadmin
 
 
-MySql database is available on x.x.x.x hosted on google cloud
+MySql database is available on www.xoft.cloud:3306
 	-credentials:
 		user:user	
 		pwd:suser
