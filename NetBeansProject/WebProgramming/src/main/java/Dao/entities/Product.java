@@ -1,125 +1,64 @@
-package model;
+package Dao.entities;
 
 
 /**
 * @generated
 */
 public class Product {
-    
-    /**
-    * @generated
-    */
-    private Integer id;
-    
-    /**
-    * @generated
-    */
+    private int id;
     private String name;
-    
-    /**
-    * @generated
-    */
     private String description;
-    
-    /**
-    * @generated
-    */
     private double price;
-    
-    /**
-    * @generated
-    */
     private String category;
-    
-    /**
-    * @generated
-    */
     private Shop shop;
-    
-    
-    
-    /**
-    * @generated
-    */
-    private Integer getId() {
-        return this.id;
+
+    public int getId() {
+        return id;
     }
-    
-    /**
-    * @generated
-    */
-    private Integer setId(Integer id) {
+
+    public void setId(int id) {
         this.id = id;
     }
-    
-    /**
-    * @generated
-    */
-    private String getName() {
-        return this.name;
+
+    public String getName() {
+        return name;
     }
-    
-    /**
-    * @generated
-    */
-    private String setName(String name) {
+
+    public void setName(String name) {
         this.name = name;
     }
-    
-    /**
-    * @generated
-    */
-    private String getDescription() {
-        return this.description;
+
+    public String getDescription() {
+        return description;
     }
-    
-    /**
-    * @generated
-    */
-    private String setDescription(String description) {
+
+    public void setDescription(String description) {
         this.description = description;
     }
-    
-    /**
-    * @generated
-    */
-    private double getPrice() {
-        return this.price;
+
+    public double getPrice() {
+        return price;
     }
-    
-    /**
-    * @generated
-    */
-    private double setPrice(double price) {
+
+    public void setPrice(double price) {
         this.price = price;
     }
-    
-    /**
-    * @generated
-    */
-    private String getCategory() {
-        return this.category;
+
+    public String getCategory() {
+        return category;
     }
-    
-    /**
-    * @generated
-    */
-    private String setCategory(String category) {
+
+    public void setCategory(String category) {
         this.category = category;
     }
-    
-    /**
-    * @generated
-    */
-    private Shop getShop() {
-        return this.shop;
+
+    public Shop getShop() {
+        return shop;
     }
-    
-    /**
-    * @generated
-    */
-    private Shop setShop(Shop shop) {
+
+    public void setShop(Shop shop) {
         this.shop = shop;
     }
+    
     
 }

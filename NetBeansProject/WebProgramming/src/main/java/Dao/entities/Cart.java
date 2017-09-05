@@ -1,67 +1,33 @@
-package model;
+package Dao.entities;
 
+import java.util.LinkedList;
 
-/**
-* @generated
-*/
 public class Cart {
-    
-    /**
-    * @generated
-    */
-    private Integer id;
-    
-    /**
-    * @generated
-    */
+    private int id;
     private User user;
-    
-    /**
-    * @generated
-    */
     private LinkedList<Product> products;
-    
-    
-    
-    /**
-    * @generated
-    */
-    private Integer getId() {
-        return this.id;
+
+    public int getId() {
+        return id;
     }
-    
-    /**
-    * @generated
-    */
-    private Integer setId(Integer id) {
+
+    public void setId(int id) {
         this.id = id;
     }
-    
-    /**
-    * @generated
-    */
-    private User getUser() {
-        return this.user;
+
+    public User getUser() {
+        return user;
     }
-    
-    /**
-    * @generated
-    */
-    private User setUser(User user) {
+
+    public void setUser(User user) {
         this.user = user;
     }
-    
-    /**
-    * @generated
-    */
-    private LinkedList<Product> getProducts() {
-        return this.products;
+
+    public LinkedList<Product> getProducts() {
+        return products;
     }
-    
-    /**
-    * @generated
-    */
-    private LinkedList<Product> setProducts(LinkedList<Product> products) {
+
+    public void setProducts(LinkedList<Product> products) {
         this.products = products;
     }
     

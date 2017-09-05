@@ -1,106 +1,53 @@
-package model;
+package Dao.entities;
 
 
 /**
 * @generated
 */
 public class User {
-    
-    /**
-    * @generated
-    */
-    private Integer Id;
-    
-    /**
-    * @generated
-    */
+    private int Id;
     private String firstName;
-    
-    /**
-    * @generated
-    */
     private String lastName;
-    
-    /**
-    * @generated
-    */
     private String email;
-    
-    /**
-    * @generated
-    */
     private String avatarPath;
-    
-    
-    
-    /**
-    * @generated
-    */
-    private Integer getId() {
-        return this.Id;
+
+    public int getId() {
+        return Id;
     }
-    
-    /**
-    * @generated
-    */
-    private Integer setId(Integer Id) {
+
+    public void setId(int Id) {
         this.Id = Id;
     }
-    
-    /**
-    * @generated
-    */
-    private String getFirstName() {
-        return this.firstName;
+
+    public String getFirstName() {
+        return firstName;
     }
-    
-    /**
-    * @generated
-    */
-    private String setFirstName(String firstName) {
+
+    public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
-    
-    /**
-    * @generated
-    */
-    private String getLastName() {
-        return this.lastName;
+
+    public String getLastName() {
+        return lastName;
     }
-    
-    /**
-    * @generated
-    */
-    private String setLastName(String lastName) {
+
+    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-    
-    /**
-    * @generated
-    */
-    private String getEmail() {
-        return this.email;
+
+    public String getEmail() {
+        return email;
     }
-    
-    /**
-    * @generated
-    */
-    private String setEmail(String email) {
+
+    public void setEmail(String email) {
         this.email = email;
     }
-    
-    /**
-    * @generated
-    */
-    private String getAvatarPath() {
-        return this.avatarPath;
+
+    public String getAvatarPath() {
+        return avatarPath;
     }
-    
-    /**
-    * @generated
-    */
-    private String setAvatarPath(String avatarPath) {
+
+    public void setAvatarPath(String avatarPath) {
         this.avatarPath = avatarPath;
     }
-    
 }

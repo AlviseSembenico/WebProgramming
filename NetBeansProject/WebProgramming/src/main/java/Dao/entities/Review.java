@@ -1,162 +1,82 @@
-package model;
+package Dao.entities;
+
+import java.util.Date;
 
 
 /**
 * @generated
 */
 public class Review {
-    
-    /**
-    * @generated
-    */
-    private Integer id;
-    
-    /**
-    * @generated
-    */
-    private Integer globalValue;
-    
-    /**
-    * @generated
-    */
-    private Integer quality;
-    
-    /**
-    * @generated
-    */
-    private Integer service;
-    
-    /**
-    * @generated
-    */
+    private int id;
+    private int globalValue;
+    private int quality;
+    private int service;
     private String description;
-    
-    /**
-    * @generated
-    */
-    private invalid creationDate;
-    
-    /**
-    * @generated
-    */
+    private Date creationDate;
     private User creator;
-    
-    /**
-    * @generated
-    */
     private Product product;
-    
-    
-    
-    /**
-    * @generated
-    */
-    private Integer getId() {
-        return this.id;
+
+    public int getId() {
+        return id;
     }
-    
-    /**
-    * @generated
-    */
-    private Integer setId(Integer id) {
+
+    public void setId(int id) {
         this.id = id;
     }
-    
-    /**
-    * @generated
-    */
-    private Integer getGlobalValue() {
-        return this.globalValue;
+
+    public int getGlobalValue() {
+        return globalValue;
     }
-    
-    /**
-    * @generated
-    */
-    private Integer setGlobalValue(Integer globalValue) {
+
+    public void setGlobalValue(int globalValue) {
         this.globalValue = globalValue;
     }
-    
-    /**
-    * @generated
-    */
-    private Integer getQuality() {
-        return this.quality;
+
+    public int getQuality() {
+        return quality;
     }
-    
-    /**
-    * @generated
-    */
-    private Integer setQuality(Integer quality) {
+
+    public void setQuality(int quality) {
         this.quality = quality;
     }
-    
-    /**
-    * @generated
-    */
-    private Integer getService() {
-        return this.service;
+
+    public int getService() {
+        return service;
     }
-    
-    /**
-    * @generated
-    */
-    private Integer setService(Integer service) {
+
+    public void setService(int service) {
         this.service = service;
     }
-    
-    /**
-    * @generated
-    */
-    private String getDescription() {
-        return this.description;
+
+    public String getDescription() {
+        return description;
     }
-    
-    /**
-    * @generated
-    */
-    private String setDescription(String description) {
+
+    public void setDescription(String description) {
         this.description = description;
     }
-    
-    /**
-    * @generated
-    */
-    private invalid getCreationDate() {
-        return this.creationDate;
+
+    public Date getCreationDate() {
+        return creationDate;
     }
-    
-    /**
-    * @generated
-    */
-    private invalid setCreationDate(invalid creationDate) {
+
+    public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
     }
-    
-    /**
-    * @generated
-    */
-    private User getCreator() {
-        return this.creator;
+
+    public User getCreator() {
+        return creator;
     }
-    
-    /**
-    * @generated
-    */
-    private User setCreator(User creator) {
+
+    public void setCreator(User creator) {
         this.creator = creator;
     }
-    
-    /**
-    * @generated
-    */
-    private Product getProduct() {
-        return this.product;
+
+    public Product getProduct() {
+        return product;
     }
-    
-    /**
-    * @generated
-    */
-    private Product setProduct(Product product) {
+
+    public void setProduct(Product product) {
         this.product = product;
     }
     

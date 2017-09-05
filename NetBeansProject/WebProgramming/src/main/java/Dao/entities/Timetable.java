@@ -1,106 +1,57 @@
-package model;
+package Dao.entities;
+
+import java.util.Date;
 
 
 /**
 * @generated
 */
 public class Timetable {
-    
-    /**
-    * @generated
-    */
-    private Integer id;
-    
-    /**
-    * @generated
-    */
+    private int id;
     private String closeDay;
-    
-    /**
-    * @generated
-    */
-    private Time openTime;
-    
-    /**
-    * @generated
-    */
-    private Time closeTime;
-    
-    /**
-    * @generated
-    */
+    private Date openTime;
+    private Date closeTime;
     private Shop shop;
-    
-    
-    
-    /**
-    * @generated
-    */
-    private Integer getId() {
-        return this.id;
+
+    public int getId() {
+        return id;
     }
-    
-    /**
-    * @generated
-    */
-    private Integer setId(Integer id) {
+
+    public void setId(int id) {
         this.id = id;
     }
-    
-    /**
-    * @generated
-    */
-    private String getCloseDay() {
-        return this.closeDay;
+
+    public String getCloseDay() {
+        return closeDay;
     }
-    
-    /**
-    * @generated
-    */
-    private String setCloseDay(String closeDay) {
+
+    public void setCloseDay(String closeDay) {
         this.closeDay = closeDay;
     }
-    
-    /**
-    * @generated
-    */
-    private Time getOpenTime() {
-        return this.openTime;
+
+    public Date getOpenTime() {
+        return openTime;
     }
-    
-    /**
-    * @generated
-    */
-    private Time setOpenTime(Time openTime) {
+
+    public void setOpenTime(Date openTime) {
         this.openTime = openTime;
     }
-    
-    /**
-    * @generated
-    */
-    private Time getCloseTime() {
-        return this.closeTime;
+
+    public Date getCloseTime() {
+        return closeTime;
     }
-    
-    /**
-    * @generated
-    */
-    private Time setCloseTime(Time closeTime) {
+
+    public void setCloseTime(Date closeTime) {
         this.closeTime = closeTime;
     }
-    
-    /**
-    * @generated
-    */
-    private Shop getShop() {
-        return this.shop;
+
+    public Shop getShop() {
+        return shop;
     }
-    
-    /**
-    * @generated
-    */
-    private Shop setShop(Shop shop) {
+
+    public void setShop(Shop shop) {
         this.shop = shop;
     }
     
+   
 }

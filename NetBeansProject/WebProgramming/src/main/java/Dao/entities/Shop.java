@@ -1,201 +1,98 @@
-package model;
+package Dao.entities;
 
 
 /**
 * @generated
 */
 public class Shop {
-    
-    /**
-    * @generated
-    */
-    private Integer id;
-    
-    /**
-    * @generated
-    */
+    private int id;
     private String name;
-    
-    /**
-    * @generated
-    */
     private String description;
-    
-    /**
-    * @generated
-    */
     private String webSiteUrl;
-    
-    /**
-    * @generated
-    */
-    private Integer globalValue;
-    
-    /**
-    * @generated
-    */
+    private int globalValue;
     private User user;
-    
-    /**
-    * @generated
-    */
     private User creator;
-    
-    /**
-    * @generated
-    */
     private double latitude;
-    
-    /**
-    * @generated
-    */
     private double longitute;
-    
-    /**
-    * @generated
-    */
-    private shippingMethod shippingMethod;
-    
-    
-    
-    /**
-    * @generated
-    */
-    private Integer getId() {
-        return this.id;
+    private ShippingMethod shippingMethod;
+
+    public int getId() {
+        return id;
     }
-    
-    /**
-    * @generated
-    */
-    private Integer setId(Integer id) {
+
+    public void setId(int id) {
         this.id = id;
     }
-    
-    /**
-    * @generated
-    */
-    private String getName() {
-        return this.name;
+
+    public String getName() {
+        return name;
     }
-    
-    /**
-    * @generated
-    */
-    private String setName(String name) {
+
+    public void setName(String name) {
         this.name = name;
     }
-    
-    /**
-    * @generated
-    */
-    private String getDescription() {
-        return this.description;
+
+    public String getDescription() {
+        return description;
     }
-    
-    /**
-    * @generated
-    */
-    private String setDescription(String description) {
+
+    public void setDescription(String description) {
         this.description = description;
     }
-    
-    /**
-    * @generated
-    */
-    private String getWebSiteUrl() {
-        return this.webSiteUrl;
+
+    public String getWebSiteUrl() {
+        return webSiteUrl;
     }
-    
-    /**
-    * @generated
-    */
-    private String setWebSiteUrl(String webSiteUrl) {
+
+    public void setWebSiteUrl(String webSiteUrl) {
         this.webSiteUrl = webSiteUrl;
     }
-    
-    /**
-    * @generated
-    */
-    private Integer getGlobalValue() {
-        return this.globalValue;
+
+    public int getGlobalValue() {
+        return globalValue;
     }
-    
-    /**
-    * @generated
-    */
-    private Integer setGlobalValue(Integer globalValue) {
+
+    public void setGlobalValue(int globalValue) {
         this.globalValue = globalValue;
     }
-    
-    /**
-    * @generated
-    */
-    private User getUser() {
-        return this.user;
+
+    public User getUser() {
+        return user;
     }
-    
-    /**
-    * @generated
-    */
-    private User setUser(User user) {
+
+    public void setUser(User user) {
         this.user = user;
     }
-    
-    /**
-    * @generated
-    */
-    private User getCreator() {
-        return this.creator;
+
+    public User getCreator() {
+        return creator;
     }
-    
-    /**
-    * @generated
-    */
-    private User setCreator(User creator) {
+
+    public void setCreator(User creator) {
         this.creator = creator;
     }
-    
-    /**
-    * @generated
-    */
-    private double getLatitude() {
-        return this.latitude;
+
+    public double getLatitude() {
+        return latitude;
     }
-    
-    /**
-    * @generated
-    */
-    private double setLatitude(double latitude) {
+
+    public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
-    
-    /**
-    * @generated
-    */
-    private double getLongitute() {
-        return this.longitute;
+
+    public double getLongitute() {
+        return longitute;
     }
-    
-    /**
-    * @generated
-    */
-    private double setLongitute(double longitute) {
+
+    public void setLongitute(double longitute) {
         this.longitute = longitute;
     }
-    
-    /**
-    * @generated
-    */
-    private shippingMethod getShippingMethod() {
-        return this.shippingMethod;
+
+    public ShippingMethod getShippingMethod() {
+        return shippingMethod;
     }
-    
-    /**
-    * @generated
-    */
-    private shippingMethod setShippingMethod(shippingMethod shippingMethod) {
+
+    public void setShippingMethod(ShippingMethod shippingMethod) {
         this.shippingMethod = shippingMethod;
     }
-    
 }

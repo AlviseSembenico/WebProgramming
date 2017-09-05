@@ -1,87 +1,48 @@
-package model;
+package Dao.entities;
 
 
 /**
 * @generated
 */
 public class Purchase {
-    
-    /**
-    * @generated
-    */
-    private Integer id;
-    
-    /**
-    * @generated
-    */
-    private orderStatus status;
-    
-    /**
-    * @generated
-    */
+    private int id;
+    private OrderStatus status;
     private Product product;
-    
-    /**
-    * @generated
-    */
     private User user;
-    
-    
-    
-    /**
-    * @generated
-    */
-    private Integer getId() {
-        return this.id;
+
+    public int getId() {
+        return id;
     }
-    
-    /**
-    * @generated
-    */
-    private Integer setId(Integer id) {
+
+    public void setId(int id) {
         this.id = id;
     }
-    
-    /**
-    * @generated
-    */
-    private orderStatus getStatus() {
-        return this.status;
+
+    public OrderStatus getStatus() {
+        return status;
     }
-    
-    /**
-    * @generated
-    */
-    private orderStatus setStatus(orderStatus status) {
+
+    public void setStatus(OrderStatus status) {
         this.status = status;
     }
-    
-    /**
-    * @generated
-    */
-    private Product getProduct() {
-        return this.product;
+
+    public Product getProduct() {
+        return product;
     }
-    
-    /**
-    * @generated
-    */
-    private Product setProduct(Product product) {
+
+    public void setProduct(Product product) {
         this.product = product;
     }
-    
-    /**
-    * @generated
-    */
-    private User getUser() {
-        return this.user;
+
+    public User getUser() {
+        return user;
     }
-    
-    /**
-    * @generated
-    */
-    private User setUser(User user) {
+
+    public void setUser(User user) {
         this.user = user;
     }
+    
+    
+    
     
 }

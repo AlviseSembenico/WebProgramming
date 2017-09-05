@@ -5,29 +5,17 @@ package Dao.entities;
 * @generated
 */
 public class Anomalies {
-    private Integer id;
+    private int id;
     private OrderStatus status;
     private String description;
     private Solution solution;
-    public static final String SHIPPED="SHIPPED";
-    public static final String RECEIVED="RECEIVED";
-    public static final String PROCESSING="PROCESSING";
-    public static final String DELETED="DELETED";
-    public static final String DELIVERING="DELIVERING";
-    public static final String MONEYBACK="MONEYBACK";
-    public static final String NEGATIVEREVIEW="NEGATIVEREVIEW";
-    public static final String BLOCK="BLOCK";
-    public static final String REJECT="REJECT";
-    
-    
-    enum OrderStatus{SHIPPED,RECEIVED,PROCESSING,DELETED,DELIVERING};
-    enum Solution{MONEYBACK,NEGATIVEREVIEW,BLOCK,REJECT};
+   
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
