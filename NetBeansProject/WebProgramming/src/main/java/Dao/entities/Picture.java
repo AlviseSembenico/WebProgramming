@@ -4,12 +4,13 @@ package Dao.entities;
 /**
 * @generated
 */
-public class Picture {
+public class Picture extends IdOwnerComparable{
     private int id;
     private String name;
     private String description;
     private String path;
     private Product product;
+    private Shop shop;
 
     public int getId() {
         return id;
@@ -49,6 +50,14 @@ public class Picture {
 
     public void setProduct(Product product) {
         this.product = product;
+    }
+
+    public Shop getShop() {
+        return shop;
+    }
+
+    public void setShop(Shop shop) {
+        this.shop = shop;
     }
     
 }
