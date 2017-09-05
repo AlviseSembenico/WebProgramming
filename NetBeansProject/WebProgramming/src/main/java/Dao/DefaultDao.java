@@ -7,7 +7,7 @@ package Dao;
 
 
 /**
- *
+ * Common operation to all entities 
  * @author Alvise
  */
 public interface DefaultDao {

@@ -2,7 +2,7 @@ package Dao.entities;
 
 import java.util.LinkedList;
 
-public class Cart {
+public class Cart extends IdOwnerComparable{
     private int id;
     private User user;
     private LinkedList<Product> products;

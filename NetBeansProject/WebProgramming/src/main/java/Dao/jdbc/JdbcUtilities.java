@@ -25,6 +25,10 @@ import system.Log;
 public class JdbcUtilities {
     protected Connection connection = null;
 
+    /**
+     * check if connection is operative and try to make a new one if it isn't
+     * @return true if connection is locked, false otherwise
+     */
     protected boolean checkConnection() {
         if (connection == null) {
             try {
@@ -36,7 +40,14 @@ public class JdbcUtilities {
         }
         return connection != null;
     }
-    
+    /**
+     * 
+     * @param o is the object which must be inserted into table
+     * @param map map class variable name to db column name, if a determined variable is not inserted into map its name will be used into db
+     * @param tableName name of table where insert the new data
+     * @return id value if it has id field
+     * @throws SQLException 
+     */
     public int insertDao(Object o, HashMap<String, String> map, String tableName) throws SQLException {
         if (!checkConnection()) {
             return 0;
@@ -126,6 +137,14 @@ public class JdbcUtilities {
         return rs.getInt(1);
     }
     
+    /**
+     * 
+     * @param o is the object which must be updated into table
+     * @param map map class variable name to db column name, if a determined variable is not inserted into map its name will be used into db
+     * @param tableName name of table where update the new data
+     * @return the number of changed rows
+     * @throws SQLException 
+     */
     public int updateDao(Object o, HashMap<String, String> map, String tableName) throws SQLException {
         if (!checkConnection()) {
             return 0;
@@ -216,4 +235,6 @@ public class JdbcUtilities {
         return stmt.executeUpdate();
     }
     
+    
+    //MUST IMPLEMENT DELETEDAO
 }

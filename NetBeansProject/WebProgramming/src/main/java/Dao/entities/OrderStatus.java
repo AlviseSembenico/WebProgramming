@@ -9,7 +9,7 @@ package Dao.entities;
  *
  * @author Alvise
  */
-public enum OrderStatus{
+public enum OrderStatus {
     SHIPPED("shipped"),
     RECEIVED("received"),PROCESSING("processing"),DELETED("deleted"),DELIVERING("delivering");
     

@@ -4,7 +4,7 @@ package Dao.entities;
 /**
 * @generated
 */
-public class Anomalies {
+public class Anomalies extends IdOwnerComparable{
     private int id;
     private OrderStatus status;
     private String description;

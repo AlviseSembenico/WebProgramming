@@ -6,7 +6,7 @@ import java.util.Date;
 /**
 * @generated
 */
-public class Timetable {
+public class Timetable extends IdOwnerComparable{
     private int id;
     private String closeDay;
     private Date openTime;

@@ -4,7 +4,7 @@ package Dao.entities;
 /**
 * @generated
 */
-public class Product {
+public class Product extends IdOwnerComparable{
     private int id;
     private String name;
     private String description;

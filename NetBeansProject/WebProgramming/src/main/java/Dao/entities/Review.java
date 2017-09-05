@@ -6,7 +6,7 @@ import java.util.Date;
 /**
 * @generated
 */
-public class Review {
+public class Review extends IdOwnerComparable{
     private int id;
     private int globalValue;
     private int quality;
