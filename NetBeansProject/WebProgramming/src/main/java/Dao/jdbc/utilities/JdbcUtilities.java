@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Set;
 import org.reflections.Reflections;
 import system.Log;
@@ -23,10 +24,40 @@ import system.Log;
  */
 public class JdbcUtilities {
     protected Connection connection = null;
+    
+     private String camelToSql(String s){
+        String res=new String();
 
+        for(char c:s.toCharArray())
+            if(c>='A' && c<='Z')
+                res+="_"+c;
+            else
+                res+=c;
+        
+        return res.toLowerCase();
+    }
+
+    private String sqlToCamel(String s) {
+        String res = new String();
+        boolean cond = false;
+        for (char c : s.toCharArray()) {
+            if (cond) {
+                res += Character.toUpperCase(c);
+                cond = false;
+            } else if (c == '_') {
+                cond = true;
+            } else {
+                res += c;
+            }
+        }
+        return res;
+    }
+    
     /**
-     * check if connection is operative and try to make a new one if it isn't
-     * @return true if connection is locked, false otherwise
+         * check if connection is operative and try to make a new one if it
+         * isn't
+         *
+         * @return true if connection is locked, false otherwise
      */
     protected boolean checkConnection() {
         if (connection == null) {
@@ -39,6 +70,64 @@ public class JdbcUtilities {
         }
         return connection != null;
     }
+
+    protected LinkedList<Object> getObject(Class<?> c, HashMap<String, String> map, String tableName, HashMap<Object, String> param) throws Exception {
+        if (!checkConnection()) {
+            return null;
+        }
+        String query = "select * from " + tableName;
+        if (param != null) {
+            query += " where ";
+            for (Object par : param.keySet()) {
+                query += param.get(par) + " = ? and ";
+            }
+
+        }
+        query = query.substring(0, query.length() - 5);
+        PreparedStatement stmt = connection.prepareStatement(query);
+        if (param != null) {
+            int point=1;
+            for (Object par : param.keySet()) {
+                if (par instanceof String) 
+                    stmt.setString(point++, (String) par);
+                if (par instanceof Double) 
+                    stmt.setDouble(point++, (Double) par);
+                if (par instanceof Integer) 
+                    stmt.setInt(point++, (int) par);
+                
+            }
+        }
+        ResultSet rs = stmt.executeQuery();
+        if (!rs.first()) {
+            return null;
+        }
+        LinkedList<Object> result = new LinkedList<Object>();
+        if (map == null) {
+            do {
+                Object o = c.newInstance();
+                for (Method m : c.getDeclaredMethods()) {
+                    if (m.getName().contains("set")) {
+                        String name = m.getName().substring(3);
+                        char[] ca = name.toCharArray();
+                        name = String.valueOf(ca[0]).toLowerCase() + name.substring(1);
+                        if (m.getParameterTypes()[0].equals(String.class)) {
+                            m.invoke(o, rs.getString(camelToSql(name)));
+                        }
+                        if (m.getParameterTypes()[0].equals(Double.class)) {
+                            m.invoke(o, rs.getDouble(camelToSql(name)));
+                        }
+                        if (m.getParameterTypes()[0].equals(Integer.class)) {
+                            m.invoke(o, rs.getInt(camelToSql(name)));
+                        }
+                    }
+                }
+                result.add(o);
+            } while (rs.next());
+        }
+        return result;
+    }
+        
+    
     /**
      * 
      * @param o is the object which must be inserted into table

@@ -5,12 +5,30 @@
  */
 package Dao.jdbc;
 
-import Dao.jdbc.utilities.JdbcDefaultDao;
+import Dao.ReviewDao;
+import Dao.jdbc.utilities.JdbcUtilities;
+
+
 
 /**
  *
  * @author Alvise
  */
-public class JdbcShopDao extends  JdbcDefaultDao{
+public class JdbcShopDao extends JdbcUtilities implements ReviewDao{
+
+    @Override
+    public int insertDao(Object o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int updateDao(Object o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int deleteDao(Object o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

@@ -5,6 +5,8 @@
  */
 package Dao;
 
+import Dao.entities.*;
+
 
 
 /**
@@ -12,5 +14,5 @@ package Dao;
  * @author Alvise
  */
 public interface ShopDao extends  DefaultDao{
-    
+    public Shop getShopById(int id)throws Exception;
 }

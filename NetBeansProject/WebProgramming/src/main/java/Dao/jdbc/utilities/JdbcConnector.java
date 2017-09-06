@@ -16,14 +16,12 @@ import system.Log;
  * @author Alvise
  */
 public class JdbcConnector {
-    String user = "remote";
-    String password = "development";
-    String ip="35.195.215.0";
-    String db="fantacalcio";
-    String url = "jdbc:mysql://35.195.215.0/fantacalcio";
-    String instanceConnectionName="expanded-run-176814:europe-west1:fantacalcio";
+    static String user = "superroot";
+    static String password = "root";
+    static String ip="www.xoft.cloud";
+    static String db="/web";
+    static String url = "jdbc:mysql://"+ip+db;
     
-    static JdbcConnector connector=null;
     static Connection connection=null;
 
     JdbcConnector() {
@@ -38,8 +36,6 @@ public class JdbcConnector {
     }
     
     private static boolean init() throws SQLException {
-        if(connector==null)
-            connector=new JdbcConnector();
         try {
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException ex) {
@@ -47,8 +43,7 @@ public class JdbcConnector {
             return false;
         }
         //Connector.url=String.format("jdbc:mysql://google/%s?cloudSqlInstance=%s&"+ "socketFactory=com.google.cloud.sql.mysql.SocketFactory",connector.db,connector.instanceConnectionName);
-        connector.url=String.format("jdbc:mysql://35.195.215.0/%s",connector.db);
-        connection = DriverManager.getConnection(connector.url,connector.user,connector.password);
+        connection = DriverManager.getConnection(JdbcConnector.url,JdbcConnector.user,JdbcConnector.password);
         return true;
     }
 }

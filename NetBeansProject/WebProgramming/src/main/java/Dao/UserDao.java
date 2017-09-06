@@ -5,6 +5,8 @@
  */
 package Dao;
 
+import Dao.entities.User;
+
 
 
 /**
@@ -12,5 +14,6 @@ package Dao;
  * @author Alvise
  */
 public interface UserDao extends  DefaultDao {
-    
+    public User getUserById(int id) throws Exception;
+    public User getUserByEmail(String email) throws Exception;
 }
