@@ -15,6 +15,7 @@ public class Shop extends IdOwnerComparable{
     private double latitude;
     private double longitute;
     private ShippingMethod shippingMethod;
+    private Timetable timeTable;
 
     public int getId() {
         return id;
@@ -94,5 +95,13 @@ public class Shop extends IdOwnerComparable{
 
     public void setShippingMethod(ShippingMethod shippingMethod) {
         this.shippingMethod = shippingMethod;
+    }
+
+    public Timetable getTimeTable() {
+        return timeTable;
+    }
+
+    public void setTimeTable(Timetable timeTable) {
+        this.timeTable = timeTable;
     }
 }

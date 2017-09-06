@@ -11,7 +11,6 @@ public class Timetable extends IdOwnerComparable{
     private String closeDay;
     private Date openTime;
     private Date closeTime;
-    private Shop shop;
 
     public int getId() {
         return id;
@@ -45,13 +44,5 @@ public class Timetable extends IdOwnerComparable{
         this.closeTime = closeTime;
     }
 
-    public Shop getShop() {
-        return shop;
-    }
-
-    public void setShop(Shop shop) {
-        this.shop = shop;
-    }
-    
    
 }

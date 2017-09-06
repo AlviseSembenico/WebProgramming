@@ -9,6 +9,7 @@ import Dao.entities.Picture;
 import Dao.entities.Product;
 import Dao.entities.Shop;
 
+
 /**
  *
  * @author Alvise

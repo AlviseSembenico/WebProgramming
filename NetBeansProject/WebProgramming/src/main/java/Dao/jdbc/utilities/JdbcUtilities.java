@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Dao.jdbc;
+package Dao.jdbc.utilities;
 
-import Dao.DefaultDao;
 import Dao.entities.IdOwner;
 import java.lang.reflect.Method;
 import java.sql.Connection;
@@ -112,8 +111,8 @@ public class JdbcUtilities {
                                 Set<Class<?>> allClasses = reflections.getSubTypesOf(Object.class);
                                 for(Class<?> jdbcClass:allClasses){
                                     if(jdbcClass.getName().contains(entityClass.getName())){
-                                        DefaultDao dD= (DefaultDao) jdbcClass.newInstance();
-                                        dD.insertDao(obj);
+                                        JdbcUtilities dD= (JdbcUtilities) jdbcClass.newInstance();
+                                        dD.insertDao(obj,map,tableName);
                                     }
                                         
                                 }
@@ -209,8 +208,8 @@ public class JdbcUtilities {
                                 Set<Class<?>> allClasses = reflections.getSubTypesOf(Object.class);
                                 for(Class<?> jdbcClass:allClasses){
                                     if(jdbcClass.getName().contains(entityClass.getName())){
-                                        DefaultDao dD= (DefaultDao) jdbcClass.newInstance();
-                                        dD.updateDao(obj);
+                                        JdbcUtilities dD= (JdbcUtilities) jdbcClass.newInstance();
+                                        dD.updateDao(obj,map,tableName);
                                     }
                                         
                                 }
