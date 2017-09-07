@@ -32,11 +32,11 @@ public class JdbcShopDao extends JdbcUtilities implements ShopDao{
     public Shop getShopById(int id) throws Exception {
         HashMap<Object,String> mappa=new HashMap<Object,String>();
         mappa.put(id,"id" );
-        Shop res=(Shop) super.getObject(Shop.class, map, "shops", mappa).get(0);
+        Shop res=(Shop) super.getObject(Shop.class, map, "shops", mappa).get(0);/*
         ResultSet rs=getLastRs();
         res.setOwner(new JdbcUserDao().getUserById(rs.getInt("owner_id")));
         res.setOwner(new JdbcUserDao().getUserById(rs.getInt("creator_id")));
-        res.setShippingMethod(rs.getString("shipping_method"));
+        res.setShippingMethod(rs.getString("shipping_method"));*/
         return res;
     }
 

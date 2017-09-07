@@ -1,5 +1,6 @@
 package Dao.entities;
 
+import java.sql.Time;
 import system.Log;
 
 
@@ -7,7 +8,6 @@ import system.Log;
 * @generated
 */
 public class Shop extends IdOwnerComparable{
-    private int id;
     private String name;
     private String description;
     private String webSiteUrl;
@@ -16,8 +16,11 @@ public class Shop extends IdOwnerComparable{
     private User creator;
     private double latitude;
     private double longitute;
-    private ShippingMethod shippingMethod;
-    private Timetable timeTable;
+    private int shippingMethod;
+    private String closeDay;
+    private Time openTime;
+    private Time closeTime;
+    
 
     public int getId() {
         return id;
@@ -91,19 +94,37 @@ public class Shop extends IdOwnerComparable{
         this.longitute = longitute;
     }
 
-    public String getShippingMethod() {
-        return shippingMethod.name();
+    public int getShippingMethod() {
+        return shippingMethod;
     }
 
-    public void setShippingMethod(String shippingMethod) {
-        //this.shippingMethod = ShippingMethod.valueOf(shippingMethod);
+    public void setShippingMethod(int shippingMethod) {
+        
+        this.shippingMethod = shippingMethod;
     }
 
-    public Timetable getTimeTable() {
-        return timeTable;
+    public String getCloseDay() {
+        return closeDay;
     }
 
-    public void setTimeTable(Timetable timeTable) {
-        this.timeTable = timeTable;
+    public void setCloseDay(String closeDay) {
+        this.closeDay = closeDay;
     }
+
+    public Time getOpenTime() {
+        return openTime;
+    }
+
+    public void setOpenTime(Time openTime) {
+        this.openTime = openTime;
+    }
+
+    public Time getCloseTime() {
+        return closeTime;
+    }
+
+    public void setCloseTime(Time closeTime) {
+        this.closeTime = closeTime;
+    }
+
 }

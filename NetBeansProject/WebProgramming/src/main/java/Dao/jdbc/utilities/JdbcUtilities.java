@@ -14,6 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Time;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -29,7 +30,7 @@ public class JdbcUtilities {
 
     protected Connection connection = null;
     private ResultSet lastRs;
-    
+
     protected String camelToSql(String s) {
         String res = new String();
 
@@ -127,8 +128,9 @@ public class JdbcUtilities {
         if (!rs.first()) {
             result.add(null);
             return result;
-    }
-
+        }
+        if(map==null)
+            map=new HashMap<String,String>();
         do {
             Object o = c.newInstance();
             for (Method m : c.getDeclaredMethods()) {
@@ -137,37 +139,41 @@ public class JdbcUtilities {
                     char[] ca = name.toCharArray();
                     name = String.valueOf(ca[0]).toLowerCase() + name.substring(1);
                     try {
-                        if (m.getParameterTypes()[0].equals(String.class)) {
-                            String s=map.get(name);
-                            if(s==null)
+                        if (m.getParameterTypes()[0].equals(String.class) || m.getParameterTypes()[0].equals(Time.class)) {
+                            String s = map.get(name);
+                            if (s == null) {
                                 m.invoke(o, rs.getString(camelToSql(name)));
-                            else
+                            } else {
                                 m.invoke(o, rs.getString(s));
+                            }
                         }
                         if (m.getParameterTypes()[0].equals(Double.class)) {
-                            String s=map.get(name);
-                            if(s==null)
-                                 m.invoke(o, rs.getDouble(camelToSql(name)));
-                            else
+                            String s = map.get(name);
+                            if (s == null) {
+                                m.invoke(o, rs.getDouble(camelToSql(name)));
+                            } else {
                                 m.invoke(o, rs.getDouble(s));
+                            }
 
                         }
                         if (m.getParameterTypes()[0].equals(int.class)) {
-                            String s=map.get(name);
-                            if(s==null)
+                            String s = map.get(name);
+                            if (s == null) {
                                 m.invoke(o, rs.getInt(camelToSql(name)));
-                            else
+                            } else {
                                 m.invoke(o, rs.getInt(s));
+                            }
                         }
-                        if (IdOwner.class.isAssignableFrom(m.getParameterTypes()[0])){//m.getParameterTypes()[0].isAssignableFrom(IdOwner.class)) {
-                            String s=map.get(name);
-                            Class<?> clazz = Class.forName("Dao.jdbc.Jdbc"+m.getParameterTypes()[0].getSimpleName()+"Dao");
+                        if (IdOwner.class.isAssignableFrom(m.getParameterTypes()[0])) {//m.getParameterTypes()[0].isAssignableFrom(IdOwner.class)) {
+                            String s = map.get(name);
+                            Class<?> clazz = Class.forName("Dao.jdbc.Jdbc" + m.getParameterTypes()[0].getSimpleName() + "Dao");
                             Constructor<?> ctor = clazz.getConstructor();
                             GetById jdbc = (GetById) ctor.newInstance(new Object[]{});
-                            if(s==null)
-                                m.invoke(o, jdbc.getById( rs.getInt(camelToSql(name))));
-                            else
-                                m.invoke(o, jdbc.getById( rs.getInt(s)));
+                            if (s == null) {
+                                m.invoke(o, jdbc.getById(rs.getInt(camelToSql(name))));
+                            } else {
+                                m.invoke(o, jdbc.getById(rs.getInt(s)));
+                            }
                         }
                     } catch (SQLException e) {
                     }
@@ -175,7 +181,7 @@ public class JdbcUtilities {
             }
             result.add(o);
         } while (rs.next());
-        
+
         return result;
     }
 
@@ -204,24 +210,26 @@ public class JdbcUtilities {
                     String name = m.getName().substring(3);
                     char[] ca = name.toCharArray();
                     name = String.valueOf(ca[0]).toLowerCase() + name.substring(1);
-                    if(m.getReturnType().equals(Number.class)) {
+                    if (m.getReturnType().equals(Number.class)) {
                         Number value = (Number) m.invoke(o, null);
                         if (value.doubleValue() >= 0) {
                             values += value.doubleValue() + ",";
-                            if (map.containsKey(name)) 
+                            if (map.containsKey(name)) {
                                 query += map.get(name) + ",";
-                             else 
+                            } else {
                                 query += name + ",";
-                            
+                            }
+
                         }
                     } else if (m.getReturnType().equals(String.class) || m.getReturnType().equals(Date.class)) {
                         if ((Object) m.invoke(o, null) != null) {
                             values += "'" + m.invoke(o, null) + "',";
-                            if (map.containsKey(name)) 
+                            if (map.containsKey(name)) {
                                 query += map.get(name) + ",";
-                             else 
+                            } else {
                                 query += name + ",";
-                            
+                            }
+
                         }
                     } else {
                         Object obj = m.invoke(o, null);
@@ -230,11 +238,12 @@ public class JdbcUtilities {
                             if (obj instanceof IdOwner) {
                                 IdOwner id = (IdOwner) obj;
                                 values += "'" + id.getId() + "',";
-                                if (map.containsKey(name)) 
+                                if (map.containsKey(name)) {
                                     query += map.get(name) + ",";
-                                 else 
+                                } else {
                                     query += name + ",";
-                                
+                                }
+
                             }
                         }
                     }
@@ -282,10 +291,9 @@ public class JdbcUtilities {
                     name = String.valueOf(ca[0]).toLowerCase() + name.substring(1);
                     if (name.equals("id")) {
                         id = (int) m.invoke(o, null);
-                    }
-                    else if(m.getReturnType().equals(Number.class)) {
-                        Number value=(Number) m.invoke(o, null) ;
-                        if(value.doubleValue()>=0){
+                    } else if (m.getReturnType().equals(Number.class)) {
+                        Number value = (Number) m.invoke(o, null);
+                        if (value.doubleValue() >= 0) {
                             if (map.containsKey(name)) {
                                 query += map.get(name);
                             } else {
@@ -356,14 +364,14 @@ public class JdbcUtilities {
                         if (m.getReturnType().equals(Number.class)) {
                             Number value = (Number) m.invoke(o, null);
                             if (value.doubleValue() >= 0) {
-                                 if (map.containsKey(name)) {
+                                if (map.containsKey(name)) {
                                     query += map.get(name);
                                 } else {
                                     query += name;
                                 }
                                 query += " = " + value.doubleValue() + " and ";
                             }
-                        }  else if (m.getReturnType().equals(String.class) || m.getReturnType().equals(Date.class)) {
+                        } else if (m.getReturnType().equals(String.class) || m.getReturnType().equals(Date.class)) {
                             if ((Object) m.invoke(o, null) != null) {
                                 if (map.containsKey(name)) {
                                     query += map.get(name);

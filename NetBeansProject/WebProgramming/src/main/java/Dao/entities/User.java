@@ -5,18 +5,18 @@ package Dao.entities;
 * @generated
 */
 public class User extends IdOwnerComparable{
-    private int Id;
+
     private String firstName;
     private String lastName;
     private String email;
     private String avatarPath;
 
     public int getId() {
-        return Id;
+        return id;
     }
 
     public void setId(int Id) {
-        this.Id = Id;
+        this.id = Id;
     }
 
     public String getFirstName() {

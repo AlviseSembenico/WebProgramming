@@ -20,6 +20,7 @@
     <body>
            
             <% 
+                //User u=new JdbcUserDao().getUserById(6);
                 Shop s=new JdbcShopDao().getShopById(1);
                 Gson g=new Gson();
             %> 
