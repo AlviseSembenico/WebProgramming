@@ -20,16 +20,11 @@
     <body>
            
             <% 
-                User u=new JdbcUserDao().getUserById(6);
-                u.setEmail("EMMM");
-                /*u.setFirstName("michele");
-                u.setLastName("bortolotti");
-                u.setEmail("michi.borto@gmail.com");*/
+                Shop s=new JdbcShopDao().getShopById(1);
                 Gson g=new Gson();
-                //new JdbcUserDao().insertDao(u);
             %> 
             
-            <%=  new JdbcUserDao().updateDao(u) %>
+            <%=  g.toJson(s) %>
         
     </body>
 </html>

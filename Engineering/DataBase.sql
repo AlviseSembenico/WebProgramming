@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS shops
     description VARCHAR(12000),
     web_site VARCHAR(255),
     global_value INT,
-    users_id INT,
+    owner_id INT,
     creator_id INT,
     latitude DOUBLE,
     longitude DOUBLE,

@@ -1,5 +1,7 @@
 package Dao.entities;
 
+import system.Log;
+
 
 /**
 * @generated
@@ -10,7 +12,7 @@ public class Shop extends IdOwnerComparable{
     private String description;
     private String webSiteUrl;
     private int globalValue;
-    private User user;
+    private User owner;
     private User creator;
     private double latitude;
     private double longitute;
@@ -57,12 +59,12 @@ public class Shop extends IdOwnerComparable{
         this.globalValue = globalValue;
     }
 
-    public User getUser() {
-        return user;
+    public User getOwner() {
+        return owner;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setOwner(User user) {
+        this.owner = user;
     }
 
     public User getCreator() {
@@ -89,12 +91,12 @@ public class Shop extends IdOwnerComparable{
         this.longitute = longitute;
     }
 
-    public ShippingMethod getShippingMethod() {
-        return shippingMethod;
+    public String getShippingMethod() {
+        return shippingMethod.name();
     }
 
-    public void setShippingMethod(ShippingMethod shippingMethod) {
-        this.shippingMethod = shippingMethod;
+    public void setShippingMethod(String shippingMethod) {
+        //this.shippingMethod = ShippingMethod.valueOf(shippingMethod);
     }
 
     public Timetable getTimeTable() {

@@ -3,19 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Dao;
+package Dao.jdbc;
 
+import Dao.IdOwner;
+import Dao.UserDao;
 import Dao.entities.User;
+import Dao.jdbc.utilities.JdbcUtilities;
 import java.util.LinkedList;
-
-
 
 /**
  *
  * @author Alvise
  */
-public interface UserDao extends  DefaultDao, GetById{
-    public User getUserById(int id) throws Exception;
-    public User getUserByEmail(String email) throws Exception;
-    public LinkedList<User> getAllUser() throws Exception;
+public class JdbcTimetableDao extends JdbcUtilities implements TimetableDao{
+
+    
 }

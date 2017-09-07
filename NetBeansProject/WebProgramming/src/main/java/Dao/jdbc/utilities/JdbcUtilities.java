@@ -5,7 +5,9 @@
  */
 package Dao.jdbc.utilities;
 
+import Dao.GetById;
 import Dao.IdOwner;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -26,7 +28,8 @@ import system.Log;
 public class JdbcUtilities {
 
     protected Connection connection = null;
-
+    private ResultSet lastRs;
+    
     protected String camelToSql(String s) {
         String res = new String();
 
@@ -120,61 +123,59 @@ public class JdbcUtilities {
             }
         }
         ResultSet rs = stmt.executeQuery();
+        setLastRs(rs);
         if (!rs.first()) {
             result.add(null);
             return result;
-        }
+    }
 
-        if (map == null) {
-            do {
-                Object o = c.newInstance();
-                for (Method m : c.getDeclaredMethods()) {
-                    if (m.getName().contains("set")) {
-                        String name = m.getName().substring(3);
-                        char[] ca = name.toCharArray();
-                        name = String.valueOf(ca[0]).toLowerCase() + name.substring(1);
-                        try {
-                            if (m.getParameterTypes()[0].equals(String.class)) {
+        do {
+            Object o = c.newInstance();
+            for (Method m : c.getDeclaredMethods()) {
+                if (m.getName().contains("set")) {
+                    String name = m.getName().substring(3);
+                    char[] ca = name.toCharArray();
+                    name = String.valueOf(ca[0]).toLowerCase() + name.substring(1);
+                    try {
+                        if (m.getParameterTypes()[0].equals(String.class)) {
+                            String s=map.get(name);
+                            if(s==null)
                                 m.invoke(o, rs.getString(camelToSql(name)));
-                            }
-                            if (m.getParameterTypes()[0].equals(Double.class)) {
-                                m.invoke(o, rs.getDouble(camelToSql(name)));
-                            }
-                            if (m.getParameterTypes()[0].equals(int.class)) {
-                                m.invoke(o, rs.getInt(camelToSql(name)));
-                            }
-                        } catch (SQLException e) {
+                            else
+                                m.invoke(o, rs.getString(s));
                         }
-                    }
-                }
-                result.add(o);
-            } while (rs.next());
-        } else {
-            do {
-                Object o = c.newInstance();
-                for (Method m : c.getDeclaredMethods()) {
-                    if (m.getName().contains("set")) {
-                        String name = m.getName().substring(3);
-                        char[] ca = name.toCharArray();
-                        name = String.valueOf(ca[0]).toLowerCase() + name.substring(1);
-                        try {
-                            if (m.getParameterTypes()[0].equals(String.class)) {
-                                m.invoke(o, rs.getString(map.get(name)));
-                            }
-                            if (m.getParameterTypes()[0].equals(Double.class)) {
-                                m.invoke(o, rs.getDouble(map.get(name)));
-                            }
-                            if (m.getParameterTypes()[0].equals(Integer.class)) {
-                                m.invoke(o, rs.getInt(map.get(name)));
-                            }
-                        } catch (SQLException e) {
-                        }
-                    }
-                }
-                result.add(o);
-            } while (rs.next());
+                        if (m.getParameterTypes()[0].equals(Double.class)) {
+                            String s=map.get(name);
+                            if(s==null)
+                                 m.invoke(o, rs.getDouble(camelToSql(name)));
+                            else
+                                m.invoke(o, rs.getDouble(s));
 
-        }
+                        }
+                        if (m.getParameterTypes()[0].equals(int.class)) {
+                            String s=map.get(name);
+                            if(s==null)
+                                m.invoke(o, rs.getInt(camelToSql(name)));
+                            else
+                                m.invoke(o, rs.getInt(s));
+                        }
+                        if (IdOwner.class.isAssignableFrom(m.getParameterTypes()[0])){//m.getParameterTypes()[0].isAssignableFrom(IdOwner.class)) {
+                            String s=map.get(name);
+                            Class<?> clazz = Class.forName("Dao.jdbc.Jdbc"+m.getParameterTypes()[0].getSimpleName()+"Dao");
+                            Constructor<?> ctor = clazz.getConstructor();
+                            GetById jdbc = (GetById) ctor.newInstance(new Object[]{});
+                            if(s==null)
+                                m.invoke(o, jdbc.getById( rs.getInt(camelToSql(name))));
+                            else
+                                m.invoke(o, jdbc.getById( rs.getInt(s)));
+                        }
+                    } catch (SQLException e) {
+                    }
+                }
+            }
+            result.add(o);
+        } while (rs.next());
+        
         return result;
     }
 
@@ -253,7 +254,6 @@ public class JdbcUtilities {
         rs.next();
         return rs.getInt(1);
     }
-
 
     /**
      *
@@ -403,5 +403,13 @@ public class JdbcUtilities {
         PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
         return stmt.executeUpdate();
+    }
+
+    public ResultSet getLastRs() {
+        return lastRs;
+    }
+
+    public void setLastRs(ResultSet lastRs) {
+        this.lastRs = lastRs;
     }
 }

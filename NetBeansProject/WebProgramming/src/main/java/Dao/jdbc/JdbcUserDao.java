@@ -5,6 +5,7 @@
  */
 package Dao.jdbc;
 
+import Dao.IdOwner;
 import Dao.*;
 import Dao.entities.User;
 import Dao.jdbc.utilities.JdbcUtilities;
@@ -13,6 +14,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -67,6 +70,16 @@ public class JdbcUserDao extends JdbcUtilities implements UserDao{
     @Override
     public int updateDao(IdOwner o) throws SQLException{
         return super.updateDao(o, map, "users");
+    }
+
+    @Override
+    public Object getById(int id) {
+        try {
+            return getUserById(id);
+        } catch (Exception ex) {
+            Logger.getLogger(JdbcUserDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
   
 }
