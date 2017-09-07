@@ -6,6 +6,7 @@
 package Dao.jdbc;
 
 import Dao.CartDao;
+import Dao.IdOwner;
 import Dao.jdbc.utilities.JdbcUtilities;
 
 /**
@@ -20,7 +21,7 @@ public class JdbcCartDao extends JdbcUtilities implements CartDao{
     }
 
     @Override
-    public int updateDao(Object o) {
+    public int updateDao(IdOwner o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

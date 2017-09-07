@@ -5,6 +5,8 @@
  */
 package Dao.entities;
 
+import Dao.IdOwner;
+
 /**
  *
  * @author Alvise

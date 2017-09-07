@@ -5,6 +5,7 @@
  */
 package Dao.jdbc;
 
+import Dao.IdOwner;
 import Dao.PictureDao;
 import Dao.jdbc.utilities.JdbcUtilities;
 import Dao.entities.Picture;
@@ -39,7 +40,7 @@ public class JdbcPictureDao extends JdbcUtilities implements PictureDao {
     }
 
     @Override
-    public int updateDao(Object o) {
+    public int updateDao(IdOwner o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

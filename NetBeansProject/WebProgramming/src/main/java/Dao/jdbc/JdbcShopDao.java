@@ -5,6 +5,7 @@
  */
 package Dao.jdbc;
 
+import Dao.IdOwner;
 import Dao.ReviewDao;
 import Dao.jdbc.utilities.JdbcUtilities;
 
@@ -21,14 +22,16 @@ public class JdbcShopDao extends JdbcUtilities implements ReviewDao{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public int updateDao(Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     @Override
     public int deleteDao(Object o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public int updateDao(IdOwner o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     
 }

@@ -8,7 +8,7 @@
 
 
 <%@page import="com.google.gson.Gson"%>
-<%@page import="Dao.jdbc.JdbcUserDao"%>
+<%@page import="Dao.jdbc.*"%>
 <%@page import="Dao.entities.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -20,12 +20,16 @@
     <body>
            
             <% 
-                User u=new JdbcUserDao().getUserById(1);
+                User u=new JdbcUserDao().getUserById(6);
+                u.setEmail("EMMM");
+                /*u.setFirstName("michele");
+                u.setLastName("bortolotti");
+                u.setEmail("michi.borto@gmail.com");*/
                 Gson g=new Gson();
-               
+                //new JdbcUserDao().insertDao(u);
             %> 
             
-            <%= g.toJson(u) %>
+            <%=  new JdbcUserDao().updateDao(u) %>
         
     </body>
 </html>

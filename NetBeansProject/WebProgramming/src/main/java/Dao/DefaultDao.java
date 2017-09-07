@@ -11,7 +11,7 @@ package Dao;
  * @author Alvise
  */
 public interface DefaultDao {
-    public int insertDao(Object o);
-    public int updateDao(Object o);
-    public int deleteDao(Object o);
+    public int insertDao(Object o) throws Exception;
+    public int updateDao(IdOwner o) throws Exception;
+    public int deleteDao(Object o) throws Exception;
 }

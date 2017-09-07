@@ -5,6 +5,7 @@
  */
 package Dao.jdbc;
 
+import Dao.IdOwner;
 import Dao.PurchaseDao;
 import Dao.jdbc.utilities.JdbcUtilities;
 
@@ -21,7 +22,7 @@ public class JdbcPurchaseDao extends JdbcUtilities implements PurchaseDao{
     }
 
     @Override
-    public int updateDao(Object o) {
+    public int updateDao(IdOwner o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

@@ -6,6 +6,7 @@
 package Dao;
 
 import Dao.entities.User;
+import java.util.LinkedList;
 
 
 
@@ -16,4 +17,5 @@ import Dao.entities.User;
 public interface UserDao extends  DefaultDao {
     public User getUserById(int id) throws Exception;
     public User getUserByEmail(String email) throws Exception;
+    public LinkedList<User> getAllUser() throws Exception;
 }
