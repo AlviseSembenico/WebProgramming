@@ -11,14 +11,6 @@ public class User extends IdOwnerComparable{
     private String email;
     private String avatarPath;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int Id) {
-        this.id = Id;
-    }
-
     public String getFirstName() {
         return firstName;
     }

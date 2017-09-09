@@ -29,7 +29,6 @@ import system.Log;
 public class JdbcUtilities {
 
     protected Connection connection = null;
-    private ResultSet lastRs;
 
     protected String camelToSql(String s) {
         String res = new String();
@@ -93,10 +92,9 @@ public class JdbcUtilities {
      * @throws Exception
      */
     protected LinkedList<Object> getObject(Class<?> c, HashMap<String, String> map, String tableName, HashMap<Object, String> param) throws Exception {
-        LinkedList<Object> result = new LinkedList<Object>();
+        
         if (!checkConnection()) {
-            result.add(null);
-            return result;
+            return null;
         }
         String query = "select * from " + tableName;
         if (param != null) {
@@ -124,7 +122,11 @@ public class JdbcUtilities {
             }
         }
         ResultSet rs = stmt.executeQuery();
-        setLastRs(rs);
+        return executeQuery(c, map, rs);
+    }
+
+    protected LinkedList<Object> executeQuery(Class<?> c, HashMap<String, String> map,ResultSet rs) throws Exception {
+        LinkedList<Object> result = new LinkedList<Object>();
         if (!rs.first()) {
             result.add(null);
             return result;
@@ -196,7 +198,7 @@ public class JdbcUtilities {
 
         return result;
     }
-
+      
     /**
      *
      * @param o is the object which must be inserted into table
@@ -425,11 +427,4 @@ public class JdbcUtilities {
         return stmt.executeUpdate();
     }
 
-    public ResultSet getLastRs() {
-        return lastRs;
-    }
-
-    public void setLastRs(ResultSet lastRs) {
-        this.lastRs = lastRs;
-    }
 }
