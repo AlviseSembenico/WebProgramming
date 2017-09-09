@@ -64,7 +64,7 @@ public class JdbcUserDao extends JdbcUtilities implements UserDao{
 
     @Override
     public int deleteDao(Object o) throws SQLException{
-        return super.deletDao(o, map, "users");
+        return super.deleteDao(o, map, "users");
     }
 
     @Override

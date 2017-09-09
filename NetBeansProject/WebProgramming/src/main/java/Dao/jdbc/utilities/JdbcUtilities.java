@@ -147,7 +147,7 @@ public class JdbcUtilities {
                                 m.invoke(o, rs.getString(s));
                             }
                         }
-                        if (m.getParameterTypes()[0].equals(Double.class)) {
+                        else if (m.getParameterTypes()[0].equals(Double.class)) {
                             String s = map.get(name);
                             if (s == null) {
                                 m.invoke(o, rs.getDouble(camelToSql(name)));
@@ -156,7 +156,7 @@ public class JdbcUtilities {
                             }
 
                         }
-                        if (m.getParameterTypes()[0].equals(int.class)) {
+                        else if (m.getParameterTypes()[0].equals(int.class)) {
                             String s = map.get(name);
                             if (s == null) {
                                 m.invoke(o, rs.getInt(camelToSql(name)));
@@ -164,7 +164,19 @@ public class JdbcUtilities {
                                 m.invoke(o, rs.getInt(s));
                             }
                         }
-                        if (IdOwner.class.isAssignableFrom(m.getParameterTypes()[0])) {//m.getParameterTypes()[0].isAssignableFrom(IdOwner.class)) {
+                        else if (IdOwner.class.isAssignableFrom(m.getParameterTypes()[0])) {//m.getParameterTypes()[0].isAssignableFrom(IdOwner.class)) {
+                            String s = map.get(name);
+                            Class<?> clazz = Class.forName("Dao.jdbc.Jdbc" + m.getParameterTypes()[0].getSimpleName() + "Dao");
+                            Constructor<?> ctor = clazz.getConstructor();
+                            GetById jdbc = (GetById) ctor.newInstance(new Object[]{});
+                            if (s == null) {
+                                m.invoke(o, jdbc.getById(rs.getInt(camelToSql(name))));
+                            } else {
+                                m.invoke(o, jdbc.getById(rs.getInt(s)));
+                            }
+                        }
+                        else if (LinkedList.class.isAssignableFrom(m.getParameterTypes()[0])) {//m.getParameterTypes()[0].isAssignableFrom(IdOwner.class)) {
+                           
                             String s = map.get(name);
                             Class<?> clazz = Class.forName("Dao.jdbc.Jdbc" + m.getParameterTypes()[0].getSimpleName() + "Dao");
                             Constructor<?> ctor = clazz.getConstructor();
@@ -343,7 +355,7 @@ public class JdbcUtilities {
         return stmt.executeUpdate();
     }
 
-    protected int deletDao(Object o, HashMap<String, String> map, String tableName) throws SQLException {
+    protected int deleteDao(Object o, HashMap<String, String> map, String tableName) throws SQLException {
         if (!checkConnection()) {
             return 0;
         }

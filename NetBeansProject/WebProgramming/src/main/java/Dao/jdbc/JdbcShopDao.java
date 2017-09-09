@@ -32,22 +32,24 @@ public class JdbcShopDao extends JdbcUtilities implements ShopDao{
     public Shop getShopById(int id) throws Exception {
         HashMap<Object,String> mappa=new HashMap<Object,String>();
         mappa.put(id,"id" );
-        Shop res=(Shop) super.getObject(Shop.class, map, "shops", mappa).get(0);/*
-        ResultSet rs=getLastRs();
-        res.setOwner(new JdbcUserDao().getUserById(rs.getInt("owner_id")));
-        res.setOwner(new JdbcUserDao().getUserById(rs.getInt("creator_id")));
-        res.setShippingMethod(rs.getString("shipping_method"));*/
+        Shop res=(Shop)  super.getObject(Shop.class, map, "shops", mappa).get(0);
         return res;
     }
 
     @Override
     public Shop getShopByName(String name) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        HashMap<Object,String> mappa=new HashMap<Object,String>();
+        mappa.put(name,"name" );
+        Shop res=(Shop) super.getObject(Shop.class, map, "shops", mappa).get(0);
+        return res;
     }
 
     @Override
     public Shop getShopByOwner(User owner) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        HashMap<Object,String> mappa=new HashMap<Object,String>();
+        mappa.put(owner.getId(),"owner_id" );
+        Shop res=(Shop) super.getObject(Shop.class, map, "shops", mappa).get(0);
+        return res;
     }
 
     @Override
