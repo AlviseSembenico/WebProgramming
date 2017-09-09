@@ -11,5 +11,4 @@ package Dao;
  */
 public interface GetById {
     Object getById(int id);
-    
 }

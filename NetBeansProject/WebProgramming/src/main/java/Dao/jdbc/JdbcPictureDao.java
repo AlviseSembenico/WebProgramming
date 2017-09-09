@@ -11,6 +11,8 @@ import Dao.jdbc.utilities.JdbcUtilities;
 import Dao.entities.Picture;
 import Dao.entities.Product;
 import Dao.entities.Shop;
+import Dao.entities.User;
+import java.util.HashMap;
 
 /**
  *
@@ -18,19 +20,32 @@ import Dao.entities.Shop;
  */
 public class JdbcPictureDao extends JdbcUtilities implements PictureDao {
 
+    HashMap<String, String> map;
+    public JdbcPictureDao(){
+        map=new HashMap<String, String>();
+        map.put("product", "products_id");
+        map.put("shop", "shops_id");
+    }
+    
     @Override
-    public Picture getPictureById(int id){ 
-       return null;
+    public Picture getPictureById(int id) throws Exception{ 
+        HashMap<Object,String> mappa=new HashMap<Object,String>();
+        mappa.put(id,"id");
+        return (Picture) super.getObject(Picture.class, map, "shops", mappa).get(0);
     } 
    
     @Override
-    public Picture getPictureByProduct(Product product) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Picture getPictureByProduct(Product product) throws Exception {
+        HashMap<Object,String> mappa=new HashMap<Object,String>();
+        mappa.put(product.getId(),"products_id");
+        return (Picture) super.getObject(Picture.class, map, "shops", mappa).get(0);
     }
 
     @Override
-    public Picture getPictureByShop(Shop shop) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Picture getPictureByShop(Shop shop) throws Exception {
+        HashMap<Object,String> mappa=new HashMap<Object,String>();
+        mappa.put(shop.getId(),"shops_id");
+        return (Picture) super.getObject(Picture.class, map, "shops", mappa).get(0);
     }
 
    
@@ -46,6 +61,11 @@ public class JdbcPictureDao extends JdbcUtilities implements PictureDao {
 
     @Override
     public int deleteDao(Object o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Object getById(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

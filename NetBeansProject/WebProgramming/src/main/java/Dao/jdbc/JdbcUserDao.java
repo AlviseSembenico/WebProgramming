@@ -37,7 +37,6 @@ public class JdbcUserDao extends JdbcUtilities implements UserDao{
         HashMap<Object,String> mappa=new HashMap<Object,String>();
         mappa.put(id,"id" );
         return (User) super.getObject(User.class, null, "users", mappa).get(0);
-        
     }
 
     @Override

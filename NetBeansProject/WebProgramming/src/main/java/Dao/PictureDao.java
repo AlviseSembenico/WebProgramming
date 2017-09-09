@@ -14,8 +14,8 @@ import Dao.entities.Shop;
  *
  * @author Alvise
  */
-public interface PictureDao  extends  DefaultDao{
-    public Picture getPictureById(int id);
-    public Picture getPictureByProduct(Product product);
-    public Picture getPictureByShop(Shop shop);
+public interface PictureDao  extends  DefaultDao,GetById{
+    public Picture getPictureById(int id) throws Exception;
+    public Picture getPictureByProduct(Product product) throws Exception;
+    public Picture getPictureByShop(Shop shop) throws Exception;
 }
