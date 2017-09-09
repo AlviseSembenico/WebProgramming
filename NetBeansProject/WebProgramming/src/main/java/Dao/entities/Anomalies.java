@@ -6,9 +6,9 @@ package Dao.entities;
 */
 public class Anomalies extends IdOwnerComparable{
     private int id;
-    private OrderStatus status;
+    private String status;
     private String description;
-    private Solution solution;
+    private String solution;
    
 
     public int getId() {
@@ -24,7 +24,7 @@ public class Anomalies extends IdOwnerComparable{
     }
 
     public void setStatus(String s) {
-        this.status = OrderStatus.valueOf(s);
+        this.status = String.valueOf(s);
     }
 
     public String getDescription() {
@@ -40,6 +40,6 @@ public class Anomalies extends IdOwnerComparable{
     }
 
     public void setSolution(String s) {
-        this.solution = Solution.valueOf(s);
+        this.solution = String.valueOf(s);
     }
 }

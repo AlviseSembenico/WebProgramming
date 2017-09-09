@@ -13,6 +13,8 @@ import Dao.entities.Product;
 import Dao.entities.Shop;
 import Dao.entities.User;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -66,8 +68,11 @@ public class JdbcPictureDao extends JdbcUtilities implements PictureDao {
 
     @Override
     public Object getById(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            return getPictureById(id);
+        } catch (Exception ex) {
+            Logger.getLogger(JdbcPictureDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
-
-   
 }

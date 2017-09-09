@@ -6,7 +6,7 @@ package Dao.entities;
 */
 public class Purchase extends IdOwnerComparable{
     private int id;
-    private OrderStatus status;
+    private String status;
     private Product product;
     private User user;
 
@@ -18,11 +18,11 @@ public class Purchase extends IdOwnerComparable{
         this.id = id;
     }
 
-    public OrderStatus getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(OrderStatus status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
