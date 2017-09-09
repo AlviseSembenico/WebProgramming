@@ -10,7 +10,6 @@ import Dao.*;
 import Dao.entities.Shop;
 import Dao.entities.User;
 import Dao.jdbc.utilities.JdbcUtilities;
-import java.sql.ResultSet;
 import java.util.HashMap;
 
 
