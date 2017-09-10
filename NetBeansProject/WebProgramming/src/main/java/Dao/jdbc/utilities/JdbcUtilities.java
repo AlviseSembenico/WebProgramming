@@ -18,8 +18,6 @@ import java.sql.Time;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.Set;
-import org.reflections.Reflections;
 import system.Log;
 
 /**
@@ -135,7 +133,7 @@ public class JdbcUtilities {
             map=new HashMap<String,String>();
         do {
             Object o = c.newInstance();
-            for (Method m : c.getDeclaredMethods()) {
+            for (Method m : c.getMethods()) {
                 if (m.getName().contains("set")) {
                     String name = m.getName().substring(3);
                     char[] ca = name.toCharArray();
@@ -172,7 +170,7 @@ public class JdbcUtilities {
                             Constructor<?> ctor = clazz.getConstructor();
                             GetById jdbc = (GetById) ctor.newInstance(new Object[]{});
                             if (s == null) {
-                                m.invoke(o, jdbc.getById(rs.getInt(camelToSql(name))));
+                                m.invoke(o, jdbc.getById(rs.getInt(camelToSql(name)+"_id")));
                             } else {
                                 m.invoke(o, jdbc.getById(rs.getInt(s)));
                             }
@@ -184,7 +182,7 @@ public class JdbcUtilities {
                             Constructor<?> ctor = clazz.getConstructor();
                             GetById jdbc = (GetById) ctor.newInstance(new Object[]{});
                             if (s == null) {
-                                m.invoke(o, jdbc.getById(rs.getInt(camelToSql(name))));
+                                m.invoke(o, jdbc.getById(rs.getInt(camelToSql(name)+"_id")));
                             } else {
                                 m.invoke(o, jdbc.getById(rs.getInt(s)));
                             }
@@ -219,7 +217,7 @@ public class JdbcUtilities {
         String values = "values(";
         Class<?> c = o.getClass();
         try {
-            for (Method m : c.getDeclaredMethods()) {
+            for (Method m : c.getMethods()) {
                 if (m.getName().contains("get")) {
                     String name = m.getName().substring(3);
                     char[] ca = name.toCharArray();
@@ -231,7 +229,7 @@ public class JdbcUtilities {
                             if (map.containsKey(name)) {
                                 query += map.get(name) + ",";
                             } else {
-                                query += name + ",";
+                                query += camelToSql(name) + ",";
                             }
 
                         }
@@ -241,21 +239,20 @@ public class JdbcUtilities {
                             if (map.containsKey(name)) {
                                 query += map.get(name) + ",";
                             } else {
-                                query += name + ",";
+                                query += camelToSql(name) + ",";
                             }
 
                         }
                     } else {
                         Object obj = m.invoke(o, null);
                         if (obj != null) {
-
                             if (obj instanceof IdOwner) {
                                 IdOwner id = (IdOwner) obj;
                                 values += "'" + id.getId() + "',";
                                 if (map.containsKey(name)) {
                                     query += map.get(name) + ",";
                                 } else {
-                                    query += name + ",";
+                                    query += camelToSql(name) + ",";
                                 }
 
                             }
@@ -298,7 +295,7 @@ public class JdbcUtilities {
         Class<?> c = o.getClass();
         int id = 0;
         try {
-            for (Method m : c.getDeclaredMethods()) {
+            for (Method m : c.getMethods()) {
                 if (m.getName().contains("get")) {
                     String name = m.getName().substring(3);
                     char[] ca = name.toCharArray();
@@ -311,7 +308,7 @@ public class JdbcUtilities {
                             if (map.containsKey(name)) {
                                 query += map.get(name);
                             } else {
-                                query += name;
+                                query += camelToSql(name);
                             }
                             query += " = " + value.doubleValue() + ",";
                         }
@@ -320,7 +317,7 @@ public class JdbcUtilities {
                             if (map.containsKey(name)) {
                                 query += map.get(name);
                             } else {
-                                query += name;
+                                query += camelToSql(name);
                             }
                             query += " = '" + m.invoke(o, null) + "',";
                         }
@@ -332,7 +329,7 @@ public class JdbcUtilities {
                                 if (map.containsKey(name)) {
                                     query += map.get(name);
                                 } else {
-                                    query += name;
+                                    query += camelToSql(name);
                                 }
                                 query += "=" + idOwner.getId() + ",";
                             }
@@ -381,7 +378,7 @@ public class JdbcUtilities {
                                 if (map.containsKey(name)) {
                                     query += map.get(name);
                                 } else {
-                                    query += name;
+                                    query += camelToSql(name);
                                 }
                                 query += " = " + value.doubleValue() + " and ";
                             }
@@ -390,23 +387,9 @@ public class JdbcUtilities {
                                 if (map.containsKey(name)) {
                                     query += map.get(name);
                                 } else {
-                                    query += name;
+                                    query += camelToSql(name);
                                 }
                                 query += " = '" + m.invoke(o, null) + "' and ";
-                            }
-                        } else {
-                            Object obj = m.invoke(o, null);
-                            if (obj != null) {
-                                if (obj instanceof IdOwner) {
-                                    IdOwner idOwner = (IdOwner) obj;
-                                    if (map.containsKey(name)) {
-                                        query += map.get(name);
-                                    } else {
-                                        query += name;
-                                    }
-
-                                    query += "=" + idOwner.getId() + ",";
-                                }
                             }
                         }
 

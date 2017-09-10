@@ -7,6 +7,7 @@
 
 
 
+<%@page import="java.util.LinkedList"%>
 <%@page import="com.google.gson.Gson"%>
 <%@page import="Dao.jdbc.*"%>
 <%@page import="Dao.entities.*"%>
@@ -20,8 +21,9 @@
     <body>
            
             <% 
-                //User u=new JdbcUserDao().getUserById(6);
-                Shop s=new JdbcShopDao().getShopById(1);
+                //User s=new JdbcUserDao().getUserById(6);
+                //Shop s=new JdbcShopDao().getShopByName("Skivee");
+                LinkedList<Review> s=new JdbcReviewDao().getRewiewByCreator(new JdbcUserDao().getUserById(1));
                 Gson g=new Gson();
             %> 
             

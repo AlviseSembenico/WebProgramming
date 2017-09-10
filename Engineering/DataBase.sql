@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS users
 CREATE TABLE IF NOT EXISTS shops
 (
     id INT NOT NULL AUTO_INCREMENT,
-    name VARCHAR(255),
+    name VARCHAR(255) unique,
     description VARCHAR(12000),
     web_site VARCHAR(255),
     global_value INT,

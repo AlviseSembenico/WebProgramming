@@ -7,7 +7,7 @@ import java.util.Date;
 * @generated
 */
 public class Review extends IdOwnerComparable{
-    private int id;
+
     private int globalValue;
     private int quality;
     private int service;
@@ -16,13 +16,6 @@ public class Review extends IdOwnerComparable{
     private User creator;
     private Product product;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public int getGlobalValue() {
         return globalValue;

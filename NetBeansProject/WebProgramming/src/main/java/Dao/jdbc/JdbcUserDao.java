@@ -23,33 +23,30 @@ import java.util.logging.Logger;
  */
 public class JdbcUserDao extends JdbcUtilities implements UserDao{
     HashMap<String, String> map;
+    private String tableName="users";
     
     public JdbcUserDao(){
         map=new HashMap<String, String>();
-        map.put("firstName", camelToSql("firstName"));
-        map.put("lastName", camelToSql("lastName"));
-        map.put("avatarPath", camelToSql("avatarPath"));
-        
     }
     
     @Override
     public User getUserById(int id) throws SQLException, Exception {
         HashMap<Object,String> mappa=new HashMap<Object,String>();
         mappa.put(id,"id" );
-        return (User) super.getObject(User.class, null, "users", mappa).get(0);
+        return (User) super.getObject(User.class, null, tableName, mappa).get(0);
     }
 
     @Override
     public User getUserByEmail(String email) throws Exception {
         HashMap<Object,String> mappa=new HashMap<Object,String>();
         mappa.put(email,"email" );
-        return (User) super.getObject(User.class, null, "users", mappa).get(0);
+        return (User) super.getObject(User.class, null, tableName, mappa).get(0);
     }
 
     @Override
     public LinkedList<User> getAllUser() throws Exception {
         LinkedList<User> res=new LinkedList<User> ();
-        for(Object o:super.getObject(User.class, null, "users",null))
+        for(Object o:super.getObject(User.class, null, tableName,null))
             res.add((User) o);
         return res;
     }
@@ -57,18 +54,18 @@ public class JdbcUserDao extends JdbcUtilities implements UserDao{
     
     @Override
     public int insertDao(Object o) throws SQLException{
-        return super.insertDao(o, map, "users");
+        return super.insertDao(o, map, tableName);
     }
 
 
     @Override
     public int deleteDao(Object o) throws SQLException{
-        return super.deleteDao(o, map, "users");
+        return super.deleteDao(o, map, tableName);
     }
 
     @Override
     public int updateDao(IdOwner o) throws SQLException{
-        return super.updateDao(o, map, "users");
+        return super.updateDao(o, map, tableName);
     }
 
     @Override

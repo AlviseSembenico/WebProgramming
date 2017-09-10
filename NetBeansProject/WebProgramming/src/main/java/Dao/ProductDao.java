@@ -13,7 +13,7 @@ import java.util.LinkedList;
  *
  * @author Alvise
  */
-public interface ProductDao extends  DefaultDao,GetById{
+public interface ProductDao extends  DefaultDao, GetById{
     Product getProductById(int id)throws Exception;
     LinkedList<Product> getProductByName(String name) throws Exception;
     LinkedList<Product> getProductByPrice(double min,double max) throws Exception;

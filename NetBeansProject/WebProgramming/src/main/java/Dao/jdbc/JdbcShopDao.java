@@ -10,6 +10,7 @@ import Dao.*;
 import Dao.entities.Shop;
 import Dao.entities.User;
 import Dao.jdbc.utilities.JdbcUtilities;
+import java.sql.SQLException;
 import java.util.HashMap;
 
 
@@ -20,6 +21,7 @@ import java.util.HashMap;
  */
 public class JdbcShopDao extends JdbcUtilities implements ShopDao{
     HashMap<String, String> map;
+    private String tableName="shops";
     
     public JdbcShopDao(){
         map=new HashMap<String, String>();
@@ -31,7 +33,7 @@ public class JdbcShopDao extends JdbcUtilities implements ShopDao{
     public Shop getShopById(int id) throws Exception {
         HashMap<Object,String> mappa=new HashMap<Object,String>();
         mappa.put(id,"id");
-        Shop res=(Shop)  super.getObject(Shop.class, map, "shops", mappa).get(0);
+        Shop res=(Shop)  super.getObject(Shop.class, map, tableName, mappa).get(0);
         return res;
     }
 
@@ -39,7 +41,7 @@ public class JdbcShopDao extends JdbcUtilities implements ShopDao{
     public Shop getShopByName(String name) throws Exception {
         HashMap<Object,String> mappa=new HashMap<Object,String>();
         mappa.put(name,"name");
-        Shop res=(Shop) super.getObject(Shop.class, map, "shops" , mappa).get(0);
+        Shop res=(Shop) super.getObject(Shop.class, map, tableName , mappa).get(0);
         return res;
     }
 
@@ -47,22 +49,22 @@ public class JdbcShopDao extends JdbcUtilities implements ShopDao{
     public Shop getShopByOwner(User owner) throws Exception {
         HashMap<Object,String> mappa=new HashMap<Object,String>();
         mappa.put(owner.getId(),"owner_id" );
-        Shop res=(Shop) super.getObject(Shop.class, map, "shops", mappa).get(0);
+        Shop res=(Shop) super.getObject(Shop.class, map, tableName, mappa).get(0);
         return res;
     }
 
     @Override
-    public int insertDao(Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int insertDao(Object o) throws SQLException {
+        return super.insertDao(o, map, tableName);
     }
 
     @Override
-    public int deleteDao(Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int deleteDao(Object o) throws SQLException {
+        return super.deleteDao(o, map, tableName);
     }
 
     @Override
-    public int updateDao(IdOwner o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int updateDao(IdOwner o) throws SQLException {
+         return super.updateDao(o, map, tableName);
     }
 }
