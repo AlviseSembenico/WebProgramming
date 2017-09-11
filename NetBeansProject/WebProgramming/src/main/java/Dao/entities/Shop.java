@@ -20,6 +20,7 @@ public class Shop extends IdOwnerComparable{
     private String closeDay;
     private Time openTime;
     private Time closeTime;
+    private String region;
     
 
     public int getId() {
@@ -127,4 +128,19 @@ public class Shop extends IdOwnerComparable{
         this.closeTime = closeTime;
     }
 
+    /**
+     * @return the region
+     */
+    public String getRegion() {
+        return region;
+    }
+
+    /**
+     * @param region the region to set
+     */
+    public void setRegion(String region) {
+        this.region = region;
+    }
+    
+    
 }
