@@ -69,7 +69,7 @@ public class JdbcUtilities {
             try {
                 connection = JdbcConnector.connect();
             } catch (SQLException ex) {
-                Log.Write(ex.toString());
+                Log.write(ex.toString());
                 return false;
             }
         }

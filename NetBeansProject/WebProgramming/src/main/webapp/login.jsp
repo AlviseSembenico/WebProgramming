@@ -18,7 +18,7 @@
                 <div class="row">
                     <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
                         <div class="card card-signup">
-                            <form class="form" method="" action="">
+                            <form  method="POST" action="login">
                                 <div class="header header-primary text-center">
                                     <h4 class="card-title">Log in</h4>
                                     <div class="social-line">
@@ -33,46 +33,58 @@
                                         </a>
                                     </div>
                                 </div>
-                                <p class="description text-center">Or Be Classical</p>
+                                <p class="description text-center">Insert your data</p>
+                                <c:if test="${param.error}">
+                                    <div class="description alert alert-danger">
+                                        <div class="container-fluid">
+                                            <div class="alert-icon">
+                                                <i class="material-icons">error_outline</i>
+                                            </div>
+                                            <button class="close" aria-label="Close" type="button" data-dismiss="alert">
+                                                <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                                            </button>
+                                            <b>Login Error:</b> Check your credentials
+                                        </div>
+                                    </div>
+                                    
+                                </c:if>
                                 <div class="card-content">
+                                    <form action="login" method="POST">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">email</i>
+                                            </span>
+                                            <input type="text" class="form-control" name="email" placeholder="Email...">
+                                        </div>
 
-                                    <div class="input-group">
-                                        <span class="input-group-addon">
-                                            <i class="material-icons">face</i>
-                                        </span>
-                                        <input type="text" class="form-control" placeholder="First Name...">
-                                    </div>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">lock_outline</i>
+                                            </span>
+                                            <input type="password" name="password" placeholder="Password..." class="form-control" />
+                                        </div>
 
-                                    <div class="input-group">
-                                        <span class="input-group-addon">
-                                            <i class="material-icons">email</i>
-                                        </span>
-                                        <input type="text" class="form-control" placeholder="Email...">
-                                    </div>
-
-                                    <div class="input-group">
-                                        <span class="input-group-addon">
-                                            <i class="material-icons">lock_outline</i>
-                                        </span>
-                                        <input type="password" placeholder="Password..." class="form-control" />
-                                    </div>
-
-                                    <!-- If you want to add a checkbox to this form, uncomment this code
-    
-                                    <div class="checkbox">
-                                            <label>
-                                                    <input type="checkbox" name="optionsCheckboxes" checked>
-                                                    Subscribe to newsletter
-                                            </label>
-                                    </div> -->
+                                        
+                                        <div class="checkbox">
+                                                <label>
+                                                        <input type="checkbox" name="optionsCheckboxes" checked>
+                                                        Subscribe to newsletter
+                                                </label>
+                                        </div> 
                                 </div>
-                                <div class="footer text-center">
-                                    <a href="#pablo" class="btn btn-primary btn-simple btn-wd btn-lg">Get Started</a>
+                                <div class="text-center">
+
+                                    <input type="submit" class="btn btn-primary" value="Log in"/>
+
                                 </div>
+                            </form>
+                            <div class="footer text-center">
+                                <a href="#pablo" class="btn btn-primary btn-simple btn-wd btn-sm">Recover your password</a>
+                            </div>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
-    <c:import url="pageBuilder/footer.jsp"/>
+            <c:import url="pageBuilder/footer.jsp"/>
 

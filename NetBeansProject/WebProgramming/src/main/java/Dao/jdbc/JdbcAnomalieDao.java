@@ -19,7 +19,7 @@ import java.util.logging.Logger;
  *
  * @author Alvise
  */
-public class JdbcAnomaliesDao  extends JdbcUtilities implements AnomaliesDao{
+public class JdbcAnomalieDao  extends JdbcUtilities implements AnomaliesDao{
     HashMap<String, String> map;
     private String tableName="anomalies";
     
@@ -57,7 +57,7 @@ public class JdbcAnomaliesDao  extends JdbcUtilities implements AnomaliesDao{
         try {
             return (Anomalies) super.getObject(Anomalies.class, null, tableName, mappa).get(0);
         } catch (Exception ex) {
-            Logger.getLogger(JdbcAnomaliesDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(JdbcAnomalieDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }

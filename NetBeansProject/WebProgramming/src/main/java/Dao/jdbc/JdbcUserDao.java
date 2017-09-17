@@ -22,7 +22,7 @@ import java.util.logging.Logger;
  * @author Alvise
  */
 public class JdbcUserDao extends JdbcUtilities implements UserDao{
-    HashMap<String, String> map;
+    HashMap<String, String> map; 
     private String tableName="users";
     
     public JdbcUserDao(){
@@ -50,6 +50,15 @@ public class JdbcUserDao extends JdbcUtilities implements UserDao{
             res.add((User) o);
         return res;
     }
+    
+     @Override
+    public User getUserByEmailPassword(String email, String password) throws Exception {
+        HashMap<Object,String> mappa=new HashMap<Object,String>();
+        mappa.put(email,"email" );
+        mappa.put(password,"password" );
+        return (User) super.getObject(User.class, null, tableName, mappa).get(0);
+    }
+  
 
     
     @Override
@@ -77,5 +86,6 @@ public class JdbcUserDao extends JdbcUtilities implements UserDao{
         }
         return null;
     }
-  
+
+   
 }

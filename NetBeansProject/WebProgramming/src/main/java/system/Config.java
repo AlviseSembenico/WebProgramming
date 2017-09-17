@@ -31,7 +31,7 @@ public class Config{
             prop=new Properties();
             prop.load(input);
         } catch (Exception ex) {
-            Log.Write(ex.toString());
+            Log.write(ex.toString());
             return false;
         }
         return true;
