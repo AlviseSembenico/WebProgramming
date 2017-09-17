@@ -5,11 +5,14 @@
  */
 package Dao;
 
+import Dao.entities.*;
+import java.util.LinkedList;
+
 
 /**
  *
  * @author Alvise
  */
-public interface AnomaliesDao extends  DefaultDao{
-    
+public interface AnomaliesDao extends  DefaultDao,GetById{
+    public LinkedList<Anomalies> getAnomaliesByPurchase(Purchase p)  throws  Exception ;
 }

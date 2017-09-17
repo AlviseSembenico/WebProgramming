@@ -21,13 +21,14 @@
     <body>
            
             <% 
-                //User s=new JdbcUserDao().getUserById(6);
+                User s=new JdbcUserDao().getUserById(6);
                 //Shop s=new JdbcShopDao().getShopByName("Skivee");
-                LinkedList<Review> s=new JdbcReviewDao().getRewiewByCreator(new JdbcUserDao().getUserById(1));
+                //LinkedList<Review> s=new JdbcReviewDao().getRewiewByCreator(new JdbcUserDao().getUserById(1));
+                Anomalies c=new JdbcAnomaliesDao().getAnomaliesByPurchase(new JdbcPurchaseDao().getPurchaseById(1)).get(0);
                 Gson g=new Gson();
             %> 
             
-            <%=  g.toJson(s) %>
+            <%=  g.toJson(c) %>
         
     </body>
 </html>

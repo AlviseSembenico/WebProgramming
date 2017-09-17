@@ -12,6 +12,8 @@ import Dao.entities.User;
 import Dao.jdbc.utilities.JdbcUtilities;
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 
@@ -66,5 +68,15 @@ public class JdbcShopDao extends JdbcUtilities implements ShopDao{
     @Override
     public int updateDao(IdOwner o) throws SQLException {
          return super.updateDao(o, map, tableName);
+    }
+
+    @Override
+    public Object getById(int id) {
+        try {
+            return getShopById(id);
+        } catch (Exception ex) {
+            Logger.getLogger(JdbcShopDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 }

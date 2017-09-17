@@ -30,7 +30,7 @@ public class JdbcUserDao extends JdbcUtilities implements UserDao{
     }
     
     @Override
-    public User getUserById(int id) throws SQLException, Exception {
+    public User getUserById(int id) throws  Exception {
         HashMap<Object,String> mappa=new HashMap<Object,String>();
         mappa.put(id,"id" );
         return (User) super.getObject(User.class, null, tableName, mappa).get(0);

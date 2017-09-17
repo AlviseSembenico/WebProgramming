@@ -5,19 +5,9 @@ package Dao.entities;
 * @generated
 */
 public class Anomalies extends IdOwnerComparable{
-    private int id;
     private String status;
     private String description;
     private String solution;
-   
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getStatus() {
         return status.toString().toLowerCase(   );

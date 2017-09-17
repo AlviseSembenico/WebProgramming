@@ -25,7 +25,8 @@ import java.util.logging.Logger;
 public class JdbcPurchaseDao extends JdbcUtilities implements PurchaseDao{
     HashMap<String, String> map;
     private String tableName="purchases";
-    JdbcPurchaseDao(){
+    
+    public JdbcPurchaseDao(){
         map=new HashMap<String, String>();
     }
     
