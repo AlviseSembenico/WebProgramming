@@ -10,6 +10,7 @@ public class User extends IdOwnerComparable{
     private String lastName;
     private String email;
     private String avatarPath;
+    private String password;
 
     public String getFirstName() {
         return firstName;
@@ -41,5 +42,8 @@ public class User extends IdOwnerComparable{
 
     public void setAvatarPath(String avatarPath) {
         this.avatarPath = avatarPath;
+    }
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

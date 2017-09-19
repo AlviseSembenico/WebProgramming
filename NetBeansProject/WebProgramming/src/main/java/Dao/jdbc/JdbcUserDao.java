@@ -9,8 +9,6 @@ import Dao.IdOwner;
 import Dao.*;
 import Dao.entities.User;
 import Dao.jdbc.utilities.JdbcUtilities;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.LinkedList;
