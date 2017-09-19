@@ -29,7 +29,7 @@
                                             <i class="fa fa-twitter"></i>
                                         </a>
                                         <a href="#pablo" class="btn btn-just-icon btn-simple">
-                                            <i class="fa fa-google-plus"></i>
+                                            <i class="fa fa-instagram"></i>
                                         </a>
                                     </div>
                                 </div>

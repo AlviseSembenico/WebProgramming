@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <!DOCTYPE html>
 <html lang="it">
     <head>
@@ -30,7 +31,12 @@
         <link href="assets/css/style.css" rel="stylesheet" />
         <link href="assets/css/unminify.css" rel="stylesheet"/>
     </head>
-    <nav class="navbar navbar-transparent navbar-fixed-top navbar-color-on-scroll" role="navigation">
+    <c:if test="${param.trasparent eq 'true' || (empty param.trasparent) }">
+        <nav class="navbar navbar-transparent navbar-fixed-top navbar-color-on-scroll" role="navigation">
+    </c:if>
+    <c:if test="${param.trasparent eq 'false'}">
+         <nav class="navbar navbar-fixed-top    " role="navigation">
+    </c:if>
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
