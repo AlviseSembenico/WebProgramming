@@ -11,9 +11,8 @@
 <html>
     <c:import url="pageBuilder/header.jsp"/>
     <body class="login-page">
-
-
-        <div class="page-header header-filter" style="background-image: url('http://demos.creative-tim.com/material-kit-pro/assets/img/bg7.jpg'); background-size: cover; background-position: top center;">
+<!--http://demos.creative-tim.com/material-kit-pro/assets/img/bg7.jpg-->
+        <div class="page-header header-filter" style="background-image: url('https://static.wixstatic.com/media/7b577b_d4bc4fd6eb864557a9500bfac4fb5e86~mv2.jpg'); background-size: cover; background-position: top center;">
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
@@ -86,5 +85,6 @@
                     </div>
                 </div>
             </div>
+
             <c:import url="pageBuilder/footer.jsp"/>
 
