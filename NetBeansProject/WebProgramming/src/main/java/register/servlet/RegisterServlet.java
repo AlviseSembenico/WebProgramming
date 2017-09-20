@@ -44,13 +44,8 @@ public class RegisterServlet extends HttpServlet {
                 contextPath += "/";
             }
             try{
-                User user= new User();
-                user.setEmail(email);
-                user.setLastName(lastName);
-                user.setFirstName(firstName);
-                user.setPassword(password);
+                User user= new User(firstName,lastName,email,password);
                 int res = userDao.insertDao(user);
-
                 if(res == 0)
                     response.sendRedirect(response.encodeRedirectURL(contextPath + "/register"+"?error=true"));
                 else{
