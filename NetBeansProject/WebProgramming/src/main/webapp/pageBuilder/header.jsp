@@ -30,6 +30,7 @@
         <link href="assets/css/demo.css" rel="stylesheet" />
         <link href="assets/css/style.css" rel="stylesheet" />
         <link href="assets/css/unminify.css" rel="stylesheet"/>
+        <link href="assets/css/vertical-nav.css" rel="stylesheet"/>
     </head>
     <c:if test="${param.trasparent eq 'true' || (empty param.trasparent) }">
         <nav class="navbar navbar-transparent navbar-fixed-top navbar-color-on-scroll" role="navigation">
@@ -37,7 +38,7 @@
     <c:if test="${param.trasparent eq 'false'}">
          <nav class="navbar navbar-fixed-top    " role="navigation">
     </c:if>
-        <div class="container">
+        <div class="container" id="head">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example">
