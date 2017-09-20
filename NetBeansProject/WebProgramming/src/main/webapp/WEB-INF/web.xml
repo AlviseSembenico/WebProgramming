@@ -16,6 +16,10 @@
         <jsp-file>/index.jsp</jsp-file>
     </servlet>
     <servlet>
+        <servlet-name>contactUs</servlet-name>
+        <jsp-file>/contactUs.jsp</jsp-file>
+    </servlet>
+    <servlet>
         <servlet-name>login</servlet-name>
         <jsp-file>/login.jsp</jsp-file>
     </servlet>
@@ -34,6 +38,10 @@
     <servlet-mapping>
         <servlet-name>register</servlet-name>
         <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>contactUs</servlet-name>
+        <url-pattern>/contactus</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
