@@ -29,27 +29,34 @@
                                 </button>
                                 <h4> or be classical </h4>
                             </div>
-                            <form class="form" method="" action="">
+                            <form action="/register.do" method="POST">
                                     <div class="card-content">
                                             <div class="input-group">
                                                     <span class="input-group-addon">
                                                             <i class="material-icons">face</i>
                                                     </span>
-                                                    <div class="form-group is-empty"><input type="text" class="form-control" placeholder="First Name..."><span class="material-input"></span></div>
+                                                    <div class="form-group is-empty"><input name="firstname" type="text" class="form-control" placeholder="First Name..."><span class="material-input"></span></div>
+                                            </div>
+                                        
+                                            <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                            <i class="material-icons">face</i>
+                                                    </span>
+                                                    <div class="form-group is-empty"><input name="lastname" type="text" class="form-control" placeholder="Last Name..."><span class="material-input"></span></div>
                                             </div>
 
                                             <div class="input-group">
                                                     <span class="input-group-addon">
                                                             <i class="material-icons">email</i>
                                                     </span>
-                                                    <div class="form-group is-empty"><input type="text" class="form-control" placeholder="Email..."><span class="material-input"></span></div>
+                                                    <div class="form-group is-empty"><input name="email" type="text" class="form-control" placeholder="Email..."><span class="material-input"></span></div>
                                             </div>
 
                                             <div class="input-group">
                                                     <span class="input-group-addon">
                                                             <i class="material-icons">lock_outline</i>
                                                     </span>
-                                                    <div class="form-group is-empty"><input type="password" placeholder="Password..." class="form-control"><span class="material-input"></span></div>
+                                                    <div class="form-group is-empty"><input name="password" type="password" placeholder="Password..." class="form-control"><span class="material-input"></span></div>
                                             </div>
 
                                             <!-- If you want to add a checkbox to this form, uncomment this code -->
@@ -62,7 +69,7 @@
                                             </div>  
                                     </div>
                                     <div class="footer text-center">
-                                            <a href="#pablo" class="btn btn-primary btn-round">Register</a>
+                                        <input type="submit" value="Register" class="btn btn-primary btn-round"/>
                                     </div>
                             </form>
                         </div>

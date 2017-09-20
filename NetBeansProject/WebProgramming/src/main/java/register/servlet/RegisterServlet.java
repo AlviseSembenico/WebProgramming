@@ -38,28 +38,31 @@ public class RegisterServlet extends HttpServlet {
         
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        
-        String contextPath = getServletContext().getContextPath();
-        if (!contextPath.endsWith("/")) {
-            contextPath += "/";
-        }
-        try{
-            User user= new User();
-            user.setEmail(email);
-            user.setLastName(lastName);
-            user.setFirstName(firstName);
-            user.setPassword(password);
-            int res = userDao.insertDao(user);
-            if(res != 0)
-                response.sendRedirect(response.encodeRedirectURL(contextPath + "/register"+"?error=true"));
-            else{
-                request.getSession().setAttribute("authenticatedUser", user);
-                response.sendRedirect(response.encodeRedirectURL(contextPath + "index"));
+        if (lastName != "") {
+            String contextPath = getServletContext().getContextPath();
+            if (!contextPath.endsWith("/")) {
+                contextPath += "/";
+            }
+            try{
+                User user= new User();
+                user.setEmail(email);
+                user.setLastName(lastName);
+                user.setFirstName(firstName);
+                user.setPassword(password);
+                int res = userDao.insertDao(user);
+
+                if(res == 0)
+                    response.sendRedirect(response.encodeRedirectURL(contextPath + "/register"+"?error=true"));
+                else{
+                    request.getSession().setAttribute("authenticatedUser", user);
+                    response.sendRedirect(response.encodeRedirectURL(contextPath + "index"));
+                }
+            }
+            catch(Exception e){
+                Log.write(e.toString());
             }
         }
-        catch(Exception e){
-            Log.write(e.toString());
-        }
+        
     }
 
     /**

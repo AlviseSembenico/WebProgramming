@@ -17,7 +17,7 @@
                 <div class="row">
                     <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
                         <div class="card card-signup">
-                            <form  method="POST" action="login">
+                            <form  method="POST" action="/login.do">
                                 <div class="header header-primary text-center">
                                     <h4 class="card-title">Log in</h4>
                                     <div class="social-line">
@@ -48,7 +48,7 @@
                                     
                                 </c:if>
                                 <div class="card-content">
-                                    <form action="login" method="POST">
+                                    <form action="/login.do" method="POST">
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">email</i>
