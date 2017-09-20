@@ -49,7 +49,7 @@
     						</div>
     						<div class="description">
     							<h4 class="info-title">Find us at the office</h4>
-    							<p> Povo 0,<br>
+    							<p> Villa Barbossa,<br>
                                     38122 Trento,<br>
                                     Italia
     							</p>
@@ -61,9 +61,9 @@
     						</div>
     						<div class="description">
     							<h4 class="info-title">Give us a ring</h4>
-    							<p> Michael Jordan<br>
-                                    +40 762 321 762<br>
-                                    Mon - Fri, 8:00-22:00
+    							<p> Alvise Sembenico<br>
+                                    +39 0461 555555<br>
+                                    Mon - Su, 00:00-24:00
     							</p>
     						</div>
     		        	</div>
@@ -73,10 +73,10 @@
     						</div>
     						<div class="description">
     							<h4 class="info-title">Legal Information</h4>
-    							<p> Creative Tim Ltd.<br>
-                                    VAT · EN2341241<br>
+    							<p> Creative Tim<br>
+                                    
                                     IBAN · EN8732ENGB2300099123<br>
-                                    Bank · Great Britain Bank
+                                    Bank · Cassa Rurale di Trento
     							</p>
     						</div>
     		        	</div>
