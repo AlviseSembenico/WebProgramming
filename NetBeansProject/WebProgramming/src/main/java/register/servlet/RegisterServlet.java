@@ -1,9 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package login.servlet;
+package register.servlet;
 
 import Dao.UserDao;
 import Dao.entities.User;
@@ -14,11 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import system.Log;
 
-/**
- *
- * @author Alvise
- */
-public class LoginServlet extends HttpServlet {
+public class RegisterServlet extends HttpServlet {
     
     private UserDao userDao;
     
@@ -42,29 +33,31 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String lastName = request.getParameter("lastname");
+        String firstName = request.getParameter("firstname");
+        
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        
-        String contextPath = getServletContext().getContextPath();
-        if (!contextPath.endsWith("/")) {
-            contextPath += "/";
-        }
-        try{
-            User user=userDao.getUserByEmailPassword(email, password);
-            if(user==null)
-<<<<<<< HEAD
-                response.sendRedirect(response.encodeRedirectURL(contextPath + "login"+"?error=true"));
-=======
-                response.sendRedirect(response.encodeRedirectURL(contextPath + "/login"+"?error=true"));
->>>>>>> 934b875ef52c1b9ebf5fd8dc4bfecfee8d4ad757
-            else{
-                request.getSession().setAttribute("authenticatedUser", user);
-                response.sendRedirect(response.encodeRedirectURL(contextPath + "index"));
+        if (lastName != "") {
+            String contextPath = getServletContext().getContextPath();
+            if (!contextPath.endsWith("/")) {
+                contextPath += "/";
+            }
+            try{
+                User user= new User(firstName,lastName,email,password);
+                int res = userDao.insertDao(user);
+                if(res == 0)
+                    response.sendRedirect(response.encodeRedirectURL(contextPath + "/register"+"?error=true"));
+                else{
+                    request.getSession().setAttribute("authenticatedUser", user);
+                    response.sendRedirect(response.encodeRedirectURL(contextPath + "index"));
+                }
+            }
+            catch(Exception e){
+                Log.write(e.toString());
             }
         }
-        catch(Exception e){
-            Log.write(e.toString());
-        }
+        
     }
 
     /**

@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
 <footer class="footer footer-black footer-big">
     <div class="container">
 
@@ -116,12 +117,72 @@
 
 </div>
 
+<nav id="cd-vertical-nav">
+	<ul>
+		<li>
+			<a class="" href="#head" data-number="1">
+				<span class="cd-dot"></span>
+				<span class="cd-label">Head</span>
+			</a>
+		</li>
+		<li>
+			<a class="" href="#navigation" data-number="2">
+				<span class="cd-dot"></span>
+				<span class="cd-label">Navigation</span>
+			</a>
+		</li>
+		<li>
+			<a class="" href="#notifications" data-number="3">
+				<span class="cd-dot"></span>
+				<span class="cd-label">Notifications</span>
+			</a>
+		</li>
+		<li>
+			<a class="" href="#footers" data-number="4">
+				<span class="cd-dot"></span>
+				<span class="cd-label">Footers</span>
+			</a>
+		</li>
+		<li>
+			<a class="" href="#typography" data-number="5">
+				<span class="cd-dot"></span>
+				<span class="cd-label">Typography</span>
+			</a>
+		</li>
+		<li>
+			<a class="is-selected" href="#contentAreas" data-number="6">
+				<span class="cd-dot"></span>
+				<span class="cd-label">Content Areas</span>
+			</a>
+		</li>
+		<li>
+			<a class="" href="#cards" data-number="7">
+				<span class="cd-dot"></span>
+				<span class="cd-label">Cards</span>
+			</a>
+		</li>
+		<li>
+			<a href="#morphingCards" data-number="8">
+				<span class="cd-dot"></span>
+				<span class="cd-label">Morphing Cards</span>
+			</a>
+		</li>
+		<li>
+			<a class="" href="#javascriptComponents" data-number="9">
+				<span class="cd-dot"></span>
+				<span class="cd-label">Javascript</span>
+			</a>
+		</li> 
+	</ul>
+</nav>
+
 </body>
 <!--   Core JS Files   -->
 <script src="assets/js/jquery.min.js" type="text/javascript"></script>
 <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="assets/js/material.min.js"></script>
-
+<script src="../assets/js/vertical-nav.js" type="text/javascript"></script>
+<script src="../assets/js/modernizer.js" type="text/javascript"></script>
 <!--    Plugin for Date Time Picker and Full Calendar Plugin   -->
 <script src="assets/js/moment.min.js"></script>
 

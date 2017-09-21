@@ -8,10 +8,15 @@
         <servlet-class>login.servlet.LoginServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>register.servlet.RegisterServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>index</servlet-name>
         <jsp-file>/index.jsp</jsp-file>
     </servlet>
     <servlet>
+<<<<<<< HEAD
         <servlet-name>login</servlet-name>
         <jsp-file>/login.jsp</jsp-file>
     </servlet>
@@ -19,6 +24,19 @@
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/utils/login</url-pattern>
     </servlet-mapping>
+=======
+        <servlet-name>contactUs</servlet-name>
+        <jsp-file>/contactUs.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>login</servlet-name>
+        <jsp-file>/login.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>register</servlet-name>
+        <jsp-file>/register.jsp</jsp-file>
+    </servlet>
+>>>>>>> 934b875ef52c1b9ebf5fd8dc4bfecfee8d4ad757
     <servlet-mapping>
         <servlet-name>index</servlet-name>
         <url-pattern>/index</url-pattern>
@@ -27,6 +45,25 @@
         <servlet-name>login</servlet-name>
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
+<<<<<<< HEAD
+=======
+    <servlet-mapping>
+        <servlet-name>register</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>contactUs</servlet-name>
+        <url-pattern>/contactus</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/register.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/login.do</url-pattern>
+    </servlet-mapping>
+>>>>>>> 934b875ef52c1b9ebf5fd8dc4bfecfee8d4ad757
     <session-config>
         <session-timeout>
             30

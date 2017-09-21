@@ -4,12 +4,32 @@ package Dao.entities;
 /**
 * @generated
 */
-public class User extends IdOwnerComparable{
+public final class User extends IdOwnerComparable{
 
     private String firstName;
     private String lastName;
     private String email;
+    private String password;
     private String avatarPath;
+    
+    
+    public User(){}
+    
+    public User(String firstName, String lastName,String email,String password)
+    {
+        setFirstName(firstName);
+        setLastName(lastName);
+        setEmail(email);
+        setPassword(password);
+    }
+    
+    public User(String firstName, String lastName,String email,String password, String avatarPath)
+    {
+        setFirstName(firstName);
+        setLastName(lastName);
+        setEmail(email);
+        setPassword(password);
+    }
 
     public String getFirstName() {
         return firstName;
@@ -42,4 +62,12 @@ public class User extends IdOwnerComparable{
     public void setAvatarPath(String avatarPath) {
         this.avatarPath = avatarPath;
     }
+    public void setPassword(String passwd) {
+        this.password = passwd;
+    }
+    
+    public String getPassword() {
+        return password;
+    }
+    
 }

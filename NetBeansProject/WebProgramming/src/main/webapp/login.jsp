@@ -11,14 +11,17 @@
 <html>
     <c:import url="pageBuilder/header.jsp"/>
     <body class="login-page">
-
-
-        <div class="page-header header-filter" style="background-image: url('http://demos.creative-tim.com/material-kit-pro/assets/img/bg7.jpg'); background-size: cover; background-position: top center;">
+<!--http://demos.creative-tim.com/material-kit-pro/assets/img/bg7.jpg-->
+        <div class="page-header header-filter" style="background-image: url('https://static.wixstatic.com/media/7b577b_d4bc4fd6eb864557a9500bfac4fb5e86~mv2.jpg'); background-size: cover; background-position: top center;">
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
                         <div class="card card-signup">
+<<<<<<< HEAD
                             <form  method="POST" action="utils/login">
+=======
+                            <form  method="POST" action="/login.do">
+>>>>>>> 934b875ef52c1b9ebf5fd8dc4bfecfee8d4ad757
                                 <div class="header header-primary text-center">
                                     <h4 class="card-title">Log in</h4>
                                     <div class="social-line">
@@ -29,7 +32,7 @@
                                             <i class="fa fa-twitter"></i>
                                         </a>
                                         <a href="#pablo" class="btn btn-just-icon btn-simple">
-                                            <i class="fa fa-google-plus"></i>
+                                            <i class="fa fa-instagram"></i>
                                         </a>
                                     </div>
                                 </div>
@@ -49,7 +52,6 @@
                                     
                                 </c:if>
                                 <div class="card-content">
-                                    <form action="login" method="POST">
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">email</i>
@@ -86,5 +88,6 @@
                     </div>
                 </div>
             </div>
+
             <c:import url="pageBuilder/footer.jsp"/>
 
