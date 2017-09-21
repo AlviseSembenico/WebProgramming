@@ -44,7 +44,7 @@ public class JdbcProductDao extends JdbcUtilities implements ProductDao{
         stmt.setDouble(1, min);
         stmt.setDouble(2, max);
         LinkedList<Product> res=new LinkedList<Product> ();
-        for(Object o:super.executeQuery(Product.class, map, stmt.executeQuery()))
+        for(Object o:super.fillResult(Product.class, map, stmt.executeQuery()))
             res.add((Product) o);
         return res;
     }
@@ -68,7 +68,7 @@ public class JdbcProductDao extends JdbcUtilities implements ProductDao{
         stmt.setDouble(1, min);
         stmt.setDouble(2, max);
         LinkedList<Product> res=new LinkedList<Product> ();
-        for(Object o:super.executeQuery(Product.class, map, stmt.executeQuery()))
+        for(Object o:super.fillResult(Product.class, map, stmt.executeQuery()))
             res.add((Product) o);
         return res;
     }

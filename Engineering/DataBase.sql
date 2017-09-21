@@ -24,6 +24,9 @@ CREATE TABLE IF NOT EXISTS shops
     latitude DOUBLE,
     longitude DOUBLE,
     shipping_method INT,
+	city VARCHAR(45),
+	street VARCHAR(45),
+	region VARCHAR(45),
     PRIMARY KEY(id)
 );
 

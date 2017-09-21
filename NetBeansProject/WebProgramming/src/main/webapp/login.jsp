@@ -18,7 +18,7 @@
                 <div class="row">
                     <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
                         <div class="card card-signup">
-                            <form  method="POST" action="login">
+                            <form  method="POST" action="utils/login">
                                 <div class="header header-primary text-center">
                                     <h4 class="card-title">Log in</h4>
                                     <div class="social-line">
@@ -68,7 +68,7 @@
                                         <div class="checkbox">
                                                 <label>
                                                         <input type="checkbox" name="optionsCheckboxes" checked>
-                                                        Subscribe to newsletter
+                                                        Remember Me
                                                 </label>
                                         </div> 
                                 </div>

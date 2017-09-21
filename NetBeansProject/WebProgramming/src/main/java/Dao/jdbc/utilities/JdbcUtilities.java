@@ -121,10 +121,19 @@ public class JdbcUtilities {
             }
         }
         ResultSet rs = stmt.executeQuery();
-        return executeQuery(c, map, rs);
+        return fillResult(c, map, rs);
     }
 
-    protected LinkedList<Object> executeQuery(Class<?> c, HashMap<String, String> map,ResultSet rs) throws Exception {
+    public LinkedList<Object> executeCommand(Class<?> c,String query) throws Exception {
+        if (!checkConnection()) {
+            return null;
+        }
+        PreparedStatement stmt = connection.prepareStatement(query);
+        ResultSet rs = stmt.executeQuery();
+        return fillResult(c, null, rs);
+    }
+    
+    protected LinkedList<Object> fillResult(Class<?> c, HashMap<String, String> map,ResultSet rs) throws Exception {
         LinkedList<Object> result = new LinkedList<Object>();
         if (!rs.first()) {
             result.add(null);

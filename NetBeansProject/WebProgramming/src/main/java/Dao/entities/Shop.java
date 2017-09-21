@@ -8,6 +8,7 @@ import system.Log;
 * @generated
 */
 public class Shop extends IdOwnerComparable{
+
     private String name;
     private String description;
     private String webSiteUrl;
@@ -20,15 +21,34 @@ public class Shop extends IdOwnerComparable{
     private String closeDay;
     private Time openTime;
     private Time closeTime;
+    private String street;
+    private String region;
+    private String city;
     
-
-    public int getId() {
-        return id;
+    public String getStreet() {
+        return street;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setStreet(String street) {
+        this.street = street;
     }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
 
     public String getName() {
         return name;
