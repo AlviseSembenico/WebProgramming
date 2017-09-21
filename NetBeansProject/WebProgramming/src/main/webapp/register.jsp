@@ -29,7 +29,7 @@
                                 </button>
                                 <h4> or be classical </h4>
                             </div>
-                            <form action="/register.do" method="POST">
+                            <form action="utils/register" method="POST">
                                     <div class="card-content">
                                             <div class="input-group">
                                                     <span class="input-group-addon">
