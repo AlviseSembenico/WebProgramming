@@ -17,11 +17,7 @@
                 <div class="row">
                     <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
                         <div class="card card-signup">
-<<<<<<< HEAD
                             <form  method="POST" action="utils/login">
-=======
-                            <form  method="POST" action="/login.do">
->>>>>>> 934b875ef52c1b9ebf5fd8dc4bfecfee8d4ad757
                                 <div class="header header-primary text-center">
                                     <h4 class="card-title">Log in</h4>
                                     <div class="social-line">

@@ -52,11 +52,7 @@ public class LoginServlet extends HttpServlet {
         try{
             User user=userDao.getUserByEmailPassword(email, password);
             if(user==null)
-<<<<<<< HEAD
-                response.sendRedirect(response.encodeRedirectURL(contextPath + "login"+"?error=true"));
-=======
                 response.sendRedirect(response.encodeRedirectURL(contextPath + "/login"+"?error=true"));
->>>>>>> 934b875ef52c1b9ebf5fd8dc4bfecfee8d4ad757
             else{
                 request.getSession().setAttribute("authenticatedUser", user);
                 response.sendRedirect(response.encodeRedirectURL(contextPath + "index"));
