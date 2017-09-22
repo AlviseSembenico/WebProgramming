@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package login.servlet;
+package servlets.login;
 
 import Dao.UserDao;
 import Dao.entities.User;
@@ -52,7 +52,7 @@ public class LoginServlet extends HttpServlet {
         try{
             User user=userDao.getUserByEmailPassword(email, password);
             if(user==null)
-                response.sendRedirect(response.encodeRedirectURL(contextPath + "/login"+"?error=true"));
+                response.sendRedirect(response.encodeRedirectURL(contextPath + "login"+"?error=true"));
             else{
                 request.getSession().setAttribute("authenticatedUser", user);
                 response.sendRedirect(response.encodeRedirectURL(contextPath + "index"));

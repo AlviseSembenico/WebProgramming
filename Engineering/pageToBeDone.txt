@@ -1,0 +1,16 @@
+product-> Borto
+Homepage
+Research
+shop 
+review object
+review shop
+buy 
+carello
+segnalazione anomalie
+gestione admin anomalie
+user profile
+notifiche venditore
+notifiche amministratore
+aggiunta/cancellazione oggetto
+mappa del negozio
+about us

@@ -5,7 +5,7 @@
     </listener>
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>login.servlet.LoginServlet</servlet-class>
+        <servlet-class>servlets.login.LoginServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>index</servlet-name>
@@ -17,7 +17,7 @@
     </servlet>
     <servlet>
         <servlet-name>register servlet</servlet-name>
-        <servlet-class>register.servlet.RegisterServlet</servlet-class>
+        <servlet-class>servlets.register.RegisterServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
