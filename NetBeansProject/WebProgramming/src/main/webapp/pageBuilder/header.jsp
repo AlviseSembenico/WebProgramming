@@ -31,8 +31,8 @@
         <link href="assets/css/style.css" rel="stylesheet" />
         <link href="assets/css/unminify.css" rel="stylesheet"/>
     </head>
-    <c:if test="${param.trasparent eq 'true' || (empty param.trasparent) }">
-        <nav class="navbar navbar-transparent navbar-fixed-top navbar-color-on-scroll" role="navigation">
+    <c:if test="${(empty param.trasparent) || param.trasparent eq 'true'     }">
+        <nav class="navbar  navbar-fixed-top navbar-color-on-scroll" role="navigation" color-on-scroll=" " id="sectionsNav"> 
     </c:if>
     <c:if test="${param.trasparent eq 'false'}">
          <nav class="navbar navbar-fixed-top    " role="navigation">
