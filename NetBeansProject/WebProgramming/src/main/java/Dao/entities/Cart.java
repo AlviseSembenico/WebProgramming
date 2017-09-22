@@ -3,18 +3,13 @@ package Dao.entities;
 import java.util.LinkedList;
 
 public class Cart extends IdOwnerComparable{
-    private int id;
     private User user;
     private LinkedList<Product> products;
 
-    public int getId() {
-        return id;
+    public Cart(){
+        products=new  LinkedList<Product>();
     }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
+    
     public User getUser() {
         return user;
     }

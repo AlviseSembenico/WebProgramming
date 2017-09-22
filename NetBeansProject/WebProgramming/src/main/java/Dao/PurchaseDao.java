@@ -5,12 +5,16 @@
  */
 package Dao;
 
+import Dao.entities.*;
+import java.util.LinkedList;
+
 
 
 /**
  *
  * @author Alvise
  */
-public interface PurchaseDao extends  DefaultDao{
-    
+public interface PurchaseDao extends  DefaultDao,GetById{
+    public Purchase getPurchaseById(int id) throws Exception;
+    public LinkedList<Purchase> getPurchaseByUser(User user) throws Exception;
 }

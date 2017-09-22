@@ -13,7 +13,7 @@ import Dao.entities.*;
  *
  * @author Alvise
  */
-public interface ShopDao extends  DefaultDao  {
+public interface ShopDao extends  DefaultDao,GetById  {
     public Shop getShopById(int id)throws Exception;
     public Shop getShopByName(String name)throws Exception;
     public Shop getShopByOwner(User owner)throws Exception;

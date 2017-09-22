@@ -7,6 +7,7 @@ package Dao.jdbc.utilities;
 
 import Dao.GetById;
 import Dao.IdOwner;
+import Dao.jdbc.JdbcCartDao;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.sql.Connection;
@@ -18,8 +19,6 @@ import java.sql.Time;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.Set;
-import org.reflections.Reflections;
 import system.Log;
 
 /**
@@ -29,7 +28,6 @@ import system.Log;
 public class JdbcUtilities {
 
     protected Connection connection = null;
-    private ResultSet lastRs;
 
     protected String camelToSql(String s) {
         String res = new String();
@@ -71,7 +69,7 @@ public class JdbcUtilities {
             try {
                 connection = JdbcConnector.connect();
             } catch (SQLException ex) {
-                Log.Write(ex.toString());
+                Log.write(ex.toString());
                 return false;
             }
         }
@@ -93,10 +91,9 @@ public class JdbcUtilities {
      * @throws Exception
      */
     protected LinkedList<Object> getObject(Class<?> c, HashMap<String, String> map, String tableName, HashMap<Object, String> param) throws Exception {
-        LinkedList<Object> result = new LinkedList<Object>();
+        
         if (!checkConnection()) {
-            result.add(null);
-            return result;
+            return null;
         }
         String query = "select * from " + tableName;
         if (param != null) {
@@ -124,7 +121,20 @@ public class JdbcUtilities {
             }
         }
         ResultSet rs = stmt.executeQuery();
-        setLastRs(rs);
+        return fillResult(c, map, rs);
+    }
+
+    public LinkedList<Object> executeCommand(Class<?> c,String query) throws Exception {
+        if (!checkConnection()) {
+            return null;
+        }
+        PreparedStatement stmt = connection.prepareStatement(query);
+        ResultSet rs = stmt.executeQuery();
+        return fillResult(c, null, rs);
+    }
+    
+    protected LinkedList<Object> fillResult(Class<?> c, HashMap<String, String> map,ResultSet rs) throws Exception {
+        LinkedList<Object> result = new LinkedList<Object>();
         if (!rs.first()) {
             result.add(null);
             return result;
@@ -133,7 +143,7 @@ public class JdbcUtilities {
             map=new HashMap<String,String>();
         do {
             Object o = c.newInstance();
-            for (Method m : c.getDeclaredMethods()) {
+            for (Method m : c.getMethods()) {
                 if (m.getName().contains("set")) {
                     String name = m.getName().substring(3);
                     char[] ca = name.toCharArray();
@@ -170,7 +180,7 @@ public class JdbcUtilities {
                             Constructor<?> ctor = clazz.getConstructor();
                             GetById jdbc = (GetById) ctor.newInstance(new Object[]{});
                             if (s == null) {
-                                m.invoke(o, jdbc.getById(rs.getInt(camelToSql(name))));
+                                m.invoke(o, jdbc.getById(rs.getInt(camelToSql(name)+"_id")));
                             } else {
                                 m.invoke(o, jdbc.getById(rs.getInt(s)));
                             }
@@ -182,7 +192,7 @@ public class JdbcUtilities {
                             Constructor<?> ctor = clazz.getConstructor();
                             GetById jdbc = (GetById) ctor.newInstance(new Object[]{});
                             if (s == null) {
-                                m.invoke(o, jdbc.getById(rs.getInt(camelToSql(name))));
+                                m.invoke(o, jdbc.getById(rs.getInt(camelToSql(name)+"_id")));
                             } else {
                                 m.invoke(o, jdbc.getById(rs.getInt(s)));
                             }
@@ -196,7 +206,7 @@ public class JdbcUtilities {
 
         return result;
     }
-
+      
     /**
      *
      * @param o is the object which must be inserted into table
@@ -217,7 +227,7 @@ public class JdbcUtilities {
         String values = "values(";
         Class<?> c = o.getClass();
         try {
-            for (Method m : c.getDeclaredMethods()) {
+            for (Method m : c.getMethods()) {
                 if (m.getName().contains("get")) {
                     String name = m.getName().substring(3);
                     char[] ca = name.toCharArray();
@@ -229,7 +239,7 @@ public class JdbcUtilities {
                             if (map.containsKey(name)) {
                                 query += map.get(name) + ",";
                             } else {
-                                query += name + ",";
+                                query += camelToSql(name) + ",";
                             }
 
                         }
@@ -239,21 +249,20 @@ public class JdbcUtilities {
                             if (map.containsKey(name)) {
                                 query += map.get(name) + ",";
                             } else {
-                                query += name + ",";
+                                query += camelToSql(name) + ",";
                             }
 
                         }
                     } else {
                         Object obj = m.invoke(o, null);
                         if (obj != null) {
-
                             if (obj instanceof IdOwner) {
                                 IdOwner id = (IdOwner) obj;
                                 values += "'" + id.getId() + "',";
                                 if (map.containsKey(name)) {
                                     query += map.get(name) + ",";
                                 } else {
-                                    query += name + ",";
+                                    query += camelToSql(name) + ",";
                                 }
 
                             }
@@ -296,7 +305,7 @@ public class JdbcUtilities {
         Class<?> c = o.getClass();
         int id = 0;
         try {
-            for (Method m : c.getDeclaredMethods()) {
+            for (Method m : c.getMethods()) {
                 if (m.getName().contains("get")) {
                     String name = m.getName().substring(3);
                     char[] ca = name.toCharArray();
@@ -309,7 +318,7 @@ public class JdbcUtilities {
                             if (map.containsKey(name)) {
                                 query += map.get(name);
                             } else {
-                                query += name;
+                                query += camelToSql(name);
                             }
                             query += " = " + value.doubleValue() + ",";
                         }
@@ -318,7 +327,7 @@ public class JdbcUtilities {
                             if (map.containsKey(name)) {
                                 query += map.get(name);
                             } else {
-                                query += name;
+                                query += camelToSql(name);
                             }
                             query += " = '" + m.invoke(o, null) + "',";
                         }
@@ -330,7 +339,7 @@ public class JdbcUtilities {
                                 if (map.containsKey(name)) {
                                     query += map.get(name);
                                 } else {
-                                    query += name;
+                                    query += camelToSql(name);
                                 }
                                 query += "=" + idOwner.getId() + ",";
                             }
@@ -379,7 +388,7 @@ public class JdbcUtilities {
                                 if (map.containsKey(name)) {
                                     query += map.get(name);
                                 } else {
-                                    query += name;
+                                    query += camelToSql(name);
                                 }
                                 query += " = " + value.doubleValue() + " and ";
                             }
@@ -388,23 +397,9 @@ public class JdbcUtilities {
                                 if (map.containsKey(name)) {
                                     query += map.get(name);
                                 } else {
-                                    query += name;
+                                    query += camelToSql(name);
                                 }
                                 query += " = '" + m.invoke(o, null) + "' and ";
-                            }
-                        } else {
-                            Object obj = m.invoke(o, null);
-                            if (obj != null) {
-                                if (obj instanceof IdOwner) {
-                                    IdOwner idOwner = (IdOwner) obj;
-                                    if (map.containsKey(name)) {
-                                        query += map.get(name);
-                                    } else {
-                                        query += name;
-                                    }
-
-                                    query += "=" + idOwner.getId() + ",";
-                                }
                             }
                         }
 
@@ -425,11 +420,4 @@ public class JdbcUtilities {
         return stmt.executeUpdate();
     }
 
-    public ResultSet getLastRs() {
-        return lastRs;
-    }
-
-    public void setLastRs(ResultSet lastRs) {
-        this.lastRs = lastRs;
-    }
 }

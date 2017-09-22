@@ -7,7 +7,15 @@ package Dao.jdbc;
 
 import Dao.IdOwner;
 import Dao.PurchaseDao;
+import Dao.entities.Purchase;
+import Dao.entities.Shop;
+import Dao.entities.User;
 import Dao.jdbc.utilities.JdbcUtilities;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -15,20 +23,55 @@ import Dao.jdbc.utilities.JdbcUtilities;
  * @author Alvise
  */
 public class JdbcPurchaseDao extends JdbcUtilities implements PurchaseDao{
-
+    HashMap<String, String> map;
+    private String tableName="purchases";
+    
+    public JdbcPurchaseDao(){
+        map=new HashMap<String, String>();
+    }
+    
     @Override
-    public int insertDao(Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Purchase getPurchaseById(int id) throws Exception{
+        HashMap<Object,String> mappa=new HashMap<Object,String>();
+        mappa.put(id,"id");
+        Purchase res=(Purchase)  super.getObject(Purchase.class, map, tableName, mappa).get(0);
+        return res;
     }
 
     @Override
-    public int updateDao(IdOwner o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public LinkedList<Purchase> getPurchaseByUser(User user) throws Exception{
+        LinkedList<Purchase> res=new LinkedList<Purchase> ();
+        HashMap<Object,String> mappa=new HashMap<Object,String>();
+        mappa.put(user.getId(),"user_id");
+        for(Object o:super.getObject(Purchase.class, map, tableName,mappa))
+            res.add((Purchase) o);
+        return res;
+    }
+
+    
+    @Override
+    public int insertDao(Object o) throws SQLException {
+        return super.insertDao(o, map, tableName);
     }
 
     @Override
-    public int deleteDao(Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int deleteDao(Object o) throws SQLException {
+        return super.deleteDao(o, map, tableName);
+    }
+
+    @Override
+    public int updateDao(IdOwner o) throws SQLException {
+         return super.updateDao(o, map, tableName);
+    }
+
+    @Override
+    public Object getById(int id) {
+        try {
+            return getPurchaseById(id);
+        } catch (Exception ex) {
+            Logger.getLogger(JdbcPurchaseDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
     
 }

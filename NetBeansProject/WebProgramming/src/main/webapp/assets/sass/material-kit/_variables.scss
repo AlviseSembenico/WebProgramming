@@ -23,18 +23,18 @@ $white-color: #FFFFFF !default;
 
 $gray-color:  #999999 !default;
 
-$brand-primary: $purple !default;
+$brand-primary: $blue-800 !default; 
 $brand-success: $green !default;
-$brand-danger: $red !default;
+$brand-danger: $red !default; 
 $brand-warning: $yellow !default;
 $brand-info: $light-blue !default;
 $brand-rose: $pink !default;
-
-$border-radius-base: 3px !default;
+  
+$border-radius-base: 3px !default; 
 $border-radius-small: 2px !default;
 $border-radius-huge: 10px !default;
 $border-radius-extreme: 30px !default;
-
+ 
 // Typography
 $font-family-sans-serif: 'Roboto', 'Helvetica', 'Arial', sans-serif !default;
 $headings-font-weight: 300 !default;
@@ -45,7 +45,7 @@ $font-weight-bold:    500 !default;
 $font-weight-extra-bold: 700 !default;
 $font-weight-ultra-bold: 900 !default;
 
-$body-bg: #EEEEEE !default;
+$body-bg: #EEEEEE !default; 
 //---
 
 // import bs variables for sass, first declared wins.
