@@ -9,6 +9,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <c:set var="productDao" value="${pageContext.servletContext.getAttribute('productDao')}"></c:set>
+<c:set var="productDao" value="${pageContext.servletContext.getAttribute('productDao')}"></c:set>
 <c:set var="product" value="${productDao.getById(param.id)}"></c:set>
 <!DOCTYPE html>
 <!doctype html>

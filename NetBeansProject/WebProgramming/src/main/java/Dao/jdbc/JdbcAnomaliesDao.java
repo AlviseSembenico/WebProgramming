@@ -5,7 +5,7 @@
  */
 package Dao.jdbc;
 
-import Dao.CartDao;
+import Dao.AnomaliesDao;
 import Dao.IdOwner;
 import Dao.jdbc.utilities.JdbcUtilities;
 
@@ -13,7 +13,7 @@ import Dao.jdbc.utilities.JdbcUtilities;
  *
  * @author Alvise
  */
-public class JdbcCartDao extends JdbcUtilities implements CartDao{
+public class JdbcAnomaliesDao  extends JdbcUtilities implements AnomaliesDao{
 
     @Override
     public int insertDao(Object o) {

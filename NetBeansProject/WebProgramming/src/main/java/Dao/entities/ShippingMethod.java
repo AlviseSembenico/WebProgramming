@@ -3,13 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Dao;
-
+package Dao.entities;
 
 /**
  *
  * @author Alvise
  */
-public interface AnomaliesDao extends  DefaultDao{
+public enum ShippingMethod {
+    ONLINE("online"),BOTH("both"),LOCALLY("locally");
     
+    ShippingMethod value;
+    ShippingMethod(String s){
+        value=valueOf(s);
+    }
 }

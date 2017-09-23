@@ -22,7 +22,7 @@ import java.util.logging.Logger;
 public class Log {
     private static BufferedWriter Bw=null;
     
-    public static void write(String s){
+    public static void Write(String s){
         
         if(Bw==null)
             try {

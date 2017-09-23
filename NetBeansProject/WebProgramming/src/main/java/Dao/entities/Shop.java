@@ -8,7 +8,6 @@ import system.Log;
 * @generated
 */
 public class Shop extends IdOwnerComparable{
-
     private String name;
     private String description;
     private String webSiteUrl;
@@ -22,34 +21,26 @@ public class Shop extends IdOwnerComparable{
     private Time openTime;
     private Time closeTime;
     private String region;
+<<<<<<< HEAD
     private String street;
     private String regionS;
     private String city;
+=======
+>>>>>>> parent of e080225... Merge branch 'master' into Borto
     
-    public String getStreet() {
-        return street;
-    }
 
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public String getRegion() {
-        return region;
-    }
-
+<<<<<<< HEAD
     public void setRegion(String region) {
         this.regionS = region;
+=======
+    public int getId() {
+        return id;
+>>>>>>> parent of e080225... Merge branch 'master' into Borto
     }
 
-    public String getCity() {
-        return city;
+    public void setId(int id) {
+        this.id = id;
     }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
 
     public String getName() {
         return name;

@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS users
 CREATE TABLE IF NOT EXISTS shops
 (
     id INT NOT NULL AUTO_INCREMENT,
-    name VARCHAR(255) unique,
+    name VARCHAR(255),
     description VARCHAR(12000),
     web_site VARCHAR(255),
     global_value INT,
@@ -24,9 +24,6 @@ CREATE TABLE IF NOT EXISTS shops
     latitude DOUBLE,
     longitude DOUBLE,
     shipping_method INT,
-	city VARCHAR(45),
-	street VARCHAR(45),
-	region VARCHAR(45),
     PRIMARY KEY(id)
 );
 

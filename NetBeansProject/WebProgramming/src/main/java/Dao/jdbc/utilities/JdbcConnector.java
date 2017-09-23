@@ -39,7 +39,7 @@ public class JdbcConnector {
         try {
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException ex) {
-            Log.write("Error: unable to load driver class!");
+            Log.Write("Error: unable to load driver class!");
             return false;
         }
         //Connector.url=String.format("jdbc:mysql://google/%s?cloudSqlInstance=%s&"+ "socketFactory=com.google.cloud.sql.mysql.SocketFactory",connector.db,connector.instanceConnectionName);

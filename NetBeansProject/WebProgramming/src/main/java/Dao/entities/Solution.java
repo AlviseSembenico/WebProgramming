@@ -3,13 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Dao;
-
+package Dao.entities;
 
 /**
  *
  * @author Alvise
  */
-public interface AnomaliesDao extends  DefaultDao{
+public enum Solution {
+    MONEYBACK("moneyback"),NEGATIVEREVIEW("negativereview"),BLOCK("block"),REJECT("reject");
     
+    Solution value;
+    Solution(String s){
+        value=valueOf(s);
+    }
 }

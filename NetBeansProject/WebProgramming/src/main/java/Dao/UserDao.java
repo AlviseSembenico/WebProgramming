@@ -17,6 +17,5 @@ import java.util.LinkedList;
 public interface UserDao extends  DefaultDao, GetById{
     public User getUserById(int id) throws Exception;
     public User getUserByEmail(String email) throws Exception;
-    public User getUserByEmailPassword(String email,String password) throws Exception;
     public LinkedList<User> getAllUser() throws Exception;
 }

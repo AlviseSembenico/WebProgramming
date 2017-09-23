@@ -12,18 +12,15 @@ import Dao.entities.Picture;
 import Dao.entities.Product;
 import Dao.entities.Shop;
 import Dao.entities.User;
-import java.sql.SQLException;
 import java.util.HashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author Alvise
  */
 public class JdbcPictureDao extends JdbcUtilities implements PictureDao {
+
     HashMap<String, String> map;
-    private String tableName="pictures";
     public JdbcPictureDao(){
         map=new HashMap<String, String>();
         map.put("product", "products_id");
@@ -34,46 +31,43 @@ public class JdbcPictureDao extends JdbcUtilities implements PictureDao {
     public Picture getPictureById(int id) throws Exception{ 
         HashMap<Object,String> mappa=new HashMap<Object,String>();
         mappa.put(id,"id");
-        return (Picture) super.getObject(Picture.class, map, tableName, mappa).get(0);
+        return (Picture) super.getObject(Picture.class, map, "shops", mappa).get(0);
     } 
    
     @Override
     public Picture getPictureByProduct(Product product) throws Exception {
         HashMap<Object,String> mappa=new HashMap<Object,String>();
         mappa.put(product.getId(),"products_id");
-        return (Picture) super.getObject(Picture.class, map, tableName, mappa).get(0);
+        return (Picture) super.getObject(Picture.class, map, "shops", mappa).get(0);
     }
 
     @Override
     public Picture getPictureByShop(Shop shop) throws Exception {
         HashMap<Object,String> mappa=new HashMap<Object,String>();
         mappa.put(shop.getId(),"shops_id");
-        return (Picture) super.getObject(Picture.class, map, tableName, mappa).get(0);
+        return (Picture) super.getObject(Picture.class, map, "shops", mappa).get(0);
     }
 
    
     @Override
-    public int insertDao(Object o) throws SQLException {
-        return super.insertDao(o, map, tableName);
+    public int insertDao(Object o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public int deleteDao(Object o) throws SQLException {
-        return super.deleteDao(o, map, tableName);
+    public int updateDao(IdOwner o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public int updateDao(IdOwner o) throws SQLException {
-         return super.updateDao(o, map, tableName);
+    public int deleteDao(Object o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public Object getById(int id) {
-        try {
-            return getPictureById(id);
-        } catch (Exception ex) {
-            Logger.getLogger(JdbcPictureDao.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+   
 }

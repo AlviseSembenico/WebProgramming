@@ -11,16 +11,12 @@ import Dao.entities.Product;
 import Dao.entities.Review;
 import Dao.entities.User;
 import Dao.jdbc.utilities.JdbcUtilities;
-import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 
 /**
  *
  * @author Alvise
+<<<<<<< HEAD
  * 
  */
 public class JdbcReviewDao extends JdbcUtilities implements ReviewDao{
@@ -68,21 +64,22 @@ public class JdbcReviewDao extends JdbcUtilities implements ReviewDao{
     @Override
     public int deleteDao(Object o) throws SQLException {
         return super.deleteDao(o, map, tableName);
+=======
+ */public class JdbcReviewDao extends JdbcUtilities implements ReviewDao{
+
+    @Override
+    public int insertDao(Object o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+>>>>>>> parent of e080225... Merge branch 'master' into Borto
     }
 
     @Override
-    public int updateDao(IdOwner o) throws SQLException {
-         return super.updateDao(o, map, tableName);
+    public int updateDao(IdOwner o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    
     @Override
-    public Object getById(int id) {
-        try {
-            return getReviewById(id);
-        } catch (Exception ex) {
-            Logger.getLogger(JdbcReviewDao.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
+    public int deleteDao(Object o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
