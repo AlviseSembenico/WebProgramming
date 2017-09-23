@@ -2,9 +2,10 @@
 <%@page import="Dao.ProductDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
-<c:set var="productDao" value="${pageContext.servletContext.getAttribute('productDao')}"></c:set>
-<c:set var="productDao" value="${pageContext.servletContext.getAttribute('productDao')}"></c:set>
-<c:set var="product" value="${productDao.getById(param.id)}"></c:set>
+<c:set var="shopDao" value="${pageContext.servletContext.getAttribute('shopDao')}"></c:set>
+<c:set var="picDao" value="${pageContext.servletContext.getAttribute('pictureDao')}"></c:set>
+<c:set var="sohp" value="${shopDao.getById(param.id)}"></c:set>
+<c:set var="picture" value="${picDao.getPictureByShop(shop)}"></c:set>
 <!DOCTYPE html>
 <!doctype html>
 <html>
@@ -20,10 +21,10 @@
                         <div class="col-xs-6 col-xs-offset-3">
                             <div class="profile">
                                 <div class="avatar">
-                                    <img src="https://relaxandcreate.today/wp-content/uploads/2017/05/Drawing-Prompt-3new.png" alt="Circle Image" class="img-circle img-responsive img-raised">
+                                    <img src="<c:out value="${picture.getPath()}"/>" alt="Circle Image" class="img-circle img-responsive img-raised">
                                 </div>
                                 <div class="name">
-                                    <h3 class="title">Christian Louboutin</h3>
+                                    <h3 class="title"><c:out value="${shop.getName()}"/></h3>
                                     <h6>Designer</h6>
                                     <a href="#pablo" class="btn btn-just-icon btn-simple btn-dribbble"><i class="fa fa-dribbble"></i></a>
                                     <a href="#pablo" class="btn btn-just-icon btn-simple btn-twitter"><i class="fa fa-twitter"></i></a>
