@@ -120,9 +120,15 @@
 <!--   Core JS Files   -->
 <script src="assets/js/jquery.min.js" type="text/javascript"></script>
 <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="assets/js/material.min.js"></script>
 <script src="assets/js/material-kit.min.js" type="text/javascript"></script>
 <script src="assets/js/material-kit.js" type="text/javascript"></script>
+<!-- TO BE ADD AT SINGLE PAGE
+<script src="assets/js/material-kit.min.js" type="text/javascript"></script>
+<script src="assets/js/material-kit.js" type="text/javascript"></script>-->
+
+
+<script src="assets/js/material.min.js"></script>
+<script src="assets/js/jquery.flexisel.js" type="text/javascript"></script>
 <!--    Plugin for Date Time Picker and Full Calendar Plugin   -->
 <script src="assets/js/moment.min.js"></script>
 
@@ -148,6 +154,7 @@
 
 <!--    Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc    -->
 <script src="assets/js/material-kit.js" type="text/javascript"></script>
+<script src="assets/js/vertical-nav.js" type="text/javascript"></script>
 <script type="text/javascript">
         $().ready(function () {
             // the body of this function is in assets/material-kit.min.js
