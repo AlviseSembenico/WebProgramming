@@ -6,10 +6,7 @@
 package Dao;
 
 import Dao.entities.*;
-<<<<<<< HEAD
-=======
-import java.util.LinkedList;
->>>>>>> master
+import java.util.List;
 
 
 
@@ -17,15 +14,8 @@ import java.util.LinkedList;
  *
  * @author Alvise
  DefaultDao*/
-<<<<<<< HEAD
 public interface ReviewDao extends  DefaultDao, GetById{
     public Review getReviewById(int id)throws Exception;
-    public Review getRewiewByCreator(User user)throws Exception;
-    public Review getRewiewByProduct (Product product)throws Exception;
-=======
-public interface ReviewDao extends  DefaultDao,GetById{
-    public LinkedList<Review> getRewiewByProduct(Product product) throws Exception;
-    public LinkedList<Review> getRewiewByCreator(User user) throws Exception; 
-    public Review getReviewById(int id) throws Exception;
->>>>>>> master
+    public List<Review> getRewiewByCreator(User user)throws Exception;
+    public List<Review> getRewiewByProduct (Product product)throws Exception;
 }

@@ -21,9 +21,7 @@ import java.util.logging.Logger;
 /**
  *
  * @author Alvise
-<<<<<<< HEAD
- */public class JdbcReviewDao extends JdbcUtilities implements ReviewDao{
-=======
+ * 
  */
 public class JdbcReviewDao extends JdbcUtilities implements ReviewDao{
     HashMap<String, String> map;
@@ -61,8 +59,7 @@ public class JdbcReviewDao extends JdbcUtilities implements ReviewDao{
             res.add((Review) o);
         return res;
     }
->>>>>>> master
-
+    
     @Override
     public int insertDao(Object o) throws SQLException {
         return super.insertDao(o, map, tableName);
@@ -88,25 +85,4 @@ public class JdbcReviewDao extends JdbcUtilities implements ReviewDao{
         }
         return null;
     }
-
-    @Override
-    public Review getReviewById(int id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Review getRewiewByCreator(User user) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Review getRewiewByProduct(Product product) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Object getById(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
 }
