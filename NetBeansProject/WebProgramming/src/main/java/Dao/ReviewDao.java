@@ -7,7 +7,10 @@ package Dao;
 
 import Dao.entities.*;
 <<<<<<< HEAD
+<<<<<<< HEAD
 import java.util.List;
+=======
+>>>>>>> parent of e080225... Merge branch 'master' into Borto
 =======
 >>>>>>> parent of e080225... Merge branch 'master' into Borto
 

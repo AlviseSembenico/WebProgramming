@@ -17,6 +17,7 @@ import Dao.jdbc.utilities.JdbcUtilities;
  *
  * @author Alvise
 <<<<<<< HEAD
+<<<<<<< HEAD
  * 
  */
 public class JdbcReviewDao extends JdbcUtilities implements ReviewDao{
@@ -66,6 +67,29 @@ public class JdbcReviewDao extends JdbcUtilities implements ReviewDao{
         return super.deleteDao(o, map, tableName);
 =======
  */public class JdbcReviewDao extends JdbcUtilities implements ReviewDao{
+=======
+ */public class JdbcReviewDao extends JdbcUtilities implements ReviewDao{
+
+    @Override
+    public int insertDao(Object o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int updateDao(IdOwner o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int deleteDao(Object o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Review getReviewById(int id) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+>>>>>>> parent of e080225... Merge branch 'master' into Borto
 
     @Override
     public int insertDao(Object o) {
