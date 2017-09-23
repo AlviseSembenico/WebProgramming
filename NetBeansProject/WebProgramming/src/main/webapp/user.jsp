@@ -1,20 +1,16 @@
-<%@page import="Dao.entities.Shop"%>
-<%@page import="Dao.ShopDao"%>
-<%@page import="Dao.entities.Picture"%>
-<%@page import="Dao.PictureDao"%>
+<%@page import="Dao.entities.User"%>
+<%@page import="Dao.UserDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
-<c:set var="shopDao" value="${pageContext.servletContext.getAttribute('shopDao')}"></c:set>
-<c:set var="pictureDao" value="${pageContext.servletContext.getAttribute('pictureDao')}"></c:set>
-<c:set var="shop" value="${shopDao.getShopById(param.id)}"></c:set>
-<c:set var="picture" value="${pictureDao.getPictureByShop(shop)}"></c:set>
-<!DOCTYPE html>
-<!doctype html>
-<html>
+<c:set var="userDao" value="${pageContext.servletContext.getAttribute('userDao')}"></c:set>
+<c:set var="user" value="${userDao.getById(param.id)}"></c:set>
+    <!DOCTYPE html>
+    <!doctype html>
+    <html>
     <c:import url="pageBuilder/header.jsp"/>
     <body class="profile-page" waid71fa0d88-5390-4b5b-a2f4-e45fa93d85e2="SA password protect entry checker">
-        <div class="page-header header-filter" data-parallax="true" style="background-image: url(https://www.consumatori.it/wp-content/uploads/2015/09/venditore_consumatore_stretta-di-mano1.jpg); transform: translate3d(0px, 0px, 0px);"></div>
-
+        <div class="page-header header-filter" data-parallax="true" style="background-image: url(https://www.consumatori.it/wp-content/uploads/2015/09/venditore_consumatore_stretta-di-mano1.jpg); transform: translate3d(0px, 0px, 0px);">
+        </div>
         <div class="main main-raised">
             <div class="profile-content">
                 <div class="container">
@@ -22,10 +18,10 @@
                         <div class="col-xs-6 col-xs-offset-3">
                             <div class="profile">
                                 <div class="avatar">
-                                    <img src="<c:out value="${picture.getPath()}"/>" alt="Circle Image" class="img-circle img-responsive img-raised">
+                                    <img src="<c:out value="${user.getAvatarPath()}"/>" alt="Circle Image" class="img-circle img-responsive img-raised">
                                 </div>
                                 <div class="name">
-                                    <h3 class="title"><c:out value="${shop.getName()}"/></h3>
+                                    <h3 class="title"><c:out value="${user.getName()}"/></h3>
                                     <h6>Designer</h6>
                                     <a href="#pablo" class="btn btn-just-icon btn-simple btn-dribbble"><i class="fa fa-dribbble"></i></a>
                                     <a href="#pablo" class="btn btn-just-icon btn-simple btn-twitter"><i class="fa fa-twitter"></i></a>
@@ -256,8 +252,4 @@
                 </div>
             </div>
         </div>
-
-
-
-    <c:import url="pageBuilder/footer.jsp"/>
-
+        <c:import url="pageBuilder/footer.jsp"/>
