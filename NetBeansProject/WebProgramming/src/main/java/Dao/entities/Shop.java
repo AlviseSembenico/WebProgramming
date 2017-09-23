@@ -23,6 +23,7 @@ public class Shop extends IdOwnerComparable{
     private String region;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     private String street;
     private String regionS;
     private String city;
@@ -43,6 +44,18 @@ public class Shop extends IdOwnerComparable{
         this.id = id;
     }
 
+=======
+    
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+>>>>>>> parent of e080225... Merge branch 'master' into Borto
 =======
     
 
