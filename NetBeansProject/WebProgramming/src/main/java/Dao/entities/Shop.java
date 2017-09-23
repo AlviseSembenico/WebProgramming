@@ -8,6 +8,7 @@ import system.Log;
 * @generated
 */
 public class Shop extends IdOwnerComparable{
+
     private String name;
     private String description;
     private String webSiteUrl;
@@ -20,54 +21,35 @@ public class Shop extends IdOwnerComparable{
     private String closeDay;
     private Time openTime;
     private Time closeTime;
-    private String region;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     private String street;
-    private String regionS;
+    private String region;
     private String city;
-=======
->>>>>>> parent of e080225... Merge branch 'master' into Borto
     
+    public String getStreet() {
+        return street;
+    }
 
-<<<<<<< HEAD
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
     public void setRegion(String region) {
-        this.regionS = region;
-=======
-    public int getId() {
-        return id;
->>>>>>> parent of e080225... Merge branch 'master' into Borto
+        this.region = region;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public String getCity() {
+        return city;
     }
 
-=======
-    
-
-    public int getId() {
-        return id;
+    public void setCity(String city) {
+        this.city = city;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
->>>>>>> parent of e080225... Merge branch 'master' into Borto
-=======
-    
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
->>>>>>> parent of e080225... Merge branch 'master' into Borto
     public String getName() {
         return name;
     }
@@ -164,4 +146,5 @@ public class Shop extends IdOwnerComparable{
     public void setCloseTime(Time closeTime) {
         this.closeTime = closeTime;
     }
+
 }
