@@ -14,6 +14,7 @@ import Dao.entities.Shop;
 import Dao.entities.User;
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -38,11 +39,15 @@ public class JdbcPictureDao extends JdbcUtilities implements PictureDao {
     } 
    
     @Override
-    public Picture getPictureByProduct(Product product) throws Exception {
+    public LinkedList<Picture> getPictureByProduct(Product product) throws Exception {
         HashMap<Object,String> mappa=new HashMap<Object,String>();
         mappa.put(product.getId(),"products_id");
-        return (Picture) super.getObject(Picture.class, map, tableName, mappa).get(0);
+        LinkedList<Picture> res=new LinkedList<Picture>();
+        for(Object o:super.getObject(Picture.class, map, tableName, mappa))
+            res.add((Picture) o);
+        return res;
     }
+    
 
     @Override
     public Picture getPictureByShop(Shop shop) throws Exception {
