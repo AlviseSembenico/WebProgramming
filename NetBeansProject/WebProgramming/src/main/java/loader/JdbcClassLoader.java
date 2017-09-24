@@ -43,7 +43,8 @@ public class JdbcClassLoader implements ServletContextListener {
             sc.setAttribute("purchaseDao", new JdbcPurchaseDao());
             sc.setAttribute("reviewDao", new JdbcReviewDao());
             sc.setAttribute("shopDao", new JdbcShopDao());
-            
+            //only for debugger
+            sc.setAttribute("user", new JdbcUserDao().getById(1));
             
         } catch (Exception ex) {
 

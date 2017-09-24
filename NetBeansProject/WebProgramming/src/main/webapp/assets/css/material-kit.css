@@ -112,6 +112,7 @@ a:active, a:focus, button::-moz-focus-inner, button:active, button:focus, button
 .form-horizontal label.control-label {
     margin: 0;
 }
+
 .form-newsletter .form-group, .form-newsletter .input-group {
     float: left;
     width: 78%;
