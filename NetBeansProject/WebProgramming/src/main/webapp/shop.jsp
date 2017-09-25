@@ -8,256 +8,229 @@
 <c:set var="pictureDao" value="${pageContext.servletContext.getAttribute('pictureDao')}"></c:set>
 <c:set var="shop" value="${shopDao.getShopById(param.id)}"></c:set>
 <c:set var="picture" value="${pictureDao.getPictureByShop(shop)}"></c:set>
-<!DOCTYPE html>
-<!doctype html>
-<html>
-    <c:import url="pageBuilder/header.jsp"/>
-    <body class="profile-page" waid71fa0d88-5390-4b5b-a2f4-e45fa93d85e2="SA password protect entry checker">
-        <div class="page-header header-filter" data-parallax="true" style="background-image: url(https://www.consumatori.it/wp-content/uploads/2015/09/venditore_consumatore_stretta-di-mano1.jpg); transform: translate3d(0px, 0px, 0px);"></div>
-
-        <div class="main main-raised">
-            <div class="profile-content">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xs-6 col-xs-offset-3">
-                            <div class="profile">
-                                <div class="avatar">
-                                    <img src="<c:out value="${picture.getPath()}"/>" alt="Circle Image" class="img-circle img-responsive img-raised">
-                                </div>
-                                <div class="name">
-                                    <h3 class="title"><c:out value="${shop.getName()}"/></h3>
-                                    <h6>Designer</h6>
-                                    <a href="#pablo" class="btn btn-just-icon btn-simple btn-dribbble"><i class="fa fa-dribbble"></i></a>
-                                    <a href="#pablo" class="btn btn-just-icon btn-simple btn-twitter"><i class="fa fa-twitter"></i></a>
-                                    <a href="#pablo" class="btn btn-just-icon btn-simple btn-pinterest"><i class="fa fa-pinterest"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-2 follow">
-                            <button class="btn btn-fab btn-primary" rel="tooltip" title="" data-original-title="Follow this user">
-                                <i class="material-icons">add</i>
-                            </button>
-                        </div>
-                    </div>
+    <!DOCTYPE html>
+    <!doctype html>
+    <html>
+        <body class="about-us" waid71fa0d88-5390-4b5b-a2f4-e45fa93d85e2="SA password protect entry checker">
+        <c:import url="pageBuilder/header.jsp"/>
 
 
-                    <div class="description text-center">
-                        <p>An artist of considerable range, Chet Faker — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. </p>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6 col-md-offset-3">
-                            <div class="profile-tabs">
-                                <div class="nav-align-center">
-                                    <ul class="nav nav-pills nav-pills-icons" role="tablist">
-                                        <li class="active">
-                                            <a href="#work" role="tab" data-toggle="tab">
-                                                <i class="material-icons">palette</i>
-                                                Work
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#connections" role="tab" data-toggle="tab">
-                                                <i class="material-icons">people</i>
-                                                Connections
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#media" role="tab" data-toggle="tab">
-                                                <i class="material-icons">camera</i>
-                                                Media
-                                            </a>
-                                        </li>
-                                    </ul>
-
-
-                                </div>
-                            </div>
-                            <!-- End Profile Tabs -->
-                        </div>
-                    </div>
-                    <div class="tab-content">
-                        <div class="tab-pane active work" id="work">
-                            <div class="row">
-                                <div class="col-md-7 col-md-offset-1">
-                                    <h4 class="title">Latest Collections</h4>
-                                    <div class="row collections">
-                                        <div class="col-md-6">
-                                            <div class="card card-background" style="background-image: url('../assets/img/examples/chris4.jpg')">
-                                                <a href="#pablo"></a>
-                                                <div class="card-content">
-                                                    <label class="label label-primary">Spring 2016</label>
-                                                    <a href="#pablo">
-                                                        <h2 class="card-title">Stilleto</h2>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="card card-background" style="background-image: url('../assets/img/examples/chris6.jpg')">
-                                                <a href="#pablo"></a>
-                                                <div class="card-content">
-                                                    <label class="label label-primary">Spring 2016</label>
-                                                    <a href="#pablo">
-                                                        <h2 class="card-title">High Heels</h2>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="card card-background" style="background-image: url('../assets/img/examples/chris5.jpg')">
-                                                <a href="#pablo"></a>
-                                                <div class="card-content">
-                                                    <label class="label label-primary">Summer 2016</label>
-                                                    <a href="#pablo">
-                                                        <h2 class="card-title">Flats</h2>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="card card-background" style="background-image: url('../assets/img/examples/chris1.jpg')">
-                                                <a href="#pablo"></a>
-                                                <div class="card-content">
-                                                    <label class="label label-primary">Winter 2015</label>
-                                                    <a href="#pablo">
-                                                        <h2 class="card-title">Men's Sneakers</h2>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-2 col-md-offset-1 stats">
-                                    <h4 class="title">Stats</h4>
-                                    <ul class="list-unstyled">
-                                        <li><b>60</b> Products</li>
-                                        <li><b>4</b> Collections</li>
-                                        <li><b>331</b> Influencers</li>
-                                        <li><b>1.2K</b> Likes</li>
-                                    </ul>
-                                    <hr>
-                                    <h4 class="title">About his Work</h4>
-                                    <p class="description">French luxury footwear and fashion. The footwear has incorporated shiny, red-lacquered soles that have become his signature.</p>
-                                    <hr>
-                                    <h4 class="title">Focus</h4>
-                                    <span class="label label-primary">Footwear</span>
-                                    <span class="label label-rose">Luxury</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane connections" id="connections">
-                            <div class="row">
-                                <div class="col-md-5 col-md-offset-1">
-                                    <div class="card card-profile card-plain">
-                                        <div class="col-md-5">
-                                            <div class="card-image">
-                                                <a href="#pablo">
-                                                    <img class="img" src="../assets/img/faces/avatar.jpg">
-                                                </a>
-                                                <div class="colored-shadow" style="background-image: url(&quot;../assets/img/faces/avatar.jpg&quot;); opacity: 1;"></div></div>
-                                        </div>
-                                        <div class="col-md-7">
-                                            <div class="card-content">
-                                                <h4 class="card-title">Gigi Hadid</h4>
-                                                <h6 class="category text-muted">Model</h6>
-
-                                                <p class="card-description">
-                                                    Don't be scared of the truth because we need to restart the human foundation in truth...
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-5">
-                                    <div class="card card-profile card-plain">
-                                        <div class="col-md-5">
-                                            <div class="card-image">
-                                                <a href="#pablo">
-                                                    <img class="img" src="../assets/img/faces/marc.jpg">
-                                                </a>
-                                                <div class="colored-shadow" style="background-image: url(&quot;../assets/img/faces/marc.jpg&quot;); opacity: 1;"></div></div>
-                                        </div>
-                                        <div class="col-md-7">
-                                            <div class="card-content">
-                                                <h4 class="card-title">Marc Jacobs</h4>
-                                                <h6 class="category text-muted">Designer</h6>
-
-                                                <p class="card-description">
-                                                    Don't be scared of the truth because we need to restart the human foundation in truth...
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-5 col-md-offset-1">
-                                    <div class="card card-profile card-plain">
-                                        <div class="col-md-5">
-                                            <div class="card-image">
-                                                <a href="#pablo">
-                                                    <img class="img" src="../assets/img/faces/kendall.jpg">
-                                                </a>
-                                                <div class="colored-shadow" style="background-image: url(&quot;../assets/img/faces/kendall.jpg&quot;); opacity: 1;"></div></div>
-                                        </div>
-                                        <div class="col-md-7">
-                                            <div class="card-content">
-                                                <h4 class="card-title">Kendall Jenner</h4>
-                                                <h6 class="category text-muted">Model</h6>
-
-                                                <p class="card-description">
-                                                    I love you like Kanye loves Kanye. Don't be scared of the truth.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-5">
-                                    <div class="card card-profile card-plain">
-                                        <div class="col-md-5">
-                                            <div class="card-image">
-                                                <a href="#pablo">
-                                                    <img class="img" src="../assets/img/faces/card-profile2-square.jpg">
-                                                </a>
-                                                <div class="colored-shadow" style="background-image: url(&quot;../assets/img/faces/card-profile2-square.jpg&quot;); opacity: 1;"></div></div>
-                                        </div>
-                                        <div class="col-md-7">
-                                            <div class="card-content">
-                                                <h4 class="card-title">George West</h4>
-                                                <h6 class="category text-muted">Model/DJ</h6>
-
-                                                <p class="card-description">
-                                                    I love you like Kanye loves Kanye.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="tab-pane text-center gallery" id="media">
-                            <div class="row">
-                                <div class="col-md-3 col-md-offset-3">
-                                    <img src="../assets/img/examples/chris4.jpg" class="img-rounded">
-                                    <img src="../assets/img/examples/chris6.jpg" class="img-rounded">
-                                </div>
-                                <div class="col-md-3">
-                                    <img src="../assets/img/examples/chris7.jpg" class="img-rounded">
-                                    <img src="../assets/img/examples/chris5.jpg" class="img-rounded">
-                                    <img src="../assets/img/examples/chris9.jpg" class="img-rounded">
-                                </div>
-                            </div>
-                        </div>
+        <div class="page-header header-filter header-small" data-parallax="true" style="background-image: url(http://hoanganhhalong.vn/Upload/images/chuyen-thuong-hieu/anh-dai-dien/hieu-tinh-cach-khach-hang-de-tang-doanh-so.jpg); transform: translate3d(0px, 0px, 0px);">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h1 class="title">About Us</h1>
+                        <h4>Meet the amazing team behind this project and find out more about how we work.</h4>
                     </div>
                 </div>
             </div>
         </div>
 
+        <div class="main main-raised">
+            <div class="container">
+                <div class="about-description text-center">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <h5 class="description">This is the paragraph where you can write more details about your product. Keep you user engaged by providing meaningful information. Remember that by this time, the user is curious, otherwise he wouldn't scroll to get here. Add a button if you want the user to see more.</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-team team-1">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2 text-center">
+                            <h2 class="title">We are nerd rockstars</h2>
+                            <h5 class="description">This is the paragraph where you can write more details about your team. Keep you user engaged by providing meaningful information.</h5>
+                        </div>
+                    </div>
 
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="card card-profile card-plain">
+                                <div class="card-avatar">
+                                    <a href="#pablo">
+                                        <img class="img" src="../assets/img/faces/marc.jpg">
+                                    </a>
+                                </div>
 
-    <c:import url="pageBuilder/footer.jsp"/>
+                                <div class="card-content">
+                                    <h4 class="card-title">Alec Thompson</h4>
+                                    <h6 class="category text-muted">CEO / Co-Founder</h6>
+
+                                    <p class="card-description">
+                                        And I love you like Kanye loves Kanye. We need to restart the human foundation.
+                                    </p>
+                                    <div class="footer">
+                                        <a href="#pablo" class="btn btn-just-icon btn-simple btn-twitter"><i class="fa fa-twitter"></i></a>
+                                        <a href="#pablo" class="btn btn-just-icon btn-simple btn-facebook"><i class="fa fa-facebook-square"></i></a>
+                                        <a href="#pablo" class="btn btn-just-icon btn-simple btn-google"><i class="fa fa-google"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="card card-profile card-plain">
+                                <div class="card-avatar">
+                                    <a href="#pablo">
+                                        <img class="img" src="../assets/img/faces/kendall.jpg">
+                                    </a>
+                                </div>
+
+                                <div class="card-content">
+                                    <h4 class="card-title">Tania Andrew</h4>
+                                    <h6 class="category text-muted">Designer</h6>
+
+                                    <p class="card-description">
+                                        Don't be scared of the truth because we need to restart the human foundation. And I love you like Kanye loves Kanye.
+                                    </p>
+                                    <div class="footer">
+                                        <a href="#pablo" class="btn btn-just-icon btn-simple btn-twitter"><i class="fa fa-twitter"></i></a>
+                                        <a href="#pablo" class="btn btn-just-icon btn-simple btn-dribbble"><i class="fa fa-dribbble"></i></a>
+                                        <a href="#pablo" class="btn btn-just-icon btn-simple btn-linkedin"><i class="fa fa-linkedin"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="card card-profile card-plain">
+                                <div class="card-avatar">
+                                    <a href="#pablo">
+                                        <img class="img" src="../assets/img/faces/christian.jpg">
+                                    </a>
+                                </div>
+
+                                <div class="card-content">
+                                    <h4 class="card-title">Christian Mike</h4>
+                                    <h6 class="category text-muted">Web Developer</h6>
+
+                                    <p class="card-description">
+                                        I love you like Kanye loves Kanye. Don't be scared of the truth because we need to restart the human foundation.
+                                    </p>
+                                    <div class="footer">
+                                        <a href="#pablo" class="btn btn-just-icon btn-simple btn-facebook"><i class="fa fa-facebook-square"></i></a>
+                                        <a href="#pablo" class="btn btn-just-icon btn-simple btn-dribbble"><i class="fa fa-dribbble"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="card card-profile card-plain">
+                                <div class="card-avatar">
+                                    <a href="#pablo">
+                                        <img class="img" src="../assets/img/faces/avatar.jpg">
+                                    </a>
+                                </div>
+
+                                <div class="card-content">
+                                    <h4 class="card-title">Rebecca Stormvile</h4>
+                                    <h6 class="category text-muted">Web Developer</h6>
+
+                                    <p class="card-description">
+                                        Don't be scared of the truth because we need to restart the human foundation.
+                                    </p>
+                                    <div class="footer">
+                                        <a href="#pablo" class="btn btn-just-icon btn-simple btn-google"><i class="fa fa-google"></i></a>
+                                        <a href="#pablo" class="btn btn-just-icon btn-simple btn-twitter"><i class="fa fa-twitter"></i></a>
+                                        <a href="#pablo" class="btn btn-just-icon btn-simple btn-dribbble"><i class="fa fa-dribbble"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="about-services features-2">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2 text-center">
+                            <h2 class="title">We build awesome products</h2>
+                            <h5 class="description">This is the paragraph where you can write more details about your product. Keep you user engaged by providing meaningful information.</h5>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="info info-horizontal">
+                                <div class="icon icon-rose">
+                                    <i class="material-icons">gesture</i>
+                                </div>
+                                <div class="description">
+                                    <h4 class="info-title">1. Design</h4>
+                                    <p>The moment you use Material Kit, you know you’ve never felt anything like it. With a single use, this powerfull UI Kit lets you do more than ever before. </p>
+                                    <a href="#pablo">Find more...</a>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="info info-horizontal">
+                                <div class="icon icon-rose">
+                                    <i class="material-icons">build</i>
+                                </div>
+                                <div class="description">
+                                    <h4 class="info-title">2. Develop</h4>
+                                    <p>Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough.</p>
+                                    <a href="#pablo">Find more...</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="info info-horizontal">
+                                <div class="icon icon-rose">
+                                    <i class="material-icons">mode_edit</i>
+                                </div>
+                                <div class="description">
+                                    <h4 class="info-title">3. Make Edits</h4>
+                                    <p>Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough.</p>
+                                    <a href="#pablo">Find more...</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-office">
+                    <div class="row  text-center">
+                        <div class="col-md-8 col-md-offset-2">
+                            <h2 class="title">Photo</h2>
+                            <h4 class="description">Here are some pictures.</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img class="img-rounded img-responsive img-raised" alt="Raised Image" src="../assets/img/examples/office2.jpg">
+                        </div>
+                        <div class="col-md-4">
+                            <img class="img-rounded img-responsive img-raised" alt="Raised Image" src="../assets/img/examples/office4.jpg">
+                        </div>
+                        <div class="col-md-4">
+                            <img class="img-rounded img-responsive img-raised" alt="Raised Image" src="../assets/img/examples/office3.jpg">
+                        </div>
+                        <div class="col-md-6">
+                            <img class="img-rounded img-responsive img-raised" alt="Raised Image" src="../assets/img/examples/office5.jpg">
+                        </div>
+                        <div class="col-md-6">
+                            <img class="img-rounded img-responsive img-raised" alt="Raised Image" src="../assets/img/examples/office1.jpg">
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="about-office">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <h2 class="text-center title">Rate Us:</h2>
+                            <h4 class="text-center description">Give us a star.</h4>
+                            <div class="">
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <c:import url="pageBuilder/footer.jsp"/>
 
