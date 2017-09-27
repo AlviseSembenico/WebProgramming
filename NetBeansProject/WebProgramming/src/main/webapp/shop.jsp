@@ -2,12 +2,17 @@
 <%@page import="Dao.ShopDao"%>
 <%@page import="Dao.entities.Picture"%>
 <%@page import="Dao.PictureDao"%>
+<%@page import="Dao.ProductDao" %>
+<%@page import="Dao.entities.Product"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <c:set var="shopDao" value="${pageContext.servletContext.getAttribute('shopDao')}"></c:set>
 <c:set var="pictureDao" value="${pageContext.servletContext.getAttribute('pictureDao')}"></c:set>
+<c:set var="productDao" value="${pageContext.servletContext.getAttribute('productDao')}"></c:set>
 <c:set var="shop" value="${shopDao.getShopById(param.id)}"></c:set>
 <c:set var="picture" value="${pictureDao.getPictureByShop(shop)}"></c:set>
+<c:set var="product" value="${productDao.getProductByShop(shop)}"></c:set>
+
     <!DOCTYPE html>
     <!doctype html>
     <html>
@@ -20,7 +25,6 @@
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
                         <h1 class="title">About Us</h1>
-                        <h4>Meet the amazing team behind this project and find out more about how we work.</h4>
                     </div>
                 </div>
             </div>
@@ -31,111 +35,86 @@
                 <div class="about-description text-center">
                     <div class="row">
                         <div class="col-md-8 col-md-offset-2">
-                            <h5 class="description">This is the paragraph where you can write more details about your product. Keep you user engaged by providing meaningful information. Remember that by this time, the user is curious, otherwise he wouldn't scroll to get here. Add a button if you want the user to see more.</h5>
+                            <h2 class="title"><c:out value="${shop.getName()}"/></h2>
+                            <h5><c:out value="${shop.getDescription()}"/></h5>
+                            <div class="card-image">
+                                <img src="<c:out value="${picture.getPath()}"/>">
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="about-team team-1">
                     <div class="row">
                         <div class="col-md-8 col-md-offset-2 text-center">
-                            <h2 class="title">We are nerd rockstars</h2>
-                            <h5 class="description">This is the paragraph where you can write more details about your team. Keep you user engaged by providing meaningful information.</h5>
+                            <h2 class="title">Our Product</h2>
+                            <h5 class="description">Here's a carousel of our product.</h5>
                         </div>
                     </div>
 
                     <div class="row">
-                        <div class="col-md-3">
-                            <div class="card card-profile card-plain">
-                                <div class="card-avatar">
-                                    <a href="#pablo">
-                                        <img class="img" src="../assets/img/faces/marc.jpg">
-                                    </a>
-                                </div>
+                        <div class="testimonials-2">
 
-                                <div class="card-content">
-                                    <h4 class="card-title">Alec Thompson</h4>
-                                    <h6 class="category text-muted">CEO / Co-Founder</h6>
+                            <div class="container">
 
-                                    <p class="card-description">
-                                        And I love you like Kanye loves Kanye. We need to restart the human foundation.
-                                    </p>
-                                    <div class="footer">
-                                        <a href="#pablo" class="btn btn-just-icon btn-simple btn-twitter"><i class="fa fa-twitter"></i></a>
-                                        <a href="#pablo" class="btn btn-just-icon btn-simple btn-facebook"><i class="fa fa-facebook-square"></i></a>
-                                        <a href="#pablo" class="btn btn-just-icon btn-simple btn-google"><i class="fa fa-google"></i></a>
+                                <div class="row">
+
+                                    <div id="carousel-testimonial" class="carousel slide" data-ride="carousel">
+
+                                        <div class="carousel-inner" role="listbox">
+                                            <div class="item">
+                                                <div class="card card-testimonial card-plain">
+                                                    <div class="card-avatar">
+                                                        <a href="#pablo">
+                                                            <img class="img" src="<c:out value="${picture.getPath()}"/>">
+                                                        </a>
+                                                    </div>
+                                                    <div class="card-content">
+                                                        <h5 class="card-description"><c:out value="${product[0].getDescription()}"/></h5>
+                                                        <h4 class="card-title"><c:out value="${product[0].getName()}"/></h4>
+                                                        <div class="footer">
+                                                            <i class="material-icons text-warning">star</i>
+                                                            <i class="material-icons text-warning">star</i>
+                                                            <i class="material-icons text-warning">star</i>
+                                                            <i class="material-icons text-warning">star</i>
+                                                            <i class="material-icons text-warning">star</i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="item active">
+                                                <div class="card card-testimonial card-plain">
+                                                    <div class="card-avatar">
+                                                        <a href="#pablo">
+                                                            <img class="img" src="assets/img/faces/christian.jpg">
+                                                        </a>
+                                                    </div>
+
+                                                    <div class="card-content">
+                                                        <h5 class="card-description">"Thank you Anna for the invite thank you to the whole Vogue team Called I Miss the Old Kanye At the God's last game Chop up the soul Kanye. I promise I will never let the people down. I want a better life for all!!! Pablo Pablo Pablo Pablo! Thank you Anna for the invite thank you to the whole Vogue team."
+                                                        </h5>
+                                                        <h4 class="card-title">Christian Louboutin</h4>
+                                                        <h6 class="category text-muted">Designer @ Louboutin &amp; Co.</h6>
+                                                        <div class="footer">
+                                                            <i class="material-icons text-warning">star</i>
+                                                            <i class="material-icons text-warning">star</i>
+                                                            <i class="material-icons text-warning">star</i>
+                                                            <i class="material-icons text-warning">star</i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <a class="left carousel-control" href="#carousel-testimonial" role="button" data-slide="prev">
+                                            <i class="material-icons" aria-hidden="true">chevron_left</i>
+                                        </a>
+                                        <a class="right carousel-control" href="#carousel-testimonial" role="button" data-slide="next">
+                                            <i class="material-icons" aria-hidden="true">chevron_right</i>
+                                        </a>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="col-md-3">
-                            <div class="card card-profile card-plain">
-                                <div class="card-avatar">
-                                    <a href="#pablo">
-                                        <img class="img" src="../assets/img/faces/kendall.jpg">
-                                    </a>
                                 </div>
 
-                                <div class="card-content">
-                                    <h4 class="card-title">Tania Andrew</h4>
-                                    <h6 class="category text-muted">Designer</h6>
-
-                                    <p class="card-description">
-                                        Don't be scared of the truth because we need to restart the human foundation. And I love you like Kanye loves Kanye.
-                                    </p>
-                                    <div class="footer">
-                                        <a href="#pablo" class="btn btn-just-icon btn-simple btn-twitter"><i class="fa fa-twitter"></i></a>
-                                        <a href="#pablo" class="btn btn-just-icon btn-simple btn-dribbble"><i class="fa fa-dribbble"></i></a>
-                                        <a href="#pablo" class="btn btn-just-icon btn-simple btn-linkedin"><i class="fa fa-linkedin"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3">
-                            <div class="card card-profile card-plain">
-                                <div class="card-avatar">
-                                    <a href="#pablo">
-                                        <img class="img" src="../assets/img/faces/christian.jpg">
-                                    </a>
-                                </div>
-
-                                <div class="card-content">
-                                    <h4 class="card-title">Christian Mike</h4>
-                                    <h6 class="category text-muted">Web Developer</h6>
-
-                                    <p class="card-description">
-                                        I love you like Kanye loves Kanye. Don't be scared of the truth because we need to restart the human foundation.
-                                    </p>
-                                    <div class="footer">
-                                        <a href="#pablo" class="btn btn-just-icon btn-simple btn-facebook"><i class="fa fa-facebook-square"></i></a>
-                                        <a href="#pablo" class="btn btn-just-icon btn-simple btn-dribbble"><i class="fa fa-dribbble"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3">
-                            <div class="card card-profile card-plain">
-                                <div class="card-avatar">
-                                    <a href="#pablo">
-                                        <img class="img" src="../assets/img/faces/avatar.jpg">
-                                    </a>
-                                </div>
-
-                                <div class="card-content">
-                                    <h4 class="card-title">Rebecca Stormvile</h4>
-                                    <h6 class="category text-muted">Web Developer</h6>
-
-                                    <p class="card-description">
-                                        Don't be scared of the truth because we need to restart the human foundation.
-                                    </p>
-                                    <div class="footer">
-                                        <a href="#pablo" class="btn btn-just-icon btn-simple btn-google"><i class="fa fa-google"></i></a>
-                                        <a href="#pablo" class="btn btn-just-icon btn-simple btn-twitter"><i class="fa fa-twitter"></i></a>
-                                        <a href="#pablo" class="btn btn-just-icon btn-simple btn-dribbble"><i class="fa fa-dribbble"></i></a>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -192,39 +171,13 @@
                     </div>
                 </div>
                 <div class="about-office">
-                    <div class="row  text-center">
-                        <div class="col-md-8 col-md-offset-2">
-                            <h2 class="title">Photo</h2>
-                            <h4 class="description">Here are some pictures.</h4>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <img class="img-rounded img-responsive img-raised" alt="Raised Image" src="../assets/img/examples/office2.jpg">
-                        </div>
-                        <div class="col-md-4">
-                            <img class="img-rounded img-responsive img-raised" alt="Raised Image" src="../assets/img/examples/office4.jpg">
-                        </div>
-                        <div class="col-md-4">
-                            <img class="img-rounded img-responsive img-raised" alt="Raised Image" src="../assets/img/examples/office3.jpg">
-                        </div>
-                        <div class="col-md-6">
-                            <img class="img-rounded img-responsive img-raised" alt="Raised Image" src="../assets/img/examples/office5.jpg">
-                        </div>
-                        <div class="col-md-6">
-                            <img class="img-rounded img-responsive img-raised" alt="Raised Image" src="../assets/img/examples/office1.jpg">
-                        </div>
-
-                    </div>
-
-                </div>
-                <div class="about-office">
                     <div class="row">
                         <div class="col-md-8 col-md-offset-2">
                             <h2 class="text-center title">Rate Us:</h2>
                             <h4 class="text-center description">Give us a star.</h4>
                             <div class="">
-                                
+                                <label for="input-2" class="control-label">Rate This</label>
+                                <input id="input-2" name="input-2" class="rating rating-loading" data-min="0" data-max="5" data-step="0.1">
                             </div>
                         </div>
                     </div>
@@ -233,4 +186,4 @@
             </div>
         </div>
         <c:import url="pageBuilder/footer.jsp"/>
-
+        <script src="assets/js/ratingStar.min.js" type="text/javascript"></script>

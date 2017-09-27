@@ -8,15 +8,21 @@ package Dao;
 import Dao.entities.*;
 import java.util.LinkedList;
 
-
 /**
  *
  * @author Alvise
  */
-public interface ProductDao extends  DefaultDao, GetById{
-    Product getProductById(int id)throws Exception;
+public interface ProductDao extends DefaultDao, GetById {
+
+    Product getProductById(int id) throws Exception;
+
     LinkedList<Product> getProductByName(String name) throws Exception;
-    LinkedList<Product> getProductByPrice(double min,double max) throws Exception;
+
+    LinkedList<Product> getProductByPrice(double min, double max) throws Exception;
+
     LinkedList<Product> getProductByCategory(String category) throws Exception;
-    LinkedList<Product> getProductByReview(double min,double max) throws Exception;
+
+    LinkedList<Product> getProductByReview(double min, double max) throws Exception;
+
+    LinkedList<Product> getProductByShop(Shop shop) throws Exception;
 }
