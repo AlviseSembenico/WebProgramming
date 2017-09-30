@@ -19,6 +19,10 @@
         <servlet-name>register servlet</servlet-name>
         <servlet-class>register.servlet.RegisterServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>product</servlet-name>
+        <servlet-class>product.servlet.product</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/utils/login</url-pattern>
@@ -34,6 +38,10 @@
     <servlet-mapping>
         <servlet-name>register servlet</servlet-name>
         <url-pattern>/utils/register</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>product</servlet-name>
+        <url-pattern>/utils/product</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
