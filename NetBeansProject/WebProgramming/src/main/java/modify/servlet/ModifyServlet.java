@@ -20,7 +20,7 @@ import system.Log;
  *
  * @author skat96
  */
-@WebServlet(name = "ModidyServlet", urlPatterns = {"/ModidyServlet"})
+@WebServlet(name = "ModifyServlet", urlPatterns = {"/ModifyServlet"})
 public class ModifyServlet extends HttpServlet {
 
     private UserDao userDao;
@@ -57,10 +57,11 @@ public class ModifyServlet extends HttpServlet {
             }
             try{
                 User user= new User(firstName,lastName,email,password);
-                int res = userDao.insertDao(user);
+                int res = userDao.updateDao(user);
                 if(res == 0)
-                    response.sendRedirect(response.encodeRedirectURL(contextPath + "/register"+"?error=true"));
+                    response.sendRedirect(response.encodeRedirectURL(contextPath + "/modify"+"?error=true"));
                 else{
+                    
                     request.getSession().setAttribute("authenticatedUser", user);
                     response.sendRedirect(response.encodeRedirectURL(contextPath + "index"));
                 }
