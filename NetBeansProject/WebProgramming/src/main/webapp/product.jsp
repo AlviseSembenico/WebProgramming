@@ -103,7 +103,9 @@
                                 </div>
                             </div>
                             <div class="row text-right">
-                                <button class="btn btn-rose btn-round">Add to Cart &nbsp;<i class="material-icons">shopping_cart</i></button>
+                                <form method="POST" action="/utils/product">
+                                <button class="btn btn-rose btn-round" onclick="">Add to Cart &nbsp;<i class="material-icons">shopping_cart</i></button>
+                                </form>
                             </div>
                         </div>
                     </div>

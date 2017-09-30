@@ -8,10 +8,14 @@ package login.servlet;
 import Dao.UserDao;
 import Dao.entities.User;
 import java.io.IOException;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 import system.Log;
 
 /**
@@ -52,8 +56,11 @@ public class LoginServlet extends HttpServlet {
         try{
             User user=userDao.getUserByEmailPassword(email, password);
             if(user==null)
+            {
+                Cookie c = new Cookie("userId", Integer.toString(user.getId()));
+                response.addCookie(c);
                 response.sendRedirect(response.encodeRedirectURL(contextPath + "/login"+"?error=true"));
-            else{
+            }else{
                 request.getSession().setAttribute("authenticatedUser", user);
                 response.sendRedirect(response.encodeRedirectURL(contextPath + "index"));
             }
