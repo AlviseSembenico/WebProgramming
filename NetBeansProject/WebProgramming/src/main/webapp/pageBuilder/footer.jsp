@@ -141,7 +141,7 @@
 <script src="assets/js/jasny-bootstrap.min.js"></script>
 
 <!--    Plugin For Google Maps   -->
-<script  type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFPQibxeDaLIUHsC6_KqDdFaUdhrbhZ3M"></script>
+<script  type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBTQlKdk1dVtFnaHlg8kCIaRczx-vnhavo"></script>
 
 <!--    Plugin for 3D images animation effect, full documentation here: https://github.com/drewwilson/atvImg    -->
 <script src="assets/js/atv-img-animation.js" type="text/javascript"></script>

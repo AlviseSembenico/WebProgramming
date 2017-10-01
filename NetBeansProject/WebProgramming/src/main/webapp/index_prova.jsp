@@ -1,34 +1,30 @@
-<%-- 
-    Document   : newjsp
-    Created on : Aug 16, 2017, 1:11:14 PM
-    Author     : Alvise
---%>
-
-
-
-
-<%@page import="java.util.LinkedList"%>
-<%@page import="com.google.gson.Gson"%>
-<%@page import="Dao.jdbc.*"%>
-<%@page import="Dao.entities.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Prova</title>
-    </head>
-    <body>
-           
-            <% 
-                User s=new JdbcUserDao().getUserById(6);
-                //Shop s=new JdbcShopDao().getShopByName("Skivee");
-                //LinkedList<Review> s=new JdbcReviewDao().getRewiewByCreator(new JdbcUserDao().getUserById(1));
-                Anomalies c=new JdbcAnomaliesDao().getAnomaliesByPurchase(new JdbcPurchaseDao().getPurchaseById(1)).get(0);
-                Gson g=new Gson();
-            %> 
-            
-            <%=  g.toJson(c) %>
-        
-    </body>
-</html>
+  <head>
+    <style>
+      #map {
+        height: 400px;
+        width: 100%;
+       }
+    </style>
+  </head>
+  <body>
+    <h3>My Google Maps Demo</h3>
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        var uluru = {lat: -25.363, lng: 131.044};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdIBmbptqtCwL4WzlpDzmRQTiNdowCpsI&callback=initMap">
+    </script>
+  </body>
