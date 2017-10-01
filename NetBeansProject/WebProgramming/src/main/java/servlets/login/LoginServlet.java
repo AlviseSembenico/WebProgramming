@@ -23,16 +23,17 @@ import system.Log;
  * @author Alvise
  */
 public class LoginServlet extends HttpServlet {
-
+    
     private UserDao userDao;
-
+    
     @Override
     public void init() throws ServletException {
-        userDao = (UserDao) super.getServletContext().getAttribute("userDao");
+        userDao= (UserDao) super.getServletContext().getAttribute("userDao");
         if (userDao == null) {
             throw new ServletException("Impossible to get dao factory for user storage system");
-        }
+        } 
     }
+    
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -45,14 +46,13 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         String email = request.getParameter("email");
         String password = request.getParameter("password");
+        
         String contextPath = getServletContext().getContextPath();
         if (!contextPath.endsWith("/")) {
             contextPath += "/";
         }
-<<<<<<< HEAD:NetBeansProject/WebProgramming/src/main/java/servlets/login/LoginServlet.java
         try {
             User user = userDao.getUserByEmailPassword(email, password);
             if (user == null) {
@@ -67,20 +67,10 @@ public class LoginServlet extends HttpServlet {
                         c.setMaxAge(0);
                     }
                 }
-=======
-        try{
-            User user=userDao.getUserByEmailPassword(email, password);
-            if(user==null)
-            {
-                Cookie c = new Cookie("userId", Integer.toString(user.getId()));
-                response.addCookie(c);
-                response.sendRedirect(response.encodeRedirectURL(contextPath + "/login"+"?error=true"));
-            }else{
-                request.getSession().setAttribute("authenticatedUser", user);
->>>>>>> Solo-borto:NetBeansProject/WebProgramming/src/main/java/login/servlet/LoginServlet.java
-                response.sendRedirect(response.encodeRedirectURL(contextPath + "index"));
             }
-        } catch (Exception e) {
+        }
+
+        catch(Exception e){
             Log.write(e.toString());
         }
     }

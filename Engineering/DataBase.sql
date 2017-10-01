@@ -9,7 +9,6 @@ CREATE TABLE IF NOT EXISTS users
     email VARCHAR(255),
     password VARCHAR(255),
     avatar_path VARCHAR(255),
-    sessionId VARCHAR(512),
     PRIMARY KEY(id)
 );
 
