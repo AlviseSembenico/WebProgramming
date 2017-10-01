@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <filter>
+        <filter-name>PublicUsers</filter-name>
+        <filter-class>filters.PublicUsers</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>PublicUsers</filter-name>
+        <url-pattern>/publicUsers</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>PublicUsers</filter-name>
+        <servlet-name>login</servlet-name>
+    </filter-mapping>
     <listener>
         <listener-class>loader.JdbcClassLoader</listener-class>
     </listener>
@@ -13,11 +25,15 @@
     </servlet>
     <servlet>
         <servlet-name>login</servlet-name>
-        <jsp-file>/login.jsp</jsp-file>
+        <jsp-file>/publicUsers/login.jsp</jsp-file>
     </servlet>
     <servlet>
         <servlet-name>register servlet</servlet-name>
         <servlet-class>servlets.register.RegisterServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Register</servlet-name>
+        <jsp-file>/publicUsers/register.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -34,6 +50,10 @@
     <servlet-mapping>
         <servlet-name>register servlet</servlet-name>
         <url-pattern>/utils/register</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Register</servlet-name>
+        <url-pattern>/register</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

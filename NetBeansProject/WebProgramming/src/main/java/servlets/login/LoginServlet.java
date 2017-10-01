@@ -5,10 +5,11 @@
  */
 package servlets.login;
 
-import Dao.UserDao;
-import Dao.entities.User;
+import Dao.*;
+import Dao.entities.*;
 import java.io.IOException;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,17 +20,16 @@ import system.Log;
  * @author Alvise
  */
 public class LoginServlet extends HttpServlet {
-    
+
     private UserDao userDao;
-    
+
     @Override
     public void init() throws ServletException {
-        userDao= (UserDao) super.getServletContext().getAttribute("userDao");
+        userDao = (UserDao) super.getServletContext().getAttribute("userDao");
         if (userDao == null) {
             throw new ServletException("Impossible to get dao factory for user storage system");
-        } 
+        }
     }
-    
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -42,23 +42,30 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        
         String contextPath = getServletContext().getContextPath();
         if (!contextPath.endsWith("/")) {
             contextPath += "/";
         }
-        try{
-            User user=userDao.getUserByEmailPassword(email, password);
-            if(user==null)
-                response.sendRedirect(response.encodeRedirectURL(contextPath + "login"+"?error=true"));
-            else{
-                request.getSession().setAttribute("authenticatedUser", user);
+        try {
+            User user = userDao.getUserByEmailPassword(email, password);
+            if (user == null) {
+                response.sendRedirect(response.encodeRedirectURL(contextPath + "login" + "?error=true"));
+            } else {
+                request.getSession().setAttribute("user", user);
+                Cart cart = (Cart) request.getSession().getAttribute("cart");
+                if (cart != null) {
+                    ProductDao pd = (ProductDao) request.getSession().getAttribute("productDao");
+                    for (Cookie c : request.getCookies()) {
+                        cart.getProducts().add(pd.getProductById(Integer.parseInt(c.getValue())));
+                        c.setMaxAge(0);
+                    }
+                }
                 response.sendRedirect(response.encodeRedirectURL(contextPath + "index"));
             }
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             Log.write(e.toString());
         }
     }
