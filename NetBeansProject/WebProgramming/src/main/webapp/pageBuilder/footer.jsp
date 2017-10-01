@@ -153,6 +153,7 @@
 <script src="assets/js/atv-img-animation.js" type="text/javascript"></script>
 
 <!--    Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc    -->
+<<<<<<< HEAD
 <script src="assets/js/material-kit.js" type="text/javascript"></script>
 <script src="assets/js/vertical-nav.js" type="text/javascript"></script>
 <script type="text/javascript">
@@ -161,4 +162,12 @@
             materialKitDemo.initContactUsMap();
         });
     </script>
-</html>
+</html></html>
+=======
+<script src="http://demos.creative-tim.com/material-kit-pro/assets/js/material-kit.js?v=1.2.0" type="text/javascript"></script>
+
+<script src="http://demos.creative-tim.com/material-kit-pro/assets/js/jquery.flexisel.js"></script>
+
+
+
+>>>>>>> Solo-borto

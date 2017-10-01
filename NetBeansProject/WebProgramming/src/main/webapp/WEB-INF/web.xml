@@ -35,6 +35,10 @@
         <servlet-name>Register</servlet-name>
         <jsp-file>/publicUsers/register.jsp</jsp-file>
     </servlet>
+    <servlet>
+        <servlet-name>product</servlet-name>
+        <servlet-class>product.servlet.product</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/utils/login</url-pattern>
@@ -52,8 +56,13 @@
         <url-pattern>/utils/register</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+<<<<<<< HEAD
         <servlet-name>Register</servlet-name>
         <url-pattern>/register</url-pattern>
+=======
+        <servlet-name>product</servlet-name>
+        <url-pattern>/utils/product</url-pattern>
+>>>>>>> Solo-borto
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -8,11 +8,14 @@ package servlets.login;
 import Dao.*;
 import Dao.entities.*;
 import java.io.IOException;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 import system.Log;
 
 /**
@@ -49,6 +52,7 @@ public class LoginServlet extends HttpServlet {
         if (!contextPath.endsWith("/")) {
             contextPath += "/";
         }
+<<<<<<< HEAD:NetBeansProject/WebProgramming/src/main/java/servlets/login/LoginServlet.java
         try {
             User user = userDao.getUserByEmailPassword(email, password);
             if (user == null) {
@@ -63,6 +67,17 @@ public class LoginServlet extends HttpServlet {
                         c.setMaxAge(0);
                     }
                 }
+=======
+        try{
+            User user=userDao.getUserByEmailPassword(email, password);
+            if(user==null)
+            {
+                Cookie c = new Cookie("userId", Integer.toString(user.getId()));
+                response.addCookie(c);
+                response.sendRedirect(response.encodeRedirectURL(contextPath + "/login"+"?error=true"));
+            }else{
+                request.getSession().setAttribute("authenticatedUser", user);
+>>>>>>> Solo-borto:NetBeansProject/WebProgramming/src/main/java/login/servlet/LoginServlet.java
                 response.sendRedirect(response.encodeRedirectURL(contextPath + "index"));
             }
         } catch (Exception e) {
