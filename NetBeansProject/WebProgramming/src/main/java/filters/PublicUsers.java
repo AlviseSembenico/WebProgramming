@@ -39,7 +39,7 @@ public class PublicUsers implements Filter {
         if (debug) {
             log("PublicUsers:DoBeforeProcessing");
         }
-        if(request.getSession()!=null)
+        if(request.getSession(false)!=null)
             if(request.getSession().getAttribute("user")!=null){
                 String contextPath = request.getServletContext().getContextPath();
                 if (!contextPath.endsWith("/")) {
@@ -109,7 +109,7 @@ public class PublicUsers implements Filter {
             throws IOException, ServletException {
         
         if (debug) {
-            log("PublicUsers:doFilter()");
+            system.Log.write("PublicUsers:doFilter()");
         }
         
         doBeforeProcessing((HttpServletRequest)request, (HttpServletResponse)response);
