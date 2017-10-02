@@ -1,4 +1,4 @@
-/*
+    /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -67,8 +67,9 @@ public class LoginServlet extends HttpServlet {
                         c.setMaxAge(0);
                     }
                 }
+                response.sendRedirect(response.encodeRedirectURL(contextPath));
             }
-        }
+        } 
 
         catch(Exception e){
             Log.write(e.toString());

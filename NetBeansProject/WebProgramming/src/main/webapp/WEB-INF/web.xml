@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <filter>
+        <filter-name>publicUsers</filter-name>
+        <filter-class>filters.publicUsers</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>publicUsers</filter-name>
+        <servlet-name>Register</servlet-name>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>INCLUDE</dispatcher>
+        <dispatcher>ERROR</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>publicUsers</filter-name>
+        <servlet-name>login</servlet-name>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>INCLUDE</dispatcher>
+        <dispatcher>ERROR</dispatcher>
+    </filter-mapping>
     <listener>
         <listener-class>loader.JdbcClassLoader</listener-class>
     </listener>
@@ -13,23 +33,32 @@
     </servlet>
     <servlet>
         <servlet-name>login</servlet-name>
-        <jsp-file>/login.jsp</jsp-file>
+        <jsp-file>/publicUsers/login.jsp</jsp-file>
     </servlet>
     <servlet>
         <servlet-name>register servlet</servlet-name>
         <servlet-class>servlets.register.RegisterServlet</servlet-class>
     </servlet>
-<<<<<<< HEAD
     <servlet>
         <servlet-name>Register</servlet-name>
         <jsp-file>/publicUsers/register.jsp</jsp-file>
     </servlet>
     <servlet>
-        <servlet-name>product</servlet-name>
-        <servlet-class>product.servlet.product</servlet-class>
+        <servlet-name>product servlet</servlet-name>
+        <servlet-class>servlets.product.ProductServlet</servlet-class>
     </servlet>
-=======
->>>>>>> parent of 148e8c5... Merge branch 'Alvise'
+    <servlet>
+        <servlet-name>product</servlet-name>
+        <jsp-file>/product.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>cart</servlet-name>
+        <jsp-file>/cart.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>shop</servlet-name>
+        <jsp-file>/shop.jsp</jsp-file>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/utils/login</url-pattern>
@@ -46,18 +75,26 @@
         <servlet-name>register servlet</servlet-name>
         <url-pattern>/utils/register</url-pattern>
     </servlet-mapping>
-<<<<<<< HEAD
     <servlet-mapping>
-<<<<<<< HEAD
         <servlet-name>Register</servlet-name>
         <url-pattern>/register</url-pattern>
-=======
-        <servlet-name>product</servlet-name>
-        <url-pattern>/utils/product</url-pattern>
->>>>>>> Solo-borto
     </servlet-mapping>
-=======
->>>>>>> parent of 148e8c5... Merge branch 'Alvise'
+    <servlet-mapping>
+        <servlet-name>product servlet</servlet-name>
+        <url-pattern>/utils/product</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>product</servlet-name>
+        <url-pattern>/product</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>cart</servlet-name>
+        <url-pattern>/cart</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>shop</servlet-name>
+        <url-pattern>/shop</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

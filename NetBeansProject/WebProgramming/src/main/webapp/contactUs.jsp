@@ -90,3 +90,9 @@
 
     
     <c:import url="pageBuilder/footer.jsp"/>
+<script type="text/javascript">
+        $().ready(function () {
+            // the body of this function is in assets/material-kit.min.js
+            materialKitDemo.initContactUsMap();
+        });
+    </script>

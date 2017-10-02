@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<c:set var="user" value="${sessionScope.user}"></c:set>
 <!DOCTYPE html>
 <html lang="it">
     <head>
@@ -78,41 +79,6 @@
                                     <i class="material-icons">dns</i> Headers
                                 </a>
                             </li>
-                            <li>
-                                <a href="../sections.html#features">
-                                    <i class="material-icons">build</i> Features
-                                </a>
-                            </li>
-                            <li>
-                                <a href="../sections.html#blogs">
-                                    <i class="material-icons">list</i> Blogs
-                                </a>
-                            </li>
-                            <li>
-                                <a href="../sections.html#teams">
-                                    <i class="material-icons">people</i> Teams
-                                </a>
-                            </li>
-                            <li>
-                                <a href="../sections.html#projects">
-                                    <i class="material-icons">assignment</i> Projects
-                                </a>
-                            </li>
-                            <li>
-                                <a href="../sections.html#pricing">
-                                    <i class="material-icons">monetization_on</i> Pricing
-                                </a>
-                            </li>
-                            <li>
-                                <a href="../sections.html#testimonials">
-                                    <i class="material-icons">chat</i> Testimonials
-                                </a>
-                            </li>
-                            <li>
-                                <a href="../sections.html#contactus">
-                                    <i class="material-icons">call</i> Contacts
-                                </a>
-                            </li>
 
                         </ul>
                     </li>
@@ -128,60 +94,26 @@
                                     <i class="material-icons">account_balance</i> About Us
                                 </a>
                             </li>
+                            </ul>
+                            </li>
+                        <c:choose>
+                            <c:when test="${user eq null}">
                             <li>
-                                <a href="../examples/blog-post.html">
-                                    <i class="material-icons">art_track</i> Blog Post
+                                    <a href="login">
+                                        <i class="material-icons">person</i>Login
                                 </a>
                             </li>
-                            <li>
-                                <a href="../examples/blog-posts.html">
-                                    <i class="material-icons">view_quilt</i> Blog Posts
-                                </a>
-                            </li>
-                            <li>
-                                <a href="../examples/contact-us.html">
-                                    <i class="material-icons">location_on</i> Contact Us
-                                </a>
-                            </li>
-                            <li>
-                                <a href="../examples/landing-page.html">
-                                    <i class="material-icons">view_day</i> Landing Page
-                                </a>
-                            </li>
-                            <li>
-                                <a href="../examples/login-page.html">
-                                    <i class="material-icons">fingerprint</i> Login Page
-                                </a>
-                            </li>
-                            <li>
-                                <a href="../examples/pricing.html">
-                                    <i class="material-icons">attach_money</i> Pricing Page
-                                </a>
-                            </li>
-                            <li>
-                                <a href="../examples/ecommerce.html">
-                                    <i class="material-icons">shop</i> Ecommerce Page
-                                </a>
-                            </li>
-                            <li>
-                                <a href="../examples/product-page.html">
-                                    <i class="material-icons">beach_access</i> Product Page
-                                </a>
-                            </li>
-                            <li>
-                                <a href="../examples/profile-page.html">
-                                    <i class="material-icons">account_circle</i> Profile Page
-                                </a>
-                            </li>
-                            <li>
-                                <a href="../examples/signup-page.html">
-                                    <i class="material-icons">person_add</i> Signup Page
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+                            </c:when>
 
-                    <li>
+                            <c:otherwise>
+                            <li>
+                                    <a href="personal">
+                                        <i class="material-icons">person</i><c:out value="${user.getFirstName()}"/>
+                                </a>
+                            </li>
+                            </c:otherwise>
+                        </c:choose>
+                            <li>
                         <a href="http://www.creative-tim.com/buy/material-kit-pro?ref=presentation" target="_blank" class="btn btn-white btn-simple">
                             <i class="material-icons">shopping_cart</i> Buy Now
                         </a>

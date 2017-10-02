@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package product.servlet;
+package servlets.product;
 
 import Dao.ProductDao;
 import Dao.entities.Product;
@@ -25,7 +25,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Utente
  */
-public class product extends HttpServlet {
+public class ProductServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -89,7 +89,7 @@ public class product extends HttpServlet {
                     cart.AddProducts(product);
                 }
             } catch (Exception ex) {
-                Logger.getLogger(product.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ProductServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         }
