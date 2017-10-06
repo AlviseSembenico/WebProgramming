@@ -29,6 +29,7 @@
         <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
         <link href="assets/css/demo.css" rel="stylesheet" />
         <link href="assets/css/style.css" rel="stylesheet" />
+        <link href="assets/css/starcss.css" rel="stylesheet" type="text/css"/>
         <link href="assets/css/unminify.css" rel="stylesheet"/>
     </head>
     <c:if test="${param.trasparent eq 'true' || (empty param.trasparent) }">
