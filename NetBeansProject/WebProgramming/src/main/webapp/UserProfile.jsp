@@ -4,10 +4,12 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <c:set var="userDao" value="${pageContext.servletContext.getAttribute('userDao')}"></c:set>
 <c:set var="user" value="${userDao.getById(param.id)}"></c:set>
+
     <!DOCTYPE html>
     <!doctype html>
     <html>
     <c:import url="pageBuilder/header.jsp"/>
+    
     <body class="profile-page" waid71fa0d88-5390-4b5b-a2f4-e45fa93d85e2="SA password protect entry checker">
         <div class="page-header header-filter" data-parallax="true" style="background-image: url(https://www.consumatori.it/wp-content/uploads/2015/09/venditore_consumatore_stretta-di-mano1.jpg); transform: translate3d(0px, 0px, 0px);">
         </div>
@@ -21,234 +23,126 @@
                                     <img src="<c:out value="${user.getAvatarPath()}"/>" alt="Circle Image" class="img-circle img-responsive img-raised">
                                 </div>
                                 <div class="name">
-                                    <h3 class="title"><c:out value="${user.getName()}"/></h3>
-                                    <h6>Designer</h6>
-                                    <a href="#pablo" class="btn btn-just-icon btn-simple btn-dribbble"><i class="fa fa-dribbble"></i></a>
-                                    <a href="#pablo" class="btn btn-just-icon btn-simple btn-twitter"><i class="fa fa-twitter"></i></a>
-                                    <a href="#pablo" class="btn btn-just-icon btn-simple btn-pinterest"><i class="fa fa-pinterest"></i></a>
+                                    <h3 class="title"><c:out value="${user.getFirstName()} ${user.getLastName()}"/></h3>                                    
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-xs-2 follow">
-                            <button class="btn btn-fab btn-primary" rel="tooltip" title="" data-original-title="Follow this user">
-                                <i class="material-icons">add</i>
-                            </button>
-                        </div>
-                    </div>
-
-
-                    <div class="description text-center">
-                        <p>An artist of considerable range, Chet Faker — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. </p>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6 col-md-offset-3">
-                            <div class="profile-tabs">
-                                <div class="nav-align-center">
-                                    <ul class="nav nav-pills nav-pills-icons" role="tablist">
-                                        <li class="active">
-                                            <a href="#work" role="tab" data-toggle="tab">
-                                                <i class="material-icons">palette</i>
-                                                Work
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#connections" role="tab" data-toggle="tab">
-                                                <i class="material-icons">people</i>
-                                                Connections
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#media" role="tab" data-toggle="tab">
-                                                <i class="material-icons">camera</i>
-                                                Media
-                                            </a>
-                                        </li>
-                                    </ul>
-
-
-                                </div>
-                            </div>
-                            <!-- End Profile Tabs -->
-                        </div>
-                    </div>
-                    <div class="tab-content">
-                        <div class="tab-pane active work" id="work">
-                            <div class="row">
-                                <div class="col-md-7 col-md-offset-1">
-                                    <h4 class="title">Latest Collections</h4>
-                                    <div class="row collections">
-                                        <div class="col-md-6">
-                                            <div class="card card-background" style="background-image: url('../assets/img/examples/chris4.jpg')">
-                                                <a href="#pablo"></a>
-                                                <div class="card-content">
-                                                    <label class="label label-primary">Spring 2016</label>
-                                                    <a href="#pablo">
-                                                        <h2 class="card-title">Stilleto</h2>
-                                                    </a>
+                        </div>                        
+                    </div>                    
+                    <div class="row-content">
+                        <div class="col-md-10 col-md-offset-1" >                      
+                            <form class="form" method="POST" action="ModifyServlet">                                
+                                    <div class="card-content">
+                                            <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                            <i class="material-icons">face</i>
+                                                    </span>
+                                                <div class="form-group is-empty"><input id="fn" name="firstname" type="text" class="form-control" placeholder="First Name" value="${user.getFirstName()}"><span class="material-input"></span></div>
+                                            </div>
+                                            <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                            <i class="material-icons">face</i>
+                                                    </span>
+                                                    <div class="form-group is-empty"><input id="ln" name="lastname" type="text" class="form-control" placeholder="Last Name" value="${user.getLastName()}"><span class="material-input"></span></div>
+                                            </div>
+                                            <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                            <i class="material-icons">email</i>
+                                                    </span>
+                                                <div class="form-group is-empty"><input id="ml" name="email" type="text" class="form-control" placeholder="Email" value="${user.getEmail()}"><span class="material-input"></span></div>
+                                            </div>
+                                            <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                            <i class="material-icons">lock_outline</i>
+                                                    </span>
+                                                <div class="form-group is-empty">
+                                                    <input id="pw" name="password" type="Password" class="form-control" placeholder="Password" readonly="readonly" value="${user.getPassword()}">
+                                                    <span class="material-input"></span>                                                    
+                                                </div>                                                
+                                            </div>
+                                                <script text="javascript">
+                                                    function Popup()
+                                                    {
+                                                       document.getElementById('cambiapw').style.display = "block";
+                                                       document.getElementById('fn').setAttribute('disabled','disabled');
+                                                       document.getElementById('ln').setAttribute('disabled','disabled');
+                                                       document.getElementById('ml').setAttribute('disabled','disabled');
+                                                       document.getElementById('pw').setAttribute('disabled','disabled');
+                                                    }
+                                                    function Cancel()
+                                                    {
+                                                        document.getElementById('cambiapw').style.display = "none";
+                                                        document.getElementById('old').value = "";
+                                                        document.getElementById('new').value = "";
+                                                        document.getElementById('confirm').value = "";
+                                                        document.getElementById('fn').removeAttribute('disabled');
+                                                        document.getElementById('ln').removeAttribute('disabled');
+                                                        document.getElementById('ml').removeAttribute('disabled');
+                                                        document.getElementById('pw').removeAttribute('disabled');
+                                                    }
+                                                    function Change()
+                                                    {                                                         
+                                                        var old = document.getElementById('old').value
+                                                        var nw = document.getElementById('new').value;
+                                                        var confirm = document.getElementById('confirm').value;
+                                                        var paswd = document.getElementById('pw').value
+                                                        alert(paswd);
+                                                        
+                                                        if(old == "" || nw == "" ||confirm == "")
+                                                        {
+                                                            alert("Some fields are empty")
+                                                        }
+                                                        else
+                                                        {
+                                                            if(old != paswd)
+                                                            {
+                                                                alert("The old password is wrong");
+                                                            }
+                                                            else
+                                                            {
+                                                                if(nw != confirm)
+                                                                    alert("Wrong confirm password")
+                                                                else
+                                                                {
+                                                                    ${user.setPassword(nw)}
+                                                                    document.getElementById('pw').value = nw;
+                                                                    Cancel();
+                                                                }
+                                                            }
+                                                        }
+                                                        
+                                                    }
+                                                </script>
+                                            <input type="button" class="btn btn-primary btn-round" value="Change Password" onclick="Popup()"/>
+                                            
+                                    </div>                                                                    
+                                    <div class="footer text-center">
+                                        <input type="submit" class="btn btn-primary btn-round" value="Submit"/>                                        
+                                    </div>
+                                                                        
+                                </form>                                
+                        </div>  
+                        <div id="cambiapw" style="width:100%;height:100%;top:30%;left:0;display:none;position:fixed;overflow:auto">
+                            <div class="col-md-6 col-md-offset-3">
+                                <div class="card card-content" style="background-color: lightgrey">
+                                    <div class="col-md-10 col-md-offset-1">
+                                        <div id="popupContact">
+                                            <form acton="#" id="form" method="post" name="pop">
+                                                <h2>Change Password</h2>
+                                                <input id="old" type="Password" class="form-control" placeholder="Old Password">
+                                                <input id="new" type="Password" class="form-control" placeholder="New Password">
+                                                <input id="confirm" type="Password" class="form-control" placeholder="Confirm New Password">
+                                                <div class="row">                                                                    
+                                                    <input type="button" class="btn btn-round" onclick="Change()" value="Change"/>
+                                                    <input type="button" class="btn btn-round" onclick="Cancel()" value="Cancel"/>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="card card-background" style="background-image: url('../assets/img/examples/chris6.jpg')">
-                                                <a href="#pablo"></a>
-                                                <div class="card-content">
-                                                    <label class="label label-primary">Spring 2016</label>
-                                                    <a href="#pablo">
-                                                        <h2 class="card-title">High Heels</h2>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="card card-background" style="background-image: url('../assets/img/examples/chris5.jpg')">
-                                                <a href="#pablo"></a>
-                                                <div class="card-content">
-                                                    <label class="label label-primary">Summer 2016</label>
-                                                    <a href="#pablo">
-                                                        <h2 class="card-title">Flats</h2>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="card card-background" style="background-image: url('../assets/img/examples/chris1.jpg')">
-                                                <a href="#pablo"></a>
-                                                <div class="card-content">
-                                                    <label class="label label-primary">Winter 2015</label>
-                                                    <a href="#pablo">
-                                                        <h2 class="card-title">Men's Sneakers</h2>
-                                                    </a>
-                                                </div>
-                                            </div>
+                                            </form>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-2 col-md-offset-1 stats">
-                                    <h4 class="title">Stats</h4>
-                                    <ul class="list-unstyled">
-                                        <li><b>60</b> Products</li>
-                                        <li><b>4</b> Collections</li>
-                                        <li><b>331</b> Influencers</li>
-                                        <li><b>1.2K</b> Likes</li>
-                                    </ul>
-                                    <hr>
-                                    <h4 class="title">About his Work</h4>
-                                    <p class="description">French luxury footwear and fashion. The footwear has incorporated shiny, red-lacquered soles that have become his signature.</p>
-                                    <hr>
-                                    <h4 class="title">Focus</h4>
-                                    <span class="label label-primary">Footwear</span>
-                                    <span class="label label-rose">Luxury</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane connections" id="connections">
-                            <div class="row">
-                                <div class="col-md-5 col-md-offset-1">
-                                    <div class="card card-profile card-plain">
-                                        <div class="col-md-5">
-                                            <div class="card-image">
-                                                <a href="#pablo">
-                                                    <img class="img" src="../assets/img/faces/avatar.jpg">
-                                                </a>
-                                                <div class="colored-shadow" style="background-image: url(&quot;../assets/img/faces/avatar.jpg&quot;); opacity: 1;"></div></div>
-                                        </div>
-                                        <div class="col-md-7">
-                                            <div class="card-content">
-                                                <h4 class="card-title">Gigi Hadid</h4>
-                                                <h6 class="category text-muted">Model</h6>
-
-                                                <p class="card-description">
-                                                    Don't be scared of the truth because we need to restart the human foundation in truth...
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-5">
-                                    <div class="card card-profile card-plain">
-                                        <div class="col-md-5">
-                                            <div class="card-image">
-                                                <a href="#pablo">
-                                                    <img class="img" src="../assets/img/faces/marc.jpg">
-                                                </a>
-                                                <div class="colored-shadow" style="background-image: url(&quot;../assets/img/faces/marc.jpg&quot;); opacity: 1;"></div></div>
-                                        </div>
-                                        <div class="col-md-7">
-                                            <div class="card-content">
-                                                <h4 class="card-title">Marc Jacobs</h4>
-                                                <h6 class="category text-muted">Designer</h6>
-
-                                                <p class="card-description">
-                                                    Don't be scared of the truth because we need to restart the human foundation in truth...
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-5 col-md-offset-1">
-                                    <div class="card card-profile card-plain">
-                                        <div class="col-md-5">
-                                            <div class="card-image">
-                                                <a href="#pablo">
-                                                    <img class="img" src="../assets/img/faces/kendall.jpg">
-                                                </a>
-                                                <div class="colored-shadow" style="background-image: url(&quot;../assets/img/faces/kendall.jpg&quot;); opacity: 1;"></div></div>
-                                        </div>
-                                        <div class="col-md-7">
-                                            <div class="card-content">
-                                                <h4 class="card-title">Kendall Jenner</h4>
-                                                <h6 class="category text-muted">Model</h6>
-
-                                                <p class="card-description">
-                                                    I love you like Kanye loves Kanye. Don't be scared of the truth.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-5">
-                                    <div class="card card-profile card-plain">
-                                        <div class="col-md-5">
-                                            <div class="card-image">
-                                                <a href="#pablo">
-                                                    <img class="img" src="../assets/img/faces/card-profile2-square.jpg">
-                                                </a>
-                                                <div class="colored-shadow" style="background-image: url(&quot;../assets/img/faces/card-profile2-square.jpg&quot;); opacity: 1;"></div></div>
-                                        </div>
-                                        <div class="col-md-7">
-                                            <div class="card-content">
-                                                <h4 class="card-title">George West</h4>
-                                                <h6 class="category text-muted">Model/DJ</h6>
-
-                                                <p class="card-description">
-                                                    I love you like Kanye loves Kanye.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="tab-pane text-center gallery" id="media">
-                            <div class="row">
-                                <div class="col-md-3 col-md-offset-3">
-                                    <img src="../assets/img/examples/chris4.jpg" class="img-rounded">
-                                    <img src="../assets/img/examples/chris6.jpg" class="img-rounded">
-                                </div>
-                                <div class="col-md-3">
-                                    <img src="../assets/img/examples/chris7.jpg" class="img-rounded">
-                                    <img src="../assets/img/examples/chris5.jpg" class="img-rounded">
-                                    <img src="../assets/img/examples/chris9.jpg" class="img-rounded">
                                 </div>
                             </div>
                         </div>
                     </div>
+                    
                 </div>
             </div>
         </div>
