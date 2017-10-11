@@ -40,7 +40,7 @@ public class publicUsers implements Filter {
             throws IOException, ServletException {
         HttpSession session = ((HttpServletRequest) request).getSession(false);
         if (session != null) {
-            User u = (User) request.getServletContext().getAttribute("user");
+            User u = (User) session.getAttribute("user");
 
             if (u != null) {
                 HttpServletResponse rs = (HttpServletResponse) response;

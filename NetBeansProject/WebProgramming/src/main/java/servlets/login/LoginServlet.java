@@ -52,7 +52,7 @@ public class LoginServlet extends HttpServlet {
         String contextPath = getServletContext().getContextPath();
         if (!contextPath.endsWith("/")) {
             contextPath += "/";
-        }
+        }       
         try {
             User user = userDao.getUserByEmailPassword(email, password);
             if (user == null) {
