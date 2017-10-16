@@ -32,10 +32,35 @@ public class JdbcProductDao extends JdbcUtilities implements ProductDao{
         map.put("shop", "shops_id");
     }
     
+    public LinkedList<Product> getProductByFilters(String name,double latitude,double longitude,double radius,int minPrice, int maxPrice, double minRew,double maxRew) throws Exception {
+        String query = "select p.* from products p join shops s on p.shops_id=s.id where soundex(p.name)=soundex(?)";
+        String dist=" and sqrt( pow(?-p.latitude,2)+pow(?-p.longitude,2))<=?";
+        String price=" and (p.price>=? and p.price<=?)";
+        String rew=" and ((select avg(r.global_value) from reviews r where r.products_id=o.id)>=? and (select avg(r.global_value) from reviews r where r.products_id=o.id)<=?)";
+        PreparedStatement stmt = connection.prepareStatement(query+dist+price+rew);
+        stmt.setString(1, name);
+        stmt.setDouble(2, latitude);
+        stmt.setDouble(3, longitude);
+        stmt.setDouble(4, radius);
+        stmt.setDouble(5, minPrice);
+        stmt.setDouble(6, minPrice);
+        stmt.setDouble(7, minRew);
+        stmt.setDouble(8, maxRew);
+        LinkedList<Product> res=new LinkedList<Product>();
+        for(Object o:super.fillResult(Product.class, map, stmt.executeQuery()))
+            res.add((Product) o);
+        return res;
+    }
     
     @Override
     public LinkedList<Product> getProductByName(String name) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String query = "select * from products p where soundex(p.name)=soundex(?)";
+        PreparedStatement stmt = connection.prepareStatement(query);
+        stmt.setString(1, name);
+        LinkedList<Product> res=new LinkedList<Product> ();
+        for(Object o:super.fillResult(Product.class, map, stmt.executeQuery()))
+            res.add((Product) o);
+        return res;
     }
 
     @Override

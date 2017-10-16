@@ -47,6 +47,7 @@ public class JdbcPictureDao extends JdbcUtilities implements PictureDao {
             res.add((Picture) o);
         return res;
     }
+    
 
     @Override
     public LinkedList<Picture> getPictureByShop(Shop shop) throws Exception {
