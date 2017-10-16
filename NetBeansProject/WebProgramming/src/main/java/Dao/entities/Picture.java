@@ -5,20 +5,11 @@ package Dao.entities;
 * @generated
 */
 public class Picture extends IdOwnerComparable{
-    private int id;
     private String name;
     private String description;
     private String path;
     private Product product;
     private Shop shop;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;

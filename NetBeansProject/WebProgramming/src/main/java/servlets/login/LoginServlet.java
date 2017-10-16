@@ -1,12 +1,12 @@
-/*
+    /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package login.servlet;
+package servlets.login;
 
-import Dao.UserDao;
-import Dao.entities.User;
+import Dao.*;
+import Dao.entities.*;
 import java.io.IOException;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -52,19 +52,25 @@ public class LoginServlet extends HttpServlet {
         String contextPath = getServletContext().getContextPath();
         if (!contextPath.endsWith("/")) {
             contextPath += "/";
-        }
-        try{
-            User user=userDao.getUserByEmailPassword(email, password);
-            if(user==null)
-            {
-                Cookie c = new Cookie("userId", Integer.toString(user.getId()));
-                response.addCookie(c);
-                response.sendRedirect(response.encodeRedirectURL(contextPath + "/login"+"?error=true"));
-            }else{
-                request.getSession().setAttribute("authenticatedUser", user);
-                response.sendRedirect(response.encodeRedirectURL(contextPath + "index"));
+        }       
+        try {
+            User user = userDao.getUserByEmailPassword(email, password);
+            if (user == null) {
+                response.sendRedirect(response.encodeRedirectURL(contextPath + "login" + "?error=true"));
+            } else {
+                request.getSession().setAttribute("user", user);
+                Cart cart = (Cart) request.getSession().getAttribute("cart");
+                if (cart != null) {
+                    ProductDao pd = (ProductDao) request.getSession().getAttribute("productDao");
+                    for (Cookie c : request.getCookies()) {
+                        cart.getProducts().add(pd.getProductById(Integer.parseInt(c.getValue())));
+                        c.setMaxAge(0);
+                    }
+                }
+                response.sendRedirect(response.encodeRedirectURL(contextPath));
             }
-        }
+        } 
+
         catch(Exception e){
             Log.write(e.toString());
         }

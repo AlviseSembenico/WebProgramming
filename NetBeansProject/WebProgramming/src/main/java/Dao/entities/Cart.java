@@ -30,4 +30,11 @@ public class Cart extends IdOwnerComparable{
         this.products = products;
     }
     
+    public int countProduct(Product product){
+        int res=0;
+        for(Product p:products)
+            if(p.equals(product))
+                res++;
+        return res;
+    }
 }

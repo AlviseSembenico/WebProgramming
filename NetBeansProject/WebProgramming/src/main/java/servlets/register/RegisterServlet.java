@@ -1,4 +1,4 @@
-package register.servlet;
+package servlets.register;
 
 import Dao.UserDao;
 import Dao.entities.User;
@@ -35,10 +35,9 @@ public class RegisterServlet extends HttpServlet {
             throws ServletException, IOException {
         String lastName = request.getParameter("lastname");
         String firstName = request.getParameter("firstname");
-        
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        if (lastName != "") {
+        if (lastName.length()>0) {
             String contextPath = getServletContext().getContextPath();
             if (!contextPath.endsWith("/")) {
                 contextPath += "/";
