@@ -62,7 +62,7 @@
 
                             <div class="card-content">
                                 <h4 class="card-title">
-                                    <a>Iphon 8</a>
+                                    <a>Iphone 8</a>
                                 </h4>
                                 <p class="card-description">The last apple product</p>
                                 <div class="footer">
@@ -109,7 +109,7 @@
 
                             <div class="card-content">
                                 <h4 class="card-title">
-                                    <h4 class="card-title">Monotor</h4>
+                                    <h4 class="card-title">Monitor</h4>
                                 </h4>
                                 <p class="card-description">SAMSUNG Monitor LCD con Retroilluminazione a LED 27” LC27F396FHU Risoluzione 1920 x 1080 Pixels Full HD Tempo di Risposta 4 ms Contrasto 3000 :1 Luminosità 250 cd / m²</p>
                                 <div class="footer">
@@ -164,7 +164,7 @@
                                         <span class="price price-new">&euro;220</span>
                                     </div>
                                     <div class="stats">
-                                   </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -192,7 +192,7 @@
                                     <div class="panel-heading" role="tab" id="headingOne">
                                         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                                             <h4 class="panel-title">Price Range</h4>
-                                            <i class="material-icons">keyboard_arrow_down</i>
+                                            <i class="material-icons material-margin">keyboard_arrow_down</i>
                                         </a>
                                     </div>
                                     <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
@@ -209,7 +209,7 @@
                                     <div class="panel-heading" role="tab" id="headingTwo">
                                         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                             <h4 class="panel-title">Clothing</h4>
-                                            <i class="material-icons">keyboard_arrow_down</i>
+                                            <i class="material-icons material-margin">keyboard_arrow_down</i>
                                         </a>
                                     </div>
                                     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
@@ -277,7 +277,7 @@
                                     <div class="panel-heading" role="tab" id="headingThree">
                                         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                             <h4 class="panel-title">Designer</h4>
-                                            <i class="material-icons">keyboard_arrow_down</i>
+                                            <i class="material-icons material-margin">keyboard_arrow_down</i>
                                         </a>
                                     </div>
                                     <div id="collapseThree" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingThree">
@@ -415,7 +415,7 @@
                                     <div class="panel-heading" role="tab" id="headingFour">
                                         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                                             <h4 class="panel-title">Colour</h4>
-                                            <i class="material-icons">keyboard_arrow_down</i>
+                                            <i class="material-icons material-margin">keyboard_arrow_down</i>
                                         </a>
                                     </div>
                                     <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
@@ -850,4 +850,34 @@
         </div>
     </div>
     <c:import url="pageBuilder/footer.jsp"/>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var slider2 = document.getElementById('sliderRefine');
+
+            noUiSlider.create(slider2, {
+                start: [42, 880],
+                connect: true,
+                range: {
+                    'min': [30],
+                    'max': [900]
+                }
+            });
+
+            var limitFieldMin = document.getElementById('price-left');
+            var limitFieldMax = document.getElementById('price-right');
+
+            slider2.noUiSlider.on('update', function (values, handle) {
+                if (handle) {
+                    limitFieldMax.innerHTML = $('#price-right').data('currency') + Math.round(values[handle]);
+                } else {
+                    limitFieldMin.innerHTML = $('#price-left').data('currency') + Math.round(values[handle]);
+                }
+            });
+        });
+    </script>
+
+
+
+
 </html>
