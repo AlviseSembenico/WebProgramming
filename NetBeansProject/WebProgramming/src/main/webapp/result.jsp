@@ -191,7 +191,8 @@
                                                 <i class="material-icons">filter_list</i>
                                             </button>
                                         </h4>
-                                        <div class="panel panel-default panel-blu">
+                                        <input name="name" id="${name}" hidden="true"/>
+                                           <div class="panel panel-default panel-blu"
                                             <div class="panel-heading" role="tab" id="headingOne">
                                                 <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                                                     <h4 class="panel-title">Price Range</h4>
