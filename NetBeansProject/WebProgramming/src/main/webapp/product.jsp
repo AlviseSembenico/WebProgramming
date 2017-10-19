@@ -41,12 +41,12 @@
                                 </c:forEach>
                             </div>
                             <ul class="active nav flexi-nav" role="tablist" id="flexiselDemo1">
-                                <li>
+                               <!-- <li>
                                     <a href="#product-page<c:out value='${picture.get(0)}'/>" role="tab" data-toggle="tab" aria-expanded="true">
                                         <img src="<c:out value='${picture.get(0).getPath()}' />">
                                     </a>
-                                </li>
-                                <c:forEach var="i" items='${picture}' begin="1">
+                                </li> -->
+                                <c:forEach var="i" items='${picture}' begin="0">
                                     <li>
                                         <a href="#product-page<c:out value='${i.getId()}'/>" role="tab" data-toggle="tab" aria-expanded="false">
                                             <img src="<c:out value='${i.getPath()}' />">
