@@ -1169,7 +1169,7 @@ output {
     position: relative;
 }
 .form-group.label-floating label.control-label, .form-group.label-placeholder label.control-label, .form-group.label-static label.control-label {
-    position: absolute;
+    /*position: absolute;*/
     pointer-events: none;
     transition: .3s ease all;
 }
