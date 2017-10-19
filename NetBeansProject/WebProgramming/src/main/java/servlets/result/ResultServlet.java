@@ -43,7 +43,7 @@ public class ResultServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         String name=null;
         String latitude=null;
         String longitude=null;
@@ -56,7 +56,7 @@ public class ResultServlet extends HttpServlet {
         try{
         name = request.getParameter("name");
         latitude = request.getParameter("latitude");
-        longitude = request.getParameter("latitude");
+        longitude = request.getParameter("longitude");
         radius = request.getParameter("radius");
         minPrice = request.getParameter("minPrice");
         maxPrice = request.getParameter("maxPrice");
@@ -87,12 +87,12 @@ public class ResultServlet extends HttpServlet {
         }
         try {
             LinkedList<Product> product = productDao.getProductByFilters(name, Double.parseDouble(latitude), Double.parseDouble(longitude), Double.parseDouble(radius), Double.parseDouble(minPrice), Double.parseDouble(maxPrice), Double.parseDouble(minRew), Double.parseDouble(maxRew));
-            request.setAttribute("result", product);
+            request.setAttribute("product", product);
         } catch (Exception ex) {
             Logger.getLogger(ResultServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        RequestDispatcher RequetsDispatcherObj = request.getRequestDispatcher("/login");
+        RequestDispatcher RequetsDispatcherObj = request.getRequestDispatcher("/result.jsp");
         RequetsDispatcherObj.forward(request, response);
     }
 }
