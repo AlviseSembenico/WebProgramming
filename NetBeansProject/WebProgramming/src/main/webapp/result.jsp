@@ -182,13 +182,13 @@
                     <h2 class="section-title">Find what you need</h2>
                     <div class="row">
                         <div class="col-md-3">
-                            <form>
+                            <form method="GET">
                                 <div class="card card-refine card-plain">
                                     <div class="card-content">
                                         <h4 class="card-title">
-                                            Refine
-                                            <button class="btn btn-default btn-fab btn-fab-mini btn-simple pull-right" rel="tooltip" title="Reset Filter">
-                                                <i class="material-icons">cached</i>
+                                            Filter
+                                            <button class="btn btn-default btn-fab btn-fab-mini btn-simple pull-right" rel="tooltip" title="Send filter">
+                                                <i class="material-icons">filter_list</i>
                                             </button>
                                         </h4>
                                         <div class="panel panel-default panel-blu">
@@ -215,7 +215,7 @@
                                         <div class="panel panel-default panel-blu">
                                             <div class="panel-heading" role="tab" id="headingTwo">
                                                 <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                                    <h4 class="panel-title">Latidude</h4>
+                                                    <h4 class="panel-title">Region</h4>
                                                     <i class="material-icons material-margin">keyboard_arrow_down</i>
                                                 </a>
                                             </div>
@@ -223,17 +223,31 @@
                                                 <div class="panel-body">
                                                     <form action="">
                                                         <fieldset>
-                                                            <legend>Latidude</legend>
-                                                            <input type="radio" name="Latidude" value="0"/> Everetin <br>
-                                                            <input type="radio" name="Latidude" value="30"/> 30<br>
-                                                            <input type="radio" name="Latidude" value="90"/> 90<br>
-                                                            <input type="radio" name="Latidude" value="150"/> 150<br>
-                                                            <input type="radio" name="Latidude" value="200"/> 200<br>
-                                                            <input type="radio" name="Latidude" value="260"/> 260<br>
-                                                            <input type="radio" name="Latidude" value="310"/> 310<br>
-                                                            <input type="radio" name="Latidude" value="360"/> 360 <br>
+                                                            <legend>Region</legend>
+                                                            <input type="radio" name="Region" value=""/> Everything <br>
+                                                            <input type="radio" name="Region" value="Valle da Osta"/> Valle da Osta<br>
+                                                            <input type="radio" name="Region" value="Piemonte"/> Piemonte<br>
+                                                            <input type="radio" name="Region" value="Liguria"/> Liguria<br>
+                                                            <input type="radio" name="Region" value="Lombardia"/> Lombardia<br>
+                                                            <input type="radio" name="Region" value="Trentino-Alto Adige"/> Trentino-Alto Adige<br>
+                                                            <input type="radio" name="Region" value="Veneto"/> Veneto<br>
+                                                            <input type="radio" name="Region" value="Friuli-Venezia Giulia"/> Friuli-Venezia Giulia <br>
+                                                            <input type="radio" name="Region" value="Emilia-Romagna"/> Emilia-Romagna<br>
+                                                            <input type="radio" name="Region" value="Toscana"/> Toscana<br>
+                                                            <input type="radio" name="Region" value="Marche"/> Marche<br>
+                                                            <input type="radio" name="Region" value="Umbria"/> Umbria<br>
+                                                            <input type="radio" name="Region" value="Lazio"/> Lazio<br>
+                                                            <input type="radio" name="Region" value="Abruzzo"/> Abruzzo<br>
+                                                            <input type="radio" name="Region" value="Molise"/> Molise<br>
+                                                            <input type="radio" name="Region" value="Campania"/> Campania<br>
+                                                            <input type="radio" name="Region" value="Basilicata"/> Basilicata<br>
+                                                            <input type="radio" name="Region" value="Puglia"/> Puglia<br>
+                                                            <input type="radio" name="Region" value="Calabria"/> Calabria<br>
+                                                            <input type="radio" name="Region" value="Sicilia"/> Sicilia<br>
+                                                            <input type="radio" name="Region" value="Sardegna"/> Sardegna<br>
+                                                            
                                                         </fieldset>
-                                                    </form>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -241,25 +255,37 @@
                                         <div class="panel panel-default panel-blu">
                                             <div class="panel-heading" role="tab" id="headingThree">
                                                 <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                                    <h4 class="panel-title">Longitude</h4>
+                                                    <h4 class="panel-title">City</h4>
                                                     <i class="material-icons material-margin">keyboard_arrow_down</i>
                                                 </a>
                                             </div>
                                             <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                                                 <div class="panel-body">
-                                                    <form action="">
-                                                        <fieldset>
-                                                            <legend>Longitude</legend>
-                                                            <input type="radio" name="Longitude" value="0"/> Everetin <br>
-                                                            <input type="radio" name="Longitude" value="30"/> 30<br>
-                                                            <input type="radio" name="Longitude" value="90"/> 90<br>
-                                                            <input type="radio" name="Longitude" value="150"/> 150<br>
-                                                            <input type="radio" name="Longitude" value="200"/> 200<br>
-                                                            <input type="radio" name="Longitude" value="260"/> 260<br>
-                                                            <input type="radio" name="Longitude" value="310"/> 310<br>
-                                                            <input type="radio" name="Longitude" value="360"/> 360 <br>
-                                                        </fieldset>
-                                                    </form>
+                                                    <fieldset>
+                                                        <legend>City</legend>
+                                                        <input type="radio" name="City" value=""/> Everything <br>
+                                                        <input type="radio" name="City" value="Aosta"/> Aosta<br>
+                                                        <input type="radio" name="City" value="Torino"/> Torino<br>
+                                                        <input type="radio" name="City" value="Genova"/> Genova<br>
+                                                        <input type="radio" name="City" value="Milano"/> Milano<br>
+                                                        <input type="radio" name="City" value="Trento"/> Trento<br>
+                                                        <input type="radio" name="City" value="Venezia"/> Venezia<br>
+                                                        <input type="radio" name="City" value="Trieste"/> Trieste<br>
+                                                        <input type="radio" name="City" value="Bologna"/> Bologna<br>
+                                                        <input type="radio" name="City" value="Firenze"/> Firenze<br>
+                                                        <input type="radio" name="City" value="Ancona"/> Ancona<br>
+                                                        <input type="radio" name="City" value="Perugia"/> Perugia<br>
+                                                        <input type="radio" name="City" value="Roma"/> Roma<br>
+                                                        <input type="radio" name="City" value="L'Aquila"/> L'Aquila<br>
+                                                        <input type="radio" name="City" value="Campobasso"/> Campobasso<br>
+                                                        <input type="radio" name="City" value="Napoli"/> Napoli<br>
+                                                        <input type="radio" name="City" value="Potenza"/> Potenza<br>
+                                                        <input type="radio" name="City" value="Bari"/> Bari<br>
+                                                        <input type="radio" name="City" value="Catanzaro"/> Catanzaro<br>
+                                                        <input type="radio" name="City" value="Palermo"/> Palermo<br>
+                                                        <input type="radio" name="City" value="Cagliari"/> Cagliari<br>
+                                                    </fieldset>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -272,17 +298,17 @@
                                                     <i class="material-icons material-margin">keyboard_arrow_down</i>
                                                 </a>
                                             </div>
-                                            <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                                            <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
                                                 <div class="panel-body">
-                                                    <form action="">
-                                                        <fieldset>
-                                                            <legend>Radius</legend>
-                                                            <input type="radio" name="Radius" value="0"/> Everetin <br>
-                                                            <input type="radio" name="Radius" value="30"/> 30<br>
-                                                            <input type="radio" name="Radius" value="90"/> 90<br>
-                                                            <input type="radio" name="Radius" value="150"/> 150<br>
-                                                            <input type="radio" name="Radius" value="180"/> 180<br>
-                                                        </fieldset>
+
+                                                    <fieldset>
+                                                        <legend>Radius</legend>
+                                                        <input type="radio" name="Radius" value="0"/> Everything <br>
+                                                        <input type="radio" name="Radius" value="30"/> 30<br>
+                                                        <input type="radio" name="Radius" value="90"/> 90<br>
+                                                        <input type="radio" name="Radius" value="150"/> 150<br>
+                                                        <input type="radio" name="Radius" value="180"/> 180<br>
+                                                    </fieldset>
                                                     </form>
                                                 </div>
                                             </div>
