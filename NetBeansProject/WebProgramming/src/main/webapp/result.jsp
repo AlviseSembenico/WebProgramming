@@ -221,54 +221,19 @@
                                             </div>
                                             <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                                                 <div class="panel-body">
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input type="checkbox" value="" data-toggle="checkbox" checked="">
-                                                            Everiting
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input type="checkbox" value="30" data-toggle="checkbox">
-                                                            10
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input type="checkbox" value="60" data-toggle="checkbox">
-                                                            60
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input type="checkbox" value="90" data-toggle="checkbox">
-                                                            120
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input type="checkbox" value="120" data-toggle="checkbox">
-                                                            200
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input type="checkbox" value="150" data-toggle="checkbox">
-                                                            280
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input type="checkbox" value="180" data-toggle="checkbox">
-                                                            360
-                                                        </label>
-                                                    </div>
+                                                    <form action="">
+                                                        <fieldset>
+                                                            <legend>Latidude</legend>
+                                                            <input type="radio" name="Latidude" value="0"/> Everetin <br>
+                                                            <input type="radio" name="Latidude" value="30"/> 30<br>
+                                                            <input type="radio" name="Latidude" value="90"/> 90<br>
+                                                            <input type="radio" name="Latidude" value="150"/> 150<br>
+                                                            <input type="radio" name="Latidude" value="200"/> 200<br>
+                                                            <input type="radio" name="Latidude" value="260"/> 260<br>
+                                                            <input type="radio" name="Latidude" value="310"/> 310<br>
+                                                            <input type="radio" name="Latidude" value="360"/> 360 <br>
+                                                        </fieldset>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
@@ -282,58 +247,23 @@
                                             </div>
                                             <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                                                 <div class="panel-body">
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input type="checkbox" value="" data-toggle="checkbox" checked="">
-                                                            Everiting
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input type="checkbox" value="30" data-toggle="checkbox">
-                                                            10
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input type="checkbox" value="60" data-toggle="checkbox">
-                                                            60
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input type="checkbox" value="90" data-toggle="checkbox">
-                                                            120
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input type="checkbox" value="120" data-toggle="checkbox">
-                                                            200
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input type="checkbox" value="150" data-toggle="checkbox">
-                                                            280
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input type="checkbox" value="180" data-toggle="checkbox">
-                                                            360
-                                                        </label>
-                                                    </div>
+                                                    <form action="">
+                                                        <fieldset>
+                                                            <legend>Longitude</legend>
+                                                            <input type="radio" name="Longitude" value="0"/> Everetin <br>
+                                                            <input type="radio" name="Longitude" value="30"/> 30<br>
+                                                            <input type="radio" name="Longitude" value="90"/> 90<br>
+                                                            <input type="radio" name="Longitude" value="150"/> 150<br>
+                                                            <input type="radio" name="Longitude" value="200"/> 200<br>
+                                                            <input type="radio" name="Longitude" value="260"/> 260<br>
+                                                            <input type="radio" name="Longitude" value="310"/> 310<br>
+                                                            <input type="radio" name="Longitude" value="360"/> 360 <br>
+                                                        </fieldset>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
-                            
+
 
                                         <div class="panel panel-default panel-blu">
                                             <div class="panel-heading" role="tab" id="headingFour">
@@ -344,317 +274,44 @@
                                             </div>
                                             <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                                                 <div class="panel-body">
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input type="checkbox" value="" data-toggle="checkbox" checked="">
-                                                            Everiting
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input type="checkbox" value="30" data-toggle="checkbox">
-                                                            10
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input type="checkbox" value="60" data-toggle="checkbox">
-                                                            50
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input type="checkbox" value="90" data-toggle="checkbox">
-                                                            90
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input type="checkbox" value="120" data-toggle="checkbox">
-                                                            120
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input type="checkbox" value="150" data-toggle="checkbox">
-                                                            150
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input type="checkbox" value="180" data-toggle="checkbox">
-                                                            180
-                                                        </label>
-                                                    </div>
+                                                    <form action="">
+                                                        <fieldset>
+                                                            <legend>Radius</legend>
+                                                            <input type="radio" name="Radius" value="0"/> Everetin <br>
+                                                            <input type="radio" name="Radius" value="30"/> 30<br>
+                                                            <input type="radio" name="Radius" value="90"/> 90<br>
+                                                            <input type="radio" name="Radius" value="150"/> 150<br>
+                                                            <input type="radio" name="Radius" value="180"/> 180<br>
+                                                        </fieldset>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div><!-- end card -->
+                                </div>
+                            </form><!-- end card -->
                         </div>
-
                         <div class="col-md-9">
                             <div class="row">
                                 <div class="col-md-4">
-
-                                    <div class="card card-product card-plain no-shadow" data-colored-shadow="false">
-                                        <div class="card-image">
-                                            <a href="#">
-                                                <img src="../assets/img/examples/suit-1.jpg" alt="..."/>
-                                            </a>
-                                        </div>
-                                        <div class="card-content">
-                                            <a href="#">
-                                                <h4 class="card-title">Polo Ralph Lauren</h4>
-                                            </a>
-                                            <p class="description">
-                                                Impeccably tailored in Italy from lightweight navy wool.
-                                            </p>
-                                            <div class="footer">
-                                                <div class="price-container">
-                                                    <span class="price"> &euro; 800</span>
-                                                </div>
-
-                                                <button class="btn btn-rose btn-simple btn-fab btn-fab-mini btn-round pull-right" rel="tooltip" title="Remove from wishlist" data-placement="left">
-                                                    <i class="material-icons">favorite</i>
-                                                </button>
+                                <c:forEach var="i" items="result">
+                                    <div class="card-content">
+                                        <h4 class="card-title">
+                                            <h4 class="card-title"><c:out value="${result[i].getName()}"/></h4>
+                                        </h4>
+                                        <p class="card-description"><c:out value="${result[i].getDescription()}"/></p>
+                                        <div class="footer">
+                                            <div class="price-container">
+                                                <span class="price price-new">&euro;<c:out value="${result[i].getPrice()}"/></span>
+                                            </div>
+                                            <div class="stats">
                                             </div>
                                         </div>
-                                    </div> <!-- end card -->
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="card card-product card-plain no-shadow" data-colored-shadow="false">
-                                        <div class="card-image">
-                                            <a href="#">
-                                                <img src="../assets/img/examples/suit-2.jpg" alt="..."/>
-                                            </a>
-                                        </div>
-                                        <div class="card-content">
-                                            <a href="#">
-                                                <h4 class="card-title">Wooyoungmi</h4>
-                                            </a>
-                                            <p class="description">
-                                                Dark-grey slub wool, pintucked notch lapels.
-                                            </p>
-                                            <div class="footer">
-                                                <div class="price-container">
-                                                    <span class="price">&euro; 555</span>
-                                                </div>
-
-                                                <button class="btn btn-rose btn-simple btn-fab btn-fab-mini btn-round pull-right" rel="tooltip" title="Add to wishlist" data-placement="left">
-                                                    <i class="material-icons">favorite_border</i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div> <!-- end card -->
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="card card-product card-plain no-shadow" data-colored-shadow="false">
-                                        <div class="card-image">
-                                            <a href="#">
-                                                <img src="../assets/img/examples/suit-3.jpg" alt="..."/>
-                                            </a>
-                                        </div>
-                                        <div class="card-content">
-                                            <a href="#">
-                                                <h4 class="card-title">Tom Ford</h4>
-                                            </a>
-                                            <p class="description">
-                                                Immaculate tailoring is TOM FORD's forte.
-                                            </p>
-                                            <div class="footer">
-                                                <div class="price-container">
-                                                    <span class="price"> &euro; 879</span>
-                                                </div>
-
-                                                <button class="btn btn-rose btn-simple btn-fab btn-fab-mini btn-round pull-right"  rel="tooltip" title="Add to wishlist" data-placement="left">
-                                                    <i class="material-icons">favorite_border</i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div> <!-- end card -->
-                                </div>
-
-                                <div class="col-md-4">
-                                    <div class="card card-product card-plain no-shadow" data-colored-shadow="false">
-                                        <div class="card-image">
-                                            <a href="#">
-                                                <img src="../assets/img/examples/suit-4.jpg" alt="..."/>
-                                            </a>
-                                        </div>
-                                        <div class="card-content">
-                                            <a href="#">
-                                                <h4 class="card-title">Thom Sweeney</h4>
-                                            </a>
-                                            <p class="description">
-                                                It's made from lightweight grey wool woven.
-                                            </p>
-                                            <div class="footer">
-                                                <div class="price-container">
-                                                    <span class="price"> &euro; 680</span>
-                                                </div>
-
-                                                <button class="btn btn-rose btn-simple btn-fab btn-fab-mini btn-round pull-right"  rel="tooltip" title="Add to wishlist" data-placement="left">
-                                                    <i class="material-icons">favorite_border</i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div> <!-- end card -->
-                                </div>
-
-                                <div class="col-md-4">
-                                    <div class="card card-product card-plain no-shadow" data-colored-shadow="false">
-                                        <div class="card-image">
-                                            <a href="#">
-                                                <img src="../assets/img/examples/suit-5.jpg" alt="..."/>
-                                            </a>
-                                        </div>
-                                        <div class="card-content">
-                                            <a href="#">
-                                                <h4 class="card-title">Kingsman</h4>
-                                            </a>
-                                            <p class="description">
-                                                Crafted from khaki cotton and fully canvassed.
-                                            </p>
-                                            <div class="footer">
-                                                <div class="price-container">
-                                                    <span class="price"> &euro; 725</span>
-                                                </div>
-
-                                                <button class="btn btn-rose btn-simple btn-fab btn-fab-mini btn-round pull-right" rel="tooltip" title="Remove from wishlist" data-placement="left">
-                                                    <i class="material-icons">favorite</i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div> <!-- end card -->
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="card card-product card-plain no-shadow" data-colored-shadow="false">
-                                        <div class="card-image">
-                                            <a href="#">
-                                                <img src="../assets/img/examples/suit-6.jpg" alt="..."/>
-                                            </a>
-                                        </div>
-                                        <div class="card-content">
-                                            <a href="#">
-                                                <h4 class="card-title">Boglioli</h4>
-                                            </a>
-                                            <p class="description">
-                                                Masterfully crafted in Northern Italy.
-                                            </p>
-                                            <div class="footer">
-                                                <div class="price-container">
-                                                    <span class="price">&euro; 699</span>
-                                                </div>
-
-                                                <button class="btn btn-rose btn-simple btn-fab btn-fab-mini btn-round pull-right" rel="tooltip" title="Add to wishlist" data-placement="left">
-                                                    <i class="material-icons">favorite_border</i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div> <!-- end card -->
-                                </div>
-                                <div class="col-md-3 col-md-offset-4">
-                                    <button rel="tooltip" class="btn btn-rose btn-round">Load more...</button>
-                                </div>
+                                    </div>
+                                </c:forEach>
                             </div>
                         </div>
                     </div>
-
-                    <br>
-                    <h2 class="section-title">News in fashion</h2>
-
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="card card-background" style="background-image: url(../assets/img/examples/chris9.jpg)">
-                                <div class="card-content">
-                                    <h6 class="category text-info">Productivy Apps</h6>
-                                    <a href="#pablo">
-                                        <h3 class="card-title">The best trends in fashion 2017</h3>
-                                    </a>
-                                    <p class="card-description">
-                                        Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
-                                    </p>
-                                    <a href="#pablo" class="btn btn-white btn-round">
-                                        <i class="material-icons">subject</i> Read
-                                    </a>
-                                </div>
-                            </div> <!-- end card -->
-                        </div>
-
-                        <div class="col-md-4">
-                            <div class="card card-background" style="background-image: url(../assets/img/examples/color3.jpg)">
-                                <div class="card-content">
-                                    <h6 class="category text-info">Fashion News</h6>
-                                    <h3 class="card-title">Kanye joins the Yeezy team at Adidas</h3>
-                                    <p class="card-description">
-                                        Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
-                                    </p>
-                                    <a href="#pablo" class="btn btn-white btn-round">
-                                        <i class="material-icons">subject</i> Read
-                                    </a>
-                                </div>
-                            </div> <!-- end card -->
-                        </div>
-
-                        <div class="col-md-4">
-                            <div class="card card-background" style="background-image: url(../assets/img/examples/chris1.jpg)">
-                                <div class="card-content">
-                                    <h6 class="category text-info">Productivy Apps</h6>
-                                    <a href="#pablo">
-                                        <h3 class="card-title">Learn how to use the new colors of 2017</h3>
-                                    </a>
-                                    <p class="card-description">
-                                        Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
-                                    </p>
-                                    <a href="#pablo" class="btn btn-white btn-round">
-                                        <i class="material-icons">subject</i> Read
-                                    </a>
-                                </div>
-                            </div> <!-- end card -->
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="card card-background" style="background-image: url(../assets/img/dg3.jpg)">
-                                <div class="card-content">
-                                    <h6 class="category text-info">Tutorials</h6>
-                                    <a href="#pablo">
-                                        <h3 class="card-title">Trending colors of 2017</h3>
-                                    </a>
-                                    <p class="card-description">
-                                        Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
-                                    </p>
-                                    <a href="#pablo" class="btn btn-white btn-round">
-                                        <i class="material-icons">subject</i> Read
-                                    </a>
-                                </div>
-                            </div> <!-- end card -->
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="card card-background" style="background-image: url(../assets/img/dg1.jpg)">
-                                <div class="card-content">
-                                    <h6 class="category text-info">Productivy Style</h6>
-                                    <a href="#pablo">
-                                        <h3 class="card-title">Fashion & Style 2017</h3>
-                                    </a>
-                                    <p class="card-description">
-                                        Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
-                                    </p>
-                                    <a href="#pablo" class="btn btn-white btn-round">
-                                        <i class="material-icons">subject</i> read
-                                    </a>
-                                </div>
-                            </div> <!-- end card -->
-                        </div>
-                    </div>
-
                 </div>
             </div><!-- section -->
 
@@ -767,39 +424,39 @@
                 </div>
             </div>
         </div>
-    <c:import url="pageBuilder/footer.jsp"/>
-    <script type="text/javascript">
-        $(document).ready(function () {
+        <c:import url="pageBuilder/footer.jsp"/>
+        <script type="text/javascript">
+            $(document).ready(function () {
 
-            var slider2 = document.getElementById('sliderRefine');
+                var slider2 = document.getElementById('sliderRefine');
 
-            noUiSlider.create(slider2, {
-                start: [50, 750],
-                connect: true,
-                range: {
-                    'min': [0],
-                    'max': [1500]
-                }
+                noUiSlider.create(slider2, {
+                    start: [50, 750],
+                    connect: true,
+                    range: {
+                        'min': [0],
+                        'max': [1500]
+                    }
+                });
+
+                var limitFieldMin = document.getElementById('price-left');
+                var limitFieldMax = document.getElementById('price-right');
+
+                slider2.noUiSlider.on('update', function (values, handle) {
+                    if (handle) {
+
+                        limitFieldMax.innerHTML = $('#price-right').data('currency') + Math.round(values[handle]);
+                    } else {
+                        limitFieldMin.innerHTML = $('#price-left').data('currency') + Math.round(values[handle]);
+                    }
+                });
+
+                slider2.noUiSlider.on('change', function (values, handle) {
+                    document.getElementById('minPrice').setAttribute("value", values[0]);
+                    document.getElementById('maxPrice').setAttribute("value", values[1]);
+                })
+
             });
-
-            var limitFieldMin = document.getElementById('price-left');
-            var limitFieldMax = document.getElementById('price-right');
-
-            slider2.noUiSlider.on('update', function (values, handle) {
-                if (handle) {
-
-                    limitFieldMax.innerHTML = $('#price-right').data('currency') + Math.round(values[handle]);
-                } else {
-                    limitFieldMin.innerHTML = $('#price-left').data('currency') + Math.round(values[handle]);
-                }
-            });
-
-            slider2.noUiSlider.on('change', function (values, handle) {
-                document.getElementById('minPrice').setAttribute("value", values[0]);
-                document.getElementById('maxPrice').setAttribute("value", values[1]);
-            })
-
-        });
-    </script>
+        </script>
 
 </html>
