@@ -60,6 +60,10 @@
         <jsp-file>/shop.jsp</jsp-file>
     </servlet>
     <servlet>
+        <servlet-name>AddObjectServlet</servlet-name>
+        <servlet-class>servlets.addObject.AddObjectServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>Result</servlet-name>
         <servlet-class>servlets.result.ResultServlet</servlet-class>
     </servlet>
@@ -102,6 +106,10 @@
     <servlet-mapping>
         <servlet-name>Result</servlet-name>
         <url-pattern>/result</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddObjectServlet</servlet-name>
+        <url-pattern>/addObject</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

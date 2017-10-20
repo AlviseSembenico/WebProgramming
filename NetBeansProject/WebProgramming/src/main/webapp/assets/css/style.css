@@ -7,6 +7,30 @@ and open the template in the editor.
     Created on : Sep 9, 2017, 6:52:37 PM
     Author     : Alvise
 */
+.add-object .middle{
+    text-align: center;
+}
+
+.add-object .dropdown{
+    margin-top:20px
+    
+}
+
+.add-object .img{
+    max-width: 160px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.add-object .name{
+    margin-top:-80px;
+}
+
+.add-object .fileinput{
+    text-align: center;
+    margin-top: -50px;
+}
+
 
 .navbar-default{
     background-color:#555/*rgba(51, 122, 183, 1)   */

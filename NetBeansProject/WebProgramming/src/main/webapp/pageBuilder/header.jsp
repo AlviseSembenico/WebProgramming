@@ -64,7 +64,7 @@
                     
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                    <div class="card card-raised card-form-horizontal">
+                    <div class="card card-raised card-form-horizontal" style="margin-bottom: 0px;">
                         <div class="card-content" style="padding: 5px;">
                             <form method="" action="">
                                 <div class="row">
