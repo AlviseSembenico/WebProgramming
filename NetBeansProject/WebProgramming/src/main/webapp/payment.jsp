@@ -39,68 +39,91 @@
         <div class="main main-raised">
             <div class="profile-content">
                 <div class="container">
-                    <div class="row-content">
-                        <div class="container tim-container">
-                            <div id="tables">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <h4>Shopping Cart Table</h4>
+                    <div class="row-content">                        
+                        <div class="col-md-12">
+                            <div class="row">
+                                <h4>Totale: </h4>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3">
+		                    <div class="title">
+		                        <h4>Select a payment method</h4>
+		                    </div>
+                                    <div class="radio">
+                                            <label  style="color:black">
+                                                <input id="credito" type="radio" name="optionsRadios"  checked="true" onchange="ChangeMode()"><span class="circle"></span><span class="check"></span>
+                                                    <p>Credit or debit card</p>
+                                            </label>
                                     </div>
-                                    <div class="col-md-10 col-md-offset-1">
-                                        <div class="row">
-                                            <div class="col-md-2 text-center"> 
-                                                PRODUCT
-                                            </div>
-                                            <div class="col-md-3 text-center"> 
-                                                NAME
-                                            </div>
-                                            <div class="col-md-2 th-description"> 
-                                                DESCRIPTION
-                                            </div>
-                                            <div class="col-md-1"> 
-                                                PRICE
-                                            </div>
-
-                                            <div class="col-md-1 th-description"> 
-                                                CATEGORY
-                                            </div>
-                                            <div class="col-md-1 th-description"> 
-                                                SHOP 
-                                            </div>
-                                            <div class="col-md-1"> 
-                                                ACTION
-                                            </div>
+                                    <div class="radio">
+                                            <label style="color:black">
+                                                    <input id="paypal" type="radio" name="optionsRadios" onchange="ChangeMode()"><span class="circle"></span><span class="check"></span>
+                                                    <p>PayPal</p>
+                                            </label>
+                                    </div>
+                                    <div class="radio">
+                                            <label style="color:black">
+                                                    <input id="bonifico" type="radio" name="optionsRadios" onchange="ChangeMode()"><span class="circle"></span><span class="check"></span>
+                                                    <p>Bank transfer</p>
+                                            </label>
+                                    </div>
+		                </div>
+                            </div>
+                            <br/>
+                            <hr/>
+                            <br/>
+                            <div class="row">                                
+                                <div id='CC' style='display: none'>
+                                    <div class="row">
+                                        <div class='col-md-4'>
+                                            <h5>Accountholder</h5>
                                         </div>
-                                        <hr>
-                                        <c:forEach var="i" items="${cart.getProducts()}">
-                                            <div class="row">
-                                                <div class="col-md-2 td-name"> 
-                                                    <div class="img-container" style="width: 100%; max-width: 120px">
-                                                        <img alt="..." src="<c:out value='${pictureDao.getPictureByProduct(i).get(0).getPath()}'/>">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3 col-main">
-                                                    <a href="../product?id=<c:out value='${i.getId()}'/>"><c:out value="${i.getName()}"/></a>
-                                                </div>
-                                                <div class="col-md-2 col-name"> 
-                                                    <c:out value="${i.getDescription()}"/>
-                                                </div>
-                                                <div class="col-md-1  col-number text-left"> 
-                                                    <small>€</small><c:out value="${i.getPrice()}"/>
-                                                </div>
-                                                <div class="col-md-1 col-name" >
-                                                    <c:out value="${i.getCategory()}"/>
-                                                </div>
-                                                <div class="col-md-1 col-name"> 
-                                                    <a href="../product?id=<c:out value='${i.getShop().getId()}'/>"><c:out value="${i.getShop().getName()}"/></a>    
-                                                </div>
-                                                <div class="col-md-2 col-name">                                                 
-                                                    QTY <c:out value='${cart.countProduct(i)}'/>
-                                                </div>
-                                            </div>
-                                        </c:forEach>
-
+                                        <div class='col-md-4'>
+                                            <h5>Card Number</h5>
+                                        </div>
+                                        <div class='col-md-4'>
+                                            <h5>Expiry date</h5>
+                                        </div>
                                     </div>
+                                    <div class='row'>
+                                        <div class="col-md-4">
+                                            <input type="text" placeholder="Accountholder" class="form-control">
+                                        </div>   
+                                        <div class="col-md-4">
+                                            <input type="text" placeholder="Card Number" class="form-control">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input class="datepicker form-control" type="text" value="03/12/2016"/>
+                                        </div>  
+                                    </div>
+                                </div>
+                            </div>
+                            <script>
+                                $('.datepicker').datepicker({
+                                            weekStart:1
+                                });
+                            </script>
+                                
+                            <script text='javascript'>
+                                function Paga()
+                                {
+                                    alert("Pagamento effettuato");
+                                }       
+                                function ChangeMode()
+                                {
+                                   var credito = document.getElementById('credito').checked;
+                                   var paypal = document.getElementById('paypal').checked;
+                                   var bonifico = document.getElementById('bonifico').checked;
+                                   
+                                   if(credito == true)
+                                   {
+                                       document.getElementById('CC').removeAttribute('disabled');
+                                   }
+                                }
+                            </script>
+                            <div class="row">
+                                <div class="text-center">
+                                    <input type="button" class="btn btn-primary" value="Confirm" onclick='Paga()'/>
                                 </div>
                             </div>
                         </div>
