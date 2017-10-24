@@ -9,7 +9,8 @@ package Dao.jdbc;
 import Dao.IdOwner;
 import Dao.ProductDao;
 import Dao.entities.Product;
-import Dao.jdbc.utilities.JdbcUtilities;
+import Dao.entities.Shop;
+import Dao.jdbc.utilities.*;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -151,6 +152,16 @@ public class JdbcProductDao extends JdbcUtilities implements ProductDao{
         stmt.setDouble(2, max);
         LinkedList<Product> res=new LinkedList<Product> ();
         for(Object o:super.fillResult(Product.class, map, stmt.executeQuery()))
+            res.add((Product) o);
+        return res;
+    }
+    
+    @Override
+    public LinkedList<Product> getProductByShop(Shop shop) throws Exception {
+        HashMap<Object,String> mappa=new HashMap<Object,String>();
+        mappa.put(shop.getId(),"shops_id" );
+        LinkedList<Product> res=new LinkedList<Product> ();
+        for(Object o:super.getObject(Product.class, map, tableName, mappa))
             res.add((Product) o);
         return res;
     }

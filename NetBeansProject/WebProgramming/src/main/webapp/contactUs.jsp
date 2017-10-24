@@ -9,11 +9,9 @@
 <!DOCTYPE html>
 <!doctype html>
 <html>
-    <c:import url="pageBuilder/header.jsp?trasparent=false"/>
+    <c:import url="pageBuilder/header.jsp"/>
     <body class="contact-page">
     <div id="contactUsMap" class="big-map"></div>
-
-
     <div class="main main-raised">
         <div class="contact-content">
             <div class="container">

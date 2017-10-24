@@ -50,10 +50,13 @@ public class JdbcPictureDao extends JdbcUtilities implements PictureDao {
     
 
     @Override
-    public Picture getPictureByShop(Shop shop) throws Exception {
-        HashMap<Object,String> mappa=new HashMap<Object,String>();
+    public LinkedList<Picture> getPictureByShop(Shop shop) throws Exception {
+         HashMap<Object,String> mappa=new HashMap<Object,String>();
         mappa.put(shop.getId(),"shops_id");
-        return (Picture) super.getObject(Picture.class, map, tableName, mappa).get(0);
+        LinkedList<Picture> res=new LinkedList<Picture>();
+        for(Object o:super.getObject(Picture.class, map, tableName, mappa))
+            res.add((Picture) o);
+        return res;
     }
 
    

@@ -3,18 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package servlets.product;
+package servlets.cart;
 
-import Dao.ProductDao;
-import Dao.entities.Product;
-import Dao.entities.Cart;
-import Dao.entities.User;
-import Dao.UserDao;
 import Dao.CartDao;
 import Dao.PictureDao;
-import Dao.entities.Picture;
+import Dao.ProductDao;
+import Dao.entities.Cart;
 import java.io.IOException;
-import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -23,15 +18,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import servlets.product.ProductServlet;
 
 /**
  *
- * @author Utente
+ * @author zappi
  */
-public class ProductServlet extends HttpServlet {
+public class CartServlet extends HttpServlet {
 
     private ProductDao productDao;
-    private UserDao userDao;
     private CartDao cartDao;
     private PictureDao pictureDao;
 
@@ -39,10 +34,6 @@ public class ProductServlet extends HttpServlet {
     public void init() throws ServletException {
         productDao = (ProductDao) super.getServletContext().getAttribute("productDao");
         if (productDao == null) {
-            throw new ServletException("Impossible to get dao factory for user storage system");
-        }
-        userDao = (UserDao) super.getServletContext().getAttribute("userDao");
-        if (userDao == null) {
             throw new ServletException("Impossible to get dao factory for user storage system");
         }
         cartDao = (CartDao) super.getServletContext().getAttribute("cartDao");
@@ -53,8 +44,10 @@ public class ProductServlet extends HttpServlet {
         if (pictureDao == null) {
             throw new ServletException("Impossible to get dao factory for user storage system");
         }
+
     }
 
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -67,19 +60,25 @@ public class ProductServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            int id = Integer.parseInt(request.getParameter("id"));
-            Product product = productDao.getProductById(id);
-            LinkedList<Picture> pictures = pictureDao.getPictureByProduct(product);
-            request.setAttribute("product", product);
-            request.setAttribute("pictures", pictures);
-            RequestDispatcher reqDes = request.getRequestDispatcher("/product.jsp");
+            HttpSession session = request.getSession(false);
+           // User user;
+            Cart cart;
+            //if (session != null) {
+               // user = (User) session.getAttribute("user");
+            //}
+            cart = (Cart) session.getAttribute("cart");
+            //request.setAttribute("cart", cart);
+            request.setAttribute("pictureDao", pictureDao);
+            request.setAttribute("productDao", productDao);
+            request.setAttribute("cart", cart);
+            RequestDispatcher reqDes = request.getRequestDispatcher("/cart.jsp");
             reqDes.forward(request, response);
+
         } catch (Exception ex) {
             Logger.getLogger(ProductServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -91,22 +90,7 @@ public class ProductServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            int pid = Integer.parseInt(request.getParameter("pid"));
-            HttpSession session = request.getSession(false);
-            Product product = productDao.getProductById(pid);
-            if (product != null) {
-                Cart cart = (Cart) session.getAttribute("cart");
-                if (cart == null) {
-                    cart = new Cart((User) request.getSession(false).getAttribute("user"));
-                }
-                cart.AddProducts(product);
-                session.setAttribute("cart", cart);
-            }
-            response.sendRedirect(response.encodeRedirectURL("cart"));
-        } catch (Exception ex) {
-            Logger.getLogger(ProductServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
     }
 
     /**
@@ -118,4 +102,5 @@ public class ProductServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
 }

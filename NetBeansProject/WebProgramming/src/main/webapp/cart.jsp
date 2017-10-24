@@ -8,27 +8,6 @@
 <%@page import="Dao.entities.*"%>
 <%@page import="Dao.*"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
-
-<c:set var="cartDao" value="${pageContext.servletContext.getAttribute('cartDao')}"></c:set>
-<c:set var="pictureDao" value="${pageContext.servletContext.getAttribute('pictureDao')}"></c:set>
-<c:set var="user" value="${pageContext.servletContext.getAttribute('user')}"></c:set>
-<c:if test="${user ne null}">   
-<c:set var="cart" value="${cartDao.getByUser(user)}"></c:set>
-</c:if>
-
-    <%  Cart cart= (Cart)session.getAttribute("cart"); 
-        if(cart==null){
-            cart=new Cart();
-            session.setAttribute("cart", cart);
-            ProductDao pd=(ProductDao)session.getAttribute("productDao"); 
-            for(Cookie c:request.getCookies()){
-                try{
-                    cart.getProducts().add(pd.getProductById(Integer.parseInt(c.getValue())));
-                }catch(Exception e){}
-            }
-               
-        } 
-    %>
    
     <!DOCTYPE html>
     <html>

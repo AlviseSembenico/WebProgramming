@@ -8,10 +8,6 @@
 <%@page import="Dao.ProductDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
-<c:set var="productDao" value="${pageContext.servletContext.getAttribute('productDao')}"></c:set>
-<c:set var="product" value="${productDao.getById(param.id)}"></c:set>
-<c:set var="pictureDao" value="${pageContext.servletContext.getAttribute('pictureDao')}"></c:set>
-<c:set var="picture" value="${pictureDao.getPictureByProduct(product)}"></c:set>
     <!DOCTYPE html>
     <!doctype html>
     <html>
@@ -31,22 +27,22 @@
                         <div class="col-md-6 col-sm-6">
 
                             <div class="tab-content">
-                                <div class="tab-pane active" id="product-page<c:out value='${picture.get(0).getId()}'/>">
-                                    <img src="<c:out value='${picture.get(0).getPath()}'/>">
+                                <div class="tab-pane active" id="product-page<c:out value='${pictures.get(0).getId()}'/>">
+                                    <img src="<c:out value='${pictures.get(0).getPath()}'/>">
                                 </div>
-                                <c:forEach var="i" items='${picture}' begin="1">
+                                <c:forEach var="i" items='${pictures}' begin="1">
                                    <div class="tab-pane" id="product-page<c:out value='${i.getId()}'/>">
                                     <img src="<c:out value='${i.getPath()}'/>">
                                 </div>
                                 </c:forEach>
                             </div>
                             <ul class="active nav flexi-nav" role="tablist" id="flexiselDemo1">
-                               <!-- <li>
-                                    <a href="#product-page<c:out value='${picture.get(0)}'/>" role="tab" data-toggle="tab" aria-expanded="true">
-                                        <img src="<c:out value='${picture.get(0).getPath()}' />">
+                                <li>
+                                    <a href="#product-page<c:out value='${pictures.get(0)}'/>" role="tab" data-toggle="tab" aria-expanded="true">
+                                        <img src="<c:out value='${pictures.get(0).getPath()}' />">
                                     </a>
-                                </li> -->
-                                <c:forEach var="i" items='${picture}' begin="0">
+                                </li>
+                                <c:forEach var="i" items='${pictures}' begin="1">
                                     <li>
                                         <a href="#product-page<c:out value='${i.getId()}'/>" role="tab" data-toggle="tab" aria-expanded="false">
                                             <img src="<c:out value='${i.getPath()}' />">
@@ -103,7 +99,8 @@
                                 </div>
                             </div>
                             <div class="row text-right">
-                                <form method="POST" action="utils/product">
+                                <form method="POST" action="product">
+                                    <input name="pid" style="visibility: hidden;" value="<c:out value="${product.getId()}"/>" />
                                     <button class="btn btn-rose btn-round" type="submit" >Add to Cart &nbsp;<i class="material-icons">shopping_cart</i></button>
                                 </form>
                             </div>

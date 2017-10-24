@@ -41,12 +41,12 @@
             <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse">
-            		<span class="sr-only">Toggle navigation</span>
-		            <span class="icon-bar"></span>
-		            <span class="icon-bar"></span>
-		            <span class="icon-bar"></span>
-        		</button>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
                     <a href="index.jsp">
                         <div class="logo-container">
                             <div class="logo">
@@ -61,89 +61,115 @@
                 </div>
 
                 <div class="collpase navbar-collapse">
-                    
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                    <div class="card card-raised card-form-horizontal" style="margin-bottom: 0px;">
-                        <div class="card-content" style="padding: 5px;">
-                            <form method="" action="">
-                                <div class="row">
-                                    <div class="col-sm-8">
 
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                    <i class="material-icons">mail</i>
-                                            </span>
-                                            <div class="form-group is-empty"><input value="" placeholder="Your Email..." class="form-control" type="email"><span class="material-input"></span><span class="material-input"></span></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <button type="button" class="btn btn-danger btn-block" style="padding-left: 10px;padding-right: 10px;">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <div class="card card-raised card-form-horizontal" style="margin-bottom: 0px;">
+                                <div class="card-content" style="padding: 5px;">
+                                    <form method="" action="">
+                                        <div class="row">
+                                            <div class="col-sm-8">
+
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">mail</i>
+                                                    </span>
+                                                    <div class="form-group is-empty"><input value="" placeholder="Your Email..." class="form-control" type="email"><span class="material-input"></span><span class="material-input"></span></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <button type="button" class="btn btn-danger btn-block" style="padding-left: 10px;padding-right: 10px;">
                                                     <i class="material-icons">search</i>
-                                            search</button>
-                                    </div>
+                                                    search</button>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
-                            </form>
-                        </div>
-                    </div>
+                            </div>
                         </li>
-                    <li>
-                        <a href="../index.html">
-                            <i class="material-icons">apps</i> Components
-                        </a>
-                    </li>
+                        <li>
+                            <a href="../index.html">
+                                <i class="material-icons">apps</i> Components
+                            </a>
+                        </li>
 
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="material-icons">view_day</i> Sections
-                            <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu dropdown-with-icons">
-                            <li>
-                                <a href="../sections.html#headers">
-                                    <i class="material-icons">dns</i> Headers
-                                </a>
-                            </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="material-icons">view_day</i> Sections
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu dropdown-with-icons">
+                                <li>
+                                    <a href="../sections.html#headers">
+                                        <i class="material-icons">dns</i> Headers
+                                    </a>
+                                </li>
 
-                        </ul>
-                    </li>
+                            </ul>
+                        </li>
 
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="material-icons">view_carousel</i> Examples
-                            <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu dropdown-with-icons">
-                            <li>
-                                <a href="../examples/about-us.html">
-                                    <i class="material-icons">account_balance</i> About Us
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <c:choose>
-                        <c:when test="${user eq null}">
-                            <li>
-                                <a href="login">
-                                    <i class="material-icons">person</i>Login
-                                </a>
-                            </li>
-                        </c:when>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="material-icons">view_carousel</i> Examples
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu dropdown-with-icons">
+                                <li>
+                                    <a href="../examples/about-us.html">
+                                        <i class="material-icons">account_balance</i> About Us
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <c:choose>
+                            <c:when test="${user eq null}">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <i class="material-icons">person</i> Login
+                                        <b class="caret"></b>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-with-icons">
+                                        <li>
+                                            <a href="login">
+                                                <i class="material-icons">person</i> Login
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="register">
+                                                <i class="material-icons">person</i> Register
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </c:when>
 
-                        <c:otherwise>
-                            <li>
-                                <a href="personal">
-                                    <i class="material-icons">person</i><c:out value="${user.getFirstName()}"/>
-                                </a>
-                            </li>
-                        </c:otherwise>
-                    </c:choose>
-                    <li>
-                        <a href="http://www.creative-tim.com/buy/material-kit-pro?ref=presentation" target="_blank" class="btn btn-white btn-simple">
-                            <i class="material-icons">shopping_cart</i> Buy Now
-                        </a>
-                    </li>
-                </ul>
-            </div>
+                            <c:otherwise>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <i class="material-icons">person</i> <c:out value="${user.getFirstName()}"/>
+                                        <b class="caret"></b>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-with-icons">
+                                        <li>
+                                            <a href="personal">
+                                                <i class="material-icons">settings</i> Profilo
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="logout">
+                                                <i class="material-icons">power_settings_new</i> Logout
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </c:otherwise>
+                        </c:choose>
+                        <li>
+                            <a href="cart" class="btn btn-white btn-simple">
+                                <i class="material-icons">shopping_cart</i> Buy Now
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </nav>
