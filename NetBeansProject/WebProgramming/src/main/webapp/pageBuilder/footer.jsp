@@ -157,6 +157,4 @@
 
 <script src="http://demos.creative-tim.com/material-kit-pro/assets/js/jquery.flexisel.js"></script>
 <script src="../assets/js/atv-img-animation.js" type="text/javascript"></script>
-
-<script  type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
 <script src="assets/js/material-kit.js" type="text/javascript"></script>

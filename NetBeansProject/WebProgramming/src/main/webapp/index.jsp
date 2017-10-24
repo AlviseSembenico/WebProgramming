@@ -3,16 +3,6 @@ Document   : index
 Created on : Sep 17, 2017, 7:43:18 PM
 Author     : Alvise
 --%>
-
-
-<div class="col-sm-4">
-    <button type="button" class="btn btn-danger btn-block" style="padding-left: 10px;padding-right: 10px;">
-        <i class="material-icons">search</i>
-        search</button>
-</div>
-
-
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <!doctype html>
