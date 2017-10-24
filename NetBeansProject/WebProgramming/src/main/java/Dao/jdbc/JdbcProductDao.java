@@ -32,7 +32,7 @@ public class JdbcProductDao extends JdbcUtilities implements ProductDao{
         map.put("shop", "shops_id");
     }
     
-    public LinkedList<Product> getProductByFilters(String name,double latitude,double longitude,double radius,int minPrice, int maxPrice, double minRew,double maxRew) throws Exception {
+    public LinkedList<Product> getProductByFilters(String name,double latitude,double longitude,double radius,double minPrice, double maxPrice, double minRew,double maxRew) throws Exception {
         String query = "select p.* from products p join shops s on p.shops_id=s.id where soundex(p.name)=soundex(?)";
         String dist=" and sqrt( pow(?-p.latitude,2)+pow(?-p.longitude,2))<=?";
         String price=" and (p.price>=? and p.price<=?)";
@@ -142,6 +142,8 @@ public class JdbcProductDao extends JdbcUtilities implements ProductDao{
         }
         return null;
     }
+
+    
 
     
 }
