@@ -9,7 +9,6 @@
 <%@page import="Dao.ProductDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
-
 <!DOCTYPE html>
 <!doctype html>
 <html>
@@ -19,7 +18,7 @@
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
                     <div class="brand">
-                        <form method="GET" <c:out value="${name}"></c:out>></form>
+                        <!--<form method="GET" <c:out value="${name}"></c:out>></form>-->
                             <h1 class="title">Ecommerce Page!</h1>
                             <h4>Free global delivery for all products. Use coupon <b>25summer</b> for an extra 25% Off</h4>
                         </div>
@@ -183,160 +182,191 @@
                     <div class="row">
                         <div class="col-md-3">
                             <form method="GET">
+                                <input type="text" value="<c:out value="${name}"/>" hidden="false" name="name">
                                 <div class="card card-refine card-plain">
                                     <div class="card-content">
                                         <h4 class="card-title">
                                             Filter
-                                            <button class="btn btn-default btn-fab btn-fab-mini btn-simple pull-right" rel="tooltip" title="Send filter">
+                                            <button class="btn btn-default btn-fab btn-fab-mini btn-simple pull-right" type= submit" rel="tooltip" title="Send filter">
                                                 <i class="material-icons">filter_list</i>
                                             </button>
-                                        </h4>
-                                        <input name="name" id="${name}" hidden="true"/>
-                                           <div class="panel panel-default panel-blu"
-                                            <div class="panel-heading" role="tab" id="headingOne">
-                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                                    <h4 class="panel-title">Price Range</h4>
-                                                    <i class="material-icons material-margin">keyboard_arrow_down</i>
-                                                </a>
-                                            </div>
-                                            <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                                                <div class="panel-body panel-refine">
-                                                    <span id="price-left" class="price-left pull-left" data-currency="&euro;">0</span> 
-                                                    <span id="price-right" class="price-right pull-right" data-currency="&euro;">1000</span>
-                                                    <input name="maxPrice" id="maxPrice" hidden="true" />
-                                                    <input name="minPrice" id="minPrice" hidden="true" />
-                                                    <div class="clearfix"></div>
-                                                    <div id="sliderRefine" class="slider slider-blu"></div>
-                                                </div>
+                                    </h4>
+                                    <div class="panel panel-default panel-blu">
+                                        <div class="panel-heading" role="tab" id="headingOne">
+                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                                <h4 class="panel-title">Price Range</h4>
+                                                <i class="material-icons material-margin">keyboard_arrow_down</i>
+                                            </a>
+                                        </div>
+                                        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                                            <div class="panel-body panel-refine">
+                                                <span id="price-left" class="price-left pull-left" data-currency="&euro;">0</span> 
+                                                <span id="price-right" class="price-right pull-right" data-currency="&euro;">1000</span>
+                                                <input name="maxPrice" id="maxPrice" hidden="true" />
+                                                <input name="minPrice" id="minPrice" hidden="true" />
+                                                <div class="clearfix"></div>
+                                                <div id="sliderRefine" class="slider slider-blu"></div>
                                             </div>
                                         </div>
+                                    </div>
 
 
 
-                                        <div class="panel panel-default panel-blu">
-                                            <div class="panel-heading" role="tab" id="headingTwo">
-                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                                    <h4 class="panel-title">Region</h4>
-                                                    <i class="material-icons material-margin">keyboard_arrow_down</i>
-                                                </a>
-                                            </div>
-                                            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                                                <div class="panel-body">
-                                                    <form action="">
-                                                        <fieldset>
-                                                            <legend>Region</legend>
-                                                            <input type="radio" name="Region" value=""/> Everything <br>
-                                                            <input type="radio" name="Region" value="Valle da Osta"/> Valle da Osta<br>
-                                                            <input type="radio" name="Region" value="Piemonte"/> Piemonte<br>
-                                                            <input type="radio" name="Region" value="Liguria"/> Liguria<br>
-                                                            <input type="radio" name="Region" value="Lombardia"/> Lombardia<br>
-                                                            <input type="radio" name="Region" value="Trentino-Alto Adige"/> Trentino-Alto Adige<br>
-                                                            <input type="radio" name="Region" value="Veneto"/> Veneto<br>
-                                                            <input type="radio" name="Region" value="Friuli-Venezia Giulia"/> Friuli-Venezia Giulia <br>
-                                                            <input type="radio" name="Region" value="Emilia-Romagna"/> Emilia-Romagna<br>
-                                                            <input type="radio" name="Region" value="Toscana"/> Toscana<br>
-                                                            <input type="radio" name="Region" value="Marche"/> Marche<br>
-                                                            <input type="radio" name="Region" value="Umbria"/> Umbria<br>
-                                                            <input type="radio" name="Region" value="Lazio"/> Lazio<br>
-                                                            <input type="radio" name="Region" value="Abruzzo"/> Abruzzo<br>
-                                                            <input type="radio" name="Region" value="Molise"/> Molise<br>
-                                                            <input type="radio" name="Region" value="Campania"/> Campania<br>
-                                                            <input type="radio" name="Region" value="Basilicata"/> Basilicata<br>
-                                                            <input type="radio" name="Region" value="Puglia"/> Puglia<br>
-                                                            <input type="radio" name="Region" value="Calabria"/> Calabria<br>
-                                                            <input type="radio" name="Region" value="Sicilia"/> Sicilia<br>
-                                                            <input type="radio" name="Region" value="Sardegna"/> Sardegna<br>
-                                                            
-                                                        </fieldset>
-
-                                                </div>
-                                            </div>
+                                    <div class="panel panel-default panel-blu">
+                                        <div class="panel-heading" role="tab" id="headingTwo">
+                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                <h4 class="panel-title">Region</h4>
+                                                <i class="material-icons material-margin">keyboard_arrow_down</i>
+                                            </a>
                                         </div>
-
-                                        <div class="panel panel-default panel-blu">
-                                            <div class="panel-heading" role="tab" id="headingThree">
-                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                                    <h4 class="panel-title">City</h4>
-                                                    <i class="material-icons material-margin">keyboard_arrow_down</i>
-                                                </a>
-                                            </div>
-                                            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                                                <div class="panel-body">
+                                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                            <div class="panel-body">
+                                                <form action="">
                                                     <fieldset>
-                                                        <legend>City</legend>
-                                                        <input type="radio" name="City" value=""/> Everything <br>
-                                                        <input type="radio" name="City" value="Aosta"/> Aosta<br>
-                                                        <input type="radio" name="City" value="Torino"/> Torino<br>
-                                                        <input type="radio" name="City" value="Genova"/> Genova<br>
-                                                        <input type="radio" name="City" value="Milano"/> Milano<br>
-                                                        <input type="radio" name="City" value="Trento"/> Trento<br>
-                                                        <input type="radio" name="City" value="Venezia"/> Venezia<br>
-                                                        <input type="radio" name="City" value="Trieste"/> Trieste<br>
-                                                        <input type="radio" name="City" value="Bologna"/> Bologna<br>
-                                                        <input type="radio" name="City" value="Firenze"/> Firenze<br>
-                                                        <input type="radio" name="City" value="Ancona"/> Ancona<br>
-                                                        <input type="radio" name="City" value="Perugia"/> Perugia<br>
-                                                        <input type="radio" name="City" value="Roma"/> Roma<br>
-                                                        <input type="radio" name="City" value="L'Aquila"/> L'Aquila<br>
-                                                        <input type="radio" name="City" value="Campobasso"/> Campobasso<br>
-                                                        <input type="radio" name="City" value="Napoli"/> Napoli<br>
-                                                        <input type="radio" name="City" value="Potenza"/> Potenza<br>
-                                                        <input type="radio" name="City" value="Bari"/> Bari<br>
-                                                        <input type="radio" name="City" value="Catanzaro"/> Catanzaro<br>
-                                                        <input type="radio" name="City" value="Palermo"/> Palermo<br>
-                                                        <input type="radio" name="City" value="Cagliari"/> Cagliari<br>
+                                                        <legend>Region</legend>
+                                                        <input type="radio" name="Region" value=""/> Everything <br>
+                                                        <input type="radio" name="Region" value="Valle da Osta"/> Valle da Osta<br>
+                                                        <input type="radio" name="Region" value="Piemonte"/> Piemonte<br>
+                                                        <input type="radio" name="Region" value="Liguria"/> Liguria<br>
+                                                        <input type="radio" name="Region" value="Lombardia"/> Lombardia<br>
+                                                        <input type="radio" name="Region" value="Trentino-Alto Adige"/> Trentino-Alto Adige<br>
+                                                        <input type="radio" name="Region" value="Veneto"/> Veneto<br>
+                                                        <input type="radio" name="Region" value="Friuli-Venezia Giulia"/> Friuli-Venezia Giulia <br>
+                                                        <input type="radio" name="Region" value="Emilia-Romagna"/> Emilia-Romagna<br>
+                                                        <input type="radio" name="Region" value="Toscana"/> Toscana<br>
+                                                        <input type="radio" name="Region" value="Marche"/> Marche<br>
+                                                        <input type="radio" name="Region" value="Umbria"/> Umbria<br>
+                                                        <input type="radio" name="Region" value="Lazio"/> Lazio<br>
+                                                        <input type="radio" name="Region" value="Abruzzo"/> Abruzzo<br>
+                                                        <input type="radio" name="Region" value="Molise"/> Molise<br>
+                                                        <input type="radio" name="Region" value="Campania"/> Campania<br>
+                                                        <input type="radio" name="Region" value="Basilicata"/> Basilicata<br>
+                                                        <input type="radio" name="Region" value="Puglia"/> Puglia<br>
+                                                        <input type="radio" name="Region" value="Calabria"/> Calabria<br>
+                                                        <input type="radio" name="Region" value="Sicilia"/> Sicilia<br>
+                                                        <input type="radio" name="Region" value="Sardegna"/> Sardegna<br>
+
                                                     </fieldset>
 
-                                                </div>
                                             </div>
                                         </div>
+                                    </div>
 
+                                    <div class="panel panel-default panel-blu">
+                                        <div class="panel-heading" role="tab" id="headingThree">
+                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                <h4 class="panel-title">City</h4>
+                                                <i class="material-icons material-margin">keyboard_arrow_down</i>
+                                            </a>
+                                        </div>
+                                        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                                            <div class="panel-body">
+                                                <fieldset>
+                                                    <legend>City</legend>
+                                                    <input type="radio" name="City" value=""/> Everything <br>
+                                                    <input type="radio" name="City" value="Aosta"/> Aosta<br>
+                                                    <input type="radio" name="City" value="Torino"/> Torino<br>
+                                                    <input type="radio" name="City" value="Genova"/> Genova<br>
+                                                    <input type="radio" name="City" value="Milano"/> Milano<br>
+                                                    <input type="radio" name="City" value="Trento"/> Trento<br>
+                                                    <input type="radio" name="City" value="Venezia"/> Venezia<br>
+                                                    <input type="radio" name="City" value="Trieste"/> Trieste<br>
+                                                    <input type="radio" name="City" value="Bologna"/> Bologna<br>
+                                                    <input type="radio" name="City" value="Firenze"/> Firenze<br>
+                                                    <input type="radio" name="City" value="Ancona"/> Ancona<br>
+                                                    <input type="radio" name="City" value="Perugia"/> Perugia<br>
+                                                    <input type="radio" name="City" value="Roma"/> Roma<br>
+                                                    <input type="radio" name="City" value="L'Aquila"/> L'Aquila<br>
+                                                    <input type="radio" name="City" value="Campobasso"/> Campobasso<br>
+                                                    <input type="radio" name="City" value="Napoli"/> Napoli<br>
+                                                    <input type="radio" name="City" value="Potenza"/> Potenza<br>
+                                                    <input type="radio" name="City" value="Bari"/> Bari<br>
+                                                    <input type="radio" name="City" value="Catanzaro"/> Catanzaro<br>
+                                                    <input type="radio" name="City" value="Palermo"/> Palermo<br>
+                                                    <input type="radio" name="City" value="Cagliari"/> Cagliari<br>
+                                                </fieldset>
 
-                                        <div class="panel panel-default panel-blu">
-                                            <div class="panel-heading" role="tab" id="headingFour">
-                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                                    <h4 class="panel-title">Radius</h4>
-                                                    <i class="material-icons material-margin">keyboard_arrow_down</i>
-                                                </a>
                                             </div>
-                                            <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-                                                <div class="panel-body">
+                                        </div>
+                                    </div>
 
-                                                    <fieldset>
-                                                        <legend>Radius</legend>
-                                                        <input type="radio" name="Radius" value="0"/> Everything <br>
-                                                        <input type="radio" name="Radius" value="30"/> 30<br>
-                                                        <input type="radio" name="Radius" value="90"/> 90<br>
-                                                        <input type="radio" name="Radius" value="150"/> 150<br>
-                                                        <input type="radio" name="Radius" value="180"/> 180<br>
-                                                    </fieldset>
-                                                    </form>
-                                                </div>
+
+                                    <div class="panel panel-default panel-blu">
+                                        <div class="panel-heading" role="tab" id="headingFour">
+                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                                <h4 class="panel-title">Radius</h4>
+                                                <i class="material-icons material-margin">keyboard_arrow_down</i>
+                                            </a>
+                                        </div>
+                                        <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                                            <div class="panel-body">
+
+                                                <fieldset>
+                                                    <legend>Radius</legend>
+                                                    <input type="radio" name="Radius" value="0"/> Everything <br>
+                                                    <input type="radio" name="Radius" value="30"/> 30<br>
+                                                    <input type="radio" name="Radius" value="90"/> 90<br>
+                                                    <input type="radio" name="Radius" value="150"/> 150<br>
+                                                    <input type="radio" name="Radius" value="180"/> 180<br>
+                                                </fieldset>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </form><!-- end card -->
-                        </div>
-                        <div class="col-md-9">
-                            <div class="row">
+                            </div>
+                        </form><!-- end card -->
+                    </div>
+                    <div class="col-md-9">
+                        <div class="row">
+                            <c:forEach var="i" items='${product}'>
                                 <div class="col-md-4">
-                                <c:forEach var="i" items="result">
-                                    <div class="card-content">
-                                        <h4 class="card-title">
-                                            <h4 class="card-title"><c:out value="${result[i].getName()}"/></h4>
-                                        </h4>
-                                        <p class="card-description"><c:out value="${result[i].getDescription()}"/></p>
-                                        <div class="footer">
-                                            <div class="price-container">
-                                                <span class="price price-new">&euro;<c:out value="${result[i].getPrice()}"/></span>
+
+                                    <div class="card card-product card-plain card-rotate">
+                                        <div class="rotating-card-container">
+                                            <div class="card-image">
+                                                <div class="front">
+                                                    <c:set var="picture" value="${pictureDao.getPictureByProduct(i)}"></c:set>
+                                                    <img src="<c:out value='${picture.get(0).getPath()}'/>">
+                                                </div>
+
+                                                <div class="back back-background">
+                                                    <div class="card-content">
+                                                        <h5 class="card-title">
+                                                            Quick Actions...
+                                                        </h5>
+                                                        <div class="footer text-center">
+                                                            <a href="product.jsp?id=<c:out value="${i.getId()}"/>" class="btn btn-round btn-white">
+                                                                <i class="material-icons">info</i> Details
+                                                            </a>
+                                                            <form method="POST" action="product">
+                                                                <input name="pid" style="visibility: hidden;" value="<c:out value="${i.getId()}"/>" />
+                                                                <button class="btn btn-rose btn-round" type="submit" >Add to Cart &nbsp;<i class="material-icons">shopping_cart</i></button>
+                                                            </form>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="stats">
+                                        </div>
+
+                                        <div class="card-content">
+                                            <h4 class="card-title">
+                                                <h4 class="card-title"><c:out value="${i.getName()}"/></h4>
+                                            </h4>
+                                            <p class="card-description"><c:out value="${i.getDescription()}"/></p>
+                                            <div class="footer">
+                                                <div class="price-container">
+                                                    <span class="price price-new">&euro;<c:out value="${i.getPrice()}"/></span>
+                                                </div>
+                                                <div class="stats">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </c:forEach>
-                            </div>
+
+                                </div>
+                            </c:forEach>  
                         </div>
                     </div>
                 </div>

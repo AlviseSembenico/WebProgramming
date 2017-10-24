@@ -45,8 +45,8 @@ public class ResultServlet extends HttpServlet {
             throws ServletException, IOException {
 
         String name=null;
-        String City=null;
-        String Region=null;
+        String city=null;
+        String region=null;
         String radius=null;
         String minPrice=null;
         String maxPrice=null;
@@ -55,44 +55,25 @@ public class ResultServlet extends HttpServlet {
         
         try{
         name = request.getParameter("name");
-        City = request.getParameter("City");
-        Region = request.getParameter("Region");
+        city = request.getParameter("City");
+        region = request.getParameter("Region");
         radius = request.getParameter("radius");
         minPrice = request.getParameter("minPrice");
         maxPrice = request.getParameter("maxPrice");
         minRew = request.getParameter("minRew");
         maxRew = request.getParameter("maxRew");
-        }catch (Exception ex) {
-        if (City.equals(null)) {
-            City = "0";
-        }
-        if (Region.equals(null)) {
-            Region = "0";
-        }
-        if (radius.equals(null)) {
-            radius = "180";
-        }
-        if (minPrice.equals(null)) {
-            minPrice = "0";
-        }
-        if (maxPrice.equals(null)) {
-            maxPrice = "1000000";
-        }
-        if (minRew.equals(null)) {
-            minRew = "0";
-        }
-        if (maxRew.equals(null)) {
-            maxRew = "5";
-        }
-        }
-        if(Region!="0" && City!="0")
-        try {
-            LinkedList<Product> product = productDao.getProductByFilters(name, Double.parseDouble(City), Double.parseDouble(Region), Double.parseDouble(radius), Double.parseDouble(minPrice), Double.parseDouble(maxPrice), Double.parseDouble(minRew), Double.parseDouble(maxRew));
-            request.setAttribute("product", product);
-        } catch (Exception ex) {
-            Logger.getLogger(ResultServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
         
+        }catch (Exception ex) {
+         throw new ServletException("Impossible to get dao factory for user storage system");
+        }
+            LinkedList<Product> product;
+            try {
+                product = productDao.DoQwery(name,region,city,radius,minPrice,maxPrice,minRew,maxRew);
+                request.setAttribute("product", product);
+            } catch (Exception ex) {
+                Logger.getLogger(ResultServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        request.setAttribute("name", name);
         RequestDispatcher RequetsDispatcherObj = request.getRequestDispatcher("/result.jsp");
         RequetsDispatcherObj.forward(request, response);
     }
