@@ -154,6 +154,10 @@
                                 </li>
                             </ul>
                         </li>
+                        <form action="cart" method="POST">
+                            <input type="text" name="id"/>
+                            <input type="submit"/>
+                        </form>
 
                         <li>
                             <a href="http://www.creative-tim.com/buy/material-kit-pro?ref=presentation" target="_blank" class="btn btn-white btn-simple">

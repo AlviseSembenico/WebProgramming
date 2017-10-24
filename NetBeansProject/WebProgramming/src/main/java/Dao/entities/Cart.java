@@ -9,6 +9,10 @@ public class Cart extends IdOwnerComparable{
     public Cart(){
         products=new  LinkedList<Product>();
     }
+    public Cart(User user){
+        setUser(user);
+        products=new  LinkedList<Product>();
+    }
     
     public User getUser() {
         return user;

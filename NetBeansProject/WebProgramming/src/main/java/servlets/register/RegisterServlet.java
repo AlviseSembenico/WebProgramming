@@ -7,20 +7,20 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import system.Log;
 
 public class RegisterServlet extends HttpServlet {
-    
+
     private UserDao userDao;
-    
+
     @Override
     public void init() throws ServletException {
-        userDao= (UserDao) super.getServletContext().getAttribute("userDao");
+        userDao = (UserDao) super.getServletContext().getAttribute("userDao");
         if (userDao == null) {
             throw new ServletException("Impossible to get dao factory for user storage system");
-        } 
+        }
     }
-    
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -37,26 +37,25 @@ public class RegisterServlet extends HttpServlet {
         String firstName = request.getParameter("firstname");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        if (lastName.length()>0) {
+        if (lastName.length() > 0) {
             String contextPath = getServletContext().getContextPath();
             if (!contextPath.endsWith("/")) {
                 contextPath += "/";
             }
-            try{
-                User user= new User(firstName,lastName,email,password);
+            try {
+                User user = new User(firstName, lastName, email, password);
                 int res = userDao.insertDao(user);
-                if(res == 0)
-                    response.sendRedirect(response.encodeRedirectURL(contextPath + "/register"+"?error=true"));
-                else{
-                    request.getSession().setAttribute("authenticatedUser", user);
+                if (res == 0) {
+                    response.sendRedirect(response.encodeRedirectURL(contextPath + "/register" + "?error=true"));
+                } else {
+                    request.getSession().setAttribute("user", user);
                     response.sendRedirect(response.encodeRedirectURL(contextPath + "index"));
                 }
-            }
-            catch(Exception e){
+            } catch (Exception e) {
                 Log.write(e.toString());
             }
         }
-        
+
     }
 
     /**
