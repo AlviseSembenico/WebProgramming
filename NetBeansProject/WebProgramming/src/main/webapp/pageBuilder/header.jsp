@@ -165,7 +165,7 @@
                             </c:otherwise>
                         </c:choose>
                         <li>
-                            <a href="http://www.creative-tim.com/buy/material-kit-pro?ref=presentation" target="_blank" class="btn btn-white btn-simple">
+                            <a href="cart" class="btn btn-white btn-simple">
                                 <i class="material-icons">shopping_cart</i> Buy Now
                             </a>
                         </li>
