@@ -47,7 +47,7 @@
                                                     Quick Actions...
                                                 </h5>
                                                 <div class="footer text-center">
-                                                    <a href="product.jsp?id=32" class="btn btn-round btn-white">
+                                                    <a href="product?id=32" class="btn btn-round btn-white">
                                                         <i class="material-icons">info</i> Details
                                                     </a>
                                                     <a href="../source Packages/product.servlet/product.java" class="btn btn-round btn-rose">
@@ -94,7 +94,7 @@
                                                     Quick Actions...
                                                 </h5>
                                                 <div class="footer text-center">
-                                                    <a href="product.jsp?id=33" class="btn btn-round btn-white">
+                                                    <a href="product?id=33" class="btn btn-round btn-white">
                                                         <i class="material-icons">info</i> Details
                                                     </a>
                                                     <a href="../source Packages/product.servlet/product.java" class="btn btn-round btn-rose">
@@ -142,7 +142,7 @@
                                                     Quick Actions...
                                                 </h5>
                                                 <div class="footer text-center">
-                                                    <a href="product.jsp?id=34" class="btn btn-round btn-white">
+                                                    <a href="product?id=34" class="btn btn-round btn-white">
                                                         <i class="material-icons">info</i> Details
                                                     </a>
                                                     <a href="../source Packages/product.servlet/product.java" class="btn btn-round btn-rose">
@@ -336,7 +336,7 @@
                                                             Quick Actions...
                                                         </h5>
                                                         <div class="footer text-center">
-                                                            <a href="product.jsp?id=<c:out value="${i.getId()}"/>" class="btn btn-round btn-white">
+                                                            <a href="product?id=<c:out value="${i.getId()}"/>" class="btn btn-round btn-white">
                                                                 <i class="material-icons">info</i> Details
                                                             </a>
                                                             <form method="POST" action="product">
