@@ -78,6 +78,25 @@
                                     </div>
                                 </div>
                             </div>
+                            <div id="acordeon">
+                                <div class="panel-group" id="accordion">
+                                    <div class="panel panel-border panel-default">
+                                        <div class="panel-heading" role="tab" id="headingOne">
+                                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="color: black">
+                                                <h4 class="panel-title">
+                                                    Shop
+                                                    <i class="material-icons">keyboard_arrow_down</i>
+                                                </h4>
+                                            </a>
+                                        </div>
+                                        <div id="collapseOne" class="panel-collapse collapse in" style="color: black">
+                                            <div class="panel-body">
+                                                <p><c:out value="${shop.getName()}"/></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
 
                             <div class="row pick-size">

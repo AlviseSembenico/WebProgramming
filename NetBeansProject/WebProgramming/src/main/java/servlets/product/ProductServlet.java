@@ -12,7 +12,9 @@ import Dao.entities.User;
 import Dao.UserDao;
 import Dao.CartDao;
 import Dao.PictureDao;
+import Dao.ShopDao;
 import Dao.entities.Picture;
+import Dao.entities.Shop;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.logging.Level;
@@ -53,7 +55,8 @@ public class ProductServlet extends HttpServlet {
         if (pictureDao == null) {
             throw new ServletException("Impossible to get dao factory for user storage system");
         }
-    }
+        
+     }
 
     /**
      * Handles the HTTP <code>GET</code> method.
