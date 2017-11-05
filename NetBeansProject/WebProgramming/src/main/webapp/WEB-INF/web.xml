@@ -64,12 +64,16 @@
         <servlet-class>servlets.logout.LogoutServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>AddObjectServlet</servlet-name>
-        <servlet-class>servlets.addObject.AddObjectServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>Result</servlet-name>
         <servlet-class>servlets.result.ResultServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>addObject</servlet-name>
+        <jsp-file>/loggedUsers/addObject.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>addObjectServlet</servlet-name>
+        <servlet-class>servlets.addObject.AddObjectServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -116,8 +120,10 @@
         <url-pattern>/result</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>AddObjectServlet</servlet-name>
-        <url-pattern>/addObject</url-pattern>
+        <servlet-name>addObject</servlet-name>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addObjectServlet</servlet-name>
     </servlet-mapping>
     <session-config>
         <session-timeout>

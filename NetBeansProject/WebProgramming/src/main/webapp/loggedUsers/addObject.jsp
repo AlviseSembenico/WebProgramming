@@ -18,100 +18,101 @@
         <div class="main main-raised">
             <div class="profile-content">
                 <div class="container">
-
-                    <div class="row">
-                        <div class="col-xs-6 col-xs-offset-3">
-                            <div class="add-object">
-                                <div class="middle ">
-                                    <div class="fileinput fileinput-new text-center" data-provides="fileinput">
-                                        <div class="fileinput-new thumbnail img-circle img-raised"  >
-                                            <img src="assets/img/placeholder.jpg" alt="..." >
-                                        </div>
-                                        <div class="fileinput-preview fileinput-exists thumbnail img-circle img-raised" ></div>
-                                        <div>
-                                            <span class="btn btn-raised btn-round btn-default btn-file">
-                                                <span class="fileinput-new">Add Photo</span>
-                                                <span class="fileinput-exists">Change</span>
-                                                <input name="..." type="file"></span>
-                                            <br>
-                                            <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="about-team team-1"/>
-                                <div class="name">
-                                    <div class="row">
-                                        <div class="title">
-                                            <h3>Name</h3>
-                                        </div>
-                                        <div class="input-group col-sm-12">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">label</i>
-                                            </span>
-                                            <div class="form-group is-empty"><input class="form-control" placeholder="Name of product" type="text"><span class="material-input"></span></div>
+                    <form method="POST" action="/utils/addObject">
+                        <div class="row">
+                            <div class="col-xs-6 col-xs-offset-3">
+                                <div class="add-object">
+                                    <div class="middle ">
+                                        <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                                            <div class="fileinput-new thumbnail img-circle img-raised"  >
+                                                <img src="assets/img/placeholder.jpg" alt="..." >
+                                            </div>
+                                            <div class="fileinput-preview fileinput-exists thumbnail img-circle img-raised" ></div>
+                                            <div>
+                                                <span class="btn btn-raised btn-round btn-default btn-file">
+                                                    <span class="fileinput-new">Add Photo</span>
+                                                    <span class="fileinput-exists">Change</span>
+                                                    <input name="..." type="file"></span>
+                                                <br>
+                                                <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="title">
-                                            <h3>Description</h3>
-                                        </div>
-                                        <div class="form-group label-floating is-empty col-sm-12" style="margin:0px">
-                                            <label class="control-label">Insert description below</label>
-                                            <textarea class="form-control" rows="5"></textarea>
-                                            <span class="material-input"></span>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <div class="input-group">
+                                    <div class="about-team team-1"/>
+                                    <div class="name">
+                                        <div class="row">
+                                            <div class="title">
+                                                <h3>Name</h3>
+                                            </div>
+                                            <div class="input-group col-sm-12">
                                                 <span class="input-group-addon">
-                                                    <i class="material-icons">attach_money</i>
+                                                    <i class="material-icons">label</i>
                                                 </span>
-                                                <div class="form-group is-empty"><input min="1.0"  step="0.01"type="number" class="form-control" placeholder="With Material Icons" type="text"><span class="material-input"></span></div>
+                                                <div class="form-group is-empty"><input class="form-control" placeholder="Name of product" type="text"><span class="material-input"></span></div>
                                             </div>
                                         </div>
-                                        <div class="col-sm-6">
-                                            <div class="dropdown " >
-                                                <button href="#pablo" class="dropdown-toggle btn btn-primary btn-round btn-block" data-toggle="dropdown">Dropdown <b class="caret"></b></button>
-                                                <ul class="dropdown-menu dropdown-menu-right">
-                                                    <li class="dropdown-header">Dropdown header</li>
-                                                    <li><a href="#pablo">Action</a></li>
-                                                    <li><a href="#pablo">Another action</a></li>
-                                                    <li><a href="#pablo">Something else here</a></li>
-                                                    <li class="divider"></li>
-                                                    <li><a href="#pablo">Separated link</a></li>
-                                                    <li class="divider"></li>
-                                                    <li><a href="#pablo">One more separated link</a></li>
-                                                </ul>
+                                        <div class="row">
+                                            <div class="title">
+                                                <h3>Description</h3>
+                                            </div>
+                                            <div class="form-group label-floating is-empty col-sm-12" style="margin:0px">
+                                                <label class="control-label">Insert description below</label>
+                                                <textarea class="form-control" rows="5"></textarea>
+                                                <span class="material-input"></span>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="title">
-                                            <h3>Category</h3>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">attach_money</i>
+                                                    </span>
+                                                    <div class="form-group is-empty"><input min="1.0"  step="0.01"type="number" class="form-control" placeholder="With Material Icons" type="text"><span class="material-input"></span></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="dropdown " >
+                                                    <button href="#pablo" class="dropdown-toggle btn btn-primary btn-round btn-block" data-toggle="dropdown">Dropdown <b class="caret"></b></button>
+                                                    <ul class="dropdown-menu dropdown-menu-right">
+                                                        <li class="dropdown-header">Dropdown header</li>
+                                                        <li><a href="#pablo">Action</a></li>
+                                                        <li><a href="#pablo">Another action</a></li>
+                                                        <li><a href="#pablo">Something else here</a></li>
+                                                        <li class="divider"></li>
+                                                        <li><a href="#pablo">Separated link</a></li>
+                                                        <li class="divider"></li>
+                                                        <li><a href="#pablo">One more separated link</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="col-md-12">
-
-                                            <input type="text" value="Amsterdam,Washington,Sydney,Beijing" class="tagsinput" data-role="tagsinput" data-color="rose"/>
+                                        <div class="row">
+                                            <div class="title">
+                                                <h3>Category</h3>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <input type="text" value="Amsterdam,Washington,Sydney,Beijing" class="tagsinput" data-role="tagsinput" data-color="rose"/>
+                                            </div>
                                         </div>
-                                    </div>
+                                        <button type="submit"/>
 
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="col-xs-2 follow">
+                            <span class="btn btn-raised btn-fab btn-primary btn-file">
+                                <i class="material-icons">add</i>
+                                <input name="..." type="file" multiple="true"><div class="ripple-container" id="addImage" ></div>
+                            </span>
+                            <script>
+                                document.getElementById('addImage').addEventListener('click', addImage);
+                                function addImage() {
+                                }
+                            </script>
+                        </div>
                     </div>
-                    <div class="col-xs-2 follow">
-                        <span class="btn btn-raised btn-fab btn-primary btn-file">
-                            <i class="material-icons">add</i>
-                            <input name="..." type="file" multiple="true"><div class="ripple-container" id="addImage" ></div>
-                        </span>
-                        <script>
-                            document.getElementById('addImage').addEventListener('click', addImage);
-                            function addImage() {
-                            }
-                        </script>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
 
