@@ -1,262 +1,173 @@
+<%@page import="Dao.entities.Shop"%>
+<%@page import="Dao.ShopDao"%>
+<%@page import="Dao.entities.Picture"%>
+<%@page import="Dao.PictureDao"%>
+<%@page import="Dao.ProductDao" %>
 <%@page import="Dao.entities.Product"%>
-<%@page import="Dao.ProductDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
-<c:set var="shopDao" value="${pageContext.servletContext.getAttribute('shopDao')}"></c:set>
-<c:set var="picDao" value="${pageContext.servletContext.getAttribute('pictureDao')}"></c:set>
-<c:set var="sohp" value="${shopDao.getById(param.id)}"></c:set>
-<c:set var="picture" value="${picDao.getPictureByShop(shop)}"></c:set>
-<!DOCTYPE html>
-<!doctype html>
-<html>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
+    <!DOCTYPE html>
+    <!doctype html>
+    <html>
     <c:import url="pageBuilder/header.jsp"/>
-    <body class="profile-page" waid71fa0d88-5390-4b5b-a2f4-e45fa93d85e2="SA password protect entry checker">
-        <div class="page-header header-filter" data-parallax="true" style="background-image: url(https://www.consumatori.it/wp-content/uploads/2015/09/venditore_consumatore_stretta-di-mano1.jpg); transform: translate3d(0px, 0px, 0px);"></div>
-
-        <div class="main main-raised">
-            <div class="profile-content">
-                <div class="container">
-
-                    <div class="row">
-                        <div class="col-xs-6 col-xs-offset-3">
-                            <div class="profile">
-                                <div class="avatar">
-                                    <img src="<c:out value="${picture.getPath()}"/>" alt="Circle Image" class="img-circle img-responsive img-raised">
-                                </div>
-                                <div class="name">
-                                    <h3 class="title"><c:out value="${shop.getName()}"/></h3>
-                                    <h6>Designer</h6>
-                                    <a href="#pablo" class="btn btn-just-icon btn-simple btn-dribbble"><i class="fa fa-dribbble"></i></a>
-                                    <a href="#pablo" class="btn btn-just-icon btn-simple btn-twitter"><i class="fa fa-twitter"></i></a>
-                                    <a href="#pablo" class="btn btn-just-icon btn-simple btn-pinterest"><i class="fa fa-pinterest"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-2 follow">
-                            <button class="btn btn-fab btn-primary" rel="tooltip" title="" data-original-title="Follow this user">
-                                <i class="material-icons">add</i>
-                            </button>
-                        </div>
-                    </div>
-
-
-                    <div class="description text-center">
-                        <p>An artist of considerable range, Chet Faker — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. </p>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6 col-md-offset-3">
-                            <div class="profile-tabs">
-                                <div class="nav-align-center">
-                                    <ul class="nav nav-pills nav-pills-icons" role="tablist">
-                                        <li class="active">
-                                            <a href="#work" role="tab" data-toggle="tab">
-                                                <i class="material-icons">palette</i>
-                                                Work
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#connections" role="tab" data-toggle="tab">
-                                                <i class="material-icons">people</i>
-                                                Connections
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#media" role="tab" data-toggle="tab">
-                                                <i class="material-icons">camera</i>
-                                                Media
-                                            </a>
-                                        </li>
-                                    </ul>
-
-
-                                </div>
-                            </div>
-                            <!-- End Profile Tabs -->
-                        </div>
-                    </div>
-                    <div class="tab-content">
-                        <div class="tab-pane active work" id="work">
-                            <div class="row">
-                                <div class="col-md-7 col-md-offset-1">
-                                    <h4 class="title">Latest Collections</h4>
-                                    <div class="row collections">
-                                        <div class="col-md-6">
-                                            <div class="card card-background" style="background-image: url('../assets/img/examples/chris4.jpg')">
-                                                <a href="#pablo"></a>
-                                                <div class="card-content">
-                                                    <label class="label label-primary">Spring 2016</label>
-                                                    <a href="#pablo">
-                                                        <h2 class="card-title">Stilleto</h2>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="card card-background" style="background-image: url('../assets/img/examples/chris6.jpg')">
-                                                <a href="#pablo"></a>
-                                                <div class="card-content">
-                                                    <label class="label label-primary">Spring 2016</label>
-                                                    <a href="#pablo">
-                                                        <h2 class="card-title">High Heels</h2>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="card card-background" style="background-image: url('../assets/img/examples/chris5.jpg')">
-                                                <a href="#pablo"></a>
-                                                <div class="card-content">
-                                                    <label class="label label-primary">Summer 2016</label>
-                                                    <a href="#pablo">
-                                                        <h2 class="card-title">Flats</h2>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="card card-background" style="background-image: url('../assets/img/examples/chris1.jpg')">
-                                                <a href="#pablo"></a>
-                                                <div class="card-content">
-                                                    <label class="label label-primary">Winter 2015</label>
-                                                    <a href="#pablo">
-                                                        <h2 class="card-title">Men's Sneakers</h2>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-2 col-md-offset-1 stats">
-                                    <h4 class="title">Stats</h4>
-                                    <ul class="list-unstyled">
-                                        <li><b>60</b> Products</li>
-                                        <li><b>4</b> Collections</li>
-                                        <li><b>331</b> Influencers</li>
-                                        <li><b>1.2K</b> Likes</li>
-                                    </ul>
-                                    <hr>
-                                    <h4 class="title">About his Work</h4>
-                                    <p class="description">French luxury footwear and fashion. The footwear has incorporated shiny, red-lacquered soles that have become his signature.</p>
-                                    <hr>
-                                    <h4 class="title">Focus</h4>
-                                    <span class="label label-primary">Footwear</span>
-                                    <span class="label label-rose">Luxury</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane connections" id="connections">
-                            <div class="row">
-                                <div class="col-md-5 col-md-offset-1">
-                                    <div class="card card-profile card-plain">
-                                        <div class="col-md-5">
-                                            <div class="card-image">
-                                                <a href="#pablo">
-                                                    <img class="img" src="../assets/img/faces/avatar.jpg">
-                                                </a>
-                                                <div class="colored-shadow" style="background-image: url(&quot;../assets/img/faces/avatar.jpg&quot;); opacity: 1;"></div></div>
-                                        </div>
-                                        <div class="col-md-7">
-                                            <div class="card-content">
-                                                <h4 class="card-title">Gigi Hadid</h4>
-                                                <h6 class="category text-muted">Model</h6>
-
-                                                <p class="card-description">
-                                                    Don't be scared of the truth because we need to restart the human foundation in truth...
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-5">
-                                    <div class="card card-profile card-plain">
-                                        <div class="col-md-5">
-                                            <div class="card-image">
-                                                <a href="#pablo">
-                                                    <img class="img" src="../assets/img/faces/marc.jpg">
-                                                </a>
-                                                <div class="colored-shadow" style="background-image: url(&quot;../assets/img/faces/marc.jpg&quot;); opacity: 1;"></div></div>
-                                        </div>
-                                        <div class="col-md-7">
-                                            <div class="card-content">
-                                                <h4 class="card-title">Marc Jacobs</h4>
-                                                <h6 class="category text-muted">Designer</h6>
-
-                                                <p class="card-description">
-                                                    Don't be scared of the truth because we need to restart the human foundation in truth...
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-5 col-md-offset-1">
-                                    <div class="card card-profile card-plain">
-                                        <div class="col-md-5">
-                                            <div class="card-image">
-                                                <a href="#pablo">
-                                                    <img class="img" src="../assets/img/faces/kendall.jpg">
-                                                </a>
-                                                <div class="colored-shadow" style="background-image: url(&quot;../assets/img/faces/kendall.jpg&quot;); opacity: 1;"></div></div>
-                                        </div>
-                                        <div class="col-md-7">
-                                            <div class="card-content">
-                                                <h4 class="card-title">Kendall Jenner</h4>
-                                                <h6 class="category text-muted">Model</h6>
-
-                                                <p class="card-description">
-                                                    I love you like Kanye loves Kanye. Don't be scared of the truth.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-5">
-                                    <div class="card card-profile card-plain">
-                                        <div class="col-md-5">
-                                            <div class="card-image">
-                                                <a href="#pablo">
-                                                    <img class="img" src="../assets/img/faces/card-profile2-square.jpg">
-                                                </a>
-                                                <div class="colored-shadow" style="background-image: url(&quot;../assets/img/faces/card-profile2-square.jpg&quot;); opacity: 1;"></div></div>
-                                        </div>
-                                        <div class="col-md-7">
-                                            <div class="card-content">
-                                                <h4 class="card-title">George West</h4>
-                                                <h6 class="category text-muted">Model/DJ</h6>
-
-                                                <p class="card-description">
-                                                    I love you like Kanye loves Kanye.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="tab-pane text-center gallery" id="media">
-                            <div class="row">
-                                <div class="col-md-3 col-md-offset-3">
-                                    <img src="../assets/img/examples/chris4.jpg" class="img-rounded">
-                                    <img src="../assets/img/examples/chris6.jpg" class="img-rounded">
-                                </div>
-                                <div class="col-md-3">
-                                    <img src="../assets/img/examples/chris7.jpg" class="img-rounded">
-                                    <img src="../assets/img/examples/chris5.jpg" class="img-rounded">
-                                    <img src="../assets/img/examples/chris9.jpg" class="img-rounded">
-                                </div>
-                            </div>
-                        </div>
+    <body class="about-us" waid71fa0d88-5390-4b5b-a2f4-e45fa93d85e2="SA password protect entry checker">
+        <div class="page-header header-filter header-small" data-parallax="true" style="background-image: url(http://hoanganhhalong.vn/Upload/images/chuyen-thuong-hieu/anh-dai-dien/hieu-tinh-cach-khach-hang-de-tang-doanh-so.jpg); transform: translate3d(0px, 0px, 0px);">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h1 class="title">About Us</h1>
                     </div>
                 </div>
             </div>
         </div>
 
+        <div class="main main-raised">
+            <div class="container">
+                <div class="about-description text-center">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <h2 class="title"><c:out value="${shop.getName()}"/></h2>
+                            <h5><c:out value="${shop.getDescription()}"/></h5>
+                            <div class="card-image">
+                                <img src="<c:out value="${pictures[0].getPath()}"/>">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-team team-1">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2 text-center">
+                            <h2 class="title">Our Product</h2>
+                            <h5 class="description">Here's a carousel of our product.</h5>
+                        </div>
+                    </div>
 
+                    <div class="row">
+                        <div class="testimonials-2">
 
-    <c:import url="pageBuilder/footer.jsp"/>
+                            <div class="container">
+
+                                <div class="row">
+
+                                    <div id="carousel-testimonial" class="carousel slide" data-ride="carousel">
+                                        <div class="carousel-inner" role="listbox">
+                                            <div class="item active">
+                                                <div class="card card-testimonial card-plain">
+                                                    <div class="card-avatar">
+                                                        <a href="/product.jsp?id=${products[0].getId()}">
+                                                            <img class="img" src="<c:out value="${pictures[0].getPath()}"/>">
+                                                        </a>
+                                                    </div>
+                                                    <div class="card-content">
+                                                        <h5 class="card-description"><c:out value="${products[0].getDescription()}"/></h5>
+                                                        <a href="/product.jsp?id=${products[0].getId()}"><h4 class="card-title"><c:out value="${products[0].getName()}"/></h4></a>
+                                                        <div class="footer">
+                                                            <i class="material-icons text-warning">star</i>
+                                                            <i class="material-icons text-warning">star</i>
+                                                            <i class="material-icons text-warning">star</i>
+                                                            <i class="material-icons text-warning">star</i>
+                                                            <i class="material-icons text-warning">star</i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <c:forEach var="i" begin="1" end="${fn:length(products)-1}">
+                                                <div class="item">
+                                                    <div class="card card-testimonial card-plain">
+                                                        <div class="card-avatar">
+                                                            <a href="/product.jsp?id=${products[i].getId()}">
+                                                                <img class="img" src="<c:out value="${pictures[i].getPath()}"/>">
+                                                            </a>
+                                                        </div>
+                                                        <div class="card-content">
+                                                            <h5 class="card-description"><c:out value="${products[i].getDescription()}"/></h5>
+                                                            <a href="/product.jsp?id=${products[i].getId()}"><h4 class="card-title"><c:out value="${products[i].getName()}"/></h4></a>
+                                                            <div class="footer">
+                                                                <i class="material-icons text-warning">star</i>
+                                                                <i class="material-icons text-warning">star</i>
+                                                                <i class="material-icons text-warning">star</i>
+                                                                <i class="material-icons text-warning">star</i>
+                                                                <i class="material-icons text-warning">star</i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </c:forEach>
+                                        </div>
+                                        <a class="left carousel-control" href="#carousel-testimonial" role="button" data-slide="prev">
+                                            <i class="material-icons" aria-hidden="true">chevron_left</i>
+                                        </a>
+                                        <a class="right carousel-control" href="#carousel-testimonial" role="button" data-slide="next">
+                                            <i class="material-icons" aria-hidden="true">chevron_right</i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="about-services features-2">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2 text-center">
+                            <h2 class="title">Found Us</h2>
+                            <a href="${shop.getWebSiteUrl()}"><h4 class="card-title"><c:out value="${shop.getWebSiteUrl()}"/></h4></a>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="contact-page">
+                            <div id="contactUsMap" class="big-map"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-office">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <h2 class="text-center title">Rate Us:</h2>
+                            <h4 class="text-center description">Give us a star.</h4>
+                            <div class="stars">
+                                <form class="text-center" action="">
+                                    <input class="star star-5" id="star-5" type="radio" name="star"/>
+                                    <label class="star star-5" for="star-5"></label>
+                                    <input class="star star-4" id="star-4" type="radio" name="star"/>
+                                    <label class="star star-4" for="star-4"></label>
+                                    <input class="star star-3" id="star-3" type="radio" name="star"/>
+                                    <label class="star star-3" for="star-3"></label>
+                                    <input class="star star-2" id="star-2" type="radio" name="star"/>
+                                    <label class="star star-2" for="star-2"></label>
+                                    <input class="star star-1" id="star-1" type="radio" name="star"/>
+                                    <label class="star star-1" for="star-1"></label>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <c:import url="pageBuilder/footer.jsp"/>
+        <script type="text/javascript">
+            $().ready(function () {
+                materialKitDemo.initContactUsMap();
+
+            });
+        </script>
+        <script type="text/javascript">
+
+            $().ready(function () {
+                // the body of this function is in assets/material-kit.js
+                materialKit.initSliders();
+                window_width = $(window).width();
+
+                if (window_width >= 992) {
+                    big_image = $('.wrapper > .header');
+
+                    $(window).on('scroll', materialKitDemo.checkScrollForParallax);
+                }
+
+            });
+        </script>
 

@@ -9,6 +9,10 @@ public class Cart extends IdOwnerComparable{
     public Cart(){
         products=new  LinkedList<Product>();
     }
+    public Cart(User user){
+        setUser(user);
+        products=new  LinkedList<Product>();
+    }
     
     public User getUser() {
         return user;
@@ -21,9 +25,20 @@ public class Cart extends IdOwnerComparable{
     public LinkedList<Product> getProducts() {
         return products;
     }
+    
+    public void AddProducts(Product product){
+        this.products.add(product);
+    }
 
     public void setProducts(LinkedList<Product> products) {
         this.products = products;
     }
     
+    public int countProduct(Product product){
+        int res=0;
+        for(Product p:products)
+            if(p.equals(product))
+                res++;
+        return res;
+    }
 }

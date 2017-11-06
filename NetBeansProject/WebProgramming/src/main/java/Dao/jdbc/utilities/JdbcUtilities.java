@@ -7,7 +7,6 @@ package Dao.jdbc.utilities;
 
 import Dao.GetById;
 import Dao.IdOwner;
-import Dao.jdbc.JdbcCartDao;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.sql.Connection;
@@ -157,7 +156,7 @@ public class JdbcUtilities {
                                 m.invoke(o, rs.getString(s));
                             }
                         }
-                        else if (m.getParameterTypes()[0].equals(Double.class)) {
+                        else if (m.getParameterTypes()[0].equals(double.class)) {
                             String s = map.get(name);
                             if (s == null) {
                                 m.invoke(o, rs.getDouble(camelToSql(name)));
@@ -198,6 +197,7 @@ public class JdbcUtilities {
                             }
                         }
                     } catch (SQLException e) {
+                        Log.write(e.toString());
                     }
                 }
             }

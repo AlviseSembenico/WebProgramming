@@ -8,6 +8,7 @@ package Dao;
 import Dao.entities.Picture;
 import Dao.entities.Product;
 import Dao.entities.Shop;
+import java.util.LinkedList;
 
 
 /**
@@ -16,6 +17,6 @@ import Dao.entities.Shop;
  */
 public interface PictureDao  extends  DefaultDao,GetById{
     public Picture getPictureById(int id) throws Exception;
-    public Picture getPictureByProduct(Product product) throws Exception;
-    public Picture getPictureByShop(Shop shop) throws Exception;
+    public LinkedList<Picture> getPictureByProduct(Product product) throws Exception;
+    public LinkedList<Picture> getPictureByShop(Shop shop) throws Exception;
 }
