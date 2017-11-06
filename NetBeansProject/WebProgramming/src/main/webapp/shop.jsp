@@ -8,166 +8,91 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-    <!DOCTYPE html>
-    <!doctype html>
-    <html>
+<!DOCTYPE html>
+<!doctype html>
+<html>
     <c:import url="pageBuilder/header.jsp"/>
-    <body class="about-us" waid71fa0d88-5390-4b5b-a2f4-e45fa93d85e2="SA password protect entry checker">
-        <div class="page-header header-filter header-small" data-parallax="true" style="background-image: url(http://hoanganhhalong.vn/Upload/images/chuyen-thuong-hieu/anh-dai-dien/hieu-tinh-cach-khach-hang-de-tang-doanh-so.jpg); transform: translate3d(0px, 0px, 0px);">
+    <body class="contact-page">
+        <div class="page-header header-filter header-small" data-parallax="true" style="background-image: url(${picture});">
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
-                        <h1 class="title">About Us</h1>
+                        <h1 class="title text-center">${shop.getName()}</h1><h4></h4>
                     </div>
                 </div>
             </div>
         </div>
-
         <div class="main main-raised">
-            <div class="container">
-                <div class="about-description text-center">
+            <div class="contact-content">
+                <div class="container">
+                    <h2 class="title">Send us a message</h2>
                     <div class="row">
-                        <div class="col-md-8 col-md-offset-2">
-                            <h2 class="title"><c:out value="${shop.getName()}"/></h2>
-                            <h5><c:out value="${shop.getDescription()}"/></h5>
-                            <div class="card-image">
-                                <img src="<c:out value="${pictures[0].getPath()}"/>">
+                        <div class="col-md-6">
+                            <p class="description">You can contact us with anything related to our Products. We'll get in touch with you as soon as possible.<br><br>
+                            </p>
+                            <form role="form" id="contact-form" method="post">
+                                <div class="form-group label-floating is-empty">
+                                    <label class="control-label">Your name</label>
+                                    <input type="text" name="name" class="form-control">
+                                    <span class="material-input"></span></div>
+                                <div class="form-group label-floating is-empty">
+                                    <label class="control-label">Email address</label>
+                                    <input type="email" name="email" class="form-control">
+                                    <span class="material-input"></span></div>
+                                <div class="form-group label-floating is-empty">
+                                    <label class="control-label">Phone</label>
+                                    <input type="text" name="phone" class="form-control">
+                                    <span class="material-input"></span></div>
+                                <div class="form-group label-floating is-empty">
+                                    <label class="control-label">Your message</label>
+                                    <textarea name="message" class="form-control" id="message" rows="6"></textarea>
+                                    <span class="material-input"></span></div>
+                                <div class="submit text-center">
+                                    <input type="submit" class="btn btn-primary btn-raised btn-round" value="Contact Us">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-4 col-md-offset-2">
+                            <div class="info info-horizontal">
+                                <div class="icon icon-primary">
+                                    <i class="material-icons">pin_drop</i>
+                                </div>
+                                <div class="description">
+                                    <h4 class="info-title">Find us at the office</h4>
+                                    <p> Bld Mihail Kogalniceanu, nr. 8,<br>
+                                        7652 Bucharest,<br>
+                                        Romania
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-team team-1">
-                    <div class="row">
-                        <div class="col-md-8 col-md-offset-2 text-center">
-                            <h2 class="title">Our Product</h2>
-                            <h5 class="description">Here's a carousel of our product.</h5>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="testimonials-2">
-
-                            <div class="container">
-
-                                <div class="row">
-
-                                    <div id="carousel-testimonial" class="carousel slide" data-ride="carousel">
-                                        <div class="carousel-inner" role="listbox">
-                                            <div class="item active">
-                                                <div class="card card-testimonial card-plain">
-                                                    <div class="card-avatar">
-                                                        <a href="/product.jsp?id=${products[0].getId()}">
-                                                            <img class="img" src="<c:out value="${pictures[0].getPath()}"/>">
-                                                        </a>
-                                                    </div>
-                                                    <div class="card-content">
-                                                        <h5 class="card-description"><c:out value="${products[0].getDescription()}"/></h5>
-                                                        <a href="/product.jsp?id=${products[0].getId()}"><h4 class="card-title"><c:out value="${products[0].getName()}"/></h4></a>
-                                                        <div class="footer">
-                                                            <i class="material-icons text-warning">star</i>
-                                                            <i class="material-icons text-warning">star</i>
-                                                            <i class="material-icons text-warning">star</i>
-                                                            <i class="material-icons text-warning">star</i>
-                                                            <i class="material-icons text-warning">star</i>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <c:forEach var="i" begin="1" end="${fn:length(products)-1}">
-                                                <div class="item">
-                                                    <div class="card card-testimonial card-plain">
-                                                        <div class="card-avatar">
-                                                            <a href="/product.jsp?id=${products[i].getId()}">
-                                                                <img class="img" src="<c:out value="${pictures[i].getPath()}"/>">
-                                                            </a>
-                                                        </div>
-                                                        <div class="card-content">
-                                                            <h5 class="card-description"><c:out value="${products[i].getDescription()}"/></h5>
-                                                            <a href="/product.jsp?id=${products[i].getId()}"><h4 class="card-title"><c:out value="${products[i].getName()}"/></h4></a>
-                                                            <div class="footer">
-                                                                <i class="material-icons text-warning">star</i>
-                                                                <i class="material-icons text-warning">star</i>
-                                                                <i class="material-icons text-warning">star</i>
-                                                                <i class="material-icons text-warning">star</i>
-                                                                <i class="material-icons text-warning">star</i>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </c:forEach>
-                                        </div>
-                                        <a class="left carousel-control" href="#carousel-testimonial" role="button" data-slide="prev">
-                                            <i class="material-icons" aria-hidden="true">chevron_left</i>
-                                        </a>
-                                        <a class="right carousel-control" href="#carousel-testimonial" role="button" data-slide="next">
-                                            <i class="material-icons" aria-hidden="true">chevron_right</i>
-                                        </a>
-                                    </div>
+                            <div class="info info-horizontal">
+                                <div class="icon icon-primary">
+                                    <i class="material-icons">phone</i>
+                                </div>
+                                <div class="description">
+                                    <h4 class="info-title">Give us a ring</h4>
+                                    <p> Michael Jordan<br>
+                                        +40 762 321 762<br>
+                                        Mon - Fri, 8:00-22:00
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="info info-horizontal">
+                                <div class="icon icon-primary">
+                                    <i class="material-icons">business_center</i>
+                                </div>
+                                <div class="description">
+                                    <h4 class="info-title">Legal Information</h4>
+                                    <p> Creative Tim Ltd.<br>
+                                        VAT · EN2341241<br>
+                                        IBAN · EN8732ENGB2300099123<br>
+                                        Bank · Great Britain Bank
+                                    </p>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                </div>
-                <div class="about-services features-2">
-                    <div class="row">
-                        <div class="col-md-8 col-md-offset-2 text-center">
-                            <h2 class="title">Found Us</h2>
-                            <a href="${shop.getWebSiteUrl()}"><h4 class="card-title"><c:out value="${shop.getWebSiteUrl()}"/></h4></a>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="contact-page">
-                            <div id="contactUsMap" class="big-map"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-office">
-                    <div class="row">
-                        <div class="col-md-8 col-md-offset-2">
-                            <h2 class="text-center title">Rate Us:</h2>
-                            <h4 class="text-center description">Give us a star.</h4>
-                            <div class="stars">
-                                <form class="text-center" action="">
-                                    <input class="star star-5" id="star-5" type="radio" name="star"/>
-                                    <label class="star star-5" for="star-5"></label>
-                                    <input class="star star-4" id="star-4" type="radio" name="star"/>
-                                    <label class="star star-4" for="star-4"></label>
-                                    <input class="star star-3" id="star-3" type="radio" name="star"/>
-                                    <label class="star star-3" for="star-3"></label>
-                                    <input class="star star-2" id="star-2" type="radio" name="star"/>
-                                    <label class="star star-2" for="star-2"></label>
-                                    <input class="star star-1" id="star-1" type="radio" name="star"/>
-                                    <label class="star star-1" for="star-1"></label>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
-        </div>
+        </div> 
         <c:import url="pageBuilder/footer.jsp"/>
-        <script type="text/javascript">
-            $().ready(function () {
-                materialKitDemo.initContactUsMap();
-
-            });
-        </script>
-        <script type="text/javascript">
-
-            $().ready(function () {
-                // the body of this function is in assets/material-kit.js
-                materialKit.initSliders();
-                window_width = $(window).width();
-
-                if (window_width >= 992) {
-                    big_image = $('.wrapper > .header');
-
-                    $(window).on('scroll', materialKitDemo.checkScrollForParallax);
-                }
-
-            });
-        </script>
-

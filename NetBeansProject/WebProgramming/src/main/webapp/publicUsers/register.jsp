@@ -108,6 +108,8 @@
                                         </div>
                                         <div class="footer text-center">
                                         <input type="submit" value="Register" class="btn btn-primary btn-round"/>
+                                        
+                                        <input type="button" onclick="history.go(-1)" value="Undo" class="btn btn-primary btn-round"/>
                                         </div>
                                     </form>
                                 </div>

@@ -33,7 +33,7 @@ public class JdbcShopDao extends JdbcUtilities implements ShopDao{
 
     @Override
     public Shop getShopById(int id) throws Exception {
-        HashMap<Object,String> mappa=new HashMap<Object,String>();
+        HashMap<Object,String> mappa=new HashMap<>();
         mappa.put(id,"id");
         Shop res=(Shop)  super.getObject(Shop.class, map, tableName, mappa).get(0);
         return res;

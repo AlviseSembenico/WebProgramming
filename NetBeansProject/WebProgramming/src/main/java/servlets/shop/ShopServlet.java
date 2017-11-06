@@ -14,9 +14,6 @@ import Dao.entities.Shop;
 import Dao.ShopDao;
 import Dao.entities.Picture;
 import Dao.PictureDao;
-import Dao.ProductDao;
-import Dao.entities.Product;
-import java.util.LinkedList;
 import javax.servlet.RequestDispatcher;
 import system.Log;
 
@@ -43,12 +40,9 @@ public class ShopServlet extends HttpServlet {
             ShopDao shopDao = (ShopDao) super.getServletContext().getAttribute("shopDao");
             Shop shop = shopDao.getShopById(id);
             PictureDao pictureDao = (PictureDao) super.getServletContext().getAttribute("pictureDao");
-            LinkedList<Picture> pictures = pictureDao.getPictureByShop(shop);
-            ProductDao productDao = (ProductDao) super.getServletContext().getAttribute("productDao");
-            LinkedList<Product> products = productDao.getProductByShop(shop);
+            Picture picture = pictureDao.getPictureShop(shop);
             request.setAttribute("shop", shop);
-            request.setAttribute("products", products);
-            request.setAttribute("pictures", pictures);
+            request.setAttribute("picture", picture.getPath());
             RequestDispatcher reqDes = request.getRequestDispatcher("/shop.jsp");
             reqDes.forward(request, response);
 
