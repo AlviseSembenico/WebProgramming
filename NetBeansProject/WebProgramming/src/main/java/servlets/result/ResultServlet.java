@@ -53,7 +53,7 @@ public class ResultServlet extends HttpServlet {
         String minRew=null;
         String maxRew=null;
         
-        try{
+        
         name = request.getParameter("name");
         city = request.getParameter("City");
         region = request.getParameter("Region");
@@ -62,7 +62,18 @@ public class ResultServlet extends HttpServlet {
         maxPrice = request.getParameter("maxPrice");
         minRew = request.getParameter("minRew");
         maxRew = request.getParameter("maxRew");
-        
+        if("".equals(name)){
+            LinkedList<Product> product;
+            try {
+                product = productDao.All();
+                request.setAttribute("product", product);
+            } catch (Exception ex) {
+                Logger.getLogger(ResultServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
+        else{
+            try{
         }catch (Exception ex) {
          throw new ServletException("Impossible to get dao factory for user storage system");
         }
@@ -73,8 +84,10 @@ public class ResultServlet extends HttpServlet {
             } catch (Exception ex) {
                 Logger.getLogger(ResultServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
+        }
         request.setAttribute("name", name);
         RequestDispatcher RequetsDispatcherObj = request.getRequestDispatcher("/result.jsp");
         RequetsDispatcherObj.forward(request, response);
+    }   
     }
-}
+

@@ -200,6 +200,19 @@ public class JdbcProductDao extends JdbcUtilities implements ProductDao{
         return null;
     }
 
+    @Override
+    public LinkedList<Product> All() throws Exception{
+        if (!checkConnection()) {
+            return null;
+        }
+        String query ="select * from products";
+        PreparedStatement stmt = connection.prepareStatement(query);
+        LinkedList<Product> res=new LinkedList<Product> ();
+        for(Object o:super.fillResult(Product.class, map, stmt.executeQuery()))
+            res.add((Product) o);
+        return res;
+    }
+
     
 
     

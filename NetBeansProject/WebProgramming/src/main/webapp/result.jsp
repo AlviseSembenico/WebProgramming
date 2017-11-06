@@ -50,7 +50,7 @@
                                                     <a href="product?id=32" class="btn btn-round btn-white">
                                                         <i class="material-icons">info</i> Details
                                                     </a>
-                                                    <a href="../source Packages/product.servlet/product.java" class="btn btn-round btn-rose">
+                                                    <a href="cart" class="btn btn-round btn-rose">
                                                         <i class="material-icons">add_shopping_cart</i> Cart
                                                     </a>
                                                 </div>
@@ -183,13 +183,13 @@
                         <div class="col-md-3">
                             <form method="GET">
                                 <input type="text" value="<c:out value="${name}"/>" hidden="false" name="name">
-                                <div class="card card-refine card-plain">
-                                    <div class="card-content">
-                                        <h4 class="card-title">
-                                            Filter
-                                            <button class="btn btn-default btn-fab btn-fab-mini btn-simple pull-right" type= submit" rel="tooltip" title="Send filter">
-                                                <i class="material-icons">filter_list</i>
-                                            </button>
+                            <div class="card card-refine card-plain">
+                                <div class="card-content">
+                                    <h4 class="card-title">
+                                        Filter
+                                        <button class="btn btn-default btn-fab btn-fab-mini btn-simple pull-right" type= submit" rel="tooltip" title="Send filter">
+                                            <i class="material-icons">filter_list</i>
+                                        </button>
                                     </h4>
                                     <div class="panel panel-default panel-blu">
                                         <div class="panel-heading" role="tab" id="headingOne">
@@ -294,7 +294,7 @@
                                     <div class="panel panel-default panel-blu">
                                         <div class="panel-heading" role="tab" id="headingFour">
                                             <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                                <h4 class="panel-title">Radius</h4>
+                                                <h4 class="panel-title">Number of Review</h4>
                                                 <i class="material-icons material-margin">keyboard_arrow_down</i>
                                             </a>
                                         </div>
@@ -302,17 +302,64 @@
                                             <div class="panel-body">
 
                                                 <fieldset>
-                                                    <legend>Radius</legend>
-                                                    <input type="radio" name="Radius" value="0"/> Everything <br>
-                                                    <input type="radio" name="Radius" value="30"/> 30<br>
-                                                    <input type="radio" name="Radius" value="90"/> 90<br>
-                                                    <input type="radio" name="Radius" value="150"/> 150<br>
-                                                    <input type="radio" name="Radius" value="180"/> 180<br>
+                                                    <legend>Number of Review</legend>
+                                                    <input type="radio" name="maxRew" value="10"/> <10 <br>
+                                                    <input type="radio" name="maxRew" value="15"/> <15 <br>
+                                                    <input type="radio" name="maxRew" value="20"/> <20 <br>
+                                                    <input type="radio" name="maxRew" value="30"/> >20<br>
                                                 </fieldset>
-                                                </form>
+
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="panel panel-default panel-blu">
+                                        <div class="panel-heading" role="tab" id="headingFour">
+                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                                <h4 class="panel-title">Star</h4>
+                                                <i class="material-icons material-margin">keyboard_arrow_down</i>
+                                            </a>
+                                        </div>
+                                        <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+                                            <div class="panel-body">
+
+                                                <fieldset>
+                                                    <legend>Min of Star</legend>
+                                                    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+                                                    <div class="stars">
+
+                                                        <form action="">
+
+                                                            <input class="star star-5" id="star-5" type="radio" name="star"/>
+
+                                                            <label class="star star-5" for="star-5"></label>
+
+                                                            <input class="star star-4" id="star-4" type="radio" name="star"/>
+
+                                                            <label class="star star-4" for="star-4"></label>
+
+                                                            <input class="star star-3" id="star-3" type="radio" name="star"/>
+
+                                                            <label class="star star-3" for="star-3"></label>
+
+                                                            <input class="star star-2" id="star-2" type="radio" name="star"/>
+
+                                                            <label class="star star-2" for="star-2"></label>
+
+                                                            <input class="star star-1" id="star-1" type="radio" name="star"/>
+
+                                                            <label class="star star-1" for="star-1"></label>
+
+
+                                                    </div>
+
+
+                                                </fieldset>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    </form>
                                 </div>
                             </div>
                         </form><!-- end card -->

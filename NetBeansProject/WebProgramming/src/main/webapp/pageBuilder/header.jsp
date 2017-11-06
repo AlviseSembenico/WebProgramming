@@ -63,29 +63,17 @@
                 <div class="collpase navbar-collapse">
 
                     <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <div class="card card-raised card-form-horizontal" style="margin-bottom: 0px;">
-                                <div class="card-content" style="padding: 5px;">
-                                    <form method="" action="">
-                                        <div class="row">
-                                            <div class="col-sm-8">
+                        <li >
+                            <form class="form form-newsletter card-content" method="" action="result">
+                                <div class="form-group is-empty" >
+                                    <input style=" width: 180%; color: white" type="text" name="name" class="pull-right form-control" placeholder="Search...">
+                                    <span class="material-input"></span></div>
+                            
+                                <button type="submit" class="btn btn-danger btn-just-icon">
+                                    <i class="material-icons">search</i>
+                                </button>
 
-                                                <div class="input-group">
-                                                    <span class="input-group-addon">
-                                                        <i class="material-icons">mail</i>
-                                                    </span>
-                                                    <div class="form-group is-empty"><input value="" placeholder="Your Email..." class="form-control" type="email"><span class="material-input"></span><span class="material-input"></span></div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <button type="button" class="btn btn-danger btn-block" style="padding-left: 10px;padding-right: 10px;">
-                                                    <i class="material-icons">search</i>
-                                                    search</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
+                            </form>
                         </li>
                         <li>
                             <a href="../index.html">
