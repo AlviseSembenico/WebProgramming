@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import java.io.File;
+import javax.servlet.RequestDispatcher;
 
 /**
  *
@@ -84,6 +85,13 @@ public class AddObjectServlet extends HttpServlet {
         } catch (IOException lEx) {
             this.getServletContext().log(lEx, "error reading or saving file");
         }
+    }
+    
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        RequestDispatcher reqDes = request.getRequestDispatcher("/loggedUsers/addObject.jsp");
+        reqDes.forward(request, response);
     }
 
         /**

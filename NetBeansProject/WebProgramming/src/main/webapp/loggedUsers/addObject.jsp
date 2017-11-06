@@ -18,7 +18,7 @@
         <div class="main main-raised">
             <div class="profile-content">
                 <div class="container">
-                    <form method="POST" action="/utils/addObject">
+                    <form method="POST" action="addObject">
                         <div class="row">
                             <div class="col-xs-6 col-xs-offset-3">
                                 <div class="add-object">
@@ -38,7 +38,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="about-team team-1"/>
                                     <div class="name">
                                         <div class="row">
                                             <div class="title">
@@ -111,8 +110,7 @@
                                 }
                             </script>
                         </div>
-                    </div>
-                </form>
+                </\form>
             </div>
         </div>
 
