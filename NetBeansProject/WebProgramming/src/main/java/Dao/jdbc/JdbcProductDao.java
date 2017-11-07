@@ -34,7 +34,7 @@ public class JdbcProductDao extends JdbcUtilities implements ProductDao{
         map.put("shop", "shops_id");
     }
     
-    public LinkedList<Product> DoQwery(String name, String city, String region, String radius, String minPrice, String maxPrice, String maxRew, String minRew) throws SQLException, Exception{
+    public LinkedList<Product> DoQwery(String name, String city, String region, String radius, String minPrice, String maxPrice, String maxRew, String minRew, String star) throws SQLException, Exception{
         if (!checkConnection()) {
             return null;
         }
@@ -42,16 +42,19 @@ public class JdbcProductDao extends JdbcUtilities implements ProductDao{
         String reg=new String(" ");
         String price=new String(" ");
         String rew=new String(" ");
+        String str= new String(" ");
         String query ="select p.* from products p join shops s on p.shops_id=s.id where soundex(p.name)=soundex(?)";
         if(city != null)
             place=" and s.city=?";
         if(region != null)
             reg=" and s.region=?";
-        if(maxPrice != null)
+        if(maxPrice != null && !"".equals(maxPrice))
             price=" and (p.price>=? and p.price<=?)";
-        if(minRew != null)
+        if(maxRew != null)
             rew=" and ((select avg(r.global_value) from reviews r where r.products_id=o.id)>=? and (select avg(r.global_value) from reviews r where r.products_id=o.id)<=?)";
-        PreparedStatement stmt = connection.prepareStatement(query+place+price+rew);
+        if(star != null)
+            str = " and (p.starValue/p.numberPeople)>=?";
+        PreparedStatement stmt = connection.prepareStatement(query+place+price+rew+str);
         Integer i = new Integer(1);
         stmt.setString(i, name);
         if(city != null){
@@ -62,17 +65,21 @@ public class JdbcProductDao extends JdbcUtilities implements ProductDao{
             i++;
             stmt.setString(i, region);
         }
-        if(maxPrice != null){
+        if(maxPrice != null && !"".equals(maxPrice)){
             i++;
             stmt.setDouble(i, Double.parseDouble(minPrice));
             i++;
             stmt.setDouble(i, Double.parseDouble(maxPrice));
         }
-        if(minRew != null){
+        if(maxRew != null){
             i++;
             stmt.setDouble(i, Double.parseDouble(minRew));
             i++;
             stmt.setDouble(i, Double.parseDouble(maxRew));
+        }
+        if(star != null){
+            i++;
+            stmt.setDouble(i, Double.parseDouble(star));
         }
         LinkedList<Product> res=new LinkedList<Product>();
         for(Object o:super.fillResult(Product.class, map, stmt.executeQuery()))
@@ -206,11 +213,13 @@ public class JdbcProductDao extends JdbcUtilities implements ProductDao{
             return null;
         }
         String query ="select * from products";
-        PreparedStatement stmt = connection.prepareStatement(query);
+        
         LinkedList<Product> res=new LinkedList<Product> ();
+        PreparedStatement stmt = connection.prepareStatement(query);
         for(Object o:super.fillResult(Product.class, map, stmt.executeQuery()))
             res.add((Product) o);
         return res;
+       
     }
 
     

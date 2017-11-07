@@ -52,6 +52,7 @@ public class ResultServlet extends HttpServlet {
         String maxPrice=null;
         String minRew=null;
         String maxRew=null;
+        String star=null;
         
         
         name = request.getParameter("name");
@@ -62,6 +63,7 @@ public class ResultServlet extends HttpServlet {
         maxPrice = request.getParameter("maxPrice");
         minRew = request.getParameter("minRew");
         maxRew = request.getParameter("maxRew");
+        star = request.getParameter("star");
         if("".equals(name)){
             LinkedList<Product> product;
             try {
@@ -79,7 +81,7 @@ public class ResultServlet extends HttpServlet {
         }
             LinkedList<Product> product;
             try {
-                product = productDao.DoQwery(name,region,city,radius,minPrice,maxPrice,minRew,maxRew);
+                product = productDao.DoQwery(name,region,city,radius,minPrice,maxPrice,minRew,maxRew,star);
                 request.setAttribute("product", product);
             } catch (Exception ex) {
                 Logger.getLogger(ResultServlet.class.getName()).log(Level.SEVERE, null, ex);
