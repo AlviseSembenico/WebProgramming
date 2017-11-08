@@ -77,7 +77,7 @@
                                     <div class="description">
                                         <h4 class="info-title">Conctact</h4>
                                         <p> <h6>Site:</h6>
-                                        <a href="http://www.${shop.getWebSiteUrl()}">${shop.getWebSiteUrl()}<br>
+                                        <a href="http://www.${shop.getWebSiteUrl()}">${shop.getWebSiteUrl()}></a><br>
                                             </p>
                                             </div>
                                             </div>
