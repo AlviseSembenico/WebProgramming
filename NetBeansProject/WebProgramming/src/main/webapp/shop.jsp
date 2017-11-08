@@ -25,74 +25,80 @@
         <div class="main main-raised">
             <div class="contact-content">
                 <div class="container">
-                    <h2 class="title">Send us a message</h2>
                     <div class="row">
                         <div class="col-md-6">
-                            <p class="description">You can contact us with anything related to our Products. We'll get in touch with you as soon as possible.<br><br>
-                            </p>
-                            <form role="form" id="contact-form" method="post">
-                                <div class="form-group label-floating is-empty">
-                                    <label class="control-label">Your name</label>
-                                    <input type="text" name="name" class="form-control">
-                                    <span class="material-input"></span></div>
-                                <div class="form-group label-floating is-empty">
-                                    <label class="control-label">Email address</label>
-                                    <input type="email" name="email" class="form-control">
-                                    <span class="material-input"></span></div>
-                                <div class="form-group label-floating is-empty">
-                                    <label class="control-label">Phone</label>
-                                    <input type="text" name="phone" class="form-control">
-                                    <span class="material-input"></span></div>
-                                <div class="form-group label-floating is-empty">
-                                    <label class="control-label">Your message</label>
-                                    <textarea name="message" class="form-control" id="message" rows="6"></textarea>
-                                    <span class="material-input"></span></div>
-                                <div class="submit text-center">
-                                    <input type="submit" class="btn btn-primary btn-raised btn-round" value="Contact Us">
+                            <div class="col-md-8 col-md-offset-2">
+                                <div class="media-area">
+                                    <h3 class="title">Comments</h3>
+                                    <div class="media">
+                                        <div class="media-body">
+                                            <h4 class="media-heading">Tina Andrew <small>· 7 minutes ago</small></h4>
+                                            <h6 class="text-muted"></h6>
+
+                                            <p>Chance too good. God level bars. I'm so proud of @LifeOfDesiigner #1 song in the country. Panda! Don't be scared of the truth because we need to restart the human foundation in truth I stand with the most humility. We are so blessed!</p>
+                                            <p>All praises and blessings to the families of people who never gave up on dreams. Don't forget, You're Awesome!</p>
+                                        </div>
+                                    </div>
+                                    <h3 class="text-justify">Post your comment <br><small>- Logged In User -</small></h3>
+                                    <div class="media media-post">
+                                        <div class="media-body">
+                                            <div class="form-group is-empty"><textarea class="form-control" placeholder="Write some nice stuff or nothing..." rows="6"></textarea><span class="material-input"></span></div>
+                                            <div class="media-footer">
+                                                <a href="#pablo" class="btn btn-primary btn-wd pull-right">Post Comment</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="media media-post">
+
+                                    </div>
+                                    <div class="media media-post">
+
+                                    </div>
                                 </div>
-                            </form>
+                            </div>
+                            <div class="col-md-4 col-md-offset-2">
+                                <div class="info info-horizontal">
+                                    <div class="icon icon-primary">
+                                        <i class="material-icons">pin_drop</i>
+                                    </div>
+                                    <div class="description">
+                                        <h4 class="info-title">Address</h4>
+                                        <p>${shop.getStreet()}<br>
+                                            ${shop.getCity()}<br>
+                                            ${shop.getRegion()}<br>
+                                            <a href="map.jsp?lat=${shop.getLatitude()}&long=${shop.getLongitude()}">Map</a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="info info-horizontal">
+                                    <div class="icon icon-primary">
+                                        <i class="material-icons">contacts</i>
+                                    </div>
+                                    <div class="description">
+                                        <h4 class="info-title">Conctact</h4>
+                                        <p> <h6>Site:</h6>
+                                        <a href="http://www.${shop.getWebSiteUrl()}">${shop.getWebSiteUrl()}<br>
+                                            </p>
+                                            </div>
+                                            </div>
+                                            <div class="info info-horizontal">
+                                                <div class="icon icon-primary">
+                                                    <i class="material-icons">info_outline</i>
+                                                </div>
+                                                <div class="description">
+                                                    <h4 class="info-title">Information</h4>
+                                                    <p><h6>Open Time:</h6>
+                                                    ${shop.getOpenTime()}<br>
+                                                    <h6>Close Time:</h6>
+                                                    ${shop.getCloseTime()}<br>
+                                                    <h6>Close Day</h6>
+                                                    ${shop.getCloseDay()}<br>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-md-4 col-md-offset-2">
-                            <div class="info info-horizontal">
-                                <div class="icon icon-primary">
-                                    <i class="material-icons">pin_drop</i>
-                                </div>
-                                <div class="description">
-                                    <h4 class="info-title">Find us at the office</h4>
-                                    <p> Bld Mihail Kogalniceanu, nr. 8,<br>
-                                        7652 Bucharest,<br>
-                                        Romania
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="info info-horizontal">
-                                <div class="icon icon-primary">
-                                    <i class="material-icons">phone</i>
-                                </div>
-                                <div class="description">
-                                    <h4 class="info-title">Give us a ring</h4>
-                                    <p> Michael Jordan<br>
-                                        +40 762 321 762<br>
-                                        Mon - Fri, 8:00-22:00
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="info info-horizontal">
-                                <div class="icon icon-primary">
-                                    <i class="material-icons">business_center</i>
-                                </div>
-                                <div class="description">
-                                    <h4 class="info-title">Legal Information</h4>
-                                    <p> Creative Tim Ltd.<br>
-                                        VAT · EN2341241<br>
-                                        IBAN · EN8732ENGB2300099123<br>
-                                        Bank · Great Britain Bank
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> 
-        <c:import url="pageBuilder/footer.jsp"/>
+                    </div> 
+                    <c:import url="pageBuilder/footer.jsp"/>

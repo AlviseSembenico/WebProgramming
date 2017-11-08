@@ -75,11 +75,6 @@
 
                             </form>
                         </li>
-                        <li>
-                            <a href="../index.html">
-                                <i class="material-icons">apps</i> Components
-                            </a>
-                        </li>
 
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">

@@ -42,7 +42,11 @@ public class ShopServlet extends HttpServlet {
             PictureDao pictureDao = (PictureDao) super.getServletContext().getAttribute("pictureDao");
             Picture picture = pictureDao.getPictureShop(shop);
             request.setAttribute("shop", shop);
-            request.setAttribute("picture", picture.getPath());
+            if (picture != null) {
+                request.setAttribute("picture", picture.getPath());
+            } else {
+                request.setAttribute("picture", "http://via.placeholder.com/350x150");
+            }
             RequestDispatcher reqDes = request.getRequestDispatcher("/shop.jsp");
             reqDes.forward(request, response);
 
