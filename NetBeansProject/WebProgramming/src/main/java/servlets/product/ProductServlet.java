@@ -36,6 +36,7 @@ public class ProductServlet extends HttpServlet {
     private UserDao userDao;
     private CartDao cartDao;
     private PictureDao pictureDao;
+    private ShopDao shopDao;
 
     @Override
     public void init() throws ServletException {
@@ -55,7 +56,10 @@ public class ProductServlet extends HttpServlet {
         if (pictureDao == null) {
             throw new ServletException("Impossible to get dao factory for user storage system");
         }
-        
+        shopDao = (ShopDao) super.getServletContext().getAttribute("shopDao");
+        if (shopDao == null) {
+            throw new ServletException("Impossible to get dao factory for user storage system");
+        }
      }
 
     /**
@@ -73,8 +77,10 @@ public class ProductServlet extends HttpServlet {
             int id = Integer.parseInt(request.getParameter("id"));
             Product product = productDao.getProductById(id);
             LinkedList<Picture> pictures = pictureDao.getPictureByProduct(product);
+            Shop shop = shopDao.getShopByProduct(product);
             request.setAttribute("product", product);
             request.setAttribute("pictures", pictures);
+            request.setAttribute("shop", shop);
             RequestDispatcher reqDes = request.getRequestDispatcher("/product.jsp");
             reqDes.forward(request, response);
         } catch (Exception ex) {
