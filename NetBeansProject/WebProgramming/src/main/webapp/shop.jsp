@@ -8,166 +8,97 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-    <!DOCTYPE html>
-    <!doctype html>
-    <html>
+<!DOCTYPE html>
+<!doctype html>
+<html>
     <c:import url="pageBuilder/header.jsp"/>
-    <body class="about-us" waid71fa0d88-5390-4b5b-a2f4-e45fa93d85e2="SA password protect entry checker">
-        <div class="page-header header-filter header-small" data-parallax="true" style="background-image: url(http://hoanganhhalong.vn/Upload/images/chuyen-thuong-hieu/anh-dai-dien/hieu-tinh-cach-khach-hang-de-tang-doanh-so.jpg); transform: translate3d(0px, 0px, 0px);">
+    <body class="contact-page">
+        <div class="page-header header-filter header-small" data-parallax="true" style="background-image: url(${picture});">
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
-                        <h1 class="title">About Us</h1>
+                        <h1 class="title text-center">${shop.getName()}</h1><h4></h4>
                     </div>
                 </div>
             </div>
         </div>
-
         <div class="main main-raised">
-            <div class="container">
-                <div class="about-description text-center">
+            <div class="contact-content">
+                <div class="container">
                     <div class="row">
-                        <div class="col-md-8 col-md-offset-2">
-                            <h2 class="title"><c:out value="${shop.getName()}"/></h2>
-                            <h5><c:out value="${shop.getDescription()}"/></h5>
-                            <div class="card-image">
-                                <img src="<c:out value="${pictures[0].getPath()}"/>">
+                        <div class="col-md-6">
+                            <div class="col-md-8 col-md-offset-2">
+                                <div class="media-area">
+                                    <h3 class="title">Comments</h3>
+                                    <div class="media">
+                                        <div class="media-body">
+                                            <h4 class="media-heading">Tina Andrew <small>· 7 minutes ago</small></h4>
+                                            <h6 class="text-muted"></h6>
+
+                                            <p>Chance too good. God level bars. I'm so proud of @LifeOfDesiigner #1 song in the country. Panda! Don't be scared of the truth because we need to restart the human foundation in truth I stand with the most humility. We are so blessed!</p>
+                                            <p>All praises and blessings to the families of people who never gave up on dreams. Don't forget, You're Awesome!</p>
+                                        </div>
+                                    </div>
+                                    <h3 class="text-justify">Post your comment <br><small>- Logged In User -</small></h3>
+                                    <div class="media media-post">
+                                        <div class="media-body">
+                                            <div class="form-group is-empty"><textarea class="form-control" placeholder="Write some nice stuff or nothing..." rows="6"></textarea><span class="material-input"></span></div>
+                                            <div class="media-footer">
+                                                <a href="#pablo" class="btn btn-primary btn-wd pull-right">Post Comment</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="media media-post">
+
+                                    </div>
+                                    <div class="media media-post">
+
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-team team-1">
-                    <div class="row">
-                        <div class="col-md-8 col-md-offset-2 text-center">
-                            <h2 class="title">Our Product</h2>
-                            <h5 class="description">Here's a carousel of our product.</h5>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="testimonials-2">
-
-                            <div class="container">
-
-                                <div class="row">
-
-                                    <div id="carousel-testimonial" class="carousel slide" data-ride="carousel">
-                                        <div class="carousel-inner" role="listbox">
-                                            <div class="item active">
-                                                <div class="card card-testimonial card-plain">
-                                                    <div class="card-avatar">
-                                                        <a href="/product.jsp?id=${products[0].getId()}">
-                                                            <img class="img" src="<c:out value="${pictures[0].getPath()}"/>">
-                                                        </a>
-                                                    </div>
-                                                    <div class="card-content">
-                                                        <h5 class="card-description"><c:out value="${products[0].getDescription()}"/></h5>
-                                                        <a href="/product.jsp?id=${products[0].getId()}"><h4 class="card-title"><c:out value="${products[0].getName()}"/></h4></a>
-                                                        <div class="footer">
-                                                            <i class="material-icons text-warning">star</i>
-                                                            <i class="material-icons text-warning">star</i>
-                                                            <i class="material-icons text-warning">star</i>
-                                                            <i class="material-icons text-warning">star</i>
-                                                            <i class="material-icons text-warning">star</i>
-                                                        </div>
-                                                    </div>
+                            <div class="col-md-4 col-md-offset-2">
+                                <div class="info info-horizontal">
+                                    <div class="icon icon-primary">
+                                        <i class="material-icons">pin_drop</i>
+                                    </div>
+                                    <div class="description">
+                                        <h4 class="info-title">Address</h4>
+                                        <p>${shop.getStreet()}<br>
+                                            ${shop.getCity()}<br>
+                                            ${shop.getRegion()}<br>
+                                            <a href="map.jsp?lat=${shop.getLatitude()}&long=${shop.getLongitude()}">Map</a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="info info-horizontal">
+                                    <div class="icon icon-primary">
+                                        <i class="material-icons">contacts</i>
+                                    </div>
+                                    <div class="description">
+                                        <h4 class="info-title">Conctact</h4>
+                                        <p> <h6>Site:</h6>
+                                        <a href="http://www.${shop.getWebSiteUrl()}">${shop.getWebSiteUrl()}></a><br>
+                                            </p>
+                                            </div>
+                                            </div>
+                                            <div class="info info-horizontal">
+                                                <div class="icon icon-primary">
+                                                    <i class="material-icons">info_outline</i>
+                                                </div>
+                                                <div class="description">
+                                                    <h4 class="info-title">Information</h4>
+                                                    <p><h6>Open Time:</h6>
+                                                    ${shop.getOpenTime()}<br>
+                                                    <h6>Close Time:</h6>
+                                                    ${shop.getCloseTime()}<br>
+                                                    <h6>Close Day</h6>
+                                                    ${shop.getCloseDay()}<br>
+                                                    </p>
                                                 </div>
                                             </div>
-                                            <c:forEach var="i" begin="1" end="${fn:length(products)-1}">
-                                                <div class="item">
-                                                    <div class="card card-testimonial card-plain">
-                                                        <div class="card-avatar">
-                                                            <a href="/product.jsp?id=${products[i].getId()}">
-                                                                <img class="img" src="<c:out value="${pictures[i].getPath()}"/>">
-                                                            </a>
-                                                        </div>
-                                                        <div class="card-content">
-                                                            <h5 class="card-description"><c:out value="${products[i].getDescription()}"/></h5>
-                                                            <a href="/product.jsp?id=${products[i].getId()}"><h4 class="card-title"><c:out value="${products[i].getName()}"/></h4></a>
-                                                            <div class="footer">
-                                                                <i class="material-icons text-warning">star</i>
-                                                                <i class="material-icons text-warning">star</i>
-                                                                <i class="material-icons text-warning">star</i>
-                                                                <i class="material-icons text-warning">star</i>
-                                                                <i class="material-icons text-warning">star</i>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </c:forEach>
-                                        </div>
-                                        <a class="left carousel-control" href="#carousel-testimonial" role="button" data-slide="prev">
-                                            <i class="material-icons" aria-hidden="true">chevron_left</i>
-                                        </a>
-                                        <a class="right carousel-control" href="#carousel-testimonial" role="button" data-slide="next">
-                                            <i class="material-icons" aria-hidden="true">chevron_right</i>
-                                        </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                </div>
-                <div class="about-services features-2">
-                    <div class="row">
-                        <div class="col-md-8 col-md-offset-2 text-center">
-                            <h2 class="title">Found Us</h2>
-                            <a href="${shop.getWebSiteUrl()}"><h4 class="card-title"><c:out value="${shop.getWebSiteUrl()}"/></h4></a>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="contact-page">
-                            <div id="contactUsMap" class="big-map"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-office">
-                    <div class="row">
-                        <div class="col-md-8 col-md-offset-2">
-                            <h2 class="text-center title">Rate Us:</h2>
-                            <h4 class="text-center description">Give us a star.</h4>
-                            <div class="stars">
-                                <form class="text-center" action="">
-                                    <input class="star star-5" id="star-5" type="radio" name="star"/>
-                                    <label class="star star-5" for="star-5"></label>
-                                    <input class="star star-4" id="star-4" type="radio" name="star"/>
-                                    <label class="star star-4" for="star-4"></label>
-                                    <input class="star star-3" id="star-3" type="radio" name="star"/>
-                                    <label class="star star-3" for="star-3"></label>
-                                    <input class="star star-2" id="star-2" type="radio" name="star"/>
-                                    <label class="star star-2" for="star-2"></label>
-                                    <input class="star star-1" id="star-1" type="radio" name="star"/>
-                                    <label class="star star-1" for="star-1"></label>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <c:import url="pageBuilder/footer.jsp"/>
-        <script type="text/javascript">
-            $().ready(function () {
-                materialKitDemo.initContactUsMap();
-
-            });
-        </script>
-        <script type="text/javascript">
-
-            $().ready(function () {
-                // the body of this function is in assets/material-kit.js
-                materialKit.initSliders();
-                window_width = $(window).width();
-
-                if (window_width >= 992) {
-                    big_image = $('.wrapper > .header');
-
-                    $(window).on('scroll', materialKitDemo.checkScrollForParallax);
-                }
-
-            });
-        </script>
-
+                    </div> 
+                    <c:import url="pageBuilder/footer.jsp"/>

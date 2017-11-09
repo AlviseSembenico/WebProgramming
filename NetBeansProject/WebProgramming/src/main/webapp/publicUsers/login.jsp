@@ -70,9 +70,8 @@
                                         </div> 
                                 </div>
                                 <div class="text-center">
-
                                     <input type="submit" class="btn btn-primary" value="Log in"/>
-
+                                    <input type="button" onClick="history.go(-1)" class="btn btn-primary" value="Undo"/>
                                 </div>
                             </form>
                             <div class="footer text-center">
