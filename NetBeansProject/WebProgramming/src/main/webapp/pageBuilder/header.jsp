@@ -66,7 +66,7 @@
                         <li >
                             <form class="form form-newsletter card-content" method="" action="result">
                                 <div class="form-group is-empty" >
-                                    <input style=" width: 180%; color: white" type="text" name="name" class="pull-right form-control" placeholder="Search...">
+                                    <input style=" width: 240%; color: white" type="text" name="name" class="pull-right form-control" placeholder="Search...">
                                     <span class="material-input"></span></div>
                             
                                 <button type="submit" class="btn btn-danger btn-just-icon">

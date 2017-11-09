@@ -6443,7 +6443,7 @@ to {
     margin-top: 15px;
 }
 }@media all and (max-width:768px) {
-    #bodyClick, .navbar-collapse .nav>li: after, .navbar-collapse::after {
+    #bodyClick, .navbar-collapse .nav>li:after, .navbar-collapse::after {
     content: ""}
 #bodyClick {
     height: 100%;

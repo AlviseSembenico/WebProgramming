@@ -368,7 +368,6 @@
                         <div class="row">
                             <c:forEach var="i" items='${product}'>
                                 <div class="col-md-4">
-
                                     <div class="card card-product card-plain card-rotate">
                                         <div class="rotating-card-container">
                                             <div class="card-image">
