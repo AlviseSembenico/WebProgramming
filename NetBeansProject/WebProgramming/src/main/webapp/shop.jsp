@@ -56,6 +56,7 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
                             <div class="col-md-4 col-md-offset-2">
                                 <div class="info info-horizontal">
                                     <div class="icon icon-primary">
