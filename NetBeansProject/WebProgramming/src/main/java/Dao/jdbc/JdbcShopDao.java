@@ -15,6 +15,8 @@ import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import Dao.entities.Product;
+import java.sql.PreparedStatement;
+import java.util.LinkedList;
 
 
 
@@ -82,6 +84,7 @@ public class JdbcShopDao extends JdbcUtilities implements ShopDao{
         }
         return null;
     }
+
 
     
 }

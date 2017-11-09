@@ -1,5 +1,7 @@
 package Dao.entities;
 
+import Dao.ShopDao;
+
 
 /**
 * @generated

@@ -37,12 +37,7 @@
                                 </c:forEach>
                             </div>
                             <ul class="active nav flexi-nav" role="tablist" id="flexiselDemo1">
-                                <li>
-                                    <a href="#product-page<c:out value='${pictures.get(0)}'/>" role="tab" data-toggle="tab" aria-expanded="true">
-                                        <img src="<c:out value='${pictures.get(0).getPath()}' />">
-                                    </a>
-                                </li>
-                                <c:forEach var="i" items='${pictures}' begin="1">
+                                <c:forEach var="i" items='${pictures}' begin="0">
                                     <li>
                                         <a href="#product-page<c:out value='${i.getId()}'/>" role="tab" data-toggle="tab" aria-expanded="false">
                                             <img src="<c:out value='${i.getPath()}' />">
@@ -81,17 +76,18 @@
                             <div id="acordeon">
                                 <div class="panel-group" id="accordion">
                                     <div class="panel panel-border panel-default">
-                                        <div class="panel-heading" role="tab" id="headingOne">
-                                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="color: black">
+                                        <div class="panel-heading" role="tab" id="headingTwo">
+                                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo" style="color: black">
                                                 <h4 class="panel-title">
-                                                    Shop
+                                                    Shop: <c:out value="${shop.getName()}"/>
                                                     <i class="material-icons">keyboard_arrow_down</i>
                                                 </h4>
                                             </a>
                                         </div>
-                                        <div id="collapseOne" class="panel-collapse collapse in" style="color: black">
+                                        <div id="collapseTwo" class="panel-collapse collapse in" style="color: black">
                                             <div class="panel-body">
-                                                <p><c:out value="${shop.getName()}"/></p>
+                                                <a href="shop?id=<c:out value="${shop.getId()}"/>">Got to the shop</a><br>
+                                                <p><c:out value="${shop.getDescription()}"/></p>
                                             </div>
                                         </div>
                                     </div>
