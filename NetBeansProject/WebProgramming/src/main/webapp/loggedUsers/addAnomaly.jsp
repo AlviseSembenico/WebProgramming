@@ -63,17 +63,17 @@
                                         <div class="card-content">
 
                                             <div class="row text-center">
-                                                <select class="selectpicker" data-style="btn btn-primary btn-round" title="Single Select" data-size="7">
+                                                <select class="selectpicker" name="tag" data-style="btn btn-primary btn-round" title="Single Select" data-size="7">
                                                     <option disabled selected>Choose problem</option>
                                                     <option value="1">Where is my order?</option>
                                                     <option value="2">Problem with my order</option>
-                                                    <option value="2">Modify an order</option>
-                                                    <option value="2">Return or refund</option>
-                                                    <option value="2">Isgreat</option>
-                                                    <option value="2">Payments</option>
-                                                    <option value="2">Invoice request</option>
-                                                    <option value="2">Sale voucher</option>
-                                                    <option value="2">Other questions</option>
+                                                    <option value="3">Modify an order</option>
+                                                    <option value="4">Return or refund</option>
+                                                    <option value="5">Isgreat</option>
+                                                    <option value="6">Payments</option>
+                                                    <option value="7">Invoice request</option>
+                                                    <option value="8">Sale voucher</option>
+                                                    <option value="9">Other questions</option>
                                                 </select>
                                             </div>
                                             <div class="row text-center">
@@ -82,11 +82,12 @@
                                             <div class="row ">
                                                 <div class="form-group label-floating is-empty">
                                                     <label class="control-label">Please help us with further informations.</label>
-                                                    <textarea class="form-control" rows="5"></textarea>
+                                                    <textarea name="description" class="form-control" rows="5"></textarea>
                                                     <span class="material-input"></span>
                                                 </div>
                                             </div>
                                             <div class="row text-center">
+                                                <input type="text" hidden="true" name="id" value="Send Request"/>
                                                 <input type="submit" text="aaa" class="btn btn-success" value="Send Request"/>
                                             </div>
                                         </div>
