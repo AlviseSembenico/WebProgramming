@@ -15,6 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -149,18 +150,18 @@ public class JdbcUtilities {
                     char[] ca = name.toCharArray();
                     name = String.valueOf(ca[0]).toLowerCase() + name.substring(1);
                     try {
-                        if (m.getParameterTypes()[0].equals(String.class) || m.getParameterTypes()[0].equals(Time.class)) {
+                        if (m.getParameterTypes()[0].equals(String.class) || m.getParameterTypes()[0].equals(Time.class) || m.getParameterTypes()[0].equals(Timestamp.class)) {
                             String s;
                             s = map.get(name);
                             if (s == null) {
                                 if (name.contains("Time")) {
-                                    if (rs.getString(camelToSql(name)) != null) {
-                                        String[] args = rs.getString(camelToSql(name)).split(":");
-                                        Time t = new Time(Integer.parseInt(args[0]), Integer.parseInt(args[1]), Integer.parseInt(args[2]));
-                                        m.invoke(o, t);
-                                    }
+                                    m.invoke(o, rs.getTime(camelToSql(name)));
                                 } else {
-                                    m.invoke(o, rs.getString(camelToSql(name)));
+                                    if (name.contains("Date")) {
+                                        m.invoke(o, rs.getTimestamp(camelToSql(name)));
+                                    } else {
+                                        m.invoke(o, rs.getString(camelToSql(name)));
+                                    }
                                 }
                             } else {
                                 m.invoke(o, rs.getString(s));

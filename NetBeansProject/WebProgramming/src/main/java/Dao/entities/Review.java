@@ -1,7 +1,7 @@
 package Dao.entities;
 
-import java.util.Date;
-
+import java.sql.Time;
+import java.sql.Timestamp;
 
 /**
 * @generated
@@ -12,7 +12,7 @@ public class Review extends IdOwnerComparable{
     private int quality;
     private int service;
     private String description;
-    private Date creationDate;
+    private Timestamp creationDate;
     private User creator;
     private Product product;
 
@@ -49,11 +49,11 @@ public class Review extends IdOwnerComparable{
         this.description = description;
     }
 
-    public Date getCreationDate() {
+    public Timestamp getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(Date creationDate) {
+    public void setCreationDate(Timestamp creationDate) {
         this.creationDate = creationDate;
     }
 
