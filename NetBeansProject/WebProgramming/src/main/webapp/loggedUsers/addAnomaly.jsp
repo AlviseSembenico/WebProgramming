@@ -8,7 +8,7 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <!DOCTYPE html>
 <html>
-    <c:import url="/pageBuilder/header.jsp"/>
+    <c:import url="../pageBuilder/header.jsp"/>
     <body class ="signup-page">
         <div class="page-header header-filter" style="background-image: url('https://iso.500px.com/wp-content/uploads/2015/12/stock-photo-125301449.jpg'); background-size: cover; background-position: top center;">
             <div class="container">
@@ -55,59 +55,40 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-5">
+                                <div class="col-md-5 text-center">
                                     <div class="social text-center">
                                         <h4>Compile the following form and our support will contact you as soon as possible.</h4>
                                     </div>
                                     <form action="addAnomaly" method="POST">
                                         <div class="card-content">
-                                            <div class="input-group">
-                                                <div class="row">
-                                                    Select the anomaly you have occoured into.
+
+                                            <div class="row text-center">
+                                                <select class="selectpicker" data-style="btn btn-primary btn-round" title="Single Select" data-size="7">
+                                                    <option disabled selected>Choose problem</option>
+                                                    <option value="1">Where is my order?</option>
+                                                    <option value="2">Problem with my order</option>
+                                                    <option value="2">Modify an order</option>
+                                                    <option value="2">Return or refund</option>
+                                                    <option value="2">Isgreat</option>
+                                                    <option value="2">Payments</option>
+                                                    <option value="2">Invoice request</option>
+                                                    <option value="2">Sale voucher</option>
+                                                    <option value="2">Other questions</option>
+                                                </select>
+                                            </div>
+                                            <div class="row text-center">
+                                                Select the anomaly you have occoured into.
+                                            </div>
+                                            <div class="row ">
+                                                <div class="form-group label-floating is-empty">
+                                                    <label class="control-label">Please help us with further informations.</label>
+                                                    <textarea class="form-control" rows="5"></textarea>
+                                                    <span class="material-input"></span>
                                                 </div>
-                                                <div class="row">
-                                                    <select class="selectpicker" data-style="btn btn-primary btn-round" title="Single Select" data-size="7">
-										<option disabled selected>Choose city</option>
-										<option value="2">Foobar</option>
-										<option value="3">Is great</option>
-									</select>
-                                                </div>
-                                                
-                                                
-
                                             </div>
-                                            <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    <i class="material-icons">face</i>
-                                                </span>
-                                                <input name="lastname"  type="text" class="form-control" placeholder="Last Name...">
+                                            <div class="row text-center">
+                                                <input type="submit" text="aaa" class="btn btn-success" value="Send Request"/>
                                             </div>
-
-                                            <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    <i class="material-icons">email</i>
-                                                </span>
-                                                <input  name="email" type="text" class="form-control" placeholder="Email...">
-                                            </div>
-
-                                            <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    <i class="material-icons">lock_outline</i>
-                                                </span>
-                                                <input name="password" type="password" placeholder="Password..." class="form-control" />
-                                            </div>
-
-                                            <!-- If you want to add a checkbox to this form, uncomment this code -->
-
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" name="optionsCheckboxes" checked>
-                                                    I agree to the <a href="#something">terms and conditions</a>.
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="footer text-center">
-                                            <input type="submit" value="Register" class="btn btn-primary btn-round"/>
                                         </div>
                                     </form>
                                 </div>
@@ -117,4 +98,4 @@
                     </div>
                 </div>
             </div>  
-            <c:import url="/pageBuilder/footer.jsp"/>
+            <c:import url="../pageBuilder/footer.jsp"/> 
