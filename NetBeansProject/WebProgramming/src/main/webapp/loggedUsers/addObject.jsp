@@ -72,7 +72,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="dropdown " >
-                                                <button href="#pablo" class="dropdown-toggle btn btn-primary btn-round btn-block" data-toggle="dropdown">Dropdown <b class="caret"></b></button>
+                                                <button href="#pablo" class="dropdown-toggle btn btn-primary btn-round btn-block" data-toggle="dropdown">Shop <b class="caret"></b></button>
                                                 <ul class="dropdown-menu dropdown-menu-right">
                                                     <li class="dropdown-header">Dropdown header</li>
                                                     <li><a href="#pablo">Action</a></li>
