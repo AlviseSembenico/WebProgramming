@@ -21,7 +21,7 @@
                         <div class="row-content">                        
                             <div class="col-md-12">
                                 <div class="row">                                
-                                    <h4>Totale: <c:out value="${cart.getTotal()}"/>€ </h4>
+                                   
                                 </div>
                                     
                                 <div class="row">

@@ -134,7 +134,7 @@
                                     </a>
                                     <ul class="dropdown-menu dropdown-with-icons">
                                         <li>
-                                            <a href="personal">
+                                            <a href="UserProfile.jsp">
                                                 <i class="material-icons">settings</i> Profilo
                                             </a>
                                         </li>

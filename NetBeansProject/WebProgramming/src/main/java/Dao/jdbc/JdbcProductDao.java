@@ -43,6 +43,7 @@ public class JdbcProductDao extends JdbcUtilities implements ProductDao{
         String price=new String(" ");
         String rew=new String(" ");
         String str= new String(" ");
+        String order = new String(" order by price");
         String query ="select p.* from products p join shops s on p.shops_id=s.id where soundex(p.name)=soundex(?)";
         if(city != null)
             place=" and s.city=?";
@@ -54,7 +55,7 @@ public class JdbcProductDao extends JdbcUtilities implements ProductDao{
             rew=" and ((select avg(r.global_value) from reviews r where r.products_id=o.id)>=? and (select avg(r.global_value) from reviews r where r.products_id=o.id)<=?)";
         if(star != null)
             str = " and (p.starValue/p.numberPeople)>=?";
-        PreparedStatement stmt = connection.prepareStatement(query+place+price+rew+str);
+        PreparedStatement stmt = connection.prepareStatement(query+place+price+rew+str+order);
         Integer i = new Integer(1);
         stmt.setString(i, name);
         if(city != null){

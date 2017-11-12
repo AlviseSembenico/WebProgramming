@@ -1,3 +1,4 @@
+
 <%-- 
     Document   : risultati
     Created on : 14-ott-2017, 10.32.00
@@ -28,7 +29,7 @@
         </div>
 
         <div class="main main-raised">
-            <div class="section">
+            <div class="section" style="padding-bottom: 0px;">
                 <div class="container">
                     <h2 class="section-title">Latest Offers</h2>
                     <div class="row">
@@ -176,7 +177,7 @@
                 </div>
             </div><!-- section -->
 
-            <div class="section">
+            <div class="section" style="padding-top: 0px;">
                 <div class="container">
                     <h2 class="section-title">Find what you need</h2>
                     <div class="row">
@@ -416,6 +417,7 @@
                         </div>
                     </div>
                 </div>
+                            
             </div><!-- section -->
 
         </div> <!-- end-main-raised -->
