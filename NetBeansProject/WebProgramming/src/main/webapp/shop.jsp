@@ -7,6 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ page session="true" %>
 
 <!DOCTYPE html>
 <!doctype html>
@@ -32,8 +33,22 @@
                                     <h3 class="title">Comments</h3>
                                     <c:forEach var="i" begin="0" end="${reviews.size() - 1}">
                                         <div class="media">
+                                            <a class="pull-left" href="#pablo">
+                                                <div class="avatar">
+                                                    <img class="media-object" src="${reviews[i].getCreator().getAvatarPath()}">
+                                                </div>
+                                            </a>
                                             <div class="media-body">
-                                                <h4 class="media-heading">${reviews[i].getCreator().getFirstName()} ${reviews[i].getCreator().getLastName()}  <small>· ${reviews[i].getDiffTime()} days ago</small></h4>
+                                                ${sessionScope.user.getId()}
+                                                ${reviews[i].getCreator().getId()}
+                                                <c:choose>
+                                                    <c:when test="${reviews[i].getCreator().getId() == sessionScope.user.getId()}">
+                                                        <h4 class="media-heading">you  <small>· ${reviews[i].getDiffTime()} days ago</small></h4>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <h4 class="media-heading">${reviews[i].getCreator().getFirstName()} ${reviews[i].getCreator().getLastName()}  <small>· ${reviews[i].getDiffTime()} days ago</small></h4>
+                                                    </c:otherwise>
+                                                </c:choose>
                                                 <h6 class="text-muted"></h6>
                                                 <p>${reviews[i].getDescription()}</p>
                                             </div>
@@ -63,7 +78,7 @@
                                 <div class="description">
                                     <h4 class="info-title">Conctact</h4>
                                     <p> <h6>Site:</h6>
-                                    <a href="http://www.${shop.getWebSiteUrl()}">${shop.getWebSiteUrl()}></a><br>
+                                    <a href="http://www.${shop.getWebSiteUrl()}">${shop.getWebSiteUrl()}</a><br>
                                     </p>
                                 </div>
                             </div>
