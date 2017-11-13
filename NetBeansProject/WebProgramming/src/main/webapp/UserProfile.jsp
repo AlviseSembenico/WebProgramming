@@ -2,8 +2,6 @@
 <%@page import="Dao.UserDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
-<c:set var="userDao" value="${pageContext.servletContext.getAttribute('userDao')}"></c:set>
-<c:set var="user" value="${userDao.getById(param.id)}"></c:set>
 
     <!DOCTYPE html>
     <!doctype html>

@@ -15,6 +15,19 @@
 .card-testimonial .card-description, blockquote p {
     font-style: italic;
 }
+.col-number {
+    font-weight: 300;
+    font-size: 1.5em;
+    text-align: right;
+}
+.col-name {
+    font-size: 16px
+}
+.col-main{
+    font-weight: 400;
+    font-size: 1.5em;
+    min-width: 200px;
+}
 body {
     background-color: #E5E5E5;
     color: #3C4858;
@@ -1156,7 +1169,7 @@ output {
     position: relative;
 }
 .form-group.label-floating label.control-label, .form-group.label-placeholder label.control-label, .form-group.label-static label.control-label {
-    position: absolute;
+    /*position: absolute;*/
     pointer-events: none;
     transition: .3s ease all;
 }
@@ -6430,7 +6443,7 @@ to {
     margin-top: 15px;
 }
 }@media all and (max-width:768px) {
-    #bodyClick, .navbar-collapse .nav>li: after, .navbar-collapse::after {
+    #bodyClick, .navbar-collapse .nav>li:after, .navbar-collapse::after {
     content: ""}
 #bodyClick {
     height: 100%;

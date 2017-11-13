@@ -15,4 +15,5 @@ import Dao.entities.*;
  */
 public interface CartDao extends  DefaultDao,GetById{
     public Cart getByUser(User user) throws Exception;
+
 }
