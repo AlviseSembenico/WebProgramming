@@ -2,11 +2,12 @@ package Dao.entities;
 
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.util.Date;
 
 /**
-* @generated
-*/
-public class Review extends IdOwnerComparable{
+ * @generated
+ */
+public class Review extends IdOwnerComparable {
 
     private int globalValue;
     private int quality;
@@ -15,7 +16,6 @@ public class Review extends IdOwnerComparable{
     private Timestamp creationDate;
     private User creator;
     private Product product;
-
 
     public int getGlobalValue() {
         return globalValue;
@@ -72,5 +72,14 @@ public class Review extends IdOwnerComparable{
     public void setProduct(Product product) {
         this.product = product;
     }
-    
+
+    public int getDiffTime() {
+        long time1 = this.creationDate.getTime();
+        Date date = new Date();
+        long time2 = date.getTime();
+        long millisDiff = (time2 - time1);
+        int days = (int) (millisDiff / 86400000);
+        return days;
+    }
+
 }

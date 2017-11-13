@@ -166,7 +166,7 @@ public class JdbcUtilities {
                             } else {
                                 m.invoke(o, rs.getString(s));
                             }
-                        } else if (m.getParameterTypes()[0].equals(double.class)) {
+                        } else  if (m.getParameterTypes()[0].equals(double.class)) {
                             String s = map.get(name);
                             if (s == null) {
                                 m.invoke(o, rs.getDouble(camelToSql(name)));

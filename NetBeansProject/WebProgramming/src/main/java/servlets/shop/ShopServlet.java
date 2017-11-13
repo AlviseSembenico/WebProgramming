@@ -16,6 +16,9 @@ import Dao.entities.Picture;
 import Dao.PictureDao;
 import Dao.ReviewDao;
 import Dao.entities.Review;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.LinkedList;
 import javax.servlet.RequestDispatcher;
 import system.Log;
@@ -41,11 +44,11 @@ public class ShopServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         try {
             ShopDao shopDao = (ShopDao) super.getServletContext().getAttribute("shopDao");
-            ReviewDao reviewDao = (ReviewDao) super.getServletContext().getAttribute("reviewDao");            
+            ReviewDao reviewDao = (ReviewDao) super.getServletContext().getAttribute("reviewDao");
             PictureDao pictureDao = (PictureDao) super.getServletContext().getAttribute("pictureDao");
-            
+
             Shop shop = shopDao.getShopById(id);
-            LinkedList<Review> reviews = reviewDao.getRecentReviewForShop(shop);         
+            LinkedList<Review> reviews = reviewDao.getRecentReviewForShop(shop);
             Picture picture = pictureDao.getPictureShop(shop);
             request.setAttribute("reviews", reviews);
             request.setAttribute("shop", shop);

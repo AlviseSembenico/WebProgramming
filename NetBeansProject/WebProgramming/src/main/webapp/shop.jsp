@@ -30,10 +30,10 @@
                             <div class="col-md-9 col-md-offset-2">                                
                                 <div class="media-area">
                                     <h3 class="title">Comments</h3>
-                                    <c:forEach var="i" begin="0" end="${reviews.size()}">
+                                    <c:forEach var="i" begin="0" end="${reviews.size() - 1}">
                                         <div class="media">
                                             <div class="media-body">
-                                                <h4 class="media-heading">${reviews[i].getCreator().getFirstName()} ${reviews[i].getCreator().getLastName()}  <small>· ${reviews[i].getCreationDate().toString()}</small></h4>
+                                                <h4 class="media-heading">${reviews[i].getCreator().getFirstName()} ${reviews[i].getCreator().getLastName()}  <small>· ${reviews[i].getDiffTime()} days ago</small></h4>
                                                 <h6 class="text-muted"></h6>
                                                 <p>${reviews[i].getDescription()}</p>
                                             </div>
@@ -52,7 +52,7 @@
                                     <p>${shop.getStreet()}<br>
                                         ${shop.getCity()}<br>
                                         ${shop.getRegion()}<br>
-                                        <a href="map.jsp?lat=${shop.getLatitude()}&long=${shop.getLongitude()}">Map</a>
+                                        <a href="map.jsp?lat=${shop.getLatitude()}&long=${shop.getLongitude()}" class="btn btn-primary btn-round">Map</a>
                                     </p>
                                 </div>
                             </div>
