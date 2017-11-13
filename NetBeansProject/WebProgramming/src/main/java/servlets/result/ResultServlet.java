@@ -45,54 +45,51 @@ public class ResultServlet extends HttpServlet {
             throws ServletException, IOException {
 
         String name=null;
-        String latitude=null;
-        String longitude=null;
+        String city=null;
+        String region=null;
         String radius=null;
         String minPrice=null;
         String maxPrice=null;
         String minRew=null;
         String maxRew=null;
+        String star=null;
         
-        try{
+        
         name = request.getParameter("name");
-        latitude = request.getParameter("latitude");
-        longitude = request.getParameter("longitude");
+        city = request.getParameter("City");
+        region = request.getParameter("Region");
         radius = request.getParameter("radius");
         minPrice = request.getParameter("minPrice");
         maxPrice = request.getParameter("maxPrice");
         minRew = request.getParameter("minRew");
         maxRew = request.getParameter("maxRew");
+        star = request.getParameter("star");
+        if("".equals(name)){
+            LinkedList<Product> product;
+            try {
+                product = productDao.All();
+                request.setAttribute("product", product);
+            } catch (Exception ex) {
+                Logger.getLogger(ResultServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
+        else{
+            try{
         }catch (Exception ex) {
-        if (latitude.equals(null)) {
-            latitude = "0";
+         throw new ServletException("Impossible to get dao factory for user storage system");
         }
-        if (longitude.equals(null)) {
-            longitude = "0";
+            LinkedList<Product> product;
+            try {
+                product = productDao.DoQwery(name,region,city,radius,minPrice,maxPrice,minRew,maxRew,star);
+                request.setAttribute("product", product);
+            } catch (Exception ex) {
+                Logger.getLogger(ResultServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-        if (radius.equals(null)) {
-            radius = "180";
-        }
-        if (minPrice.equals(null)) {
-            minPrice = "0";
-        }
-        if (maxPrice.equals(null)) {
-            maxPrice = "1000000";
-        }
-        if (minRew.equals(null)) {
-            minRew = "0";
-        }
-        if (maxRew.equals(null)) {
-            maxRew = "5";
-        }
-        }
-        try {
-            LinkedList<Product> product = productDao.getProductByFilters(name, Double.parseDouble(latitude), Double.parseDouble(longitude), Double.parseDouble(radius), Double.parseDouble(minPrice), Double.parseDouble(maxPrice), Double.parseDouble(minRew), Double.parseDouble(maxRew));
-            request.setAttribute("product", product);
-        } catch (Exception ex) {
-            Logger.getLogger(ResultServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
+        request.setAttribute("name", name);
         RequestDispatcher RequetsDispatcherObj = request.getRequestDispatcher("/result.jsp");
         RequetsDispatcherObj.forward(request, response);
+    }   
     }
-}
+

@@ -64,12 +64,12 @@
 
                     <ul class="nav navbar-nav navbar-right">
                         <li >
-                            <form class="form form-newsletter card-content" method="" action="">
+                            <form class="form form-newsletter card-content" method="" action="result">
                                 <div class="form-group is-empty" >
-                                    <input style=" width: 180%; color: white" type="text" class="pull-right form-control" placeholder="Search...">
+                                    <input style=" width: 240%; color: white" type="text" name="name" class="pull-right form-control" placeholder="Search...">
                                     <span class="material-input"></span></div>
-
-                                <button type="button" class="btn btn-primary btn-just-icon" name="button">
+                            
+                                <button type="submit" class="btn btn-danger btn-just-icon">
                                     <i class="material-icons">search</i>
                                 </button>
 
@@ -134,7 +134,7 @@
                                     </a>
                                     <ul class="dropdown-menu dropdown-with-icons">
                                         <li>
-                                            <a href="personal">
+                                            <a href="UserProfile.jsp">
                                                 <i class="material-icons">settings</i> Profilo
                                             </a>
                                         </li>

@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -19,6 +20,7 @@ import java.util.logging.Logger;
 
 
 
+
 /**
  *
  * @author Alvise
@@ -32,7 +34,65 @@ public class JdbcProductDao extends JdbcUtilities implements ProductDao{
         map.put("shop", "shops_id");
     }
     
+    public LinkedList<Product> DoQwery(String name, String city, String region, String radius, String minPrice, String maxPrice, String maxRew, String minRew, String star) throws SQLException, Exception{
+        if (!checkConnection()) {
+            return null;
+        }
+        String place=new String(" ");
+        String reg=new String(" ");
+        String price=new String(" ");
+        String rew=new String(" ");
+        String str= new String(" ");
+        String order = new String(" order by price");
+        String query ="select p.* from products p join shops s on p.shops_id=s.id where soundex(p.name)=soundex(?)";
+        if(city != null)
+            place=" and s.city=?";
+        if(region != null)
+            reg=" and s.region=?";
+        if(maxPrice != null && !"".equals(maxPrice))
+            price=" and (p.price>=? and p.price<=?)";
+        if(maxRew != null)
+            rew=" and ((select avg(r.global_value) from reviews r where r.products_id=o.id)>=? and (select avg(r.global_value) from reviews r where r.products_id=o.id)<=?)";
+        if(star != null)
+            str = " and (p.starValue/p.numberPeople)>=?";
+        PreparedStatement stmt = connection.prepareStatement(query+place+price+rew+str+order);
+        Integer i = new Integer(1);
+        stmt.setString(i, name);
+        if(city != null){
+            i++;
+            stmt.setString(i, city);
+        }
+        if(region != null){
+            i++;
+            stmt.setString(i, region);
+        }
+        if(maxPrice != null && !"".equals(maxPrice)){
+            i++;
+            stmt.setDouble(i, Double.parseDouble(minPrice));
+            i++;
+            stmt.setDouble(i, Double.parseDouble(maxPrice));
+        }
+        if(maxRew != null){
+            i++;
+            stmt.setDouble(i, Double.parseDouble(minRew));
+            i++;
+            stmt.setDouble(i, Double.parseDouble(maxRew));
+        }
+        if(star != null){
+            i++;
+            stmt.setDouble(i, Double.parseDouble(star));
+        }
+        LinkedList<Product> res=new LinkedList<Product>();
+        for(Object o:super.fillResult(Product.class, map, stmt.executeQuery()))
+            res.add((Product) o);
+        return res;
+    
+    }
+    
     public LinkedList<Product> getProductByFilters(String name,double latitude,double longitude,double radius,double minPrice, double maxPrice, double minRew,double maxRew) throws Exception {
+        if (!checkConnection()) {
+            return null;
+        }
         String query = "select p.* from products p join shops s on p.shops_id=s.id where soundex(p.name)=soundex(?)";
         String dist=" and sqrt( pow(?-p.latitude,2)+pow(?-p.longitude,2))<=?";
         String price=" and (p.price>=? and p.price<=?)";
@@ -54,13 +114,18 @@ public class JdbcProductDao extends JdbcUtilities implements ProductDao{
     
     @Override
     public LinkedList<Product> getProductByName(String name) throws Exception {
-        String query = "select * from products p where soundex(p.name)=soundex(?)";
+        if (!checkConnection()) {
+            return null;
+        }
+        String query = "select * from products where soundex(name)=soundex(?)";
         PreparedStatement stmt = connection.prepareStatement(query);
         stmt.setString(1, name);
-        LinkedList<Product> res=new LinkedList<Product> ();
-        for(Object o:super.fillResult(Product.class, map, stmt.executeQuery()))
+        LinkedList<Product> res = new LinkedList<>();
+        for (Object o : super.fillResult(Product.class, map, stmt.executeQuery())) {
             res.add((Product) o);
+        }
         return res;
+        
     }
 
     @Override
@@ -141,6 +206,21 @@ public class JdbcProductDao extends JdbcUtilities implements ProductDao{
             Logger.getLogger(JdbcProductDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+
+    @Override
+    public LinkedList<Product> All() throws Exception{
+        if (!checkConnection()) {
+            return null;
+        }
+        String query ="select * from products";
+        
+        LinkedList<Product> res=new LinkedList<Product> ();
+        PreparedStatement stmt = connection.prepareStatement(query);
+        for(Object o:super.fillResult(Product.class, map, stmt.executeQuery()))
+            res.add((Product) o);
+        return res;
+       
     }
 
     
