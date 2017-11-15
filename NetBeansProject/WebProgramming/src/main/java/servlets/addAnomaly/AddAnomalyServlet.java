@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package servlets.addObject;
+package servlets.addAnomaly;
 
+import Dao.entities.*;
+import Dao.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -17,8 +19,25 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author alvise
  */
-public class AddAnomaly extends HttpServlet {
+public class AddAnomalyServlet extends HttpServlet {
 
+    
+    @Override
+    public void init() throws ServletException {
+        productDao = (ProductDao) super.getServletContext().getAttribute("productDao");
+        if (productDao == null) {
+            throw new ServletException("Impossible to get dao factory for user storage system");
+        }
+        cartDao = (CartDao) super.getServletContext().getAttribute("cartDao");
+        if (cartDao == null) {
+            throw new ServletException("Impossible to get dao factory for user storage system");
+        }
+        pictureDao = (PictureDao) super.getServletContext().getAttribute("pictureDao");
+        if (pictureDao == null) {
+            throw new ServletException("Impossible to get dao factory for user storage system");
+        }
+
+    }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -31,7 +50,7 @@ public class AddAnomaly extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
         RequestDispatcher reqDes = request.getRequestDispatcher("/loggedUsers/addAnomaly.jsp");
         reqDes.forward(request, response);
     }
