@@ -28,6 +28,8 @@ public class JdbcPurchaseDao extends JdbcUtilities implements PurchaseDao{
     
     public JdbcPurchaseDao(){
         map=new HashMap<String, String>();
+        map.put("product", "products_id");
+        map.put("user", "users_id");
     }
     
     @Override

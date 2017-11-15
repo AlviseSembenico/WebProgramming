@@ -12,11 +12,11 @@ public class Anomalies extends IdOwnerComparable{
     private String tag;
     
     public String getStatus() {
-        return status.toString().toLowerCase(   );
+        return status;
     }
 
     public void setStatus(String s) {
-        this.status = String.valueOf(s);
+        this.status = s;
     }
 
     public String getDescription() {
@@ -28,11 +28,11 @@ public class Anomalies extends IdOwnerComparable{
     }
 
     public String getSolution() {
-        return solution.toString().toLowerCase();
+        return solution;
     }
 
     public void setSolution(String s) {
-        this.solution = String.valueOf(s);
+        this.solution = s;
     }
 
     public Purchase getPurchase() {

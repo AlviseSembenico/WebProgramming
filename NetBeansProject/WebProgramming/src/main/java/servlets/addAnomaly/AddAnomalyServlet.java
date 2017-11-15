@@ -9,11 +9,15 @@ import Dao.entities.*;
 import Dao.*;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import servlets.product.ProductServlet;
 
 /**
  *
@@ -21,23 +25,29 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class AddAnomalyServlet extends HttpServlet {
 
+    PurchaseDao purchaseDao;
+    PictureDao pictureDao;
+    AnomaliesDao anomaliesDao;
     
+
     @Override
     public void init() throws ServletException {
-        productDao = (ProductDao) super.getServletContext().getAttribute("productDao");
-        if (productDao == null) {
-            throw new ServletException("Impossible to get dao factory for user storage system");
-        }
-        cartDao = (CartDao) super.getServletContext().getAttribute("cartDao");
-        if (cartDao == null) {
+        purchaseDao = (PurchaseDao) super.getServletContext().getAttribute("purchaseDao");
+        if (purchaseDao == null) {
             throw new ServletException("Impossible to get dao factory for user storage system");
         }
         pictureDao = (PictureDao) super.getServletContext().getAttribute("pictureDao");
-        if (pictureDao == null) {
+        if (purchaseDao == null) {
+            throw new ServletException("Impossible to get dao factory for user storage system");
+        }
+        anomaliesDao = (AnomaliesDao) super.getServletContext().getAttribute("anomaliesDao");
+        if (anomaliesDao == null) {
             throw new ServletException("Impossible to get dao factory for user storage system");
         }
 
+
     }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -50,9 +60,17 @@ public class AddAnomalyServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        RequestDispatcher reqDes = request.getRequestDispatcher("/loggedUsers/addAnomaly.jsp");
-        reqDes.forward(request, response);
+        try {
+            HttpSession session = request.getSession(false);
+            User user = (User) session.getAttribute("user");
+            Purchase purchase = purchaseDao.getPurchaseByIdAndUser(Integer.valueOf(request.getParameter("id")), user);
+            request.setAttribute("purchase", purchase);
+            request.setAttribute("picture", pictureDao.getPictureByProduct(purchase.getProduct()));
+            RequestDispatcher reqDes = request.getRequestDispatcher("/loggedUsers/addAnomaly.jsp");
+            reqDes.forward(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(ProductServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -66,8 +84,24 @@ public class AddAnomalyServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher reqDes = request.getRequestDispatcher("/cart.jsp");
-        reqDes.forward(request, response);
+        try {
+            HttpSession session = request.getSession(false);
+            User user = (User) session.getAttribute("user");
+            String tag = request.getParameter("tag");
+            String description = request.getParameter("description");
+            int id = Integer.valueOf(request.getParameter("id"));
+            Purchase purchase = purchaseDao.getPurchaseByIdAndUser(Integer.valueOf(request.getParameter("id")), user);
+            Anomalies anomaly=new Anomalies();
+            anomaly.setDescription(description);
+            anomaly.setTag(tag);
+            anomaly.setPurchase(purchase);
+            anomaly.setStatus("not verified");
+            anomaliesDao.insertDao(anomaly);
+            RequestDispatcher reqDes = request.getRequestDispatcher("/cart.jsp");
+            reqDes.forward(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(ProductServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
