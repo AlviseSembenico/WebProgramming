@@ -77,7 +77,11 @@
     </servlet>
     <servlet>
         <servlet-name>AddAnomaly</servlet-name>
-        <servlet-class>servlets.addAnomaly.AddAnomalyServlet</servlet-class>
+        <servlet-class>servlets.addReview.AddAnomalyServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>addReview</servlet-name>
+        <servlet-class>servlets.addReview.AddReviewServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -130,6 +134,10 @@
     <servlet-mapping>
         <servlet-name>AddAnomaly</servlet-name>
         <url-pattern>/addAnomaly</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addReview</servlet-name>
+        <url-pattern>/addReview</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
