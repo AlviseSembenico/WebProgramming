@@ -1,17 +1,19 @@
 <%-- 
-    Document   : error
-    Created on : Nov 15, 2017, 12:15:11 PM
+    Document   : Login
+    Created on : Sep 9, 2017, 4:24:56 PM
     Author     : Alvise
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <!DOCTYPE html>
+<!doctype html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
     <body>
-        <h1>Hello World!</h1>
+     <img style="width: 100%" src="https://www.sageisland.com/wp-content/uploads/2015/04/creative-404-error-page-design-marketing-assets.jpg"/>
     </body>
 </html>
+   
+    
+
+

@@ -63,11 +63,7 @@
                                                                     <button type="button" name="button" class="btn btn-white btn-fill btn-round">
                                                                         <i class="material-icons">euro_symbol</i><c:out value="${purchase.getProduct().getPrice()}"/>
                                                                     </button>
-                                                                    <form method="POST" action="product">
-                                                                        <input name="pid" style="visibility: hidden;" value="<c:out value="${purchase.getProduct().getId()}"/>" />
-                                                                        <button class="btn btn-rose btn-round" type="submit" style="max-width: 200px" ><c:out value="${purchase.getProduct().getDescription()}"/></button>
-                                                                    </form>
-
+                                                                    <button class="btn btn-rose btn-round" type="submit" style="max-width: 200px" ><c:out value="${purchase.getProduct().getDescription()}"/></button>
                                                                 </div>
                                                             </div>
                                                         </div>
