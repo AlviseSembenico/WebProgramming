@@ -25,7 +25,8 @@
             <!--     Fonts and icons     -->
             <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
-
+            <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+            
             <!-- CSS Files -->
             <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
             <link href="assets/css/demo.css" rel="stylesheet" />
@@ -65,11 +66,11 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li >
                             <form class="form form-newsletter card-content" method="" action="">
-                                <div class="form-group is-empty" >
+                                <div class="form-group is-empty has-error" >
                                     <input style=" width: 180%; color: white" type="text" class="pull-right form-control" placeholder="Search...">
                                     <span class="material-input"></span></div>
 
-                                <button type="button" class="btn btn-primary btn-just-icon" name="button">
+                                <button type="button" class="btn btn-primary btn-just-icon btn-danger" name="button">
                                     <i class="material-icons">search</i>
                                 </button>
 

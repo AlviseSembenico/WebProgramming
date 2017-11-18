@@ -32,7 +32,7 @@
                                                 <h5  style="display: inline"><small>Order made in date: </small></h5><c:out value="${purchase.getDate()}"/>
                                                 <br>
                                                 <h5  style="display: inline"><small>Status: </small></h5><c:out value="${purchase.getStatus()}"/>
-                                               
+
                                         </div>
                                     </div>
 
@@ -71,10 +71,10 @@
                                                 <div class="card-content">
                                                     <h4 class="card-title">
                                                     </h4>
-                                                    
+
                                                     <div class="footer">
                                                         <div class="price-container">
-                                                            
+
                                                         </div>
                                                         <div class="stats">
                                                         </div>
@@ -91,32 +91,43 @@
                                         </div>
                                     </div>
 
-                                  
+
                                 </div>
-                                <div class="col-md-5 text-center">
+
+                                <div class="col-md-5 ">
                                     <div class="social text-center">
                                         <h4>Insert data to review the object you have bought. Thank you for your support to other costumer, we appreciate it.</h4>
                                     </div>
-                                    <form action="addAnomaly" method="POST">
-                                        <div class="card-content">
-
-                                            <div class=" text-center">
-                                                <select class="selectpicker" name="tag" data-style="btn btn-primary btn-round" title="Single Select" data-size="7">
-                                                    <option disabled selected>Choose problem</option>
-                                                    <option value="1">Where is my order?</option>
-                                                    <option value="2">Problem with my order</option>
-                                                    <option value="3">Modify an order</option>
-                                                    <option value="4">Return or refund</option>
-                                                    <option value="5">Isgreat</option>
-                                                    <option value="6">Payments</option>
-                                                    <option value="7">Invoice request</option>
-                                                    <option value="8">Sale voucher</option>
-                                                    <option value="9">Other questions</option>
-                                                </select>
-                                            </div>
-                                            <div class="row text-center">
-                                                Select the anomaly you have occoured into.
-                                            </div>
+                                    <form action="addReview" method="POST">
+                                        <h4 class="info-title">Global quality</h4>
+                                        <div class="stars">
+                                            <input class="star star-5" id="star-5" type="radio" name="star" value="5"/>
+                                            <label class="star star-5" for="star-5"></label>
+                                            <input class="star star-4" id="star-4" type="radio" name="star"value="4"/>
+                                            <label class="star star-4" for="star-4"></label>
+                                            <input class="star star-3" id="star-3" type="radio" name="star"value="3"/>
+                                            <label class="star star-3" for="star-3"></label>
+                                            <input class="star star-2" id="star-2" type="radio" name="star"value="2"/>
+                                            <label class="star star-2" for="star-2"></label>
+                                            <input class="star star-1" id="star-1" type="radio" name="star"value="1"/>
+                                            <label class="star star-1" for="star-1"></label>
+                                        </div>
+                                        <h4 class="info-title">Service value</h4>
+                                        <div class="stars">
+                                            <input class="star star-5" id="star-s5" type="radio" name="stars" value="5"/>
+                                            <label class="star star-5" for="star-s5"></label>
+                                            <input class="star star-4" id="star-s4" type="radio" name="stars"value="4"/>
+                                            <label class="star star-4" for="star-s4"></label>
+                                            <input class="star star-3" id="star-s3" type="radio" name="stars"value="3"/>
+                                            <label class="star star-3" for="star-s3"></label>
+                                            <input class="star star-2" id="star-s2" type="radio" name="stars"value="2"/>
+                                            <label class="star star-2" for="star-s2"></label>
+                                            <input class="star star-1" id="star-s1" type="radio" name="stars"value="1"/>
+                                            <label class="star star-1" for="star-s1"></label>
+                                        </div>
+                                        
+                                        
+                                            <h4 class="info-title">Description</h4>
                                             <div class="">
                                                 <div class="form-group label-floating is-empty">
                                                     <label class="control-label">Please help us with further informations.</label>
@@ -124,10 +135,9 @@
                                                     <span class="material-input"></span>
                                                 </div>
                                             </div>
-                                            <div class="row text-center">
-                                                <input type="text" hidden="true" name="id" value="<c:out value='${purchase.getId()}'/>"/>
-                                                <input type="submit" text="aaa" class="btn btn-success" value="Send Request"/>
-                                            </div>
+                                        <div class="row text-center">
+                                            <input type="text" hidden="true" name="id" value="<c:out value='${purchase.getId()}'/>"/>
+                                            <input type="submit" text="aaa" class="btn btn-success" value="Send Request"/>
                                         </div>
                                     </form>
                                 </div>

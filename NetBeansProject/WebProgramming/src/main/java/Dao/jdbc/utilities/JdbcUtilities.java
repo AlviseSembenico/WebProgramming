@@ -166,16 +166,14 @@ public class JdbcUtilities {
                             } else {
                                 m.invoke(o, rs.getString(s));
                             }
-                        }
-                        else if (m.getParameterTypes()[0].equals(Date.class)) {
+                        } else if (m.getParameterTypes()[0].equals(Date.class)) {
                             String s = map.get(name);
                             if (s == null) {
                                 m.invoke(o, rs.getDate(camelToSql(name)));
                             } else {
                                 m.invoke(o, rs.getString(s));
                             }
-                        }
-                        else if (m.getParameterTypes()[0].equals(double.class)) {
+                        } else if (m.getParameterTypes()[0].equals(double.class)) {
                             String s = map.get(name);
                             if (s == null) {
                                 m.invoke(o, rs.getDouble(camelToSql(name)));
@@ -259,9 +257,20 @@ public class JdbcUtilities {
                             }
 
                         }
-                    } else if (m.getReturnType().equals(String.class) || m.getReturnType().equals(Date.class)) {
+                    } else if (m.getReturnType().equals(String.class)) {
                         if ((Object) m.invoke(o, null) != null) {
                             values += "'" + m.invoke(o, null) + "',";
+                            if (map.containsKey(name)) {
+                                query += map.get(name) + ",";
+                            } else {
+                                query += camelToSql(name) + ",";
+                            }
+
+                        }
+                    } else if (m.getReturnType().equals(Date.class)) {
+                        if ((Object) m.invoke(o, null) != null) {
+                            java.text.SimpleDateFormat sdf= new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                            values += "'" + sdf.format(m.invoke(o, null)) + "',";
                             if (map.containsKey(name)) {
                                 query += map.get(name) + ",";
                             } else {

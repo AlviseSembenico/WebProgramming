@@ -9,6 +9,7 @@ import Dao.entities.*;
 import Dao.*;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -28,7 +29,6 @@ public class AddReviewServlet extends HttpServlet {
     PurchaseDao purchaseDao;
     PictureDao pictureDao;
     ReviewDao reviewDao;
-    
 
     @Override
     public void init() throws ServletException {
@@ -44,7 +44,6 @@ public class AddReviewServlet extends HttpServlet {
         if (reviewDao == null) {
             throw new ServletException("Impossible to get dao factory for review storage system");
         }
-
 
     }
 
@@ -84,23 +83,31 @@ public class AddReviewServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        RequestDispatcher reqDes = null;
         try {
-           /* HttpSession session = request.getSession(false);
+            HttpSession session = request.getSession(false);
             User user = (User) session.getAttribute("user");
-            String tag = request.getParameter("tag");
-            String description = request.getParameter("description");
             int id = Integer.valueOf(request.getParameter("id"));
             Purchase purchase = purchaseDao.getPurchaseByIdAndUser(Integer.valueOf(request.getParameter("id")), user);
-            Anomalies anomaly=new Anomalies();
-            anomaly.setDescription(description);
-            anomaly.setTag(tag);
-            anomaly.setPurchase(purchase);
-            anomaly.setStatus("not verified");
-            anomaliesDao.insertDao(anomaly);
-            RequestDispatcher reqDes = request.getRequestDispatcher("/cart.jsp");
-            reqDes.forward(request, response);*/
+            int global = Integer.valueOf(request.getParameter("star"));
+            int service = Integer.valueOf(request.getParameter("stars"));
+            String description = request.getParameter("description");
+            //for(int i=1;i<=5;i++)
+            //  if(Integer.valueOf(request.getParameter("star"+i))==;
+            Review rw = new Review();
+            rw.setQuality(global);
+            rw.setService(service);
+            rw.setDescription(description);
+            rw.setCreationDate(new Date());
+            rw.setGlobalValue(666);
+            rw.setCreator(user);
+            rw.setProduct(purchase.getProduct());
+            reviewDao.insertDao(rw);
+            reqDes = request.getRequestDispatcher("/success.jsp");
         } catch (Exception ex) {
-            Logger.getLogger(ProductServlet.class.getName()).log(Level.SEVERE, null, ex);
+            reqDes = request.getRequestDispatcher("/error.jsp");
+        } finally {
+            reqDes.forward(request, response);
         }
     }
 

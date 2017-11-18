@@ -84,6 +84,7 @@ public class AddAnomalyServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+         RequestDispatcher reqDes=null;
         try {
             HttpSession session = request.getSession(false);
             User user = (User) session.getAttribute("user");
@@ -97,10 +98,12 @@ public class AddAnomalyServlet extends HttpServlet {
             anomaly.setPurchase(purchase);
             anomaly.setStatus("not verified");
             anomaliesDao.insertDao(anomaly);
-            RequestDispatcher reqDes = request.getRequestDispatcher("/cart.jsp");
-            reqDes.forward(request, response);
+           reqDes = request.getRequestDispatcher("/success.jsp");
+  
         } catch (Exception ex) {
-            Logger.getLogger(ProductServlet.class.getName()).log(Level.SEVERE, null, ex);
+            reqDes = request.getRequestDispatcher("/error.jsp");
+        } finally{
+            reqDes.forward(request, response);
         }
     }
 
