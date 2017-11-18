@@ -19,4 +19,5 @@ public interface PictureDao  extends  DefaultDao,GetById{
     public Picture getPictureById(int id) throws Exception;
     public LinkedList<Picture> getPictureByProduct(Product product) throws Exception;
     public LinkedList<Picture> getPictureByShop(Shop shop) throws Exception;
+    public Picture getPictureShop(Shop shop) throws Exception;
 }

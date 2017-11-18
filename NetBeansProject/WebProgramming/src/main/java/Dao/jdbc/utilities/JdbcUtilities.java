@@ -15,6 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -90,7 +91,7 @@ public class JdbcUtilities {
      * @throws Exception
      */
     protected LinkedList<Object> getObject(Class<?> c, HashMap<String, String> map, String tableName, HashMap<Object, String> param) throws Exception {
-        
+
         if (!checkConnection()) {
             return null;
         }
@@ -123,7 +124,7 @@ public class JdbcUtilities {
         return fillResult(c, map, rs);
     }
 
-    public LinkedList<Object> executeCommand(Class<?> c,String query) throws Exception {
+    public LinkedList<Object> executeCommand(Class<?> c, String query) throws Exception {
         if (!checkConnection()) {
             return null;
         }
@@ -131,15 +132,16 @@ public class JdbcUtilities {
         ResultSet rs = stmt.executeQuery();
         return fillResult(c, null, rs);
     }
-    
-    protected LinkedList<Object> fillResult(Class<?> c, HashMap<String, String> map,ResultSet rs) throws Exception {
+
+    protected LinkedList<Object> fillResult(Class<?> c, HashMap<String, String> map, ResultSet rs) throws Exception {
         LinkedList<Object> result = new LinkedList<Object>();
         if (!rs.first()) {
             result.add(null);
             return result;
         }
-        if(map==null)
-            map=new HashMap<String,String>();
+        if (map == null) {
+            map = new HashMap<String, String>();
+        }
         do {
             Object o = c.newInstance();
             for (Method m : c.getMethods()) {
@@ -148,10 +150,19 @@ public class JdbcUtilities {
                     char[] ca = name.toCharArray();
                     name = String.valueOf(ca[0]).toLowerCase() + name.substring(1);
                     try {
-                        if (m.getParameterTypes()[0].equals(String.class) || m.getParameterTypes()[0].equals(Time.class)) {
-                            String s = map.get(name);
+                        if (m.getParameterTypes()[0].equals(String.class) || m.getParameterTypes()[0].equals(Time.class) || m.getParameterTypes()[0].equals(Timestamp.class)) {
+                            String s;
+                            s = map.get(name);
                             if (s == null) {
-                                m.invoke(o, rs.getString(camelToSql(name)));
+                                if (name.contains("Time")) {
+                                    m.invoke(o, rs.getTime(camelToSql(name)));
+                                } else {
+                                    if (name.contains("Date")) {
+                                        m.invoke(o, rs.getTimestamp(camelToSql(name)));
+                                    } else {
+                                        m.invoke(o, rs.getString(camelToSql(name)));
+                                    }
+                                }
                             } else {
                                 m.invoke(o, rs.getString(s));
                             }
@@ -172,34 +183,31 @@ public class JdbcUtilities {
                                 m.invoke(o, rs.getDouble(s));
                             }
 
-                        }
-                        else if (m.getParameterTypes()[0].equals(int.class)) {
+                        } else if (m.getParameterTypes()[0].equals(int.class)) {
                             String s = map.get(name);
                             if (s == null) {
                                 m.invoke(o, rs.getInt(camelToSql(name)));
                             } else {
                                 m.invoke(o, rs.getInt(s));
                             }
-                        }
-                        else if (IdOwner.class.isAssignableFrom(m.getParameterTypes()[0])) {//m.getParameterTypes()[0].isAssignableFrom(IdOwner.class)) {
+                        } else if (IdOwner.class.isAssignableFrom(m.getParameterTypes()[0])) {//m.getParameterTypes()[0].isAssignableFrom(IdOwner.class)) {
                             String s = map.get(name);
                             Class<?> clazz = Class.forName("Dao.jdbc.Jdbc" + m.getParameterTypes()[0].getSimpleName() + "Dao");
                             Constructor<?> ctor = clazz.getConstructor();
                             GetById jdbc = (GetById) ctor.newInstance(new Object[]{});
                             if (s == null) {
-                                m.invoke(o, jdbc.getById(rs.getInt(camelToSql(name)+"_id")));
+                                m.invoke(o, jdbc.getById(rs.getInt(camelToSql(name) + "_id")));
                             } else {
                                 m.invoke(o, jdbc.getById(rs.getInt(s)));
                             }
-                        }
-                        else if (LinkedList.class.isAssignableFrom(m.getParameterTypes()[0])) {//m.getParameterTypes()[0].isAssignableFrom(IdOwner.class)) {
-                           
+                        } else if (LinkedList.class.isAssignableFrom(m.getParameterTypes()[0])) {//m.getParameterTypes()[0].isAssignableFrom(IdOwner.class)) {
+
                             String s = map.get(name);
                             Class<?> clazz = Class.forName("Dao.jdbc.Jdbc" + m.getParameterTypes()[0].getSimpleName() + "Dao");
                             Constructor<?> ctor = clazz.getConstructor();
                             GetById jdbc = (GetById) ctor.newInstance(new Object[]{});
                             if (s == null) {
-                                m.invoke(o, jdbc.getById(rs.getInt(camelToSql(name)+"_id")));
+                                m.invoke(o, jdbc.getById(rs.getInt(camelToSql(name) + "_id")));
                             } else {
                                 m.invoke(o, jdbc.getById(rs.getInt(s)));
                             }
@@ -214,7 +222,7 @@ public class JdbcUtilities {
 
         return result;
     }
-      
+
     /**
      *
      * @param o is the object which must be inserted into table

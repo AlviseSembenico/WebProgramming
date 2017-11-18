@@ -14,8 +14,11 @@ import Dao.entities.Shop;
 import Dao.ShopDao;
 import Dao.entities.Picture;
 import Dao.PictureDao;
-import Dao.ProductDao;
-import Dao.entities.Product;
+import Dao.ReviewDao;
+import Dao.entities.Review;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.LinkedList;
 import javax.servlet.RequestDispatcher;
 import system.Log;
@@ -41,14 +44,19 @@ public class ShopServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         try {
             ShopDao shopDao = (ShopDao) super.getServletContext().getAttribute("shopDao");
-            Shop shop = shopDao.getShopById(id);
+            ReviewDao reviewDao = (ReviewDao) super.getServletContext().getAttribute("reviewDao");
             PictureDao pictureDao = (PictureDao) super.getServletContext().getAttribute("pictureDao");
-            LinkedList<Picture> pictures = pictureDao.getPictureByShop(shop);
-            ProductDao productDao = (ProductDao) super.getServletContext().getAttribute("productDao");
-            LinkedList<Product> products = productDao.getProductByShop(shop);
+
+            Shop shop = shopDao.getShopById(id);
+            LinkedList<Review> reviews = reviewDao.getRecentReviewForShop(shop);
+            Picture picture = pictureDao.getPictureShop(shop);
+            request.setAttribute("reviews", reviews);
             request.setAttribute("shop", shop);
-            request.setAttribute("products", products);
-            request.setAttribute("pictures", pictures);
+            if (picture != null) {
+                request.setAttribute("picture", picture.getPath());
+            } else {
+                request.setAttribute("picture", "http://via.placeholder.com/350x150");
+            }
             RequestDispatcher reqDes = request.getRequestDispatcher("/shop.jsp");
             reqDes.forward(request, response);
 
