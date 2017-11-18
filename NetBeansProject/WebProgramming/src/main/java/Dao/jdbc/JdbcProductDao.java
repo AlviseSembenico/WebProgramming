@@ -34,7 +34,7 @@ public class JdbcProductDao extends JdbcUtilities implements ProductDao{
         map.put("shop", "shops_id");
     }
     
-    public LinkedList<Product> DoQwery(String name, String city, String region, String radius, String minPrice, String maxPrice, String maxRew, String minRew, String star) throws SQLException, Exception{
+    public LinkedList<Product> DoQwery(String name, String city, String region, String radius, String minPrice, String maxPrice, String maxRew, String minRew, String star, String order) throws SQLException, Exception{
         if (!checkConnection()) {
             return null;
         }
@@ -43,7 +43,7 @@ public class JdbcProductDao extends JdbcUtilities implements ProductDao{
         String price=new String(" ");
         String rew=new String(" ");
         String str= new String(" ");
-        String order = new String(" order by price");
+        String ord = new String(" ");
         String query ="select p.* from products p join shops s on p.shops_id=s.id where soundex(p.name)=soundex(?)";
         if(city != null)
             place=" and s.city=?";
@@ -55,7 +55,13 @@ public class JdbcProductDao extends JdbcUtilities implements ProductDao{
             rew=" and ((select avg(r.global_value) from reviews r where r.products_id=o.id)>=? and (select avg(r.global_value) from reviews r where r.products_id=o.id)<=?)";
         if(star != null)
             str = " and (p.starValue/p.numberPeople)>=?";
-        PreparedStatement stmt = connection.prepareStatement(query+place+price+rew+str+order);
+        if(ord == null || ord == "price")
+            ord = " and order by price";
+        else if(ord == "star")
+            ord = " and order by (starValue/numberPeople) desc";
+        else if(ord == "category")
+            ord = " and order by catgory";
+        PreparedStatement stmt = connection.prepareStatement(query+place+price+rew+str+ord);
         Integer i = new Integer(1);
         stmt.setString(i, name);
         if(city != null){
