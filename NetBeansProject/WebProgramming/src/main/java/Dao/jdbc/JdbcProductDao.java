@@ -63,11 +63,11 @@ public class JdbcProductDao extends JdbcUtilities implements ProductDao {
         if (star != null) {
             str = " and (p.starValue/p.numberPeople)>=?";
         }
-        if (order == null || ord == "price") {
+        if (order == null || "price".equals(order)) {
             ord = " order by price";
-        } else if (order == "star") {
+        } else if ("star".equals(order)) {
             ord = " order by (starValue/numberPeople) desc";
-        } else if (order == "category") {
+        } else if ("category".equals(order)) {
             ord = " order by catgory";
         }
         PreparedStatement stmt = connection.prepareStatement(query + place + price + rew + str + ord);
