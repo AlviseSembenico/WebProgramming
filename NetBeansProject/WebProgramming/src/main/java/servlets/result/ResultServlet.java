@@ -44,18 +44,20 @@ public class ResultServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String name=null;
-        String city=null;
-        String region=null;
-        String radius=null;
-        String minPrice=null;
-        String maxPrice=null;
-        String minRew=null;
-        String maxRew=null;
-        String star=null;
-        String order=null;
-        
-        
+        String name = null;
+        String city = null;
+        String region = null;
+        String radius = null;
+        String minPrice = null;
+        String maxPrice = null;
+        String minRew = null;
+        String maxRew = null;
+        String star = null;
+        String order = null;
+        String begin = null;
+        Integer end;
+        Integer len;
+
         name = request.getParameter("name");
         city = request.getParameter("City");
         region = request.getParameter("Region");
@@ -66,32 +68,24 @@ public class ResultServlet extends HttpServlet {
         maxRew = request.getParameter("maxRew");
         star = request.getParameter("star");
         order = request.getParameter("order");
-        if("".equals(name)){
-            LinkedList<Product> product;
-            try {
-                product = productDao.All();
-                request.setAttribute("product", product);
-            } catch (Exception ex) {
-                Logger.getLogger(ResultServlet.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
+        begin = request.getParameter("begin");
+        if (begin == null) {
+            begin = "0";
         }
-        else{
-            try{
-        }catch (Exception ex) {
-         throw new ServletException("Impossible to get dao factory for user storage system");
-        }
-            LinkedList<Product> product;
-            try {
-                product = productDao.DoQwery(name,region,city,radius,minPrice,maxPrice,minRew,maxRew,star,order);
-                request.setAttribute("product", product);
-            } catch (Exception ex) {
-                Logger.getLogger(ResultServlet.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        end = Integer.parseInt(begin) + 8;
+        LinkedList<Product> product;
+        try {
+            product = productDao.DoQwery(name, region, city, radius, minPrice, maxPrice, minRew, maxRew, star, order);
+            request.setAttribute("product", product);
+            len = product.size();
+            request.setAttribute("len", len);
+        } catch (Exception ex) {
+            Logger.getLogger(ResultServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         request.setAttribute("name", name);
+        request.setAttribute("begin", begin);
+        request.setAttribute("end", end);
         RequestDispatcher RequetsDispatcherObj = request.getRequestDispatcher("/result.jsp");
         RequetsDispatcherObj.forward(request, response);
-    }   
     }
-
+}

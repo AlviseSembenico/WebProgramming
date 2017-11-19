@@ -180,19 +180,31 @@
             <div class="section" style="padding-top: 0px;">
                 <div class="container">
                     <form method="GET">
-
+                        <div class="row">
+                            <div class="col-md-4 col-md-offset-8">
+                                <div class=" text-center">
+                                    <select class="selectpicker" name="order" data-style="btn btn-primary btn-round" title="Single Select" data-size="7">
+                                        <option disabled selected>Order By</option>
+                                        <option value="price">Price</option>
+                                        <option value="star">Star</option>
+                                        <option value="category">Category</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-md-3">
                                 <h3 class="section-title">Find what you need</h3>
                                 <input type="text" value="<c:out value="${name}"/>" hidden="false" name="name">
                             <div class="card card-refine card-plain">
                                 <div class="card-content">
-                                    <h4 class="card-title">
-                                        Filter
-                                        <button class="btn btn-default btn-fab btn-fab-mini btn-simple pull-right" type= submit" rel="tooltip" title="Send filter">
-                                            <i class="material-icons">filter_list</i>
-                                        </button>
-                                    </h4>
+                                    <div class="row">
+                                        <h4 class="card-title">
+                                            <button class="btn btn-default btn-primary" type= submit" rel="tooltip" title="Filter and order">
+                                                <i>Filter and order</i>
+                                            </button>
+                                        </h4>
+                                    </div>
                                     <div class="panel panel-default panel-blu">
                                         <div class="panel-heading" role="tab" id="headingOne">
                                             <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
@@ -370,14 +382,14 @@
                             <div class="row">
                                 <c:choose>
                                     <c:when test="${product.get(0)!=null}">
-                                        <c:forEach var="i" items='${product}'>
+                                        <c:forEach var="i" items='${product}' begin="${begin}" end="${end}">
                                             <div class="col-md-4">
                                                 <div class="card card-product card-plain card-rotate">
                                                     <div class="rotating-card-container">
                                                         <div class="card-image">
                                                             <div class="front">
                                                                 <c:set var="picture" value="${pictureDao.getPictureByProduct(i)}"></c:set>
-                                                                <img src="<c:out value='${picture.get(0).getPath()}'/>">
+                                                                <img src="<c:out value='${picture.get(0).getPath()}'/>" style="width:200px;height:150px;">
                                                             </div>
 
                                                             <div class="back back-background">
@@ -391,7 +403,7 @@
                                                                         </a>
                                                                         <form method="POST" action="product">
                                                                             <input name="pid" style="visibility: hidden;" value="<c:out value="${i.getId()}"/>" />
-                                                                            <button class="btn btn-rose btn-round" type="submit" >Add to Cart &nbsp;<i class="material-icons">shopping_cart</i></button>
+                                                                            <button class="btn btn-rose btn-round" type="submit" style="padding-top: 012px;top: -15px;">Add to Cart &nbsp;<i class="material-icons">shopping_cart</i></button>
                                                                         </form>
 
                                                                     </div>
@@ -400,16 +412,14 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="card-content">
-                                                        <h4 class="card-title">
-                                                            <h4 class="card-title"><c:out value="${i.getName()}"/></h4>
-                                                        </h4>
-                                                        <p class="card-description"><c:out value="${i.getDescription()}"/></p>
+                                                    <div class="card-content " style="width: 200px;height: 70px">
+                                                        <h6 class="card-title">
+                                                            <h6 class="card-title"><c:out value="${i.getName()}"/></h6>
+                                                        </h6>
+                                                        
                                                         <div class="footer">
                                                             <div class="price-container">
                                                                 <span class="price price-new">&euro;<c:out value="${i.getPrice()}"/></span>
-                                                            </div>
-                                                            <div class="stats">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -419,10 +429,19 @@
                                         </c:forEach>  
                                     </c:when>
                                     <c:otherwise>
-                                        <h2 class="section-title text-center"style="margin-top: 25px;"> There is no Product with it's name</h2>
+                                        <h2 class="section-title text-center"style="margin-top: 150px;"> There is no Product with it's name</h2>
                                     </c:otherwise>
                                 </c:choose>
                             </div>
+                            <u class="pagination pagination-info">
+                                <li><a href="javascript:void(0);" style="color: black">&lt; prev</a></li>
+                                <c:forEach var="i" begin="0" end="${len}">
+                                    <c:if test="${i%9==0}">
+                                    <li><a href="result?name=<c:out value="${name}"/>&begin=<c:out value="${i}"/>" style="color: black"><c:out value="${Integer(i/9)+1}"/></a></li>
+                                    </c:if>
+                                </c:forEach>
+                                    <li><a href="javascript:void(0);" style="color: black">next &gt;</a></li>
+                            </u>
                         </div>
                     </div>
                 </form>
