@@ -1,5 +1,7 @@
 package Dao.entities;
 
+import java.util.Date;
+
 
 /**
 * @generated
@@ -9,6 +11,7 @@ public class Purchase extends IdOwnerComparable{
     private String status;
     private Product product;
     private User user;
+    private Date date;
 
     public int getId() {
         return id;
@@ -40,6 +43,14 @@ public class Purchase extends IdOwnerComparable{
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
     
     

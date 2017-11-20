@@ -30,6 +30,8 @@ public class JdbcReviewDao extends JdbcUtilities implements ReviewDao {
 
     public JdbcReviewDao() {
         map = new HashMap<String, String>();
+        map.put("product", "products_id");
+        map.put("creator", "creator_id");
     }
 
     @Override

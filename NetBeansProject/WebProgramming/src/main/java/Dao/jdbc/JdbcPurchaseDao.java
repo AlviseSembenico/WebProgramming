@@ -28,6 +28,8 @@ public class JdbcPurchaseDao extends JdbcUtilities implements PurchaseDao{
     
     public JdbcPurchaseDao(){
         map=new HashMap<String, String>();
+        map.put("product", "products_id");
+        map.put("user", "users_id");
     }
     
     @Override
@@ -37,7 +39,16 @@ public class JdbcPurchaseDao extends JdbcUtilities implements PurchaseDao{
         Purchase res=(Purchase)  super.getObject(Purchase.class, map, tableName, mappa).get(0);
         return res;
     }
-
+    
+    @Override
+    public Purchase getPurchaseByIdAndUser(int id,User user) throws Exception{
+        HashMap<Object,String> mappa=new HashMap<Object,String>();
+        mappa.put(id,"id");
+        mappa.put(user.getId(),"users_id");
+        Purchase res=(Purchase)  super.getObject(Purchase.class, map, tableName, mappa).get(0);
+        return res;
+    }
+    
     @Override
     public LinkedList<Purchase> getPurchaseByUser(User user) throws Exception{
         LinkedList<Purchase> res=new LinkedList<Purchase> ();

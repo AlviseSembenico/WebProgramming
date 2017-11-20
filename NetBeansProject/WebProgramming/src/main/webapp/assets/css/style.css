@@ -236,6 +236,8 @@ and open the template in the editor.
     margin:-20px;
 }
 
+
+
 div.stars {
   width: 270px;
   display: inline-block;
@@ -270,4 +272,3 @@ label.star:before {
   content: '\f006';
   font-family: FontAwesome;
 }
-
