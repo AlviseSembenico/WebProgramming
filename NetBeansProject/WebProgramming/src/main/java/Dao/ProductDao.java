@@ -26,4 +26,6 @@ public interface ProductDao extends  DefaultDao, GetById{
     LinkedList<Product> getProductByShop(Shop shop) throws Exception;
 
     public LinkedList<Product> All()throws Exception;
+
+    public LinkedList<Product> getSimil(String category,String name);
 }

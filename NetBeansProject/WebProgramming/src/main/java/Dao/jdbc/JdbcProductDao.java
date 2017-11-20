@@ -246,4 +246,27 @@ public class JdbcProductDao extends JdbcUtilities implements ProductDao {
 
     }
 
+    @Override
+    public LinkedList<Product> getSimil(String category,String name) {
+
+        if (!checkConnection()) {
+            return null;
+        }
+        LinkedList<Product> res = new LinkedList<Product>();
+        try {
+            String query = "select * from products p where p.category = ? and soundex(p.name) <> soundex(?)";
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setString(1, category);
+            stmt.setString(2, name);
+            for (Object o : super.fillResult(Product.class, map, stmt.executeQuery())) {
+                res.add((Product) o);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(JdbcProductDao.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(JdbcProductDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return res;
+    }
+
 }
