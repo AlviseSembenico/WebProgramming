@@ -28,4 +28,6 @@ public interface ProductDao extends  DefaultDao, GetById{
     public LinkedList<Product> All()throws Exception;
 
     public LinkedList<Product> getSimil(String category,String name);
+
+    public Double getStarByProduct(Product product);
 }

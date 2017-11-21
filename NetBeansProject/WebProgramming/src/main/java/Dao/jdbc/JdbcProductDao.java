@@ -12,6 +12,7 @@ import Dao.entities.Product;
 import Dao.entities.Shop;
 import Dao.jdbc.utilities.*;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -264,6 +265,26 @@ public class JdbcProductDao extends JdbcUtilities implements ProductDao {
         } catch (SQLException ex) {
             Logger.getLogger(JdbcProductDao.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception ex) {
+            Logger.getLogger(JdbcProductDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return res;
+    }
+
+    @Override
+    public Double getStarByProduct(Product product) {
+        if (!checkConnection()) {
+            return null;
+        }
+        ResultSet set;
+        Double res=null;
+        try {
+            String query = "select (p.starValue/p.numberPeople) as star from products p where p.name = ?;";
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setString(1, product.getName());
+            set = stmt.executeQuery();
+            set.first();
+            res = set.getDouble("star");
+        } catch (SQLException ex) {
             Logger.getLogger(JdbcProductDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return res;
