@@ -63,7 +63,7 @@ public class LoginServlet extends HttpServlet {
                     cart.setUser(user);
                     request.getSession().setAttribute("cart", cart);
                 }
-                response.sendRedirect(response.encodeRedirectURL(contextPath));
+                response.sendRedirect(response.encodeRedirectURL(contextPath+"index"));
             }
         } catch (Exception e) {
             Log.write(e.toString());
