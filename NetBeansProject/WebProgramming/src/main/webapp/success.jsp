@@ -10,6 +10,10 @@
 <!doctype html>
 <html>
     <c:import url="pageBuilder/header.jsp"/> 
-    <img style="width: 100%" src="https://www.sageisland.com/wp-content/uploads/2015/04/creative-404-error-page-design-marketing-assets.jpg"/>
+    <div class="container">
+        <div class="row">
+        <h1>Operazione completata con successo...<a href="index">torna alla home</a></h1>
+        </div>
+    </div>
     <c:import url="pageBuilder/footer.jsp"/>
 

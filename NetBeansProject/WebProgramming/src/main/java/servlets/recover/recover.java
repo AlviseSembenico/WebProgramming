@@ -19,6 +19,7 @@ import javax.mail.Transport;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -41,9 +42,9 @@ public class recover extends HttpServlet {
             throw new ServletException("Impossible to get dao factory for user storage system");
         }
     }
-    private String SMTP_HOST = "smtp.gmail.com";
-    private String SMTP_USER = "noreply.webproject@gmail.com";
-    private String SMTP_PASSWD = "Sistemi2";
+    private final String SMTP_HOST = "smtp.gmail.com";
+    private final String SMTP_USER = "noreply.webproject@gmail.com";
+    private final String SMTP_PASSWD = "Sistemi2";
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -78,10 +79,9 @@ public class recover extends HttpServlet {
                     }
                 });
 
-                
                 String link = request.getRequestURL().toString();
                 link = link.substring(0, 36);
-
+                link = link + "/reset?id=" + user.getId();
                 StringBuilder bodyText = new StringBuilder();
                 bodyText.append("<div>")
                         .append("  Dear User<br/><br/>")
@@ -101,13 +101,21 @@ public class recover extends HttpServlet {
                 message.setSubject("Reset Password");
                 message.setContent(bodyText.toString(), "text/html; charset=utf-8");
                 Transport.send(message);
+                RequestDispatcher reqDes = request.getRequestDispatcher("/success.jsp");
+                reqDes.forward(request, response);
             } catch (AddressException ex) {
-                Logger.getLogger(recover.class.getName()).log(Level.SEVERE, null, ex);
+                RequestDispatcher reqDes = request.getRequestDispatcher("/error.jsp");
+                reqDes.forward(request, response);
             } catch (MessagingException ex) {
-                Logger.getLogger(recover.class.getName()).log(Level.SEVERE, null, ex);
+                RequestDispatcher reqDes = request.getRequestDispatcher("/error.jsp");
+                reqDes.forward(request, response);
             }
+        } else {
+            RequestDispatcher reqDes = request.getRequestDispatcher("/error.jsp");
+            reqDes.forward(request, response);
         }
     }
+
     /**
      * Returns a short description of the servlet.
      *

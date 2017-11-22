@@ -71,7 +71,7 @@ public class Review extends IdOwnerComparable {
         this.product = product;
     }
 
-    public int getDiffTime() {
+    public int DiffTime() {
         long time1 = this.creationDate.getTime();
         Date date = new Date();
         long time2 = date.getTime();

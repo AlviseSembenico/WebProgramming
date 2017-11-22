@@ -91,6 +91,10 @@
         <servlet-name>recover</servlet-name>
         <servlet-class>servlets.recover.recover</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>resetServlet</servlet-name>
+        <servlet-class>servlets.resetpass.resetServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/utils/login</url-pattern>
@@ -154,6 +158,10 @@
     <servlet-mapping>
         <servlet-name>recover</servlet-name>
         <url-pattern>/recover</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>resetServlet</servlet-name>
+        <url-pattern>/reset</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
