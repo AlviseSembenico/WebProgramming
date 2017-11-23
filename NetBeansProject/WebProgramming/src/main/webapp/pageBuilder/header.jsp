@@ -95,13 +95,18 @@
 
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="material-icons">view_carousel</i> Examples
+                                <i class="material-icons">view_carousel</i> Talk to us
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu dropdown-with-icons">
                                 <li>
-                                    <a href="../examples/about-us.html">
-                                        <i class="material-icons">account_balance</i> About Us
+                                    <a href="AboutUs.jsp">
+                                        <i class="material-icons">event_seat</i> About Us
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="contactUs.jsp">
+                                        <i class="material-icons">speaker_notes</i> Contact Us
                                     </a>
                                 </li>
                             </ul>

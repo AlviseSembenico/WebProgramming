@@ -8,9 +8,9 @@
 <%@page import="Dao.ProductDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
-    <!DOCTYPE html>
-    <!doctype html>
-    <html>
+<!DOCTYPE html>
+<!doctype html>
+<html>
     <c:import url="pageBuilder/header.jsp"/>
     <body class="product-page">
 
@@ -31,9 +31,9 @@
                                     <img src="<c:out value='${pictures.get(0).getPath()}'/>">
                                 </div>
                                 <c:forEach var="i" items='${pictures}' begin="1">
-                                   <div class="tab-pane" id="product-page<c:out value='${i.getId()}'/>">
-                                    <img src="<c:out value='${i.getPath()}'/>">
-                                </div>
+                                    <div class="tab-pane" id="product-page<c:out value='${i.getId()}'/>">
+                                        <img src="<c:out value='${i.getPath()}'/>">
+                                    </div>
                                 </c:forEach>
                             </div>
                             <ul class="active nav flexi-nav" role="tablist" id="flexiselDemo1">
@@ -45,7 +45,7 @@
                                     </li>
                                 </c:forEach>
                             </ul>
-                                     
+
 
                         </div>
 
@@ -54,6 +54,26 @@
                         <div class="col-md-6 col-sm-6">
                             <h2 class="title" ><c:out value="${product.getName()}"/> </h2>
                             <h3 class="main-price"><c:out value="${product.getPrice()}"/> $</h3>
+                            <h3>Rate:</h3> 
+                            <c:choose>
+                                <c:when test="${star!=0}">
+                                    <div class="stars"> 
+                                        <input class="star star-5" id="star-s5" type="radio" <c:if test="${star >4.5}">checked="checked"</c:if>disabled="disabled" name="stars" value="5"/> 
+                                            <label class="star star-5" for="star-s5"></label> 
+                                            <input class="star star-4" id="star-s4" type="radio" <c:if test="${star >3.5 && star <=4.5}">checked="checked"</c:if> disabled="disabled" name="stars"value="4"/> 
+                                            <label class="star star-4" for="star-s4"></label> 
+                                            <input class="star star-3" id="star-s3" type="radio" <c:if test="${star >2.5 && star <=3.5}">checked="checked"</c:if> disabled="disabled" name="stars"value="3"/> 
+                                            <label class="star star-3" for="star-s3"></label> 
+                                            <input class="star star-2" id="star-s2" type="radio" <c:if test="${star >1.5 && star <=2.5}">checked="checked"</c:if> disabled="disabled" name="stars"value="2"/> 
+                                            <label class="star star-2" for="star-s2"></label> 
+                                            <input class="star star-1" id="star-s1" type="radio" <c:if test="${star <=1.5}">checked="checked"</c:if> disabled="disabled" name="stars"value="1"/> 
+                                            <label class="star star-1" for="star-s1"></label>
+                                        </div>
+                                </c:when>
+                                <c:otherwise>
+                                    <h5>This product has not been rated yet </h5>
+                                </c:otherwise>
+                            </c:choose>
                             <div id="acordeon">
                                 <div class="panel-group" id="accordion">
                                     <div class="panel panel-border panel-default">
@@ -95,6 +115,7 @@
                             </div>
 
 
+
                             <div class="row pick-size">
                                 <div class="col-md-6 col-sm-6">
                                     <label>Select color</label>
@@ -128,9 +149,9 @@
 
         </div>
 
-        
-            <c:import url="pageBuilder/footer.jsp"/>
-            <script type="text/javascript">
+
+        <c:import url="pageBuilder/footer.jsp"/>
+        <script type="text/javascript">
             $(document).ready(function () {
                 $("#flexiselDemo1").flexisel({
                     visibleItems: 4,
@@ -153,6 +174,5 @@
                     }
                 });
             });
-            </script>
-    </html>
-    
+        </script>
+</html>

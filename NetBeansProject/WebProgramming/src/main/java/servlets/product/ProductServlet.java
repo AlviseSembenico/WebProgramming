@@ -76,6 +76,8 @@ public class ProductServlet extends HttpServlet {
             Product product = productDao.getProductById(id);
             LinkedList<Picture> pictures = pictureDao.getPictureByProduct(product);
             Shop shop = product.getShop();
+            Double star = productDao.getStarByProduct(product);
+            request.setAttribute("star", star);
             request.setAttribute("product", product);
             request.setAttribute("pictures", pictures);
             request.setAttribute("shop", shop);
