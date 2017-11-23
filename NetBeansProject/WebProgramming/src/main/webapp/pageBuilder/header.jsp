@@ -26,6 +26,7 @@
             <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
             <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+            <link rel="stylesheet" href="https://images-eu.ssl-images-amazon.com/images/I/51Syc5PehUL._RC|01evdoiemkL.css,01K+Ps1DeEL.css,314JbT8lsyL.css,01kivkxD60L.css,11UGC+GXOPL.css,21LK7jaicML.css,11L58Qpo0GL.css,21Pd9HarLOL.css,01Xl9KigtzL.css,21ygesff1yL.css,019SHZnt8RL.css,01qy9K8SDEL.css,11vZhCgAHbL.css,21uiGhnhrlL.css,11WgRxUdJRL.css,01dU8+SPlFL.css,11iPn24GCWL.css,01SHjPML6tL.css,111-D2qRjiL.css,01QrWuRrZ-L.css,31Wkf2OUteL.css,01WOZ2JFQjL.css,01pVbSC-RPL.css_.css?AUIClients/AmazonUI#not-trident"/>
             
             <!-- CSS Files -->
             <link href="assets/css/bootstrap.min.css" rel="stylesheet" />

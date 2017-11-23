@@ -47,9 +47,10 @@
                                                             </c:when>
                                                             <c:otherwise>
                                                                 <h4 class="media-heading">${reviews[i].getCreator().getFirstName()} ${reviews[i].getCreator().getLastName()}  <small>· ${reviews[i].DiffTime()} days ago</small></h4>
+                                                                <i class="a-icon a-icon-star a-star-${reviews[i].getQuality()}"><span class="a-icon-alt"></span></i>
                                                             </c:otherwise>
                                                         </c:choose>
-                                                        <h6 class="text-muted">Sul prodotto: </h6>
+                                                        <h6 class="text-muted">Sul prodotto: <br/>${reviews[i].getProduct().getName()}</h6>
                                                         <p>${reviews[i].getDescription()}</p>
                                                     </div>
                                                 </div>
