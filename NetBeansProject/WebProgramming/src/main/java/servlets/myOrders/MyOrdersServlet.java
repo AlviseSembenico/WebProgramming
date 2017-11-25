@@ -34,7 +34,7 @@ public class MyOrdersServlet extends HttpServlet {
         if (purchaseDao == null) {
             throw new ServletException("Impossible to get dao factory for user storage system");
         }
-        
+
         pictureDao = (PictureDao) super.getServletContext().getAttribute("pictureDao");
         if (pictureDao == null) {
             throw new ServletException("Impossible to get dao factory for user storage system");
@@ -55,19 +55,18 @@ public class MyOrdersServlet extends HttpServlet {
             throws ServletException, IOException {
         try {
             HttpSession session = request.getSession(false);
-            User user=(User) session.getAttribute("user");
-            LinkedList<Purchase> ll=purchaseDao.getPurchaseByUser(user);
+            User user = (User) session.getAttribute("user");
+            LinkedList<Purchase> ll = purchaseDao.getPurchaseByUser(user);
             //request.setAttribute("cart", cart);
             request.setAttribute("purchaseList", ll);
-            request.setAttribute("pictureDao", ll);
-            RequestDispatcher reqDes = request.getRequestDispatcher("/loggedUsers/myOrders.jsp");
-            reqDes.forward(request, response);
-
+            request.setAttribute("pictureDao", pictureDao);
         } catch (Exception ex) {
             Logger.getLogger(ProductServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
+        RequestDispatcher reqDes = request.getRequestDispatcher("/loggedUsers/myOrders.jsp");
+        reqDes.forward(request, response);
 
+    }
 
     /**
      * Returns a short description of the servlet.

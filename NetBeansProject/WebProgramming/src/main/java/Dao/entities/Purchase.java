@@ -12,6 +12,7 @@ public class Purchase extends IdOwnerComparable{
     private Product product;
     private User user;
     private Date date;
+    private double price;
 
     public int getId() {
         return id;
@@ -51,6 +52,20 @@ public class Purchase extends IdOwnerComparable{
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    /**
+     * @return the price
+     */
+    public double getPrice() {
+        return price;
+    }
+
+    /**
+     * @param price the price to set
+     */
+    public void setPrice(double price) {
+        this.price = price;
     }
     
     

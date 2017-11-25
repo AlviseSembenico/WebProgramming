@@ -11,7 +11,7 @@
    
     <!DOCTYPE html>
     <html>
-    <c:import url="pageBuilder/header.jsp"/>
+    <c:import url="/pageBuilder/header.jsp"/>
     <body class="product-page">
         <div class="page-header header-filter" data-parallax="true" style="background-image: url('https://www.happywall.co.uk/uploads/galleri/1204/forest_landscape_gallery.jpg');">
             <div class="container">
@@ -41,48 +41,38 @@
                                             PRICE
                                         </div>
 
-                                        <div class="col-md-1 th-description"> 
+                                        <div class="col-md-2 th-description"> 
                                             CATEGORY
                                         </div>
                                         <div class="col-md-1 th-description"> 
                                             SHOP 
                                         </div>
-                                        <div class="col-md-1"> 
-                                            ACTION
-                                        </div>
                                     </div>
                                     <hr>
-                                    <c:forEach var="i" items="${ll}">
+                                    <c:forEach var="i" items="${purchaseList}">
                                         <div class="row">
                                             <div class="col-md-2 td-name"> 
                                                 <div class="img-container" style="width: 100%; max-width: 120px">
-                                                    <img alt="..." src="<c:out value='${pictureDao.getPictureByProduct(i).get(0).getPath()}'/>">
+                                                    <img alt="..." src="<c:out value='${pictureDao.getPictureByProduct(i.getProduct()).get(0).getPath()}'/>">
                                                 </div>
                                             </div>
                                             <div class="col-md-3 col-main">
-                                                <a href="../product?id=<c:out value='${i.getId()}'/>"><c:out value="${i.getName()}"/></a>
+                                                <a href="../product?id=<c:out value='${i.getProduct().getId()}'/>"><c:out value="${i.getProduct().getName()}"/></a>
 
                                             </div>
                                             <div class="col-md-2 col-name"> 
-                                                <c:out value="${i.getDescription()}"/>
+                                                <c:out value="${i.getDate()}"/>
                                             </div>
                                             <div class="col-md-1  col-number text-left"> 
                                                 <small>€</small><c:out value="${i.getPrice()}"/>
                                             </div>
-                                            <div class="col-md-1 col-name" >
-                                                <c:out value="${i.getCategory()}"/>
+                                            <div class="col-md-2 col-name" >
+                                                <c:out value="${i.getProduct().getCategory()}"/>
                                             </div>
                                             <div class="col-md-1 col-name"> 
-                                                <a href="../product?id=<c:out value='${i.getShop().getId()}'/>"><c:out value="${i.getShop().getName()}"/></a>    
+                                                <a href="../product?id=<c:out value='${i.getProduct().getShop().getId()}'/>"><c:out value="${i.getProduct().getShop().getName()}"/></a>    
                                             </div>
-                                            <div class="col-md-2 col-name">
-                                                
-                                                <div class="btn-group">
-                                                    <button class="btn btn-round btn-xs"> <i class="material-icons">remove</i> </button>
-                                                    <button class="btn btn-round btn-xs"> <i class="material-icons">add</i> </button>
-                                                </div> <br>
-                                                QTY <c:out value='${cart.countProduct(i)}'/>
-                                            </div>
+                                            
                                         </div>
                                     </c:forEach>
 
@@ -93,4 +83,4 @@
                 </div>
             </div>
         </div>
-        <c:import url="pageBuilder/footer.jsp"/>
+        <c:import url="/pageBuilder/footer.jsp"/>
