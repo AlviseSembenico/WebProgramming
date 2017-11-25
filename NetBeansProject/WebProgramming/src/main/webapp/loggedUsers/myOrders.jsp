@@ -8,7 +8,7 @@
 <%@page import="Dao.entities.*"%>
 <%@page import="Dao.*"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
-   
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/fmt" prefix = "fmt" %>
     <!DOCTYPE html>
     <html>
     <c:import url="/pageBuilder/header.jsp"/>
@@ -24,7 +24,7 @@
                         <div id="tables">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <h4>My Orders</h4>
+                                    <h3>My Orders</h3>
                                 </div>
                                 <div class="col-md-10 col-md-offset-1">
                                     <div class="row">
@@ -42,7 +42,7 @@
                                         </div>
 
                                         <div class="col-md-2 th-description"> 
-                                            CATEGORY
+                                            DATE OF PURCHASE
                                         </div>
                                         <div class="col-md-1 th-description"> 
                                             SHOP 
@@ -57,7 +57,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-3 col-main">
-                                                <a href="../product?id=<c:out value='${i.getProduct().getId()}'/>"><c:out value="${i.getProduct().getName()}"/></a>
+                                                <a href="./product?id=<c:out value='${i.getProduct().getId()}'/>"><c:out value="${i.getProduct().getName()}"/></a>
 
                                             </div>
                                             <div class="col-md-2 col-name"> 
@@ -67,10 +67,11 @@
                                                 <small>€</small><c:out value="${i.getPrice()}"/>
                                             </div>
                                             <div class="col-md-2 col-name" >
-                                                <c:out value="${i.getProduct().getCategory()}"/>
+                                                <fmt:formatDate type="both" pattern="dd-MM-yyyy" value="${i.getDate()}"/>
+                                                
                                             </div>
                                             <div class="col-md-1 col-name"> 
-                                                <a href="../product?id=<c:out value='${i.getProduct().getShop().getId()}'/>"><c:out value="${i.getProduct().getShop().getName()}"/></a>    
+                                                <a href="./shop?id=<c:out value='${i.getProduct().getShop().getId()}'/>"><c:out value="${i.getProduct().getShop().getName()}"/></a>    
                                             </div>
                                             
                                         </div>

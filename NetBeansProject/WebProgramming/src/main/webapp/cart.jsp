@@ -29,7 +29,7 @@
                         <div id="tables">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <h4>Shopping Cart Table</h4>
+                                    <h3>Shopping Cart Table</h3>
                                 </div>
                                 <div class="col-md-10 col-md-offset-1">
                                     <div class="row">
@@ -65,7 +65,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-3 col-main">
-                                                <a href="../product?id=<c:out value='${i.getId()}'/>"><c:out value="${i.getName()}"/></a>
+                                                <a href="./product?id=<c:out value='${i.getId()}'/>"><c:out value="${i.getName()}"/></a>
 
                                             </div>
                                             <div class="col-md-2 col-name"> 
@@ -78,7 +78,7 @@
                                                 <c:out value="${i.getCategory()}"/>
                                             </div>
                                             <div class="col-md-1 col-name"> 
-                                                <a href="../product?id=<c:out value='${i.getShop().getId()}'/>"><c:out value="${i.getShop().getName()}"/></a>    
+                                                <a href="./shop?id=<c:out value='${i.getShop().getId()}'/>"><c:out value="${i.getShop().getName()}"/></a>    
                                             </div>
                                             <div class="col-md-2 col-name">
                                                 
