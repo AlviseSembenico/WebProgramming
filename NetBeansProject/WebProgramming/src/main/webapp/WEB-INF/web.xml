@@ -64,16 +64,36 @@
         <servlet-class>servlets.logout.LogoutServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>AddObjectServlet</servlet-name>
-        <servlet-class>servlets.addObject.AddObjectServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>Result</servlet-name>
         <servlet-class>servlets.result.ResultServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>addObjectServlet</servlet-name>
+        <servlet-class>servlets.addObject.AddObjectServlet</servlet-class>
+        <init-param>
+            <param-name>uploadDir</param-name>
+            <param-value>/tmp</param-value>
+        </init-param>
+    </servlet>
+    <servlet>
+        <servlet-name>AddAnomaly</servlet-name>
+        <servlet-class>servlets.addReview.AddAnomalyServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>addReview</servlet-name>
+        <servlet-class>servlets.addReview.AddReviewServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>payServlet</servlet-name>
         <servlet-class>servlets.pay.servlet.PayServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>recover</servlet-name>
+        <servlet-class>servlets.recover.recover</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>resetServlet</servlet-name>
+        <servlet-class>servlets.resetpass.resetServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -120,12 +140,28 @@
         <url-pattern>/result</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>AddObjectServlet</servlet-name>
+        <servlet-name>addObjectServlet</servlet-name>
         <url-pattern>/addObject</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddAnomaly</servlet-name>
+        <url-pattern>/addAnomaly</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addReview</servlet-name>
+        <url-pattern>/addReview</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>payServlet</servlet-name>
         <url-pattern>/payServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>recover</servlet-name>
+        <url-pattern>/recover</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>resetServlet</servlet-name>
+        <url-pattern>/reset</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
