@@ -101,11 +101,15 @@
                         </div>
                     </div>
                     <div class="col-xs-2 follow">
-                       
-                        <button type='file' class="btn btn-fab btn-primary btn-file"   rel="tooltip" title="Add a photo">
-                             <input name="..." type="file">
+                        <span class="btn btn-raised btn-fab btn-primary btn-file">
                             <i class="material-icons">add</i>
-                        </button>
+                            <input name="..." type="file" multiple="true"><div class="ripple-container" id="addImage" ></div>
+                        </span>
+                        <script>
+                            document.getElementById('addImage').addEventListener('click', addImage);
+                            function addImage() {
+                            }
+                        </script>
                     </div>
                 </div>
             </div>

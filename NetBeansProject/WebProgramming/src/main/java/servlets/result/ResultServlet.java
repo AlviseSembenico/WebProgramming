@@ -44,54 +44,52 @@ public class ResultServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String name=null;
-        String latitude=null;
-        String longitude=null;
-        String radius=null;
-        String minPrice=null;
-        String maxPrice=null;
-        String minRew=null;
-        String maxRew=null;
-        
-        try{
+        String name = null;
+        String city = null;
+        String region = null;
+        String radius = null;
+        String minPrice = null;
+        String maxPrice = null;
+        String minRew = null;
+        String maxRew = null;
+        String star = null;
+        String order = null;
+        String begin = null;
+        Integer end;
+        Integer len;
+        String category;
+
         name = request.getParameter("name");
-        latitude = request.getParameter("latitude");
-        longitude = request.getParameter("longitude");
+        city = request.getParameter("City");
+        region = request.getParameter("Region");
         radius = request.getParameter("radius");
         minPrice = request.getParameter("minPrice");
         maxPrice = request.getParameter("maxPrice");
         minRew = request.getParameter("minRew");
         maxRew = request.getParameter("maxRew");
-        }catch (Exception ex) {
-        if (latitude.equals(null)) {
-            latitude = "0";
+        star = request.getParameter("star");
+        order = request.getParameter("order");
+        begin = request.getParameter("begin");
+        if (begin == null) {
+            begin = "0";
         }
-        if (longitude.equals(null)) {
-            longitude = "0";
-        }
-        if (radius.equals(null)) {
-            radius = "180";
-        }
-        if (minPrice.equals(null)) {
-            minPrice = "0";
-        }
-        if (maxPrice.equals(null)) {
-            maxPrice = "1000000";
-        }
-        if (minRew.equals(null)) {
-            minRew = "0";
-        }
-        if (maxRew.equals(null)) {
-            maxRew = "5";
-        }
-        }
+        end = Integer.parseInt(begin) + 8;
+        LinkedList<Product> product;
+        LinkedList<Product> similProd;
         try {
-            LinkedList<Product> product = productDao.getProductByFilters(name, Double.parseDouble(latitude), Double.parseDouble(longitude), Double.parseDouble(radius), Double.parseDouble(minPrice), Double.parseDouble(maxPrice), Double.parseDouble(minRew), Double.parseDouble(maxRew));
+            product = productDao.DoQwery(name, region, city, radius, minPrice, maxPrice, minRew, maxRew, star, order);
             request.setAttribute("product", product);
+            len = product.size();
+            category = product.get(0).getCategory();
+            request.setAttribute("len", len);
+            similProd = productDao.getSimil(category,name);
+            request.setAttribute("simil", similProd);
         } catch (Exception ex) {
             Logger.getLogger(ResultServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+        request.setAttribute("name", name);
+        request.setAttribute("begin", begin);
+        request.setAttribute("end", end);
         RequestDispatcher RequetsDispatcherObj = request.getRequestDispatcher("/result.jsp");
         RequetsDispatcherObj.forward(request, response);
     }

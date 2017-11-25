@@ -12,7 +12,9 @@ import Dao.entities.User;
 import Dao.UserDao;
 import Dao.CartDao;
 import Dao.PictureDao;
+import Dao.ShopDao;
 import Dao.entities.Picture;
+import Dao.entities.Shop;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.logging.Level;
@@ -34,6 +36,7 @@ public class ProductServlet extends HttpServlet {
     private UserDao userDao;
     private CartDao cartDao;
     private PictureDao pictureDao;
+    private ShopDao shopDao;
 
     @Override
     public void init() throws ServletException {
@@ -53,7 +56,9 @@ public class ProductServlet extends HttpServlet {
         if (pictureDao == null) {
             throw new ServletException("Impossible to get dao factory for user storage system");
         }
-    }
+        
+        
+     }
 
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -70,8 +75,12 @@ public class ProductServlet extends HttpServlet {
             int id = Integer.parseInt(request.getParameter("id"));
             Product product = productDao.getProductById(id);
             LinkedList<Picture> pictures = pictureDao.getPictureByProduct(product);
+            Shop shop = product.getShop();
+            Double star = productDao.getStarByProduct(product);
+            request.setAttribute("star", star);
             request.setAttribute("product", product);
             request.setAttribute("pictures", pictures);
+            request.setAttribute("shop", shop);
             RequestDispatcher reqDes = request.getRequestDispatcher("/product.jsp");
             reqDes.forward(request, response);
         } catch (Exception ex) {

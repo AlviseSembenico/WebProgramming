@@ -11,10 +11,10 @@ public class Shop extends IdOwnerComparable{
 
     private String name;
     private String description;
-    private String webSiteUrl;
+    private String webSite;
     private int globalValue;
-    private User owner;
-    private User creator;
+    private User ownerID;
+    private User creatorId;
     private double latitude;
     private double longitute;
     private int shippingMethod;
@@ -67,11 +67,11 @@ public class Shop extends IdOwnerComparable{
     }
 
     public String getWebSiteUrl() {
-        return webSiteUrl;
+        return webSite;
     }
 
     public void setWebSiteUrl(String webSiteUrl) {
-        this.webSiteUrl = webSiteUrl;
+        this.webSite = webSiteUrl;
     }
 
     public int getGlobalValue() {
@@ -83,19 +83,19 @@ public class Shop extends IdOwnerComparable{
     }
 
     public User getOwner() {
-        return owner;
+        return ownerID;
     }
 
     public void setOwner(User user) {
-        this.owner = user;
+        this.ownerID = user;
     }
 
     public User getCreator() {
-        return creator;
+        return creatorId;
     }
 
     public void setCreator(User creator) {
-        this.creator = creator;
+        this.creatorId = creator;
     }
 
     public double getLatitude() {
@@ -106,11 +106,11 @@ public class Shop extends IdOwnerComparable{
         this.latitude = latitude;
     }
 
-    public double getLongitute() {
+    public double getLongitude() {
         return longitute;
     }
 
-    public void setLongitute(double longitute) {
+    public void setLongitude(double longitute) {
         this.longitute = longitute;
     }
 
