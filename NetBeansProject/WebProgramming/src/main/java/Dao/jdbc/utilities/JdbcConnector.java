@@ -16,8 +16,8 @@ import system.Log;
  * @author Alvise
  */
 public class JdbcConnector {
-    static String user = "superroot";
-    static String password = "root";
+    static String user = "web";
+    static String password = "programming";
     static String ip="www.xoft.cloud";
     static String db="/web";
     static String url = "jdbc:mysql://"+ip+db;

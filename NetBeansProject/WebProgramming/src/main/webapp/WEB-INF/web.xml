@@ -45,7 +45,7 @@
     </servlet>
     <servlet>
         <servlet-name>ConctactUsServlet</servlet-name>
-        <servlet-class>servlets.conctactUS.ConctactUsServlet</servlet-class>
+        <servlet-class>servlets.contactUS.ConctactUsServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CartServlet</servlet-name>
@@ -82,6 +82,10 @@
     <servlet>
         <servlet-name>addReview</servlet-name>
         <servlet-class>servlets.addReview.AddReviewServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MyOrders</servlet-name>
+        <servlet-class>servlets.myOrders.MyOrdersServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -138,6 +142,10 @@
     <servlet-mapping>
         <servlet-name>addReview</servlet-name>
         <url-pattern>/addReview</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MyOrders</servlet-name>
+        <url-pattern>/myOrders</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
