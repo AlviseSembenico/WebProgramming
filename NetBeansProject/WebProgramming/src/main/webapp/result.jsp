@@ -236,13 +236,13 @@
                             <div class="row">
                                 <c:choose>
                                     <c:when test="${product.get(0)!=null}">
-                                        <c:forEach var="i" items='${product}' begin="${begin}" end="${end}">
+                                        <c:forEach var="i" begin="${begin}" end="${end}">
                                             <div class="col-md-4">
                                                 <div class="card card-product card-plain card-rotate">
                                                     <div class="rotating-card-container">
                                                         <div class="card-image">
                                                             <div class="front">
-                                                                <c:set var="picture" value="${pictureDao.getPictureByProduct(i)}"></c:set>
+                                                                <c:set var="picture" value="${pictureDao.getPictureByProduct(product.get(i))}"></c:set>
                                                                 <img src="<c:out value='${picture.get(0).getPath()}'/>" style="width:250px;height:190px;">
                                                             </div>
 
@@ -252,11 +252,11 @@
                                                                         Quick Actions...
                                                                     </h5>
                                                                     <div class="footer text-center">
-                                                                        <a href="product?id=<c:out value="${i.getId()}"/>" class="btn btn-round btn-white">
+                                                                        <a href="product?id=<c:out value="${product.get(i).getId()}"/>" class="btn btn-round btn-white">
                                                                             <i class="material-icons">info</i> Details
                                                                         </a>
                                                                         <form method="POST" action="product">
-                                                                            <input name="pid" style="visibility: hidden;" value="<c:out value="${i.getId()}"/>" />
+                                                                            <input name="pid" style="visibility: hidden;" value="<c:out value="${product.get(i).getId()}"/>" />
                                                                             <button class="btn btn-rose btn-round" type="submit" style="padding-top: 012px;top: -15px;">Add to Cart &nbsp;<i class="material-icons">shopping_cart</i></button>
                                                                         </form>
 
@@ -268,18 +268,18 @@
 
                                                     <div class="card-content " style="width: 200px;height: 70px">
                                                         <h6 class="card-title">
-                                                            <h6 class="card-title"><c:out value="${i.getName()}"/></h6>
+                                                            <h6 class="card-title"><c:out value="${product.get(i).getName()}"/></h6>
                                                         </h6>
-
+                                                        <i class="a-icon a-icon-star a-star-${stelle[i]}"></i>
                                                         <div class="footer">
                                                             <div class="price-container">
-                                                                <span class="price price-new">&euro;<c:out value="${i.getPrice()}"/></span>
+                                                                <span class="price price-new">&euro;<c:out value="${product.get(i).getPrice()}"/></span>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-
                                             </div>
+                                            <c:if test="${(i+1)%3==0 && i != 0}"> </div> <div class="row"></c:if>
                                         </c:forEach>  
                                     </c:when>
                                     <c:otherwise>
@@ -290,73 +290,73 @@
                             <u class="pagination pagination-info">
                                 <li><a <c:if test="${(begin-9)>=0}">href="result?name=<c:out value="${name}"/>&begin=<c:out value="${begin-9}"/>"</c:if> style="color: black" >&lt; prev</a></li>
                                     <c:forEach var="i" begin="0" end="${len}">
-                                        <c:if test="${i%9==0}">
+                                        <c:if test="${i%9==0 && i != len}">
                                         <li><a href="result?name=<c:out value="${name}"/>&begin=<c:out value="${i}"/>" style="color: black"><c:out value="${Integer(i/9)+1}"/></a></li>
                                         </c:if>
                                     </c:forEach>
                                 <li><a <c:if test="${(begin+9)< len}">href="result?name=<c:out value="${name}"/>&begin=<c:out value="${begin+9}"/>"</c:if> style="color: black">next &gt;</a></li>
-                            </u>
+                                </u>
+                            </div>
                         </div>
-                    </div>
-                </form>
-            </div><!-- section -->
-            <div class="section" style="padding-bottom: 0px;">
-                <div class="container">
-                    <h2 class="section-title">You can also be interested in</h2>
-                    <div class="row">
-                                <c:choose>
-                                    <c:when test="${simil.get(0)!=null}">
-                                        <c:forEach var="i" items='${simil}' begin="0" end="3">
-                                            <div class="col-md-3">
-                                                <div class="card card-product card-plain card-rotate">
-                                                    <div class="rotating-card-container">
-                                                        <div class="card-image">
-                                                            <div class="front">
-                                                                <c:set var="picture" value="${pictureDao.getPictureByProduct(i)}"></c:set>
-                                                                <img src="<c:out value='${picture.get(0).getPath()}'/>" style="width:250px;height:190px;">
-                                                            </div>
-
-                                                            <div class="back back-background">
-                                                                <div class="card-content">
-                                                                    <h5 class="card-title">
-                                                                        Quick Actions...
-                                                                    </h5>
-                                                                    <div class="footer text-center">
-                                                                        <a href="product?id=<c:out value="${i.getId()}"/>" class="btn btn-round btn-white">
-                                                                            <i class="material-icons">info</i> Details
-                                                                        </a>
-                                                                        <form method="POST" action="product">
-                                                                            <input name="pid" style="visibility: hidden;" value="<c:out value="${i.getId()}"/>" />
-                                                                            <button class="btn btn-rose btn-round" type="submit" style="padding-top: 012px;top: -15px;">Add to Cart &nbsp;<i class="material-icons">shopping_cart</i></button>
-                                                                        </form>
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                    </form>
+                </div><!-- section -->
+                <div class="section" style="padding-bottom: 0px;">
+                    <div class="container">
+                        <h2 class="section-title">You can also be interested in</h2>
+                        <div class="row">
+                        <c:choose>
+                            <c:when test="${simil.get(0)!=null}">
+                                <c:forEach var="i" items='${simil}' begin="0" end="3">
+                                    <div class="col-md-3">
+                                        <div class="card card-product card-plain card-rotate">
+                                            <div class="rotating-card-container">
+                                                <div class="card-image">
+                                                    <div class="front">
+                                                        <c:set var="picture" value="${pictureDao.getPictureByProduct(i)}"></c:set>
+                                                        <img src="<c:out value='${picture.get(0).getPath()}'/>" style="width:250px;height:190px;">
                                                     </div>
 
-                                                    <div class="card-content " style="width: 200px;height: 70px">
-                                                        <h6 class="card-title">
-                                                            <h6 class="card-title"><c:out value="${i.getName()}"/></h6>
-                                                        </h6>
+                                                    <div class="back back-background">
+                                                        <div class="card-content">
+                                                            <h5 class="card-title">
+                                                                Quick Actions...
+                                                            </h5>
+                                                            <div class="footer text-center">
+                                                                <a href="product?id=<c:out value="${i.getId()}"/>" class="btn btn-round btn-white">
+                                                                    <i class="material-icons">info</i> Details
+                                                                </a>
+                                                                <form method="POST" action="product">
+                                                                    <input name="pid" style="visibility: hidden;" value="<c:out value="${i.getId()}"/>" />
+                                                                    <button class="btn btn-rose btn-round" type="submit" style="padding-top: 012px;top: -15px;">Add to Cart &nbsp;<i class="material-icons">shopping_cart</i></button>
+                                                                </form>
 
-                                                        <div class="footer">
-                                                            <div class="price-container">
-                                                                <span class="price price-new">&euro;<c:out value="${i.getPrice()}"/></span>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-
                                             </div>
-                                        </c:forEach>  
-                                    </c:when>
-                                    <c:otherwise>
-                                        <h2 class="section-title text-center"style="margin-top: 150px;"> There is no Product with it's name</h2>
-                                    </c:otherwise>
-                                </c:choose>
-                            </div>
+
+                                            <div class="card-content " style="width: 200px;height: 70px">
+                                                <h6 class="card-title">
+                                                    <h6 class="card-title"><c:out value="${i.getName()}"/></h6>
+                                                </h6>
+
+                                                <div class="footer">
+                                                    <div class="price-container">
+                                                        <span class="price price-new">&euro;<c:out value="${i.getPrice()}"/></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </c:forEach>  
+                            </c:when>
+                            <c:otherwise>
+                                <h2 class="section-title text-center"style="margin-top: 150px;"> There is no Product with it's name</h2>
+                            </c:otherwise>
+                        </c:choose>
+                    </div>
                 </div>
             </div><!-- section -->
         </div> <!-- end-main-raised -->

@@ -76,14 +76,20 @@ public class ResultServlet extends HttpServlet {
         end = Integer.parseInt(begin) + 8;
         LinkedList<Product> product;
         LinkedList<Product> similProd;
+
         try {
             product = productDao.DoQwery(name, region, city, radius, minPrice, maxPrice, minRew, maxRew, star, order);
             request.setAttribute("product", product);
             len = product.size();
             category = product.get(0).getCategory();
             request.setAttribute("len", len);
-            similProd = productDao.getSimil(category,name);
+            similProd = productDao.getSimil(category, name);
             request.setAttribute("simil", similProd);
+            Integer[] stelle = new Integer[product.size()];
+            for (int i = 0; i < product.size(); i++) {
+                stelle[i] =  productDao.getStarByProduct(product.get(i)).intValue();
+            }
+            request.setAttribute("stelle", stelle);
         } catch (Exception ex) {
             Logger.getLogger(ResultServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
