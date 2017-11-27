@@ -60,13 +60,15 @@ public class IndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         LinkedList<Product> product;
+        RequestDispatcher RequetsDispatcherObj =null;
         try{
             product = productDao.All();
             request.setAttribute("product", product);
+            RequetsDispatcherObj = request.getRequestDispatcher("/index.jsp");
         } catch (Exception ex) {
-            Logger.getLogger(IndexServlet.class.getName()).log(Level.SEVERE, null, ex);
+            RequetsDispatcherObj = request.getRequestDispatcher("/error.jsp");
         }
-        RequestDispatcher RequetsDispatcherObj = request.getRequestDispatcher("/index.jsp");
+        
         RequetsDispatcherObj.forward(request, response);
     }
 

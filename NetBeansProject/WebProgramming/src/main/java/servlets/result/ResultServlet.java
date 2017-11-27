@@ -73,7 +73,6 @@ public class ResultServlet extends HttpServlet {
         if (begin == null) {
             begin = "0";
         }
-        end = Integer.parseInt(begin) + 8;
         LinkedList<Product> product;
         LinkedList<Product> similProd;
         RequestDispatcher RequetsDispatcherObj =null;
@@ -90,6 +89,11 @@ public class ResultServlet extends HttpServlet {
             for (int i = 0; i < product.size(); i++) {
                 stelle[i] = productDao.getStarByProduct(product.get(i)).intValue();
             }
+            if(Integer.parseInt(begin+8) < len){
+                end = Integer.parseInt(begin) + 8;
+            }
+            else
+                end = len;
             request.setAttribute("stelle", stelle);
             request.setAttribute("name", name);
             request.setAttribute("begin", begin);

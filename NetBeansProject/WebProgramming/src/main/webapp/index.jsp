@@ -73,8 +73,8 @@ Author     : Alvise
                                                     <div class="item <c:if test='${i == 0}'> active </c:if>" >
                                                         <c:set var="picture" value="${pictureDao.getPictureByProduct(product.get(i))}"/>
                                                         <img src="<c:out value='${picture.get(0).getPath()}'/>" style="height: 250px; width: 500px;padding-left: 250px;">
-                                                        <div class="carousel-inner">
-                                                            <a href="product?id=${product.get(i).getId()}"><i class="material-icons">touch_app</i><h4><c:out value="${product.get(i).getName()}"/></h4></a>
+                                                        <div class="carousel-caption"  style="padding-bottom: 150px;">
+                                                            <a href="product?id=${product.get(i).getId()}"><i class="material-icons" style="color: black">touch_app</i><h4 style="color: black"><c:out value="${product.get(i).getName()}"/></h4></a>
                                                         </div>
                                                     </div>
                                                 </c:forEach>

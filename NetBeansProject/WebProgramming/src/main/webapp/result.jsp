@@ -236,7 +236,7 @@
                             <div class="row">
                                 <c:choose>
                                     <c:when test="${product.get(0)!=null}">
-                                        <c:forEach var="i" begin="${begin}" end="${end}">
+                                        <c:forEach var="i" begin="${begin}" end="${end-1}">
                                             <div class="col-md-4">
                                                 <div class="card card-product card-plain card-rotate">
                                                     <div class="rotating-card-container">
