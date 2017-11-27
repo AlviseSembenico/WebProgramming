@@ -56,9 +56,8 @@ public class ProductServlet extends HttpServlet {
         if (pictureDao == null) {
             throw new ServletException("Impossible to get dao factory for user storage system");
         }
-        
-        
-     }
+
+    }
 
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -71,6 +70,7 @@ public class ProductServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        RequestDispatcher reqDes = null;
         try {
             int id = Integer.parseInt(request.getParameter("id"));
             Product product = productDao.getProductById(id);
@@ -81,11 +81,12 @@ public class ProductServlet extends HttpServlet {
             request.setAttribute("product", product);
             request.setAttribute("pictures", pictures);
             request.setAttribute("shop", shop);
-            RequestDispatcher reqDes = request.getRequestDispatcher("/product.jsp");
-            reqDes.forward(request, response);
+            reqDes = request.getRequestDispatcher("/product.jsp");
+
         } catch (Exception ex) {
-            Logger.getLogger(ProductServlet.class.getName()).log(Level.SEVERE, null, ex);
+            reqDes = request.getRequestDispatcher("/error.jsp");
         }
+        reqDes.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
