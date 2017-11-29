@@ -8,7 +8,11 @@ package servlets.pay.servlet;
 import Dao.UserDao;
 import Dao.entities.User;
 import Dao.CartDao;
+import Dao.ProductDao;
+import Dao.PurchaseDao;
+import Dao.entities.Purchase;
 import Dao.entities.Cart;
+import Dao.entities.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -20,6 +24,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import system.Log;
 import java.io.IOException;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
+import java.util.LinkedList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -35,21 +44,28 @@ import system.Log;
 public class PayServlet extends HttpServlet {
 
     private CartDao cartDao;
-    private UserDao userDao;
-    private int id;
-
+    private PurchaseDao purchaseDao;
+    
     @Override
     public void init() throws ServletException {
         cartDao = (CartDao) super.getServletContext().getAttribute("cartDao");
         if (cartDao == null) {
             throw new ServletException("Impossible to get dao factory for user storage system");
         }
-        userDao = (UserDao) super.getServletContext().getAttribute("userDao");
-        if (cartDao == null) {
+        purchaseDao = (PurchaseDao)super.getServletContext().getAttribute("purchaseDao");
+        if (purchaseDao == null) {
             throw new ServletException("Impossible to get dao factory for user storage system");
         }
     }
 
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        RequestDispatcher RequestDispatcherObj = null;        
+        RequestDispatcherObj = request.getRequestDispatcher("payment.jsp");
+        RequestDispatcherObj.forward(request, response);
+    }
+    
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -59,7 +75,7 @@ public class PayServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         String contextPath = getServletContext().getContextPath();
@@ -68,14 +84,36 @@ public class PayServlet extends HttpServlet {
         }
 
         try {
-            User user = (User) request.getSession().getAttribute("user");
-            Cart cart = (Cart) request.getSession().getAttribute("cart");
-            request.setAttribute("user", user);
-            request.setAttribute("cart", cart);
-            RequestDispatcher reqDes = request.getRequestDispatcher("/payment.jsp");
-            reqDes.forward(request, response);
+            HttpSession session = request.getSession(false);
+            Cart cart = (Cart)session.getAttribute("cart");
+            User user = (User)session.getAttribute("user");
             
-
+            LinkedList<Product> prodotti = (LinkedList<Product>)cart.getProducts();
+            
+            int res;          
+            java.util.Date dt = new java.util.Date();
+            Date d = new Date(dt.getTime());
+            dt = (java.util.Date)d;
+            
+           
+            
+            for(Product p:prodotti)
+            {    
+                Purchase purc = new Purchase(p,user,1, dt);
+                res = purchaseDao.insertDao(purc);
+            }
+            
+            cart.emptyCart();
+            res = cartDao.updateDao(cart);
+            
+            if(res > 0)
+                response.sendRedirect(response.encodeRedirectURL(contextPath + "payment"+"?error=true"));
+            else{
+                session.setAttribute("user", user);
+                session.setAttribute("cart", cart);
+                response.sendRedirect(response.encodeRedirectURL(contextPath + "Purchase"));
+            }
+            
         } catch (Exception e) {
 
             Log.write(e.toString());

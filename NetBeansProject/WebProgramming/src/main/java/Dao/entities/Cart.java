@@ -41,4 +41,17 @@ public class Cart extends IdOwnerComparable{
                 res++;
         return res;
     }
+    
+    public double getTotal()
+    {
+        double res = 0;
+        for(Product p:products)            
+            res+=p.getPrice();
+        return res;
+    }
+    
+    public void emptyCart()
+    {
+        products.clear();
+    }
 }

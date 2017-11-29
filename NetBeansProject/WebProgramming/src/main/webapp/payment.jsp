@@ -17,11 +17,11 @@
         <div class="main main-raised">
             <div class="profile-content">
                 <div class="container">
-                    <form class="form" method="GET" action="PayServlet">
+                    <form class="form" name="myForm" method="POST" action="PayServlet">
                         <div class="row-content">                        
                             <div class="col-md-12">
                                 <div class="row">                                
-                                   
+                                    <h3>Totale: <c:out value="${cart.getTotal()}"/></h3>
                                 </div>
                                     
                                 <div class="row">
@@ -143,7 +143,7 @@
                                             }
                                             else
                                             {
-                                                btnpay.removeAttribute("disabled");                                                                                              
+                                                document.forms.myForm.submit();                                                                                          
                                             }
                                         }
 
@@ -155,7 +155,7 @@
                                             }
                                             else
                                             {
-                                                btnpay.removeAttribute("disabled");
+                                                document.forms.myForm.submit();
                                             }
                                         }
 
@@ -167,7 +167,7 @@
                                             }
                                             else
                                             {
-                                                btnpay.removeAttribute("disabled");
+                                                document.forms.myForm.submit();
                                             }
                                         }                                    
 
@@ -200,14 +200,9 @@
                                 </script>
                                 <div class="row">
                                     <div class="text-center">
-                                        <input type="button" class="btn btn-primary" value="Confirm" onclick='Paga()'/>
+                                        <input type="button" class="btn btn-primary" value="Confirm and Pay" onclick='Paga()'/>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="text-center">
-                                        <input id="pay" type="submit" value="Pay" class="btn btn-primary" disabled/>
-                                    </div>
-                                </div>
+                                </div>                                
                             </div>
                         </div>
                     </form>

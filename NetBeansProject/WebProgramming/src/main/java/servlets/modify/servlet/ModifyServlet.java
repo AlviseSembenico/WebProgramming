@@ -11,12 +11,14 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import system.Log;
 
 /**
@@ -37,19 +39,13 @@ public class ModifyServlet extends HttpServlet {
         } 
     }
     
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException
+            throws ServletException, IOException 
     {
-        int id = Integer.parseInt(request.getParameter("id"));
-        
-        try 
-        {
-            user = userDao.getUserById(id);
-            request.setAttribute("user",user);
-            
-        } catch (Exception ex) {
-           Log.write(ex.toString());
-        }
+        RequestDispatcher RequestDispatcherObj = null;       
+        RequestDispatcherObj = request.getRequestDispatcher("UserProfile.jsp");
+        RequestDispatcherObj.forward(request, response);
     }
     
     /**
@@ -74,18 +70,8 @@ public class ModifyServlet extends HttpServlet {
                 contextPath += "/";
             }
             try{
-                 
-                Cookie mioCookie = null;
-                Cookie[] c = request.getCookies();
-                int i = 0;
-                while(i<c.length){
-                        if(c[i].getName().equals("userId"))
-                            break;
-                        i = i+1;
-                }
-                mioCookie=c[i];
-                 
-                User user = userDao.getUserById(Integer.parseInt(mioCookie.getValue()));
+                HttpSession session = request.getSession(false);
+                user = (User)session.getAttribute("user");
                 user.setFirstName(firstName);
                 user.setLastName(lastName);
                 user.setEmail(email);

@@ -72,8 +72,24 @@
         <servlet-class>servlets.result.ResultServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>payServlet</servlet-name>
+        <servlet-name>Payment</servlet-name>
         <servlet-class>servlets.pay.servlet.PayServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Purchases</servlet-name>
+        <servlet-class>servlets.purchase.PurchaseServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddAnomaly</servlet-name>
+        <servlet-class>servlets.addAnomaly.AddAnomalyServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddReview</servlet-name>
+        <servlet-class>servlets.addReview.AddReviewServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UserProfile</servlet-name>
+        <servlet-class>servlets.modify.servlet.ModifyServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -124,8 +140,24 @@
         <url-pattern>/addObject</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>payServlet</servlet-name>
-        <url-pattern>/payServlet</url-pattern>
+        <servlet-name>AddAnomaly</servlet-name>
+        <url-pattern>/AddAnomaly</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddReview</servlet-name>
+        <url-pattern>/AddReview</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Purchases</servlet-name>
+        <url-pattern>/Purchases</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Payment</servlet-name>
+        <url-pattern>/Payment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserProfile</servlet-name>
+        <url-pattern>/UserProfile</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

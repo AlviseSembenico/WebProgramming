@@ -43,11 +43,14 @@ Author     : Alvise
                         </div>
                     </div>
                 </div>
-                
-                <!-- Carousel -->
-                <div class="container" style="padding-top: 40px;">
+            </div>
+        </div>
+
+        <!-- Carousel -->
+        <div class="wrapper">
+            <div class="" style="background-color: black">
                 <div class="section" id="carousel">
-                    <h2>Let you be inspired by us </h2>
+                    <h2 style="color: white">Let you be inspired by us </h2>
                     <div class="container" style="padding-top: 40px;">
                         <div class="row">
                             <div class="col-md-8 col-md-offset-2">
@@ -79,7 +82,7 @@ Author     : Alvise
                                         </div>
                                     </div>
                                 </div>
-                            
+
 
                                 <!-- Controls -->
                                 <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
@@ -92,14 +95,13 @@ Author     : Alvise
                         </div>
                     </div>
                 </div>
-                    <!-- End Carousel Card -->
-
-                </div>
+                <!-- End Carousel Card -->
             </div>
         </div>
-  
+    </div>
 
 
-<c:import url="pageBuilder/footer.jsp"/>
+
+    <c:import url="pageBuilder/footer.jsp"/>
 
 </html>
