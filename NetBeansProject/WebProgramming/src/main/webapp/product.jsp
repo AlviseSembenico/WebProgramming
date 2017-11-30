@@ -113,27 +113,6 @@
                                     </div>
                                 </div>
                             </div>
-
-
-
-                            <div class="row pick-size">
-                                <div class="col-md-6 col-sm-6">
-                                    <label>Select color</label>
-                                    <select class="selectpicker" data-style="select-with-transition" data-size="7">
-                                        <option value="1">Rose </option>
-                                        <option value="2">Gray</option>
-                                        <option value="3">White</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-6 col-sm-6">
-                                    <label>Select size</label>
-                                    <select class="selectpicker" data-style="select-with-transition" data-size="7">
-                                        <option value="1">Small </option>
-                                        <option value="2">Medium</option>
-                                        <option value="3">Large</option>
-                                    </select>
-                                </div>
-                            </div>
                             <div class="row text-right">
                                 <form method="POST" action="product">
                                     <input name="pid" style="visibility: hidden;" value="<c:out value="${product.getId()}"/>" />
@@ -142,37 +121,76 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                    <div class="row">
+                        <div class="title-row" style="padding-top: 50px"> <h3>What people thinks about this product </h3></div></br>
+                        <c:choose>
+                            <c:when test="${reviews[0] != null}">
+                                <c:forEach var="i" begin="0" end="${reviews.size() - 1}">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="media">
+                                                <a class="pull-left" href="">
+                                                    <div class="avatar">
+                                                        <img class="media-object" src="${reviews[i].getCreator().getAvatarPath()}">
+                                                    </div>
+                                                </a>
+                                                <div class="media-body">
+                                                    <c:choose>
+                                                        <c:when test="${reviews[i].getCreator().getId() == sessionScope.user.getId()}">
+                                                            <h4 class="media-heading">you  <small>· ${reviews[i].DiffTime()} days ago</small></h4>
 
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <h4 class="media-heading">${reviews[i].getCreator().getFirstName()} ${reviews[i].getCreator().getLastName()}  <small>· ${reviews[i].DiffTime()} days ago</small></h4>
+
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                    <i class="a-icon a-icon-star a-star-${reviews[i].getQuality()}"></i>
+                                                    <p>${reviews[i].getDescription()}</p>
+                                                </div>
+                                            </div>
+                                            <hr/>
+                                        </div>
+                                        <c:if test="${(i+1)%2==0}"> </div> <div class="row"> </c:if>
+                                    </c:forEach>
+                                </c:when>
+                                <c:otherwise>
+                                    <h2>Nessun commento...</h2>
+                                </c:otherwise>
+                            </c:choose>
+
+                        </div>
+                    </div>
+
+
+                </div>
 
             </div>
 
-        </div>
 
-
-        <c:import url="pageBuilder/footer.jsp"/>
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $("#flexiselDemo1").flexisel({
-                    visibleItems: 4,
-                    itemsToScroll: 1,
-                    animationSpeed: 400,
-                    enableResponsiveBreakpoints: true,
-                    responsiveBreakpoints: {
-                        portrait: {
-                            changePoint: 480,
-                            visibleItems: 3
-                        },
-                        landscape: {
-                            changePoint: 640,
-                            visibleItems: 3
-                        },
-                        tablet: {
-                            changePoint: 768,
-                            visibleItems: 3
+            <c:import url="pageBuilder/footer.jsp"/>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $("#flexiselDemo1").flexisel({
+                        visibleItems: 4,
+                        itemsToScroll: 1,
+                        animationSpeed: 400,
+                        enableResponsiveBreakpoints: true,
+                        responsiveBreakpoints: {
+                            portrait: {
+                                changePoint: 480,
+                                visibleItems: 3
+                            },
+                            landscape: {
+                                changePoint: 640,
+                                visibleItems: 3
+                            },
+                            tablet: {
+                                changePoint: 768,
+                                visibleItems: 3
+                            }
                         }
-                    }
+                    });
                 });
-            });
-        </script>
+            </script>
 </html>
