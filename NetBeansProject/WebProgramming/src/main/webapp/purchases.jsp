@@ -79,17 +79,22 @@
                                                 <c:out value='${i.strStatus()}'/>   
                                             </div>
                                             <div class="col-md-1 col-name">
-                                                <div class="row">
-                                                    <a href="AddReview?id='${i.getId()}'" class="btn btn-primary btn-round">Add Review</a>
+                                                <div class="row">                                                    
+                                                    <a href="AddReview?id=<c:out value="${i.getId()}"/>"class="btn btn-primary btn-round">AddReview</a>                             
                                                 </div>
                                                 <div class="row">
-                                                    <a href="AddAnomaly?id='${i.getId()}'" class="btn btn-primary btn-round">Add Anomaly</a>
+                                                    <a href="AddAnomaly?id=<c:out value="${i.getId()}"/>"class="btn btn-primary btn-round">AddAnomaly</a>             
                                                 </div>
                                             </div>
                                         </div>
                                         <br/>
                                     </c:forEach>
-
+                                    <script>
+                                        function addreview()
+                                        {
+                                            alert("YEEE");
+                                        }
+                                    </script>
                                 </div>
                             </div>
                             <br/>
@@ -100,5 +105,6 @@
                 </div>
             </div>
         </div>
+                    
     </body>
     <c:import url="pageBuilder/footer.jsp"/>
