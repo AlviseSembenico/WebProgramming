@@ -64,20 +64,7 @@
 
                     <ul class="nav navbar-nav ">
 
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="material-icons">view_day</i> Sections
-                                <b class="caret"></b>
-                            </a>
-                            <ul class="dropdown-menu dropdown-with-icons">
-                                <li>
-                                    <a href="../sections.html#headers">
-                                        <i class="material-icons">dns</i> Headers
-                                    </a>
-                                </li>
 
-                            </ul>
-                        </li>
 
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -112,6 +99,24 @@
                                         </li>
                                     </ul>
                                 </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <i class="material-icons">reorder</i>Account
+                                        <b class="caret"></b>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-with-icons">
+                                        <li>
+                                            <a href="myOrders">
+                                                <i class="material-icons">archive</i>My Orders
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="register">
+                                                <i class="material-icons">person</i> Register
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
                             </c:when>
 
                             <c:otherwise>
@@ -135,7 +140,27 @@
                                 </li>
                             </c:otherwise>
                         </c:choose>
-                     
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="material-icons">search</i>Search
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu dropdown-with-icons">
+                                <li>
+                                    <form class="form form-newsletter card-content" method="get" action="result">
+                                        <div class="form-group is-empty has-error" >
+                                            <input style=" color: black" type="text" name="name" class="pull-right form-control" placeholder="Search...">
+                                            <span class="material-input"></span></div>
+
+                                        <button type="submit" class="btn btn-primary btn-just-icon btn-danger">
+                                            <i class="material-icons">search</i>
+                                        </button>
+
+                                    </form>
+                                </li>
+
+                            </ul>
+                        </li>
                         <li>
                             <a href="cart" class="btn btn-rose btn-round">
                                 <i class="material-icons">shopping_cart</i>Cart
