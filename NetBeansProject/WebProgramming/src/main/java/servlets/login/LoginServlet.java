@@ -47,7 +47,7 @@ public class LoginServlet extends HttpServlet {
             RequestDispatcher reqDes = request.getRequestDispatcher("/publicUsers/login.jsp");
             reqDes.forward(request, response);
         } else {
-             response.sendRedirect("index");
+            response.sendRedirect("index");
         }
 
     }
@@ -66,26 +66,22 @@ public class LoginServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        String contextPath = getServletContext().getContextPath();
-        if (!contextPath.endsWith("/")) {
-            contextPath += "/";
-        }
         User user = null;
         try {
             user = userDao.getUserByEmailPassword(email, password);
+            if (user == null) {
+                response.sendRedirect(response.encodeRedirectURL("/login" + "?error=true"));
+            } else {
+                request.getSession().setAttribute("user", user);
+                Cart cart = (Cart) request.getSession().getAttribute("cart");
+                if (cart != null) {
+                    cart.setUser(user);
+                    cartDao.insertDao(cart);
+                }
+                response.sendRedirect("index");
+            }
         } catch (Exception ex) {
             Log.write(ex.toString());
-        }
-        if (user == null) {
-            response.sendRedirect(response.encodeRedirectURL(contextPath + "login" + "?error=true"));
-        } else {
-            request.getSession().setAttribute("user", user);
-            Cart cart = (Cart) request.getSession().getAttribute("cart");
-            if (cart != null) {
-                cart.setUser(user);
-                request.getSession().setAttribute("cart", cart);
-            }
-            response.sendRedirect(response.encodeRedirectURL(contextPath));
         }
     }
 

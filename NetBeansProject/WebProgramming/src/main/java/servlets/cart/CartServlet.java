@@ -5,10 +5,10 @@
  */
 package servlets.cart;
 
-import Dao.CartDao;
-import Dao.PictureDao;
-import Dao.ProductDao;
+import Dao.*;
 import Dao.entities.Cart;
+import Dao.entities.Product;
+import Dao.entities.User;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -61,10 +61,10 @@ public class CartServlet extends HttpServlet {
             throws ServletException, IOException {
         try {
             HttpSession session = request.getSession(false);
-           // User user;
+            // User user;
             Cart cart;
             //if (session != null) {
-               // user = (User) session.getAttribute("user");
+            // user = (User) session.getAttribute("user");
             //}
             cart = (Cart) session.getAttribute("cart");
             //request.setAttribute("cart", cart);
@@ -79,6 +79,65 @@ public class CartServlet extends HttpServlet {
         }
     }
 
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        RequestDispatcher reqDes = null;
+        try {
+            HttpSession session = request.getSession();
+            User user = (User) session.getAttribute("user");
+            int pid = Integer.parseInt(request.getParameter("pid"));
+            Product product = productDao.getProductById(pid);
+            if (product != null) {
+                Cart cart = (Cart) session.getAttribute("cart");
+                boolean newCart = false;
+                if (cart == null) {
+                    cart = new Cart((User) request.getSession(false).getAttribute("user"));
+                    newCart = true;
+                }
+                cart.addProduct(product);
+                session.setAttribute("cart", cart);
+                if (user != null) {
+                    if (newCart) 
+                        cartDao.insertDao(cart);
+                    else 
+                        cartDao.updateDao(cart);
+                }
+            }
+            reqDes = request.getRequestDispatcher("/cart.jsp?result=true");
+        } catch (Exception ex) {
+            reqDes = request.getRequestDispatcher("/cart.jsp?result=false");
+        } finally {
+            reqDes.forward(request, response);
+        }
+    }
+
+    @Override
+    protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        RequestDispatcher reqDes = null;
+        try {
+            HttpSession session = request.getSession();
+            User user = (User) session.getAttribute("user");
+            int pid = Integer.parseInt(request.getParameter("pid"));
+            Product product = productDao.getProductById(pid);
+            if (product != null) {
+                Cart cart = (Cart) session.getAttribute("cart");
+                if (cart == null) {
+                    cart = new Cart((User) request.getSession(false).getAttribute("user"));
+                }
+                cart.removeProduct(product);
+                session.setAttribute("cart", cart);
+                if (user != null) {
+                    cartDao.updateDao(cart);
+                }
+            }
+            reqDes = request.getRequestDispatcher("/cart.jsp?result=true");
+        } catch (Exception ex) {
+            reqDes = request.getRequestDispatcher("/cart.jsp?result=false");
+        } finally {
+            reqDes.forward(request, response);
+        }
+    }
 
     /**
      * Returns a short description of the servlet.

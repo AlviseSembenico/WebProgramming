@@ -26,8 +26,11 @@ public class Cart extends IdOwnerComparable{
         return products;
     }
     
-    public void AddProducts(Product product){
+    public void addProduct(Product product){
         this.products.add(product);
+    }
+    public boolean removeProduct(Product product){
+        return this.products.remove(product);
     }
 
     public void setProducts(LinkedList<Product> products) {

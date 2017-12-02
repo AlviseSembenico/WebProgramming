@@ -64,18 +64,20 @@
                 <div class="collpase navbar-collapse">
 
                     <ul class="nav navbar-nav navbar-right">
-                        <li >
-                            <form class="form form-newsletter card-content" method="" action="">
-                                <div class="form-group is-empty has-error" >
-                                    <input style=" width: 180%; color: white" type="text" class="pull-right form-control" placeholder="Search...">
-                                    <span class="material-input"></span></div>
+                         <li >
+                            <form class="form form-newsletter card-content" method="" action="result">
+                                <div class="form-group is-empty" >
+                                    <input style=" width: 240%; color: white" type="text" name="name" class="pull-right form-control" placeholder="Search...">
+                                    <span class="material-input"></span>
+                                </div>
 
-                                <button type="button" class="btn btn-primary btn-just-icon btn-danger" name="button">
+                                <button type="submit" class="btn btn-danger btn-just-icon">
                                     <i class="material-icons">search</i>
                                 </button>
 
                             </form>
                         </li>
+
 
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -150,7 +152,7 @@
                         </c:choose>
                         <li>
                             <a href="cart" class="btn btn-white btn-simple">
-                                <i class="material-icons">shopping_cart</i> Buy Now
+                                <i class="material-icons">shopping_cart</i>Cart
                             </a>
                         </li>
                     </ul>

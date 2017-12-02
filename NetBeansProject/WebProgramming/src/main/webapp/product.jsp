@@ -118,7 +118,7 @@
                                 </div>
                             </div>
                             <div class="row text-right">
-                                <form method="POST" action="product">
+                                <form method="POST" action="cart">
                                     <input name="pid" style="visibility: hidden;" value="<c:out value="${product.getId()}"/>" />
                                     <button class="btn btn-rose btn-round" type="submit" >Add to Cart &nbsp;<i class="material-icons">shopping_cart</i></button>
                                 </form>
