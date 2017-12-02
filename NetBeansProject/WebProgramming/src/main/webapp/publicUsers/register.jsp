@@ -8,7 +8,7 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <!DOCTYPE html>
 <html>
-    <c:import url="pageBuilder/header.jsp"/>
+    <c:import url="/pageBuilder/header.jsp"/>
     <body class ="signup-page">
         <div class="page-header header-filter" style="background-image: url('https://iso.500px.com/wp-content/uploads/2015/12/stock-photo-125301449.jpg'); background-size: cover; background-position: top center;">
             <div class="container">
@@ -68,7 +68,7 @@
                                         </button>
                                         <h4> or be classical </h4>
                                     </div>
-                            <form action="utils/register" method="POST">
+                            <form action="register" method="POST">
                                         <div class="card-content">
                                             <div class="input-group">
                                                 <span class="input-group-addon">
@@ -119,4 +119,4 @@
                     </div>
                 </div>
             </div>  
-            <c:import url="pageBuilder/footer.jsp"/>
+            <c:import url="/pageBuilder/footer.jsp"/>

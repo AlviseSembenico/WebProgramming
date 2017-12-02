@@ -8,10 +8,14 @@ package servlets.login;
 import Dao.*;
 import Dao.entities.*;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import system.Log;
 
 /**
@@ -22,6 +26,7 @@ public class LoginServlet extends HttpServlet {
 
     private UserDao userDao;
     private CartDao cartDao;
+
     @Override
     public void init() throws ServletException {
         userDao = (UserDao) super.getServletContext().getAttribute("userDao");
@@ -32,6 +37,19 @@ public class LoginServlet extends HttpServlet {
         if (cartDao == null) {
             throw new ServletException("Impossible to get dao factory for user storage system");
         }
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        HttpSession session = request.getSession(false);
+        if (session.getAttribute("user") == null) {
+            RequestDispatcher reqDes = request.getRequestDispatcher("/publicUsers/login.jsp");
+            reqDes.forward(request, response);
+        } else {
+             response.sendRedirect("index");
+        }
+
     }
 
     /**
@@ -52,23 +70,25 @@ public class LoginServlet extends HttpServlet {
         if (!contextPath.endsWith("/")) {
             contextPath += "/";
         }
+        User user = null;
         try {
-            User user = userDao.getUserByEmailPassword(email, password);
-            if (user == null) {
-                response.sendRedirect(response.encodeRedirectURL(contextPath + "login" + "?error=true"));
-            } else {
-                request.getSession().setAttribute("user", user);
-                Cart cart = (Cart) request.getSession().getAttribute("cart");
-                if (cart != null) {
-                    cart.setUser(user);
-                    request.getSession().setAttribute("cart", cart);
-                }
-                response.sendRedirect(response.encodeRedirectURL(contextPath));
+            user = userDao.getUserByEmailPassword(email, password);
+        } catch (Exception ex) {
+            Log.write(ex.toString());
+        }
+        if (user == null) {
+            response.sendRedirect(response.encodeRedirectURL(contextPath + "login" + "?error=true"));
+        } else {
+            request.getSession().setAttribute("user", user);
+            Cart cart = (Cart) request.getSession().getAttribute("cart");
+            if (cart != null) {
+                cart.setUser(user);
+                request.getSession().setAttribute("cart", cart);
             }
-        } catch (Exception e) {
-            Log.write(e.toString());
+            response.sendRedirect(response.encodeRedirectURL(contextPath));
         }
     }
+
     /**
      * Returns a short description of the servlet.
      *
