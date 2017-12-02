@@ -143,9 +143,9 @@
                         </li>
                     </ul>
 
-                    <form class="navbar-form navbar-right" role="search">
+                    <form class="navbar-form navbar-right" role="search" method="get" action="result" >
                         <div class="form-group form-white is-empty">
-                            <input class="form-control" type="text" name="name" placeholder="Search">
+                            <input style=" color: white" class="form-control " type="text" name="name" placeholder="">
                             <span class="material-input"></span></div>
                         <button class="btn btn-white btn-raised btn-fab btn-fab-mini" type="submit"><i class="material-icons">search</i></button>
                     </form>

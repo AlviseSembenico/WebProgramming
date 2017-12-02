@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import servlets.product.ProductServlet;
+import system.Log;
 
 /**
  *
@@ -87,6 +88,8 @@ public class CartServlet extends HttpServlet {
             HttpSession session = request.getSession();
             User user = (User) session.getAttribute("user");
             int pid = Integer.parseInt(request.getParameter("pid"));
+            if(request.getParameter("delete")!=null)
+                doDelete(request, response);
             Product product = productDao.getProductById(pid);
             if (product != null) {
                 Cart cart = (Cart) session.getAttribute("cart");
@@ -133,6 +136,7 @@ public class CartServlet extends HttpServlet {
             }
             reqDes = request.getRequestDispatcher("/cart.jsp?result=true");
         } catch (Exception ex) {
+            Log.write(ex.toString());
             reqDes = request.getRequestDispatcher("/cart.jsp?result=false");
         } finally {
             reqDes.forward(request, response);

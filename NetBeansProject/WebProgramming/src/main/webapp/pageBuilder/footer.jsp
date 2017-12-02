@@ -127,7 +127,6 @@
                 </p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-simple">Nice Button</button>
                 <button type="button" class="btn btn-danger btn-simple" data-dismiss="modal">Close</button>
             </div>
         </div>
@@ -143,11 +142,10 @@
                 <h4 class="modal-title">Everything went smooth.</h4>
             </div>
             <div class="modal-body">
-                <p>Thank you for using our services, we took you request and we will dispatch it as soon as possible.
+                <p>Action completed successfully.
                 </p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-simple">Nice Button</button>
                 <button type="button" class="btn btn-danger btn-simple" data-dismiss="modal">Close</button>
             </div>
         </div>
