@@ -1,16 +1,8 @@
 
 Homepage
-
-review object
 review shop
- 
-
-segnalazione anomalie
 gestione admin anomalie
-
 notifiche venditore
 notifiche amministratore
-aggiunta/cancellazione oggetto
 
-about us
 

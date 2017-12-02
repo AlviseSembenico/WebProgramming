@@ -94,6 +94,7 @@
                                     </div> <br>
 
                                 </div>
+                                <a href="payServlet" class="btn btn-primary btn-round"  ><i class="material-icons">shopping_cart </i> Pay </a>
                             </div>
                         </c:forEach>
 

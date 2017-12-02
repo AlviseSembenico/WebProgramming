@@ -26,7 +26,7 @@ public class Log {
         
         if(Bw==null)
             try {
-                Bw=new BufferedWriter((new FileWriter("C:\\Users\\zappi\\Desktop\\log.txt",true)));
+                Bw=new BufferedWriter((new FileWriter("C:\\Users\\Utente\\Desktop\\log.txt",true)));
             DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
             Date date = new Date();
             String d=dateFormat.format(date);

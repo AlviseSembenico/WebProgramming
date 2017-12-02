@@ -5,7 +5,12 @@
  */
 package servlets.index;
 
+import Dao.ProductDao;
+import Dao.entities.Product;
 import java.io.IOException;
+import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -17,7 +22,15 @@ import javax.servlet.http.HttpServletResponse;
  * @author zappi
  */
 public class IndexServlet extends HttpServlet {
+    private ProductDao productDao;
 
+
+    public void init() throws ServletException {
+        productDao = (ProductDao) super.getServletContext().getAttribute("productDao");
+        if (productDao == null) {
+            throw new ServletException("Impossible to get dao factory for user storage system");
+        }
+    }
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -46,7 +59,17 @@ public class IndexServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        LinkedList<Product> product;
+        RequestDispatcher RequetsDispatcherObj =null;
+        try{
+            product = productDao.All();
+            request.setAttribute("product", product);
+            RequetsDispatcherObj = request.getRequestDispatcher("/index.jsp");
+        } catch (Exception ex) {
+            RequetsDispatcherObj = request.getRequestDispatcher("/error.jsp");
+        }
+        
+        RequetsDispatcherObj.forward(request, response);
     }
 
     /**

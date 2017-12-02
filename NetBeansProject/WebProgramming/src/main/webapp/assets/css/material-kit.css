@@ -1525,7 +1525,7 @@ select.form-control {
     min-width: 30px;
     height: 30px;
     line-height: 30px;
-    color: #999;
+    color: black;
     font-weight: 400;
     font-size: 12px;
     text-transform: uppercase;
@@ -6431,7 +6431,7 @@ to {
     margin-top: 15px;
 }
 }@media all and (max-width:768px) {
-    #bodyClick, .navbar-collapse .nav>li: after, .navbar-collapse::after {
+    #bodyClick, .navbar-collapse .nav>li:after, .navbar-collapse::after {
     content: ""}
 #bodyClick {
     height: 100%;

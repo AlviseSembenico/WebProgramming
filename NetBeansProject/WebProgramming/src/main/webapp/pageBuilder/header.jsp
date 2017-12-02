@@ -26,7 +26,7 @@
             <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
             <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-
+            <link href="assets/css/ratingStar.css" rel="stylesheet" type="text/css"/>
             <!-- CSS Files -->
             <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
             <link href="assets/css/demo.css" rel="stylesheet" />
@@ -48,7 +48,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a href="index.jsp">
+                    <a href="index">
                         <div class="logo-container">
                             <div class="logo">
                                 <img  src="assets/img/logo.png" data-original-title="We could sell ice to Eskimos" data-html="true" data-placement="bottom" rel="tooltip">
@@ -73,8 +73,13 @@
                             </a>
                             <ul class="dropdown-menu dropdown-with-icons">
                                 <li>
-                                    <a href="../examples/about-us.html">
-                                        <i class="material-icons">account_balance</i> About Us
+                                    <a href="AboutUs.jsp">
+                                        <i class="material-icons">event_seat</i> About Us
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="contactUs.jsp">
+                                        <i class="material-icons">speaker_notes</i> Contact Us
                                     </a>
                                 </li>
                             </ul>
@@ -127,7 +132,7 @@
                                     </a>
                                     <ul class="dropdown-menu dropdown-with-icons">
                                         <li>
-                                            <a href="personal">
+                                            <a href="UserProfile.jsp">
                                                 <i class="material-icons">settings</i> Profilo
                                             </a>
                                         </li>

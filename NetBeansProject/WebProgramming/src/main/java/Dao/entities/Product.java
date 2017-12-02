@@ -1,10 +1,12 @@
 package Dao.entities;
 
+import Dao.ShopDao;
 
 /**
-* @generated
-*/
-public class Product extends IdOwnerComparable{
+ * @generated
+ */
+public class Product extends IdOwnerComparable {
+
     private String name;
     private String description;
     private double price;

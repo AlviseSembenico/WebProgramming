@@ -13,12 +13,14 @@
 <!doctype html>
 <html>
     <c:import url="pageBuilder/header.jsp"/>
-    <body class="contact-page">
-        <div class="page-header header-filter header-small" data-parallax="true" style="background-image: url(${picture});">
-            <div class="container">
+    <body class="contact-page">        
+        <div class="page-header header-filter header-small" data-parallax="true" style="background-image: url('${picture}');">
+            <div class="container"> 
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
-                        <h1 class="title text-center">${shop.getName()}</h1><h4></h4>
+                        <div class="brand">
+                            <h1 class="title text-center">${shop.getName()}</h1>                                
+                        </div>
                     </div>
                 </div>
             </div>
@@ -28,32 +30,41 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="col-md-9 col-md-offset-2">                                
+                            <div class="col-md-10 col-md-offset-1">                                
                                 <div class="media-area">
                                     <h3 class="title">Comments</h3>
-                                    <c:forEach var="i" begin="0" end="${reviews.size() - 1}">
-                                        <div class="media">
-                                            <a class="pull-left" href="#pablo">
-                                                <div class="avatar">
-                                                    <img class="media-object" src="${reviews[i].getCreator().getAvatarPath()}">
+                                    <c:choose>
+                                        <c:when test="${reviews[0] != null}">
+                                            <c:forEach var="i" begin="0" end="${reviews.size() - 1}">
+                                                <div class="media">
+                                                    <a class="pull-left" href="">
+                                                        <div class="avatar">
+                                                            <img class="media-object" src="${reviews[i].getCreator().getAvatarPath()}">
+                                                        </div>
+                                                    </a>
+                                                    <div class="media-body">
+                                                        <c:choose>
+                                                            <c:when test="${reviews[i].getCreator().getId() == sessionScope.user.getId()}">
+                                                                <h4 class="media-heading">you  <small>· ${reviews[i].DiffTime()} days ago</small></h4>
+
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                <h4 class="media-heading">${reviews[i].getCreator().getFirstName()} ${reviews[i].getCreator().getLastName()}  <small>· ${reviews[i].DiffTime()} days ago</small></h4>
+
+                                                            </c:otherwise>
+                                                        </c:choose>
+                                                         <i class="a-icon a-icon-star a-star-${reviews[i].getQuality()}"></i>
+                                                        <h6 class="text-muted">Sul prodotto: <br/>${reviews[i].getProduct().getName()}</h6>
+                                                        <p>${reviews[i].getDescription()}</p>
+                                                    </div>
                                                 </div>
-                                            </a>
-                                            <div class="media-body">
-                                                ${sessionScope.user.getId()}
-                                                ${reviews[i].getCreator().getId()}
-                                                <c:choose>
-                                                    <c:when test="${reviews[i].getCreator().getId() == sessionScope.user.getId()}">
-                                                        <h4 class="media-heading">you  <small>· ${reviews[i].getDiffTime()} days ago</small></h4>
-                                                    </c:when>
-                                                    <c:otherwise>
-                                                        <h4 class="media-heading">${reviews[i].getCreator().getFirstName()} ${reviews[i].getCreator().getLastName()}  <small>· ${reviews[i].getDiffTime()} days ago</small></h4>
-                                                    </c:otherwise>
-                                                </c:choose>
-                                                <h6 class="text-muted"></h6>
-                                                <p>${reviews[i].getDescription()}</p>
-                                            </div>
-                                        </div>
-                                    </c:forEach>
+                                                <hr/>
+                                            </c:forEach>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <h2>Nessun commento...</h2>
+                                        </c:otherwise>
+                                    </c:choose>
                                 </div>
                             </div>
                         </div>

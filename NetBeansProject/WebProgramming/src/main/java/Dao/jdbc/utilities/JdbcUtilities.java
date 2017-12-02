@@ -246,8 +246,8 @@ public class JdbcUtilities {
                     String name = m.getName().substring(3);
                     char[] ca = name.toCharArray();
                     name = String.valueOf(ca[0]).toLowerCase() + name.substring(1);
-                    if (m.getReturnType().equals(Number.class)) {
-                        Number value = (Number) m.invoke(o, null);
+                    if (m.getReturnType().equals(Number.class) || m.getReturnType().equals(int.class)) {
+                        Number value = (Number) m.invoke(o,null);
                         if (value.doubleValue() >= 0) {
                             values += value.doubleValue() + ",";
                             if (map.containsKey(name)) {

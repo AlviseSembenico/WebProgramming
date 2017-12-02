@@ -8,9 +8,9 @@
 <%@page import="Dao.ProductDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
-    <!DOCTYPE html>
-    <!doctype html>
-    <html>
+<!DOCTYPE html>
+<!doctype html>
+<html>
     <c:import url="pageBuilder/header.jsp"/>
     <body class="product-page">
 
@@ -31,18 +31,13 @@
                                     <img src="<c:out value='${pictures.get(0).getPath()}'/>">
                                 </div>
                                 <c:forEach var="i" items='${pictures}' begin="1">
-                                   <div class="tab-pane" id="product-page<c:out value='${i.getId()}'/>">
-                                    <img src="<c:out value='${i.getPath()}'/>">
-                                </div>
+                                    <div class="tab-pane" id="product-page<c:out value='${i.getId()}'/>">
+                                        <img src="<c:out value='${i.getPath()}'/>">
+                                    </div>
                                 </c:forEach>
                             </div>
                             <ul class="active nav flexi-nav" role="tablist" id="flexiselDemo1">
-                                <li>
-                                    <a href="#product-page<c:out value='${pictures.get(0)}'/>" role="tab" data-toggle="tab" aria-expanded="true">
-                                        <img src="<c:out value='${pictures.get(0).getPath()}' />">
-                                    </a>
-                                </li>
-                                <c:forEach var="i" items='${pictures}' begin="1">
+                                <c:forEach var="i" items='${pictures}' begin="0">
                                     <li>
                                         <a href="#product-page<c:out value='${i.getId()}'/>" role="tab" data-toggle="tab" aria-expanded="false">
                                             <img src="<c:out value='${i.getPath()}' />">
@@ -50,7 +45,7 @@
                                     </li>
                                 </c:forEach>
                             </ul>
-                                     
+
 
                         </div>
 
@@ -59,6 +54,26 @@
                         <div class="col-md-6 col-sm-6">
                             <h2 class="title" ><c:out value="${product.getName()}"/> </h2>
                             <h3 class="main-price"><c:out value="${product.getPrice()}"/> $</h3>
+                            <h3>Rate:</h3> 
+                            <c:choose>
+                                <c:when test="${star!=0}">
+                                    <div class="stars"> 
+                                        <input class="star star-5" id="star-s5" type="radio" <c:if test="${star >4.5}">checked="checked"</c:if>disabled="disabled" name="stars" value="5"/> 
+                                            <label class="star star-5" for="star-s5"></label> 
+                                            <input class="star star-4" id="star-s4" type="radio" <c:if test="${star >3.5 && star <=4.5}">checked="checked"</c:if> disabled="disabled" name="stars"value="4"/> 
+                                            <label class="star star-4" for="star-s4"></label> 
+                                            <input class="star star-3" id="star-s3" type="radio" <c:if test="${star >2.5 && star <=3.5}">checked="checked"</c:if> disabled="disabled" name="stars"value="3"/> 
+                                            <label class="star star-3" for="star-s3"></label> 
+                                            <input class="star star-2" id="star-s2" type="radio" <c:if test="${star >1.5 && star <=2.5}">checked="checked"</c:if> disabled="disabled" name="stars"value="2"/> 
+                                            <label class="star star-2" for="star-s2"></label> 
+                                            <input class="star star-1" id="star-s1" type="radio" <c:if test="${star <=1.5}">checked="checked"</c:if> disabled="disabled" name="stars"value="1"/> 
+                                            <label class="star star-1" for="star-s1"></label>
+                                        </div>
+                                </c:when>
+                                <c:otherwise>
+                                    <h5>This product has not been rated yet </h5>
+                                </c:otherwise>
+                            </c:choose>
                             <div id="acordeon">
                                 <div class="panel-group" id="accordion">
                                     <div class="panel panel-border panel-default">
@@ -81,40 +96,21 @@
                             <div id="acordeon">
                                 <div class="panel-group" id="accordion">
                                     <div class="panel panel-border panel-default">
-                                        <div class="panel-heading" role="tab" id="headingOne">
-                                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="color: black">
+                                        <div class="panel-heading" role="tab" id="headingTwo">
+                                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo" style="color: black">
                                                 <h4 class="panel-title">
-                                                    Shop
+                                                    Shop: <c:out value="${shop.getName()}"/>
                                                     <i class="material-icons">keyboard_arrow_down</i>
                                                 </h4>
                                             </a>
                                         </div>
-                                        <div id="collapseOne" class="panel-collapse collapse in" style="color: black">
+                                        <div id="collapseTwo" class="panel-collapse collapse in" style="color: black">
                                             <div class="panel-body">
-                                                <p><c:out value="${shop.getName()}"/></p>
+                                                <a href="shop?id=<c:out value="${shop.getId()}"/>">Got to the shop</a><br>
+                                                <p><c:out value="${shop.getDescription()}"/></p>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-
-
-                            <div class="row pick-size">
-                                <div class="col-md-6 col-sm-6">
-                                    <label>Select color</label>
-                                    <select class="selectpicker" data-style="select-with-transition" data-size="7">
-                                        <option value="1">Rose </option>
-                                        <option value="2">Gray</option>
-                                        <option value="3">White</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-6 col-sm-6">
-                                    <label>Select size</label>
-                                    <select class="selectpicker" data-style="select-with-transition" data-size="7">
-                                        <option value="1">Small </option>
-                                        <option value="2">Medium</option>
-                                        <option value="3">Large</option>
-                                    </select>
                                 </div>
                             </div>
                             <div class="row text-right">
@@ -125,16 +121,57 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="title-row" style="padding-top: 50px"> <h3>What people thinks about this product </h3></div></br>
+
+                        <c:choose>
+                            <c:when test="${reviews[0] != null}">
+                                <c:forEach var="i" begin="0" end="${reviews.size() - 1}">
+                                    <div class="col-md-4">                                
+                                        <div class="media-area">
+                                            <div class="media">
+                                                <a class="pull-left" href="">
+                                                    <div class="avatar">
+                                                        <img class="media-object" src="${reviews[i].getCreator().getAvatarPath()}">
+                                                    </div>
+                                                </a>
+                                                <div class="media-body">
+                                                    <c:choose>
+                                                        <c:when test="${reviews[i].getCreator().getId() == sessionScope.user.getId()}">
+                                                            <h4 class="media-heading">you  <small>· ${reviews[i].DiffTime()} days ago</small></h4>
+
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <h4 class="media-heading">${reviews[i].getCreator().getFirstName()} ${reviews[i].getCreator().getLastName()}  <small>· ${reviews[i].DiffTime()} days ago</small></h4>
+
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                    <i class="a-icon a-icon-star a-star-${reviews[i].getQuality()}"></i>
+                                                    <h6 class="text-muted">Sul prodotto: <br/>${reviews[i].getProduct().getName()}</h6>
+                                                    <p>${reviews[i].getDescription()}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <c:if test="${(i+1)%3==0 && i != 0}"> </div>  <hr/> <div class="row"> </c:if>
+                                  
+                                </c:forEach>
+                            </c:when>
+                            <c:otherwise>
+                                <h2>Nessun commento...</h2>
+                            </c:otherwise>
+                        </c:choose>
+
+                    </div>
                 </div>
-
-
             </div>
-
         </div>
 
-        
-            <c:import url="pageBuilder/footer.jsp"/>
-            <script type="text/javascript">
+
+
+
+        <c:import url="pageBuilder/footer.jsp"/>
+        <script type="text/javascript">
             $(document).ready(function () {
                 $("#flexiselDemo1").flexisel({
                     visibleItems: 4,
@@ -157,6 +194,5 @@
                     }
                 });
             });
-            </script>
-    </html>
-    
+        </script>
+</html>
