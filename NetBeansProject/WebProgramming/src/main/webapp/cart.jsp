@@ -87,17 +87,17 @@
                                         </form>
 
                                         <form method="POST" action="cart">
-                                             <input type="hidden" name="pid" value="<c:out value='${i.getId()}'/>">
+                                            <input type="hidden" name="pid" value="<c:out value='${i.getId()}'/>">
                                             <button type="submit"class="btn btn-round btn-xs "> <i class="material-icons">add</i> </button>
                                         </form>
 
                                     </div> <br>
 
                                 </div>
-                                <a href="payServlet" class="btn btn-primary btn-round"  ><i class="material-icons">shopping_cart </i> Pay </a>
+
                             </div>
                         </c:forEach>
-
+                        <a href="payServlet" class="btn btn-primary btn-round"  ><i class="material-icons">shopping_cart </i> Pay </a>
                     </div>
                 </div>
             </div>
@@ -106,17 +106,17 @@
 </div>
 </div>
 <c:import url="pageBuilder/footer.jsp"/>
-  <c:if test="${!(empty param.result) && param.result eq 'true'}">
-                <script>
-                    $(document).ready(function () {
-                        $("#successModal").modal("show");
-                    });
-                </script>
-            </c:if>
-            <c:if test="${!(empty param.result) && param.result eq 'false'}">
-                <script>
-                    $(document).ready(function () {
-                        $("#errorModal").modal("show");
-                    });
-                </script>
-            </c:if>
+<c:if test="${!(empty param.result) && param.result eq 'true'}">
+    <script>
+        $(document).ready(function () {
+            $("#successModal").modal("show");
+        });
+    </script>
+</c:if>
+<c:if test="${!(empty param.result) && param.result eq 'false'}">
+    <script>
+        $(document).ready(function () {
+            $("#errorModal").modal("show");
+        });
+    </script>
+</c:if>

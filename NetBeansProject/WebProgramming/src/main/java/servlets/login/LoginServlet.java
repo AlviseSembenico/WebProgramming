@@ -76,6 +76,8 @@ public class LoginServlet extends HttpServlet {
                 Cart cart = (Cart) request.getSession().getAttribute("cart");
                 if (cart != null) {
                     cart.setUser(user);
+                    for(Product p:cartDao.getByUser(user).getProducts())
+                        cart.addProduct(p);
                     cartDao.insertDao(cart);
                 }
                 response.sendRedirect("index");

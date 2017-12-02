@@ -104,24 +104,6 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                        <i class="material-icons">reorder</i>Account
-                                        <b class="caret"></b>
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-with-icons">
-                                        <li>
-                                            <a href="myOrders">
-                                                <i class="material-icons">archive</i>My Orders
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="register">
-                                                <i class="material-icons">person</i> Register
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
                             </c:when>
 
                             <c:otherwise>
@@ -139,6 +121,25 @@
                                         <li>
                                             <a href="logout">
                                                 <i class="material-icons">power_settings_new</i> Logout
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <i class="material-icons">reorder</i>Account
+                                        <b class="caret"></b>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-with-icons">
+                                        <li>
+                                            <a href="myOrders">
+                                                <i class="material-icons">archive</i>My Orders
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="register">
+                                                <i class="material-icons">person</i> Register
                                             </a>
                                         </li>
                                     </ul>
