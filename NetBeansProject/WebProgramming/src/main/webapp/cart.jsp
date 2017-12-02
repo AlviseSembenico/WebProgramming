@@ -43,7 +43,6 @@
                                         <div class="col-md-1 text-center"> 
                                             PRICE
                                         </div>
-
                                         <div class="col-md-1 th-description text-center"> 
                                             CATEGORY
                                         </div>

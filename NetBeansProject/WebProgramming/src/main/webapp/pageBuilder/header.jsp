@@ -26,7 +26,7 @@
             <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
             <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-            
+
             <!-- CSS Files -->
             <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
             <link href="assets/css/demo.css" rel="stylesheet" />
@@ -60,24 +60,9 @@
                         </div>
                     </a>
                 </div>
-
                 <div class="collpase navbar-collapse">
 
-                    <ul class="nav navbar-nav navbar-right">
-                         <li >
-                            <form class="form form-newsletter card-content" method="" action="result">
-                                <div class="form-group is-empty" >
-                                    <input style=" width: 240%; color: white" type="text" name="name" class="pull-right form-control" placeholder="Search...">
-                                    <span class="material-input"></span>
-                                </div>
-
-                                <button type="submit" class="btn btn-danger btn-just-icon">
-                                    <i class="material-icons">search</i>
-                                </button>
-
-                            </form>
-                        </li>
-
+                    <ul class="nav navbar-nav ">
 
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -150,12 +135,23 @@
                                 </li>
                             </c:otherwise>
                         </c:choose>
+                     
                         <li>
-                            <a href="cart" class="btn btn-white btn-simple">
+                            <a href="cart" class="btn btn-rose btn-round">
                                 <i class="material-icons">shopping_cart</i>Cart
                             </a>
                         </li>
                     </ul>
+
+                    <form class="navbar-form navbar-right" role="search">
+                        <div class="form-group form-white is-empty">
+                            <input class="form-control" type="text" name="name" placeholder="Search">
+                            <span class="material-input"></span></div>
+                        <button class="btn btn-white btn-raised btn-fab btn-fab-mini" type="submit"><i class="material-icons">search</i></button>
+                    </form>
+
+
+
                 </div>
             </div>
         </nav>
