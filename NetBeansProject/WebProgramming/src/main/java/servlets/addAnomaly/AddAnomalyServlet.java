@@ -28,7 +28,6 @@ public class AddAnomalyServlet extends HttpServlet {
     PurchaseDao purchaseDao;
     PictureDao pictureDao;
     AnomaliesDao anomaliesDao;
-    
 
     @Override
     public void init() throws ServletException {
@@ -44,7 +43,6 @@ public class AddAnomalyServlet extends HttpServlet {
         if (anomaliesDao == null) {
             throw new ServletException("Impossible to get dao factory for user storage system");
         }
-
 
     }
 
@@ -63,14 +61,20 @@ public class AddAnomalyServlet extends HttpServlet {
         try {
             HttpSession session = request.getSession(false);
             User user = (User) session.getAttribute("user");
+            if (user == null) {
+                RequestDispatcher reqDes = request.getRequestDispatcher("index");
+                reqDes.forward(request, response);
+            }
+
             Purchase purchase = purchaseDao.getPurchaseByIdAndUser(Integer.valueOf(request.getParameter("id")), user);
             request.setAttribute("purchase", purchase);
             request.setAttribute("picture", pictureDao.getPictureByProduct(purchase.getProduct()));
-            RequestDispatcher reqDes = request.getRequestDispatcher("/loggedUsers/addAnomaly.jsp");
-            reqDes.forward(request, response);
+
         } catch (Exception ex) {
             Logger.getLogger(ProductServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
+        RequestDispatcher reqDes = request.getRequestDispatcher("/loggedUsers/addAnomaly.jsp");
+        reqDes.forward(request, response);
     }
 
     /**
@@ -84,7 +88,7 @@ public class AddAnomalyServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         RequestDispatcher reqDes=null;
+        RequestDispatcher reqDes = null;
         try {
             HttpSession session = request.getSession(false);
             User user = (User) session.getAttribute("user");
@@ -92,17 +96,17 @@ public class AddAnomalyServlet extends HttpServlet {
             String description = request.getParameter("description");
             int id = Integer.valueOf(request.getParameter("id"));
             Purchase purchase = purchaseDao.getPurchaseByIdAndUser(Integer.valueOf(request.getParameter("id")), user);
-            Anomalies anomaly=new Anomalies();
+            Anomalies anomaly = new Anomalies();
             anomaly.setDescription(description);
             anomaly.setTag(tag);
             anomaly.setPurchase(purchase);
             anomaly.setStatus("not verified");
             anomaliesDao.insertDao(anomaly);
-           reqDes = request.getRequestDispatcher("/success.jsp");
-  
+            reqDes = request.getRequestDispatcher("/loggedUsers/addAnomaly.jsp?result=true");
+
         } catch (Exception ex) {
-            reqDes = request.getRequestDispatcher("/error.jsp");
-        } finally{
+            reqDes = request.getRequestDispatcher("/loggedUsers/addAnomaly.jsp?result=false");
+        } finally {
             reqDes.forward(request, response);
         }
     }

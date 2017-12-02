@@ -34,18 +34,17 @@
                                         <div class="col-md-3 text-center"> 
                                             NAME
                                         </div>
-                                        <div class="col-md-2 th-description"> 
-                                            DESCRIPTION
-                                        </div>
                                         <div class="col-md-1"> 
                                             PRICE
                                         </div>
-
                                         <div class="col-md-2 th-description"> 
                                             DATE OF PURCHASE
                                         </div>
-                                        <div class="col-md-1 th-description"> 
+                                        <div class="col-md-2 th-description"> 
                                             SHOP 
+                                        </div>
+                                        <div class="col-md-2 th-description"> 
+                                            ACTION
                                         </div>
                                     </div>
                                     <hr>
@@ -60,9 +59,6 @@
                                                 <a href="./product?id=<c:out value='${i.getProduct().getId()}'/>"><c:out value="${i.getProduct().getName()}"/></a>
 
                                             </div>
-                                            <div class="col-md-2 col-name"> 
-                                                <c:out value="${i.getDate()}"/>
-                                            </div>
                                             <div class="col-md-1  col-number text-left"> 
                                                 <small>€</small><c:out value="${i.getPrice()}"/>
                                             </div>
@@ -70,8 +66,11 @@
                                                 <fmt:formatDate type="both" pattern="dd-MM-yyyy" value="${i.getDate()}"/>
                                                 
                                             </div>
-                                            <div class="col-md-1 col-name"> 
+                                            <div class="col-md-2 col-name"> 
                                                 <a href="./shop?id=<c:out value='${i.getProduct().getShop().getId()}'/>"><c:out value="${i.getProduct().getShop().getName()}"/></a>    
+                                            </div>
+                                            <div class="col-md-2 col-name"> 
+                                                <a href="./addAnomaly?id=<c:out value='${i.getProduct().getId()}'/>">Add anomaly</a>    
                                             </div>
                                             
                                         </div>

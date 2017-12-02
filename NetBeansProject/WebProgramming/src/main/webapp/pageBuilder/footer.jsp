@@ -113,7 +113,46 @@
         </div>
     </div>
 </footer>
-
+<div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    <i class="material-icons">clear</i>
+                </button>
+                <h4 class="modal-title">What did just happened?</h4>
+            </div>
+            <div class="modal-body">
+                <p>Something went wrong, please try not to hack our system, be careful we are Anonymous.   
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-simple">Nice Button</button>
+                <button type="button" class="btn btn-danger btn-simple" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    <i class="material-icons">clear</i>
+                </button>
+                <h4 class="modal-title">Everything went smooth.</h4>
+            </div>
+            <div class="modal-body">
+                <p>Thank you for using our services, we took you request and we will dispatch it as soon as possible.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-simple">Nice Button</button>
+                <button type="button" class="btn btn-danger btn-simple" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 </div>
 
 </body>

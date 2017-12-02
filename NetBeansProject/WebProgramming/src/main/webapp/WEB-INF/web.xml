@@ -49,7 +49,7 @@
     </servlet>
     <servlet>
         <servlet-name>AddAnomaly</servlet-name>
-        <servlet-class>servlets.addReview.AddAnomalyServlet</servlet-class>
+        <servlet-class>servlets.addAnomaly.AddAnomalyServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>addReview</servlet-name>
