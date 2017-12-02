@@ -265,7 +265,18 @@ public class JdbcUtilities {
                             }
 
                         }
-                    } else if (m.getReturnType().equals(String.class) || m.getReturnType().equals(Date.class)) {
+                    }else if (m.getReturnType().equals(int.class)) {
+                        Number value = (Number) m.invoke(o, null);
+                        if (value.doubleValue() >= 0) {
+                            values += value.doubleValue() + ",";
+                            if (map.containsKey(name)) {
+                                query += map.get(name) + ",";
+                            } else {
+                                query += camelToSql(name) + ",";
+                            }
+
+                        }
+                    }else if (m.getReturnType().equals(String.class) || m.getReturnType().equals(Date.class)) {
                         if ((Object) m.invoke(o, null) != null) {
                             values += "'" + m.invoke(o, null) + "',";
                             if (map.containsKey(name)) {

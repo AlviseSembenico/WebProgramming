@@ -47,6 +47,12 @@
                                                         <p>Bank transfer</p>
                                                 </label>
                                         </div>
+                                        <div class="radio">
+                                                <label style="color:black">
+                                                        <input id="ritiro" type="radio" name="optionsRadios" onchange="ChangeMode()"><span class="circle"></span><span class="check"></span>
+                                                        <p>pick up at the store</p>
+                                                </label>
+                                        </div>
                                     </div>
                                 </div>
                                 <br/>
@@ -122,7 +128,8 @@
                                     {
                                         var credito = document.getElementById('credito').checked;
                                         var paypal = document.getElementById('paypal').checked;
-                                        var bonifico = document.getElementById('bonifico').checked;
+                                        var bonifico = document.getElementById('bonifico').checked;  
+                                        var ritiro = document.getElementById('ritiro').checked;
 
                                         var intestatario = document.getElementById('carduser').value;
                                         var numerocarta = document.getElementById('cardnumber').value;
@@ -169,7 +176,13 @@
                                             {
                                                 document.forms.myForm.submit();
                                             }
-                                        }                                    
+                                        }  
+                                        
+                                        if(ritiro)
+                                        {
+                                            document.forms.myForm.submit();
+                                        }
+                                        
 
                                     }       
                                     function ChangeMode()
@@ -177,6 +190,7 @@
                                        var credito = document.getElementById('credito').checked;
                                        var paypal = document.getElementById('paypal').checked;
                                        var bonifico = document.getElementById('bonifico').checked;
+                                       var ritiro = document.getElementById('ritiro').checked;
 
                                        if(credito == true)
                                        {
@@ -195,6 +209,12 @@
                                            document.getElementById('CC').style.display = "none";
                                            document.getElementById('PP').style.display = "none";
                                            document.getElementById('BB').style.display = "block";
+                                       }
+                                       if(ritiro == true)
+                                       {
+                                           document.getElementById('CC').style.display = "none";
+                                           document.getElementById('PP').style.display = "none";
+                                           document.getElementById('BB').style.display = "none";
                                        }
                                     }
                                 </script>

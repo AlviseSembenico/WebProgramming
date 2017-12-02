@@ -89,17 +89,12 @@
                                         </div>
                                         <br/>
                                     </c:forEach>
-                                    <script>
-                                        function addreview()
-                                        {
-                                            alert("YEEE");
-                                        }
-                                    </script>
+                                    
                                 </div>
                             </div>
                             <br/>
                             <br/>
-                            <a href="index.jsp" class="btn btn-primary btn-round"  > Return to shopping </a>
+                            <a href="index" class="btn btn-primary btn-round"  > Return to shopping </a>
                         </div>
                     </div>
                 </div>

@@ -47,7 +47,13 @@ public class JdbcPurchaseDao extends JdbcUtilities implements PurchaseDao{
         HashMap<Object,String> mappa=new HashMap<Object,String>();
         mappa.put(user.getId(),"users_id");
         for(Object o:super.getObject(Purchase.class, map, tableName,mappa))
-            res.add((Purchase) o);
+        {
+            Purchase p = (Purchase)o;
+            if(p != null)
+            {
+                res.add(p);
+            }
+        }
         return res;
     }
 
