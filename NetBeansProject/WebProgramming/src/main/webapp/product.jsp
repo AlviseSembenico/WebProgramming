@@ -123,11 +123,12 @@
                     </div>
                     <div class="row">
                         <div class="title-row" style="padding-top: 50px"> <h3>What people thinks about this product </h3></div></br>
+
                         <c:choose>
                             <c:when test="${reviews[0] != null}">
                                 <c:forEach var="i" begin="0" end="${reviews.size() - 1}">
-                                    <div class="row">
-                                        <div class="col-md-6">
+                                    <div class="col-md-4">                                
+                                        <div class="media-area">
                                             <div class="media">
                                                 <a class="pull-left" href="">
                                                     <div class="avatar">
@@ -146,51 +147,52 @@
                                                         </c:otherwise>
                                                     </c:choose>
                                                     <i class="a-icon a-icon-star a-star-${reviews[i].getQuality()}"></i>
+                                                    <h6 class="text-muted">Sul prodotto: <br/>${reviews[i].getProduct().getName()}</h6>
                                                     <p>${reviews[i].getDescription()}</p>
                                                 </div>
                                             </div>
-                                            <hr/>
                                         </div>
-                                        <c:if test="${(i+1)%2==0}"> </div> <div class="row"> </c:if>
-                                    </c:forEach>
-                                </c:when>
-                                <c:otherwise>
-                                    <h2>Nessun commento...</h2>
-                                </c:otherwise>
-                            </c:choose>
+                                    </div>
+                                    <c:if test="${(i+1)%3==0 && i != 0}"> </div>  <hr/> <div class="row"> </c:if>
+                                  
+                                </c:forEach>
+                            </c:when>
+                            <c:otherwise>
+                                <h2>Nessun commento...</h2>
+                            </c:otherwise>
+                        </c:choose>
 
-                        </div>
                     </div>
-
-
                 </div>
-
             </div>
+        </div>
 
 
-            <c:import url="pageBuilder/footer.jsp"/>
-            <script type="text/javascript">
-                $(document).ready(function () {
-                    $("#flexiselDemo1").flexisel({
-                        visibleItems: 4,
-                        itemsToScroll: 1,
-                        animationSpeed: 400,
-                        enableResponsiveBreakpoints: true,
-                        responsiveBreakpoints: {
-                            portrait: {
-                                changePoint: 480,
-                                visibleItems: 3
-                            },
-                            landscape: {
-                                changePoint: 640,
-                                visibleItems: 3
-                            },
-                            tablet: {
-                                changePoint: 768,
-                                visibleItems: 3
-                            }
+
+
+        <c:import url="pageBuilder/footer.jsp"/>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#flexiselDemo1").flexisel({
+                    visibleItems: 4,
+                    itemsToScroll: 1,
+                    animationSpeed: 400,
+                    enableResponsiveBreakpoints: true,
+                    responsiveBreakpoints: {
+                        portrait: {
+                            changePoint: 480,
+                            visibleItems: 3
+                        },
+                        landscape: {
+                            changePoint: 640,
+                            visibleItems: 3
+                        },
+                        tablet: {
+                            changePoint: 768,
+                            visibleItems: 3
                         }
-                    });
+                    }
                 });
-            </script>
+            });
+        </script>
 </html>
