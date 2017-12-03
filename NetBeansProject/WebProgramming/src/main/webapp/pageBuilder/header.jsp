@@ -140,6 +140,11 @@
                                     </a>
                                     <ul class="dropdown-menu dropdown-with-icons">
                                         <li>
+                                            <a href="Purchase">
+                                                <i class="material-icons">shopping_cart</i> Acquisti
+                                            </a>
+                                        </li>
+                                        <li>
                                             <a href="UserProfile">
                                                 <i class="material-icons">settings</i> Profilo
                                             </a>

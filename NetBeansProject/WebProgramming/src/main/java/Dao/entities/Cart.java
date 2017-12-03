@@ -54,4 +54,17 @@ public class Cart extends IdOwnerComparable{
     {
         products.clear();
     }
+    
+    
+    public int getRetract()
+    {
+        
+        for(Product p:products)
+        {
+            if(!(p.getRetractable() > 0))
+                return 0;
+        }
+        return 1;
+    }
+    
 }

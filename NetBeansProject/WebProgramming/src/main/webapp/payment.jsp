@@ -47,12 +47,14 @@
                                                         <p>Bank transfer</p>
                                                 </label>
                                         </div>
-                                        <div class="radio">
-                                                <label style="color:black">
-                                                        <input id="ritiro" type="radio" name="optionsRadios" onchange="ChangeMode()"><span class="circle"></span><span class="check"></span>
-                                                        <p>pick up at the store</p>
-                                                </label>
-                                        </div>
+                                        <c:if test = "${cart.getRetract() == 1}">
+                                            <div class="radio">
+                                                    <label style="color:black">
+                                                            <input id="ritiro" type="radio" name="optionsRadios" onchange="ChangeMode()"><span class="circle"></span><span class="check"></span>
+                                                            <p>pick up at the store</p>
+                                                    </label>
+                                            </div>                                        
+                                        </c:if>
                                     </div>
                                 </div>
                                 <br/>
@@ -129,8 +131,16 @@
                                         var credito = document.getElementById('credito').checked;
                                         var paypal = document.getElementById('paypal').checked;
                                         var bonifico = document.getElementById('bonifico').checked;  
-                                        var ritiro = document.getElementById('ritiro').checked;
-
+                                        
+                                        try
+                                        {
+                                            var ritiro = document.getElementById('ritiro').checked;
+                                        }
+                                        catch(err)
+                                        {
+                                            
+                                        }
+                                        
                                         var intestatario = document.getElementById('carduser').value;
                                         var numerocarta = document.getElementById('cardnumber').value;
                                         var datascadenza = document.getElementById('carddate').value;
