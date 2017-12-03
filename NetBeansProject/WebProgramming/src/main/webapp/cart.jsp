@@ -40,7 +40,7 @@
                             <div class="col-md-2 th-description text-center"> 
                                 DESCRIPTION
                             </div>
-                            <div class="col-md-1 text-center"> 
+                            <div class="col-md-1 text-center "> 
                                 PRICE
                             </div>
                             <div class="col-md-1 th-description text-center"> 
@@ -97,7 +97,7 @@
 
                             </div>
                         </c:forEach>
-                        <a href="payServlet" class="btn btn-primary btn-round"  ><i class="material-icons">shopping_cart </i> Pay </a>
+                        <a href="payment" class="btn btn-primary btn-round"  ><i class="material-icons">shopping_cart </i> Pay </a>
                     </div>
                 </div>
             </div>

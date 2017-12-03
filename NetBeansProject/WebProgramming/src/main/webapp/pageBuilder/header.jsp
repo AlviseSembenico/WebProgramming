@@ -25,7 +25,7 @@
             <!--     Fonts and icons     -->
             <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
-            <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+            <link rel="stylesheet"\ href="https://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
             <link href="assets/css/ratingStar.css" rel="stylesheet" type="text/css"/>
             <!-- CSS Files -->
             <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
@@ -51,7 +51,7 @@
                     <a href="index">
                         <div class="logo-container">
                             <div class="logo">
-                                <img  src="assets/img/logo.png" data-original-title="We could sell ice to Eskimos" data-html="true" data-placement="bottom" rel="tooltip">
+                                <img  src="assets/img/logo2.png" data-original-title="We could sell ice to Eskimos" data-html="true" data-placement="bottom" rel="tooltip">
                             </div>
                             <div class="brand">
                                 Eco

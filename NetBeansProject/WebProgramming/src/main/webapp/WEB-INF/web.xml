@@ -57,7 +57,7 @@
     </servlet>
     <servlet>
         <servlet-name>payServlet</servlet-name>
-        <servlet-class>servlets.pay.servlet.PayServlet</servlet-class>
+        <servlet-class>servlets.pay.PayServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>recover</servlet-name>
@@ -112,10 +112,6 @@
         <url-pattern>/addReview</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>payServlet</servlet-name>
-        <url-pattern>/payServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>recover</servlet-name>
         <url-pattern>/recover</url-pattern>
     </servlet-mapping>
@@ -134,6 +130,10 @@
     <servlet-mapping>
         <servlet-name>register servlet</servlet-name>
         <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>payServlet</servlet-name>
+        <url-pattern>/payment</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

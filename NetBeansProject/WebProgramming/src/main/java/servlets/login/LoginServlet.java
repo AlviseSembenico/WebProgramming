@@ -70,7 +70,7 @@ public class LoginServlet extends HttpServlet {
         try {
             user = userDao.getUserByEmailPassword(email, password);
             if (user == null) {
-                response.sendRedirect(response.encodeRedirectURL("/login" + "?error=true"));
+                response.sendRedirect(response.encodeRedirectURL("login" + "?error=true"));
             } else {
                 request.getSession().setAttribute("user", user);
                 Cart cart = (Cart) request.getSession().getAttribute("cart");

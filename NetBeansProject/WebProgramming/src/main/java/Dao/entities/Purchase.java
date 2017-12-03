@@ -8,7 +8,7 @@ import java.util.Date;
 */
 public class Purchase extends IdOwnerComparable{
     private int id;
-    private String status;
+    private int status;
     private Product product;
     private User user;
     private Date date;
@@ -22,11 +22,11 @@ public class Purchase extends IdOwnerComparable{
         this.id = id;
     }
 
-    public String getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 
