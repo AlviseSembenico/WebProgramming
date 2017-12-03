@@ -44,7 +44,7 @@ public class ModifyServlet extends HttpServlet {
             throws ServletException, IOException 
     {
         RequestDispatcher RequestDispatcherObj = null;       
-        RequestDispatcherObj = request.getRequestDispatcher("UserProfile.jsp");
+        RequestDispatcherObj = request.getRequestDispatcher("/loggedUsers/UserProfile.jsp");
         RequestDispatcherObj.forward(request, response);
     }
     

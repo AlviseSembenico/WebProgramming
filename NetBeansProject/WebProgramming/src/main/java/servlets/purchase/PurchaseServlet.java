@@ -45,7 +45,7 @@ public class PurchaseServlet extends HttpServlet {
             throws ServletException, IOException 
     {
         RequestDispatcher RequestDispatcherObj = null;        
-        RequestDispatcherObj = request.getRequestDispatcher("purchases.jsp");
+        RequestDispatcherObj = request.getRequestDispatcher("/loggedUsers/purchases.jsp");
         RequestDispatcherObj.forward(request, response);
     }
 

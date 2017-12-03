@@ -184,7 +184,8 @@
                                         }
                                         
 
-                                    }       
+                                    } 
+                                    
                                     function ChangeMode()
                                     {
                                        var credito = document.getElementById('credito').checked;

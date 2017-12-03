@@ -10,7 +10,7 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
     <!DOCTYPE html>
     <html>
-    <c:import url="pageBuilder/header.jsp"/>
+    <c:import url="../pageBuilder/header.jsp"/>
     <body class="product-page">
         <div class="page-header header-filter" data-parallax="true" style="background-image: url('https://www.happywall.co.uk/uploads/galleri/1204/forest_landscape_gallery.jpg');">
             <div class="container">
@@ -102,4 +102,4 @@
         </div>
                     
     </body>
-    <c:import url="pageBuilder/footer.jsp"/>
+    <c:import url="../pageBuilder/footer.jsp"/>
