@@ -11,11 +11,11 @@
     <html lang="it">
         <head>
             <meta charset="utf-8" />
-            <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
-            <link rel="icon" type="image/png" href="assets/img/favicon.png">
+            <link rel="apple-touch-icon" sizes="76x76" href="assets/img/favicon/apple-icon-76x76.png">
+            <link rel="icon" type="image/ico" href="assets/img/favicon/favicon.ico">
             <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-            <title>EcoMmerce</title>
+            <title>Influencer</title>
 
             <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
 
@@ -25,13 +25,17 @@
             <!--     Fonts and icons     -->
             <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
-            <link rel="stylesheet"\ href="https://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+            <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
             <link href="assets/css/ratingStar.css" rel="stylesheet" type="text/css"/>
+            
             <!-- CSS Files -->
             <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
             <link href="assets/css/demo.css" rel="stylesheet" />
             <link href="assets/css/style.css" rel="stylesheet" />
             <link href="assets/css/unminify.css" rel="stylesheet"/>
+           
+            
+            
         </head>
     <c:if test="${(empty param.trasparent) || param.trasparent eq 'true'     }">
         <nav class="navbar  navbar-transparent navbar-fixed-top navbar-color-on-scroll"  color-on-scroll=" " id="sectionsNav"> 
@@ -51,12 +55,13 @@
                     <a href="index">
                         <div class="logo-container">
                             <div class="logo">
-                                <img  src="assets/img/logo2.png" data-original-title="We could sell ice to Eskimos" data-html="true" data-placement="bottom" rel="tooltip">
+                                <img title="" alt="Creative Tim Logo" src="assets/img/logo2.png" data-html="true" data-placement="bottom" rel="tooltip" data-original-title="<b>Material Kit</b> was Designed &amp; Coded with care by the staff from <b>Creative Tim</b>">
                             </div>
-                            <div class="brand">
-                                Eco
-                                mmErce
+                            <div class="navbar-brand" style="color: white">
+                                <b>&nbsp;Influencer</b>
                             </div>
+
+
                         </div>
                     </a>
                 </div>
@@ -68,7 +73,7 @@
 
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="material-icons">view_carousel</i> Examples
+                                <i class="material-icons">mail</i>Get In touch
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu dropdown-with-icons">
@@ -102,6 +107,11 @@
                                                 <i class="material-icons">person</i> Register
                                             </a>
                                         </li>
+                                        <li>
+                                            <a href="recover">
+                                                <i class="material-icons">verified_user</i>Recover your password
+                                            </a>
+                                        </li>
                                     </ul>
                                 </li>
                             </c:when>
@@ -125,7 +135,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                
+
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                         <i class="material-icons">reorder</i>Account
@@ -151,7 +161,7 @@
                                 <i class="material-icons">search</i>Search
                                 <b class="caret"></b>
                             </a>
-                            <ul class="dropdown-menu dropdown-with-icons">
+                            <ul class="dropdown-menu dropdown-with-icons" style=" padding: 12px 5px 0px 5px">
                                 <li>
                                     <form class="form form-newsletter card-content" method="get" action="result">
                                         <div class="form-group is-empty has-error" >

@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <!doctype html>
 <html>
-    <c:import url="pageBuilder/header.jsp"/>
+    <c:import url="/pageBuilder/header.jsp"/>
     <body class="login-page">
         <div class="page-header header-filter" style="background-image: url('http://demos.creative-tim.com/material-kit-pro/assets/img/bg7.jpg'); background-size: cover; background-position: top center;">
             <div class="container">
@@ -18,9 +18,9 @@
                         <div class="card card-signup">
                             <form  method="POST" action="recover">
                                 <div class="header header-primary text-center">
-                                    <h4 class="card-title">Recupero password</h4>
+                                    <h4 class="card-title">Password recover</h4>
                                 </div>
-                                <p class="description text-center">Riceverà una mail con la password.</p>
+                                <p class="description text-center">We know you are forgetful so don't worry, we'll send you an email.</p>
                                 <div class="card-content">
                                     <div class="input-group">
                                         <span class="input-group-addon">
@@ -38,4 +38,18 @@
                     </div>
                 </div>
             </div>
-            <c:import url="pageBuilder/footer.jsp"/>
+            <c:import url="/pageBuilder/footer.jsp"/>
+                <c:if test="${!(empty param.result) && param.result eq 'true'}">
+        <script>
+            $(document).ready(function () {
+                $("#successModal").modal("show");
+            });
+        </script>
+    </c:if>
+    <c:if test="${!(empty param.result) && param.result eq 'false'}">
+        <script>
+            $(document).ready(function () {
+                $("#errorModal").modal("show");
+            });
+        </script>
+    </c:if>

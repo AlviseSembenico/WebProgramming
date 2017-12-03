@@ -25,13 +25,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author zappi
  */
 @WebServlet(name = "recover", urlPatterns = {"/recover"})
-public class recover extends HttpServlet {
+public class recoverPassword extends HttpServlet {
 
     private UserDao userDao;
 
@@ -46,6 +47,22 @@ public class recover extends HttpServlet {
     private final String SMTP_USER = "noreply.webproject@gmail.com";
     private final String SMTP_PASSWD = "Sistemi2";
 
+    
+    
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        HttpSession session = request.getSession(false);
+        if (session.getAttribute("user") == null) {
+            RequestDispatcher reqDes = request.getRequestDispatcher("/publicUsers/recover.jsp");
+            reqDes.forward(request, response);
+        } else {
+            response.sendRedirect("index");
+        }
+
+    }
+
+    
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -101,17 +118,17 @@ public class recover extends HttpServlet {
                 message.setSubject("Reset Password");
                 message.setContent(bodyText.toString(), "text/html; charset=utf-8");
                 Transport.send(message);
-                RequestDispatcher reqDes = request.getRequestDispatcher("/success.jsp");
+                RequestDispatcher reqDes = request.getRequestDispatcher("/publicUsers/recover.jsp?result=true");
                 reqDes.forward(request, response);
             } catch (AddressException ex) {
-                RequestDispatcher reqDes = request.getRequestDispatcher("/error.jsp");
+                RequestDispatcher reqDes = request.getRequestDispatcher("/publicUsers/recover.jsp?result=false");
                 reqDes.forward(request, response);
             } catch (MessagingException ex) {
-                RequestDispatcher reqDes = request.getRequestDispatcher("/error.jsp");
+                RequestDispatcher reqDes = request.getRequestDispatcher("/publicUsers/recover.jsp?result=false");
                 reqDes.forward(request, response);
             }
         } else {
-            RequestDispatcher reqDes = request.getRequestDispatcher("/error.jsp");
+            RequestDispatcher reqDes = request.getRequestDispatcher("/publicUsers/recover.jsp?result=false");
             reqDes.forward(request, response);
         }
     }

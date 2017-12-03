@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <!doctype html>
 <html>
-    <c:import url="pageBuilder/header.jsp"/>
+    <c:import url="/pageBuilder/header.jsp"/>
     <body class="login-page">
         <div class="page-header header-filter" style="background-image: url('http://demos.creative-tim.com/material-kit-pro/assets/img/bg7.jpg'); background-size: cover; background-position: top center;">
             <div class="container">
@@ -45,4 +45,4 @@
                     </div>
                 </div>
             </div>
-            <c:import url="pageBuilder/footer.jsp"/>
+            <c:import url="/pageBuilder/footer.jsp"/>

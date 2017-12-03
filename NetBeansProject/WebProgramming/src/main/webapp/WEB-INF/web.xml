@@ -61,11 +61,11 @@
     </servlet>
     <servlet>
         <servlet-name>recover</servlet-name>
-        <servlet-class>servlets.recover.recover</servlet-class>
+        <servlet-class>servlets.recover.recoverPassword</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>resetServlet</servlet-name>
-        <servlet-class>servlets.resetpass.resetServlet</servlet-class>
+        <servlet-class>servlets.resetpass.resetPasswordServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>MyOrders</servlet-name>

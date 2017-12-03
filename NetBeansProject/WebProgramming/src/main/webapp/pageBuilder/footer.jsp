@@ -5,7 +5,6 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 <footer class="footer footer-black footer-big">
     <div class="container">
 
@@ -109,7 +108,7 @@
             Copyright &copy;
             <script>
                 document.write(new Date().getFullYear())
-            </script> Creative Tim All Rights Reserved.
+            </script> Influencer All Rights Reserved.
         </div>
     </div>
 </footer>
@@ -151,7 +150,6 @@
         </div>
     </div>
 </div>
-</div>
 
 </body>
 <!--   Core JS Files   -->
@@ -183,8 +181,6 @@
 
 <!--    Plugin For Google Maps   -->
 <script  type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBz0hDYK6mqMcXqEx86quMQJzrgg3aFEPA "></script>
-<!--    Plugin for 3D images animation effect, full documentation here: https://github.com/drewwilson/atvImg    -->
-<script src="assets/js/atv-img-animation.js" type="text/javascript"></script>
 
 <!--    Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc    -->
 
@@ -193,5 +189,4 @@
 
 
 <script src="http://demos.creative-tim.com/material-kit-pro/assets/js/jquery.flexisel.js"></script>
-<script src="../assets/js/atv-img-animation.js" type="text/javascript"></script>
 <script src="assets/js/material-kit.js" type="text/javascript"></script>

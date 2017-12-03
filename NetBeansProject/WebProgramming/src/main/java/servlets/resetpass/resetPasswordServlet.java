@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author zappi
  */
-public class resetServlet extends HttpServlet {
+public class resetPasswordServlet extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -49,12 +49,12 @@ public class resetServlet extends HttpServlet {
         try {
             user = userDao.getUserById(Integer.parseInt(request.getParameter("id")));
         } catch (Exception ex) {
-            Logger.getLogger(resetServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(resetPasswordServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         if (user != null) {
             request.setAttribute("userId", user.getId());
-            RequestDispatcher reqDes = request.getRequestDispatcher("/resetpassword.jsp");
+            RequestDispatcher reqDes = request.getRequestDispatcher("publicUsers/resetpassword.jsp");
             reqDes.forward(request, response);
         } else {
             RequestDispatcher reqDes = request.getRequestDispatcher("/error.jsp");
@@ -77,7 +77,7 @@ public class resetServlet extends HttpServlet {
         try {
             user = userDao.getUserById(Integer.parseInt(request.getParameter("id")));
         } catch (Exception ex) {
-            Logger.getLogger(resetServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(resetPasswordServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         if (user != null) {
 
@@ -88,12 +88,12 @@ public class resetServlet extends HttpServlet {
                 try {
                     userDao.updateDao(user);
                 } catch (Exception ex) {
-                    Logger.getLogger(resetServlet.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(resetPasswordServlet.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                RequestDispatcher reqDes = request.getRequestDispatcher("/success.jsp");
+                RequestDispatcher reqDes = request.getRequestDispatcher("login?result=true");
                 reqDes.forward(request, response);
             } else {
-                RequestDispatcher reqDes = request.getRequestDispatcher("/error.jsp");
+                RequestDispatcher reqDes = request.getRequestDispatcher("index?result=false");
                 reqDes.forward(request, response);
             }
         } else {
