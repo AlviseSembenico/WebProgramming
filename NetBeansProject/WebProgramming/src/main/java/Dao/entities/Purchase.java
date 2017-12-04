@@ -8,10 +8,11 @@ import java.util.Date;
 */
 public class Purchase extends IdOwnerComparable{
     private int id;
-    private String status;
+    private int status;
     private Product product;
     private User user;
     private Date date;
+    private double price;
 
     public int getId() {
         return id;
@@ -21,11 +22,11 @@ public class Purchase extends IdOwnerComparable{
         this.id = id;
     }
 
-    public String getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 
@@ -51,6 +52,20 @@ public class Purchase extends IdOwnerComparable{
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    /**
+     * @return the price
+     */
+    public double getPrice() {
+        return price;
+    }
+
+    /**
+     * @param price the price to set
+     */
+    public void setPrice(double price) {
+        this.price = price;
     }
     
     

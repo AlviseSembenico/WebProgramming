@@ -10,42 +10,42 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 
 <html>
-    <c:import url="pageBuilder/header.jsp"/>    
+    <c:import url="/pageBuilder/header.jsp"/>    
     <body class="profile-page" waid71fa0d88-5390-4b5b-a2f4-e45fa93d85e2="SA password protect entry checker">
         <div class="page-header header-filter" data-parallax="true" style="background-image: url(https://www.consumatori.it/wp-content/uploads/2015/09/venditore_consumatore_stretta-di-mano1.jpg); transform: translate3d(0px, 0px, 0px);">
         </div>
         <div class="main main-raised">
             <div class="profile-content">
                 <div class="container">
-                    <form class="form" method="GET" action="PayServlet">
+                    <form class="form" method="post" action="payment">
                         <div class="row-content">                        
                             <div class="col-md-12">
                                 <div class="row">                                
-                                   
+
                                 </div>
-                                    
+
                                 <div class="row">
                                     <div class="col-sm-3">
                                         <div class="title">
                                             <h4>Select a payment method</h4>
                                         </div>
                                         <div class="radio">
-                                                <label  style="color:black">
-                                                    <input id="credito" type="radio" name="optionsRadios"  checked="true" onchange="ChangeMode()"><span class="circle"></span><span class="check"></span>
-                                                        <p>Credit or debit card</p>
-                                                </label>
+                                            <label  style="color:black">
+                                                <input id="credito" type="radio" name="optionsRadios"  checked="true" onchange="ChangeMode()"><span class="circle"></span><span class="check"></span>
+                                                <p>Credit or debit card</p>
+                                            </label>
                                         </div>
                                         <div class="radio">
-                                                <label style="color:black">
-                                                        <input id="paypal" type="radio" name="optionsRadios" onchange="ChangeMode()"><span class="circle"></span><span class="check"></span>
-                                                        <p>PayPal</p>
-                                                </label>
+                                            <label style="color:black">
+                                                <input id="paypal" type="radio" name="optionsRadios" onchange="ChangeMode()"><span class="circle"></span><span class="check"></span>
+                                                <p>PayPal</p>
+                                            </label>
                                         </div>
                                         <div class="radio">
-                                                <label style="color:black">
-                                                        <input id="bonifico" type="radio" name="optionsRadios" onchange="ChangeMode()"><span class="circle"></span><span class="check"></span>
-                                                        <p>Bank transfer</p>
-                                                </label>
+                                            <label style="color:black">
+                                                <input id="bonifico" type="radio" name="optionsRadios" onchange="ChangeMode()"><span class="circle"></span><span class="check"></span>
+                                                <p>Bank transfer</p>
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
@@ -80,13 +80,13 @@
                                 </div>
                                 <div id='PP' style="display: none">
                                     <div class="row">
-                                            <div class='col-md-6'>
-                                                <h5>Username</h5>
-                                            </div>
-                                            <div class='col-md-6'>
-                                                <h5>Password</h5>
-                                            </div>                                        
+                                        <div class='col-md-6'>
+                                            <h5>Username</h5>
                                         </div>
+                                        <div class='col-md-6'>
+                                            <h5>Password</h5>
+                                        </div>                                        
+                                    </div>
                                     <div class='row'>
                                         <div class="col-md-6">
                                             <div class="input-group">
@@ -99,7 +99,7 @@
                                         <div class="col-md-6">
                                             <div class="input-group">
                                                 <span class="input-group-addon">
-                                                        <i class="material-icons">lock_outline</i>
+                                                    <i class="material-icons">lock_outline</i>
                                                 </span>
                                                 <div class="form-group is-empty">
                                                     <input id="pppassword" name="password" type="Password" class="form-control" placeholder="Password">
@@ -132,70 +132,67 @@
                                         var password = document.getElementById('pppassword').value;
 
                                         var payfile = document.getElementById('file').value;
-                                        
+
                                         var btnpay = document.getElementById('pay');
-                                        
-                                        if(credito)
+
+                                        if (credito)
                                         {
-                                            if(intestatario == "" || numerocarta == "" || datascadenza == "")
-                                            {                                                
-                                                alert("One or more Credit Card fields are empty");
-                                            }
-                                            else
+                                            if (intestatario == "" || numerocarta == "" || datascadenza == "")
                                             {
-                                                btnpay.removeAttribute("disabled");                                                                                              
+                                                alert("One or more Credit Card fields are empty");
+                                            } else
+                                            {
+                                                btnpay.removeAttribute("disabled");
                                             }
                                         }
 
-                                        if(paypal)
+                                        if (paypal)
                                         {
-                                            if(ppuser == "" || password == "")
+                                            if (ppuser == "" || password == "")
                                             {
                                                 alert("Username or password are missing");
-                                            }
-                                            else
+                                            } else
                                             {
                                                 btnpay.removeAttribute("disabled");
                                             }
                                         }
 
-                                        if(bonifico)
+                                        if (bonifico)
                                         {
-                                            if(payfile == "")
+                                            if (payfile == "")
                                             {
                                                 alert("Payment File is missing");
-                                            }
-                                            else
+                                            } else
                                             {
                                                 btnpay.removeAttribute("disabled");
                                             }
-                                        }                                    
+                                        }
 
-                                    }       
+                                    }
                                     function ChangeMode()
                                     {
-                                       var credito = document.getElementById('credito').checked;
-                                       var paypal = document.getElementById('paypal').checked;
-                                       var bonifico = document.getElementById('bonifico').checked;
+                                        var credito = document.getElementById('credito').checked;
+                                        var paypal = document.getElementById('paypal').checked;
+                                        var bonifico = document.getElementById('bonifico').checked;
 
-                                       if(credito == true)
-                                       {
-                                           document.getElementById('CC').style.display = "block";
-                                           document.getElementById('PP').style.display = "none";
-                                           document.getElementById('BB').style.display = "none";
-                                       }
-                                       if(paypal == true)
-                                       {
-                                           document.getElementById('CC').style.display = "none";
-                                           document.getElementById('PP').style.display = "block";
-                                           document.getElementById('BB').style.display = "none";
-                                       }
-                                       if(bonifico == true)
-                                       {
-                                           document.getElementById('CC').style.display = "none";
-                                           document.getElementById('PP').style.display = "none";
-                                           document.getElementById('BB').style.display = "block";
-                                       }
+                                        if (credito == true)
+                                        {
+                                            document.getElementById('CC').style.display = "block";
+                                            document.getElementById('PP').style.display = "none";
+                                            document.getElementById('BB').style.display = "none";
+                                        }
+                                        if (paypal == true)
+                                        {
+                                            document.getElementById('CC').style.display = "none";
+                                            document.getElementById('PP').style.display = "block";
+                                            document.getElementById('BB').style.display = "none";
+                                        }
+                                        if (bonifico == true)
+                                        {
+                                            document.getElementById('CC').style.display = "none";
+                                            document.getElementById('PP').style.display = "none";
+                                            document.getElementById('BB').style.display = "block";
+                                        }
                                     }
                                 </script>
                                 <div class="row">
@@ -215,5 +212,19 @@
             </div>
         </div>
     </body>
-    <c:import url="pageBuilder/footer.jsp"/>
+    <c:import url="/pageBuilder/footer.jsp"/>
+    <c:if test="${!(empty param.result) && param.result eq 'true'}">
+        <script>
+            $(document).ready(function () {
+                $("#successModal").modal("show");
+            });
+        </script>
+    </c:if>
+    <c:if test="${!(empty param.result) && param.result eq 'false'}">
+        <script>
+            $(document).ready(function () {
+                $("#errorModal").modal("show");
+            });
+        </script>
+    </c:if>
 </html>

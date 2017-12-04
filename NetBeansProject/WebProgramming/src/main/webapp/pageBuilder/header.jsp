@@ -11,11 +11,11 @@
     <html lang="it">
         <head>
             <meta charset="utf-8" />
-            <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
-            <link rel="icon" type="image/png" href="assets/img/favicon.png">
+            <link rel="apple-touch-icon" sizes="76x76" href="assets/img/favicon/apple-icon-76x76.png">
+            <link rel="icon" type="image/ico" href="assets/img/favicon/favicon.ico">
             <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-            <title>EcoMmerce</title>
+            <title>Influencer</title>
 
             <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
 
@@ -27,11 +27,15 @@
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
             <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
             <link href="assets/css/ratingStar.css" rel="stylesheet" type="text/css"/>
+            
             <!-- CSS Files -->
             <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
             <link href="assets/css/demo.css" rel="stylesheet" />
             <link href="assets/css/style.css" rel="stylesheet" />
             <link href="assets/css/unminify.css" rel="stylesheet"/>
+           
+            
+            
         </head>
     <c:if test="${(empty param.trasparent) || param.trasparent eq 'true'     }">
         <nav class="navbar  navbar-transparent navbar-fixed-top navbar-color-on-scroll"  color-on-scroll=" " id="sectionsNav"> 
@@ -51,51 +55,25 @@
                     <a href="index">
                         <div class="logo-container">
                             <div class="logo">
-                                <img  src="assets/img/logo.png" data-original-title="We could sell ice to Eskimos" data-html="true" data-placement="bottom" rel="tooltip">
+                                <img title="" alt="Creative Tim Logo" src="assets/img/logo2.png" data-html="true" data-placement="bottom" rel="tooltip" data-original-title="<b>Material Kit</b> was Designed &amp; Coded with care by the staff from <b>Creative Tim</b>">
                             </div>
-                            <div class="brand">
-                                Eco
-                                mmErce
+                            <div class="navbar-brand" style="color: white">
+                                <b>&nbsp;Influencer</b>
                             </div>
+
+
                         </div>
                     </a>
                 </div>
-
                 <div class="collpase navbar-collapse">
 
-                    <ul class="nav navbar-nav navbar-right">
-                        <li >
-                            <form class="form form-newsletter card-content" method="" action="result">
-                                <div class="form-group is-empty" >
-                                    <input style=" width: 240%; color: white" type="text" name="name" class="pull-right form-control" placeholder="Search...">
-                                    <span class="material-input"></span>
-                                </div>
+                    <ul class="nav navbar-nav ">
 
-                                <button type="submit" class="btn btn-danger btn-just-icon">
-                                    <i class="material-icons">search</i>
-                                </button>
 
-                            </form>
-                        </li>
 
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="material-icons">view_day</i> Sections
-                                <b class="caret"></b>
-                            </a>
-                            <ul class="dropdown-menu dropdown-with-icons">
-                                <li>
-                                    <a href="../sections.html#headers">
-                                        <i class="material-icons">dns</i> Headers
-                                    </a>
-                                </li>
-
-                            </ul>
-                        </li>
-
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="material-icons">view_carousel</i> Talk to us
+                                <i class="material-icons">mail</i>Get In touch
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu dropdown-with-icons">
@@ -129,6 +107,11 @@
                                                 <i class="material-icons">person</i> Register
                                             </a>
                                         </li>
+                                        <li>
+                                            <a href="recover">
+                                                <i class="material-icons">verified_user</i>Recover your password
+                                            </a>
+                                        </li>
                                     </ul>
                                 </li>
                             </c:when>
@@ -152,14 +135,64 @@
                                         </li>
                                     </ul>
                                 </li>
+
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <i class="material-icons">reorder</i>Account
+                                        <b class="caret"></b>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-with-icons">
+                                        <li>
+                                            <a href="myOrders">
+                                                <i class="material-icons">archive</i>My Orders
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="register">
+                                                <i class="material-icons">person</i> Register
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
                             </c:otherwise>
                         </c:choose>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="material-icons">search</i>Search
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu dropdown-with-icons" style=" padding: 12px 5px 0px 5px">
+                                <li>
+                                    <form class="form form-newsletter card-content" method="get" action="result">
+                                        <div class="form-group is-empty has-error" >
+                                            <input style=" color: black" type="text" name="name" class="pull-right form-control" placeholder="Search...">
+                                            <span class="material-input"></span></div>
+
+                                        <button type="submit" class="btn btn-primary btn-just-icon btn-danger">
+                                            <i class="material-icons">search</i>
+                                        </button>
+
+                                    </form>
+                                </li>
+
+                            </ul>
+                        </li>
                         <li>
-                            <a href="cart" class="btn btn-white btn-simple">
-                                <i class="material-icons">shopping_cart</i> Buy Now
+                            <a href="cart" class="btn btn-rose btn-round">
+                                <i class="material-icons">shopping_cart</i>Cart
                             </a>
                         </li>
                     </ul>
+
+                    <form class="navbar-form navbar-right" role="search" method="get" action="result" >
+                        <div class="form-group form-white is-empty">
+                            <input style=" color: white" class="form-control " type="text" name="name" placeholder="">
+                            <span class="material-input"></span></div>
+                        <button class="btn btn-white btn-raised btn-fab btn-fab-mini" type="submit"><i class="material-icons">search</i></button>
+                    </form>
+
+
+
                 </div>
             </div>
         </nav>

@@ -247,7 +247,7 @@ public class JdbcUtilities {
                     char[] ca = name.toCharArray();
                     name = String.valueOf(ca[0]).toLowerCase() + name.substring(1);
                     if (m.getReturnType().equals(Number.class) || m.getReturnType().equals(int.class)) {
-                        Number value = (Number) m.invoke(o,null);
+                        Number value = (Number) m.invoke(o, null);
                         if (value.doubleValue() >= 0) {
                             values += value.doubleValue() + ",";
                             if (map.containsKey(name)) {
@@ -269,7 +269,7 @@ public class JdbcUtilities {
                         }
                     } else if (m.getReturnType().equals(Date.class)) {
                         if ((Object) m.invoke(o, null) != null) {
-                            java.text.SimpleDateFormat sdf= new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                            java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                             values += "'" + sdf.format(m.invoke(o, null)) + "',";
                             if (map.containsKey(name)) {
                                 query += map.get(name) + ",";
@@ -426,6 +426,17 @@ public class JdbcUtilities {
                                 }
                                 query += " = '" + m.invoke(o, null) + "' and ";
                             }
+                        } else if (IdOwner.class.isAssignableFrom(m.getReturnType())) {
+                            IdOwner i= (IdOwner) m.invoke(o, null);
+                            if (i != null) {
+                                if (map.containsKey(name)) {
+                                    query += map.get(name);
+                                } else {
+                                    query += camelToSql(name);
+                                }
+                                query += " = '" + i.getId() + "' and ";
+                            }
+
                         }
 
                     }

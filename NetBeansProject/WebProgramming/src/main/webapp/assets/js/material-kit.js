@@ -316,7 +316,7 @@ var big_image;
      }, 4),
 
      initContactUsMap: function(){
-         var myLatlng = new google.maps.LatLng(44.433530, 26.093928);
+         var myLatlng = new google.maps.LatLng(46.066865, 11.149861);
          var mapOptions = {
            zoom: 14,
            center: myLatlng,
@@ -328,7 +328,7 @@ var big_image;
 
          var marker = new google.maps.Marker({
              position: myLatlng,
-             title:"Hello World!"
+             title:"Influencer headquarters!"
          });
          marker.setMap(map);
      },
