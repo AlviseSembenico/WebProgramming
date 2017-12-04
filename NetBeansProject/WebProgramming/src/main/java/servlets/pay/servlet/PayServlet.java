@@ -95,12 +95,30 @@ public class PayServlet extends HttpServlet {
             Date d = new Date(dt.getTime());
             dt = (java.util.Date)d;
             
-           
+            int counter = 0;
+            int rt = 0;
+            
+            String ritiro;
+            
             
             for(Product p:prodotti)
             {    
-                Purchase purc = new Purchase(p,user,1, dt);
+                ritiro = request.getParameter("ritiro"+counter);
+                if(p.getRetractable() > 0)
+                {
+                    if(ritiro.equals("on"))
+                    {
+                        rt = 3;
+                        counter++;
+                    }
+                    else
+                        rt = 0;
+                }
+                else
+                    rt = 0;
+                Purchase purc = new Purchase(p,user,rt, dt);
                 res = purchaseDao.insertDao(purc);
+                
             }
             
             cart.emptyCart();

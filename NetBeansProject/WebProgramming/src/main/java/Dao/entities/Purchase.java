@@ -86,7 +86,8 @@ public class Purchase extends IdOwnerComparable{
         {
             case 0: stts = "Ordered"; break;
             case 1: stts = "Sent"; break;
-            case 3: stts = "Arrived"; break;
+            case 2: stts = "Arrived"; break;
+            case 3: stts = "In Shop"; break;
         }
         
         return stts;
