@@ -126,7 +126,7 @@
 
                         <c:choose>
                             <c:when test="${reviews[0] != null}">
-                                <c:forEach var="i" begin="0" end="${reviews.size() - 1}">
+                                <c:forEach var="i" begin="${begin}" end="${end}">
                                     <div class="col-md-4">                                
                                         <div class="media-area">
                                             <div class="media">
@@ -153,8 +153,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <c:if test="${(i+1)%3==0 && i != 0}"> </div>  <hr/> <div class="row"> </c:if>
-                                  
+                                    <c:if test="${(i+1)%3==0 && i != begin}"> </div>  <hr/> <div class="row"> </c:if>
+
                                 </c:forEach>
                             </c:when>
                             <c:otherwise>
@@ -163,9 +163,19 @@
                         </c:choose>
 
                     </div>
+                    <u class="pagination pagination-info">
+                        <li><a <c:if test="${(begin-11)>=0}">href="product?id=<c:out value="${id}"/>&begin=<c:out value="${begin-11}"/>"</c:if> style="color: black" >&lt; prev</a></li>
+                            <c:forEach var="i" begin="0" end="${len}">
+                                <c:if test="${i%11==0 && i != len}">
+                                <li><a href="product?id=<c:out value="${id}"/>&begin=<c:out value="${i}"/>" style="color: black"><c:out value="${Integer(i/11)+1}"/></a></li>
+                                </c:if>
+                            </c:forEach>
+
+                        <li><a <c:if test="${(begin+11)< len}">href="product?id=<c:out value="${id}"/>&begin=<c:out value="${begin+11}"/>"</c:if> style="color: black">next &gt;</a></li>
+                        </u>
+                    </div>
                 </div>
             </div>
-        </div>
 
 
 

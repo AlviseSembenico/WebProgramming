@@ -35,7 +35,7 @@
                                     <h3 class="title">Comments</h3>
                                     <c:choose>
                                         <c:when test="${reviews[0] != null}">
-                                            <c:forEach var="i" begin="0" end="${reviews.size() - 1}">
+                                            <c:forEach var="i" begin="${begin}" end="${end}">
                                                 <div class="media">
                                                     <a class="pull-left" href="">
                                                         <div class="avatar">
@@ -53,7 +53,7 @@
 
                                                             </c:otherwise>
                                                         </c:choose>
-                                                         <i class="a-icon a-icon-star a-star-${reviews[i].getQuality()}"></i>
+                                                        <i class="a-icon a-icon-star a-star-${reviews[i].getQuality()}"></i>
                                                         <h6 class="text-muted">Sul prodotto: <br/>${reviews[i].getProduct().getName()}</h6>
                                                         <p>${reviews[i].getDescription()}</p>
                                                     </div>
@@ -67,15 +67,25 @@
                                     </c:choose>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-4 col-md-offset-2">
-                            <div class="info info-horizontal">
-                                <div class="icon icon-primary">
-                                    <i class="material-icons">pin_drop</i>
-                                </div>
-                                <div class="description">
-                                    <h4 class="info-title">Address</h4>
-                                    <p>${shop.getStreet()}<br>
+                            <u class="pagination pagination-info">
+                                <li><a <c:if test="${(begin-3)>=0}">href="shop?id=<c:out value="${id}"/>&begin=<c:out value="${begin-3}"/>"</c:if> style="color: black" >&lt; prev</a></li>
+                                    <c:forEach var="i" begin="0" end="${len}">
+                                        <c:if test="${i%3==0 && i != len}">
+                                        <li><a href="shop?id=<c:out value="${id}"/>&begin=<c:out value="${i}"/>" style="color: black"><c:out value="${Integer(i/3)+1}"/></a></li>
+                                        </c:if>
+                                    </c:forEach>
+
+                                <li><a <c:if test="${(begin+3)< len}">href="shop?id=<c:out value="${id}"/>&begin=<c:out value="${begin+3}"/>"</c:if> style="color: black">next &gt;</a></li>
+                                </u>
+                            </div>
+                            <div class="col-md-4 col-md-offset-2">
+                                <div class="info info-horizontal">
+                                    <div class="icon icon-primary">
+                                        <i class="material-icons">pin_drop</i>
+                                    </div>
+                                    <div class="description">
+                                        <h4 class="info-title">Address</h4>
+                                        <p>${shop.getStreet()}<br>
                                         ${shop.getCity()}<br>
                                         ${shop.getRegion()}<br>
                                         <a href="map.jsp?lat=${shop.getLatitude()}&long=${shop.getLongitude()}" class="btn btn-primary btn-round">Map</a>

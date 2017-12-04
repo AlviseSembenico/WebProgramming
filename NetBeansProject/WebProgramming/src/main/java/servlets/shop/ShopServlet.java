@@ -35,6 +35,10 @@ public class ShopServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    String begin = null;
+    Integer end;
+    Integer len;
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -43,17 +47,29 @@ public class ShopServlet extends HttpServlet {
             ShopDao shopDao = (ShopDao) super.getServletContext().getAttribute("shopDao");
             ReviewDao reviewDao = (ReviewDao) super.getServletContext().getAttribute("reviewDao");
             PictureDao pictureDao = (PictureDao) super.getServletContext().getAttribute("pictureDao");
-
+            begin = request.getParameter("begin");
+            if (begin == null) {
+                begin = "0";
+            }
             Shop shop = shopDao.getShopById(id);
             LinkedList<Review> reviews = reviewDao.getRecentReviewForShop(shop);
+            len = reviews.size()-1;
             Picture picture = pictureDao.getPictureShop(shop);
             request.setAttribute("reviews", reviews);
             request.setAttribute("shop", shop);
+            request.setAttribute("len", len);
+            if(Integer.parseInt(begin)+3 < len){
+                end = Integer.parseInt(begin) + 3;
+            }
+            else
+                end = len;
             if (picture != null) {
                 request.setAttribute("picture", picture.getPath());
             } else {
                 request.setAttribute("picture", "http://via.placeholder.com/350x150");
             }
+            request.setAttribute("begin", begin);
+            request.setAttribute("end", end);
             RequestDispatcher reqDes = request.getRequestDispatcher("/shop.jsp");
             reqDes.forward(request, response);
 

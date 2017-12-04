@@ -279,7 +279,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <c:if test="${(i+1)%3==0 && i != 0}"> </div> <div class="row"></c:if>
+                                            <c:if test="${(i+1)%3==0 && i != begin}"> </div> <div class="row"></c:if>
                                         </c:forEach>  
                                     </c:when>
                                     <c:otherwise>

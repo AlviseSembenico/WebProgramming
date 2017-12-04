@@ -55,7 +55,7 @@
                     <a href="index">
                         <div class="logo-container">
                             <div class="logo">
-                                <img title="" alt="Creative Tim Logo" src="assets/img/logo2.png" data-html="true" data-placement="bottom" rel="tooltip" data-original-title="<b>Material Kit</b> was Designed &amp; Coded with care by the staff from <b>Creative Tim</b>">
+                                <img title="" alt="Creative Tim Logo" src="assets/img/logo2.png" data-html="true" data-placement="bottom" rel="tooltip" data-original-title="<b>We can sell Ice to Eskimos">
                             </div>
                             <div class="navbar-brand" style="color: white">
                                 <b>&nbsp;Influencer</b>
