@@ -99,20 +99,30 @@ public class PayServlet extends HttpServlet {
             int rt = 0;
             
             String ritiro;
-            
+            String interroga;
             
             for(Product p:prodotti)
             {    
-                ritiro = request.getParameter("ritiro"+counter);
+                interroga = "ritiro" + Integer.toString(rt);
+                ritiro = request.getParameter(interroga);
                 if(p.getRetractable() > 0)
                 {
-                    if(ritiro.equals("on"))
+                    if(ritiro != null)
                     {
-                        rt = 3;
-                        counter++;
+                        if(ritiro.equals("on"))
+                        {
+                            rt = 3;
+                            counter++;
+                        }
+                        else
+                        {
+                            rt = 0;
+                        } 
                     }
                     else
+                    {
                         rt = 0;
+                    }
                 }
                 else
                     rt = 0;

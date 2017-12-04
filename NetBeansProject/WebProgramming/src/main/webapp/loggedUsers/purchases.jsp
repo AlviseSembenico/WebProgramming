@@ -51,7 +51,7 @@
                                             STATUS ORDER 
                                         </div>
                                         <div class="col-md-1"> 
-                                            REVIEW
+                                            ACTIONS
                                         </div>
                                     </div>
                                     <hr>

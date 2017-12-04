@@ -67,7 +67,7 @@
                                                         <small>€</small><c:out value="${i.getPrice()}"/>
                                                     </div>
                                                     <div class="col-md-3 col-name text-center" >
-                                                        <input type="checkbox" id="rt" name="ritiro<c:out value="${index.index}"/>" checked="false"/>
+                                                        <input type="checkbox" id="rt" name="ritiro<c:out value="${index.index}"/>" />
                                                     </div>                                                
                                                 </div>
                                                 <hr/>
