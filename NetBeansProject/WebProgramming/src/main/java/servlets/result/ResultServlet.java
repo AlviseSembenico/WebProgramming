@@ -89,7 +89,7 @@ public class ResultServlet extends HttpServlet {
             for (int i = 0; i < product.size(); i++) {
                 stelle[i] = productDao.getStarByProduct(product.get(i)).intValue();
             }
-            if(Integer.parseInt(begin+8) < len){
+            if(Integer.parseInt(begin)+8 < len){
                 end = Integer.parseInt(begin) + 8;
             }
             else
