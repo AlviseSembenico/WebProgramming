@@ -70,6 +70,7 @@ public class ShopServlet extends HttpServlet {
             }
             request.setAttribute("begin", begin);
             request.setAttribute("end", end);
+            request.setAttribute("id", id);
             RequestDispatcher reqDes = request.getRequestDispatcher("/shop.jsp");
             reqDes.forward(request, response);
 
