@@ -18,6 +18,8 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.Response;
 
 /**
  *
@@ -289,6 +291,9 @@ public class JdbcProductDao extends JdbcUtilities implements ProductDao {
         if (!checkConnection()) {
             return null;
         }
+        if (name==null)
+             throw new WebApplicationException(Response.Status.BAD_REQUEST);
+        
         String query = "select * from "+tableName+ " where name like ?";
         PreparedStatement stmt = connection.prepareStatement(query);
         stmt.setString(1, "%"+name+"%");
