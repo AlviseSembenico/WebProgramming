@@ -62,7 +62,7 @@ public class IndexServlet extends HttpServlet {
         LinkedList<Product> product;
         RequestDispatcher RequetsDispatcherObj =null;
         try{
-            product = productDao.All();
+            product = productDao.getAllProduct();
             request.setAttribute("product", product);
             RequetsDispatcherObj = request.getRequestDispatcher("/index.jsp");
         } catch (Exception ex) {

@@ -33,7 +33,7 @@ public class JdbcProductDao extends JdbcUtilities implements ProductDao {
         map.put("shop", "shops_id");
     }
 
-    public LinkedList<Product> DoQwery(String name, String city, String region, String radius, String minPrice, String maxPrice, String maxRew, String minRew, String star, String order) throws SQLException, Exception {
+    public LinkedList<Product> doQwery(String name, String city, String region, String radius, String minPrice, String maxPrice, String maxRew, String minRew, String star, String order) throws SQLException, Exception {
         if (!checkConnection()) {
             return null;
         }
@@ -45,9 +45,9 @@ public class JdbcProductDao extends JdbcUtilities implements ProductDao {
         String str = new String(" ");
         String ord = new String(" ");
         if (name == "") {
-            query = "select * from products p join shops s on p.shops_id=s.id";
+            query = "select * from "+tableName+" p join shops s on p.shops_id=s.id";
         } else {
-            query = "select p.* from products p join shops s on p.shops_id=s.id where soundex(p.name)=soundex(?)";
+            query = "select p.* from "+tableName+" p join shops s on p.shops_id=s.id where soundex(p.name)=soundex(?)";
         }
         if (city != null) {
             place = " and s.city=?";
@@ -113,7 +113,7 @@ public class JdbcProductDao extends JdbcUtilities implements ProductDao {
         if (!checkConnection()) {
             return null;
         }
-        String query = "select p.* from products p join shops s on p.shops_id=s.id where soundex(p.name)=soundex(?)";
+        String query = "select p.* from "+tableName+" p join shops s on p.shops_id=s.id where soundex(p.name)=soundex(?)";
         String dist = " and sqrt( pow(?-p.latitude,2)+pow(?-p.longitude,2))<=?";
         String price = " and (p.price>=? and p.price<=?)";
         String rew = " and ((select avg(r.global_value) from reviews r where r.products_id=o.id)>=? and (select avg(r.global_value) from reviews r where r.products_id=o.id)<=?)";
@@ -138,7 +138,7 @@ public class JdbcProductDao extends JdbcUtilities implements ProductDao {
         if (!checkConnection()) {
             return null;
         }
-        String query = "select * from products where soundex(name)=soundex(?)";
+        String query = "select * from "+tableName+" where soundex(name)=soundex(?)";
         PreparedStatement stmt = connection.prepareStatement(query);
         stmt.setString(1, name);
         LinkedList<Product> res = new LinkedList<>();
@@ -151,7 +151,7 @@ public class JdbcProductDao extends JdbcUtilities implements ProductDao {
 
     @Override
     public LinkedList<Product> getProductByPrice(double min, double max) throws Exception {
-        String query = "select * from products where price>= ? and price<=?";
+        String query = "select * from "+tableName+" where price>= ? and price<=?";
         PreparedStatement stmt = connection.prepareStatement(query);
         stmt.setDouble(1, min);
         stmt.setDouble(2, max);
@@ -175,7 +175,7 @@ public class JdbcProductDao extends JdbcUtilities implements ProductDao {
 
     @Override
     public LinkedList<Product> getProductByReview(double min, double max) throws Exception {
-        String query = "select p.* from products p natural join(\n"
+        String query = "select p.* from "+tableName+" p natural join(\n"
                 + "select p.id as id,avg(r.global_value) as mean from products p join reviews r on r.products_id=p.id group by p.id) as supp\n"
                 + "where supp.mean>=? and supp.mean <=?";
         PreparedStatement stmt = connection.prepareStatement(query);
@@ -232,15 +232,13 @@ public class JdbcProductDao extends JdbcUtilities implements ProductDao {
     }
 
     @Override
-    public LinkedList<Product> All() throws Exception {
+    public LinkedList<Product> getAllProduct() throws Exception {
         if (!checkConnection()) {
             return null;
         }
-        String query = "select * from products";
-
+        HashMap<Object, String> mappa = new HashMap<Object, String>();
         LinkedList<Product> res = new LinkedList<Product>();
-        PreparedStatement stmt = connection.prepareStatement(query);
-        for (Object o : super.fillResult(Product.class, map, stmt.executeQuery())) {
+        for (Object o : super.getObject(Product.class, map, tableName, mappa)) {
             res.add((Product) o);
         }
         return res;
@@ -248,25 +246,21 @@ public class JdbcProductDao extends JdbcUtilities implements ProductDao {
     }
 
     @Override
-    public LinkedList<Product> getSimil(String category,String name) {
+    public LinkedList<Product> getSimilar(String category,String name) throws Exception{
 
         if (!checkConnection()) {
             return null;
         }
         LinkedList<Product> res = new LinkedList<Product>();
-        try {
-            String query = "select * from products p where p.category = ? and soundex(p.name) <> soundex(?)";
+   
+            String query = "select * from "+tableName+" p where p.category = ? and soundex(p.name) <> soundex(?)";
             PreparedStatement stmt = connection.prepareStatement(query);
             stmt.setString(1, category);
             stmt.setString(2, name);
             for (Object o : super.fillResult(Product.class, map, stmt.executeQuery())) {
                 res.add((Product) o);
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(JdbcProductDao.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (Exception ex) {
-            Logger.getLogger(JdbcProductDao.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
         return res;
     }
 
@@ -278,7 +272,7 @@ public class JdbcProductDao extends JdbcUtilities implements ProductDao {
         ResultSet set;
         Double res=null;
         try {
-            String query = "select (p.starValue/p.numberPeople) as star from products p where p.name = ?;";
+            String query = "select (p.starValue/p.numberPeople) as star from "+tableName+" p where p.name = ?;";
             PreparedStatement stmt = connection.prepareStatement(query);
             stmt.setString(1, product.getName());
             set = stmt.executeQuery();
@@ -289,5 +283,22 @@ public class JdbcProductDao extends JdbcUtilities implements ProductDao {
         }
         return res;
     }
+
+    @Override
+    public LinkedList<Product> getCompleteName(String name)throws Exception {
+        if (!checkConnection()) {
+            return null;
+        }
+        String query = "select * from "+tableName+ " where name like ?";
+        PreparedStatement stmt = connection.prepareStatement(query);
+        stmt.setString(1, "%"+name+"%");
+        LinkedList<Product> res = new LinkedList<Product>();
+        for (Object o : super.fillResult(Product.class, map, stmt.executeQuery())) {
+            res.add((Product) o);
+        }
+        return res;
+    }
+    
+    
 
 }

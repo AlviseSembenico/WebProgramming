@@ -78,12 +78,12 @@ public class ResultServlet extends HttpServlet {
         RequestDispatcher RequetsDispatcherObj =null;
 
         try {
-            product = productDao.DoQwery(name, region, city, radius, minPrice, maxPrice, minRew, maxRew, star, order);
+            product = productDao.doQwery(name, region, city, radius, minPrice, maxPrice, minRew, maxRew, star, order);
             request.setAttribute("product", product);
             len = product.size()-1;
             category = product.get(0).getCategory();
             request.setAttribute("len", len);
-            similProd = productDao.getSimil(category, name);
+            similProd = productDao.getSimilar(category, name);
             request.setAttribute("simil", similProd);
             Integer[] stelle = new Integer[product.size()];
             for (int i = 0; i < product.size(); i++) {
