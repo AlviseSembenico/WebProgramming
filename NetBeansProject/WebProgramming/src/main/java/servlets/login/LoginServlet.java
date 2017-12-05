@@ -73,12 +73,17 @@ public class LoginServlet extends HttpServlet {
                 response.sendRedirect(response.encodeRedirectURL("login" + "?error=true"));
             } else {
                 request.getSession().setAttribute("user", user);
-                Cart cart = (Cart) request.getSession().getAttribute("cart");
-                if (cart != null) {
-                    cart.setUser(user);
-                    for(Product p:cartDao.getByUser(user).getProducts())
-                        cart.addProduct(p);
-                    cartDao.insertDao(cart);
+                Cart sessCart = (Cart) request.getSession().getAttribute("cart");
+                if (sessCart != null) {
+                    Cart userCart = cartDao.getByUser(user);
+                    if (userCart != null) {
+                        sessCart.setUser(user);
+                        for (Product p : sessCart.getProducts()) {
+                            userCart.addProduct(p);
+                        }
+                        cartDao.updateDao(userCart);
+                        request.getSession().setAttribute("cart", userCart);
+                    }
                 }
                 response.sendRedirect("index");
             }

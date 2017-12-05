@@ -38,9 +38,12 @@ public class JdbcCartDao extends JdbcUtilities implements CartDao{
         mappa.put(user.getId(),"users_id");
         Cart res=new Cart();
         for(Object o: super.getObject(CartContainer.class, map, tableName, mappa)){
-            CartContainer cc=(CartContainer)o;
-            res.setUser(cc.getUser());
-            res.getProducts().add(cc.getProduct());
+            if(o!=null){
+                CartContainer cc=(CartContainer)o;
+                res.setUser(cc.getUser());
+                res.getProducts().add(cc.getProduct());
+            }else
+                return null;
         }
         return res;
     } 

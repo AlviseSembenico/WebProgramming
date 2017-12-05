@@ -147,11 +147,6 @@
                                                 <i class="material-icons">archive</i>My Orders
                                             </a>
                                         </li>
-                                        <li>
-                                            <a href="register">
-                                                <i class="material-icons">person</i> Register
-                                            </a>
-                                        </li>
                                     </ul>
                                 </li>
                             </c:otherwise>

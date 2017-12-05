@@ -255,7 +255,7 @@
                                                                         <a href="product?id=<c:out value="${product.get(i).getId()}"/>" class="btn btn-round btn-white">
                                                                             <i class="material-icons">info</i> Details
                                                                         </a>
-                                                                        <form method="POST" action="product">
+                                                                        <form method="POST" action="cart">
                                                                             <input name="pid" style="visibility: hidden;" value="<c:out value="${product.get(i).getId()}"/>" />
                                                                             <button class="btn btn-rose btn-round" type="submit" style="padding-top: 012px;top: -15px;">Add to Cart &nbsp;<i class="material-icons">shopping_cart</i></button>
                                                                         </form>
