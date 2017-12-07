@@ -43,34 +43,40 @@
                             </div>
                         </div>
                         <hr>
-                        <c:forEach var="i" items="${purchaseList}">
-                            <div class="row">
-                                <div class="col-md-2 td-name"> 
-                                    <div class="img-container" style="width: 100%; max-width: 120px; margin:auto">
-                                        <img alt="..." src="<c:out value='${pictureDao.getPictureByProduct(i.getProduct()).get(0).getPath()}'/>">
+                        <c:choose>
+                            <c:when test="${purchaseList[0] != null}">
+                                <c:forEach var="i" items="${purchaseList}">
+                                    <div class="row">
+                                        <div class="col-md-2 td-name"> 
+                                            <div class="img-container" style="width: 100%; max-width: 120px; margin:auto">
+                                                <img alt="..." src="<c:out value='${pictureDao.getPictureByProduct(i.getProduct()).get(0).getPath()}'/>">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-main text-center">
+                                            <a href="./product?id=<c:out value='${i.getProduct().getId()}'/>"><c:out value="${i.getProduct().getName()}"/></a>
+
+                                        </div>
+                                        <div class="col-md-1  col-number  text-center" style="text-align: center"> 
+                                            <small>€</small><c:out value="${i.getPrice()}"/>
+                                        </div>
+                                        <div class="col-md-2 col-name text-center" >
+                                            <fmt:formatDate type="both" pattern="dd-MM-yyyy" value="${i.getDate()}"/>
+
+                                        </div>
+                                        <div class="col-md-2 col-name text-center"> 
+                                            <a href="./shop?id=<c:out value='${i.getProduct().getShop().getId()}'/>"><c:out value="${i.getProduct().getShop().getName()}"/></a>    
+                                        </div>
+                                        <div class="col-md-2 col-name text-center"> 
+                                            <a href="./addAnomaly?id=<c:out value='${i.getProduct().getId()}'/>">Add anomaly</a>    
+                                        </div>
+
                                     </div>
-                                </div>
-                                <div class="col-md-3 col-main text-center">
-                                    <a href="./product?id=<c:out value='${i.getProduct().getId()}'/>"><c:out value="${i.getProduct().getName()}"/></a>
-
-                                </div>
-                                <div class="col-md-1  col-number  text-center" style="text-align: center"> 
-                                    <small>€</small><c:out value="${i.getPrice()}"/>
-                                </div>
-                                <div class="col-md-2 col-name text-center" >
-                                    <fmt:formatDate type="both" pattern="dd-MM-yyyy" value="${i.getDate()}"/>
-
-                                </div>
-                                <div class="col-md-2 col-name text-center"> 
-                                    <a href="./shop?id=<c:out value='${i.getProduct().getShop().getId()}'/>"><c:out value="${i.getProduct().getShop().getName()}"/></a>    
-                                </div>
-                                <div class="col-md-2 col-name text-center"> 
-                                    <a href="./addAnomaly?id=<c:out value='${i.getProduct().getId()}'/>">Add anomaly</a>    
-                                </div>
-
-                            </div>
-                        </c:forEach>
-
+                                </c:forEach>
+                            </c:when>
+                            <c:otherwise>
+                                <h3>You are not attend any order</h3>
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                 </div>
             </div>
