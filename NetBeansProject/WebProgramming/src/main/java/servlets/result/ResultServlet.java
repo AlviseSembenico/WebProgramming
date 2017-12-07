@@ -75,29 +75,31 @@ public class ResultServlet extends HttpServlet {
         }
         LinkedList<Product> product;
         LinkedList<Product> similProd;
-        RequestDispatcher RequetsDispatcherObj =null;
+        RequestDispatcher RequetsDispatcherObj = null;
 
         try {
             product = productDao.doQwery(name, region, city, radius, minPrice, maxPrice, minRew, maxRew, star, order);
-            request.setAttribute("product", product);
-            len = product.size()-1;
-            category = product.get(0).getCategory();
-            request.setAttribute("len", len);
-            similProd = productDao.getSimilar(category, name);
-            request.setAttribute("simil", similProd);
-            Integer[] stelle = new Integer[product.size()];
-            for (int i = 0; i < product.size(); i++) {
-                stelle[i] = productDao.getStarByProduct(product.get(i)).intValue();
+            if (product.get(0) != null) {
+                request.setAttribute("product", product);
+                len = product.size() - 1;
+                category = product.get(0).getCategory();
+                request.setAttribute("len", len);
+                similProd = productDao.getSimilar(category, name);
+                request.setAttribute("simil", similProd);
+                Integer[] stelle = new Integer[product.size()];
+                for (int i = 0; i < product.size(); i++) {
+                    stelle[i] = productDao.getStarByProduct(product.get(i)).intValue();
+                }
+                if (Integer.parseInt(begin) + 8 < len) {
+                    end = Integer.parseInt(begin) + 8;
+                } else {
+                    end = len;
+                }
+                request.setAttribute("stelle", stelle);
+                request.setAttribute("name", name);
+                request.setAttribute("begin", begin);
+                request.setAttribute("end", end);
             }
-            if(Integer.parseInt(begin)+8 < len){
-                end = Integer.parseInt(begin) + 8;
-            }
-            else
-                end = len;
-            request.setAttribute("stelle", stelle);
-            request.setAttribute("name", name);
-            request.setAttribute("begin", begin);
-            request.setAttribute("end", end);
             RequetsDispatcherObj = request.getRequestDispatcher("/result.jsp");
         } catch (Exception ex) {
             RequetsDispatcherObj = request.getRequestDispatcher("/error.jsp");

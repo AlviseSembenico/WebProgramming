@@ -281,29 +281,30 @@
                                             </div>
                                             <c:if test="${(i+1)%3==0 && i != begin}"> </div> <div class="row"></c:if>
                                         </c:forEach>  
+                                        <u class="pagination pagination-info">
+                                            <li><a <c:if test="${(begin-9)>=0}">href="result?name=<c:out value="${name}"/>&begin=<c:out value="${begin-9}"/>"</c:if> style="color: black" >&lt; prev</a></li>
+                                                <c:forEach var="i" begin="0" end="${len}">
+                                                    <c:if test="${i%9==0 && i != len}">
+                                                    <li><a href="result?name=<c:out value="${name}"/>&begin=<c:out value="${i}"/>" style="color: black"><c:out value="${Integer(i/9)+1}"/></a></li>
+                                                    </c:if>
+                                                </c:forEach>
+                                            <li><a <c:if test="${(begin+9)< len}">href="result?name=<c:out value="${name}"/>&begin=<c:out value="${begin+9}"/>"</c:if> style="color: black">next &gt;</a></li>
+                                            </u>
                                     </c:when>
                                     <c:otherwise>
                                         <h2 class="section-title text-center"style="margin-top: 150px;"> There is no Product with it's name</h2>
                                     </c:otherwise>
                                 </c:choose>
                             </div>
-                            <u class="pagination pagination-info">
-                                <li><a <c:if test="${(begin-9)>=0}">href="result?name=<c:out value="${name}"/>&begin=<c:out value="${begin-9}"/>"</c:if> style="color: black" >&lt; prev</a></li>
-                                    <c:forEach var="i" begin="0" end="${len}">
-                                        <c:if test="${i%9==0 && i != len}">
-                                        <li><a href="result?name=<c:out value="${name}"/>&begin=<c:out value="${i}"/>" style="color: black"><c:out value="${Integer(i/9)+1}"/></a></li>
-                                        </c:if>
-                                    </c:forEach>
-                                <li><a <c:if test="${(begin+9)< len}">href="result?name=<c:out value="${name}"/>&begin=<c:out value="${begin+9}"/>"</c:if> style="color: black">next &gt;</a></li>
-                                </u>
-                            </div>
+
                         </div>
-                    </form>
-                </div><!-- section -->
-                <div class="section" style="padding-bottom: 0px;">
-                    <div class="container">
-                        <h2 class="section-title">You can also be interested in</h2>
-                        <div class="row">
+                    </div>
+                </form>
+            </div><!-- section -->
+            <div class="section" style="padding-bottom: 0px;">
+                <div class="container">
+                    <h2 class="section-title">You can also be interested in</h2>
+                    <div class="row">
                         <c:choose>
                             <c:when test="${simil.get(0)!=null}">
                                 <c:forEach var="i" items='${simil}' begin="0" end="3">
