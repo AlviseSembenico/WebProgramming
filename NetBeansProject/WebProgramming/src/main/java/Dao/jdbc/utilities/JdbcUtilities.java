@@ -117,7 +117,6 @@ public class JdbcUtilities {
                 if (par instanceof Integer) {
                     stmt.setInt(point++, (int) par);
                 }
-
             }
         }
         ResultSet rs = stmt.executeQuery();
@@ -150,19 +149,11 @@ public class JdbcUtilities {
                     char[] ca = name.toCharArray();
                     name = String.valueOf(ca[0]).toLowerCase() + name.substring(1);
                     try {
-                        if (m.getParameterTypes()[0].equals(String.class) || m.getParameterTypes()[0].equals(Time.class) || m.getParameterTypes()[0].equals(Timestamp.class)) {
+                        if (m.getParameterTypes()[0].equals(String.class)) {
                             String s;
                             s = map.get(name);
                             if (s == null) {
-                                if (name.contains("Time")) {
-                                    m.invoke(o, rs.getTime(camelToSql(name)));
-                                } else {
-                                    if (name.contains("Date")) {
-                                        m.invoke(o, rs.getTimestamp(camelToSql(name)));
-                                    } else {
-                                        m.invoke(o, rs.getString(camelToSql(name)));
-                                    }
-                                }
+                                m.invoke(o, rs.getString(camelToSql(name)));
                             } else {
                                 m.invoke(o, rs.getString(s));
                             }
@@ -246,6 +237,7 @@ public class JdbcUtilities {
                     String name = m.getName().substring(3);
                     char[] ca = name.toCharArray();
                     name = String.valueOf(ca[0]).toLowerCase() + name.substring(1);
+
                     if (m.getReturnType().equals(Number.class) || m.getReturnType().equals(int.class)) {
                         Number value = (Number) m.invoke(o, null);
                         if (value.doubleValue() >= 0) {
@@ -255,7 +247,6 @@ public class JdbcUtilities {
                             } else {
                                 query += camelToSql(name) + ",";
                             }
-
                         }
                     } else if (m.getReturnType().equals(String.class)) {
                         if ((Object) m.invoke(o, null) != null) {
@@ -265,7 +256,6 @@ public class JdbcUtilities {
                             } else {
                                 query += camelToSql(name) + ",";
                             }
-
                         }
                     } else if (m.getReturnType().equals(Date.class)) {
                         if ((Object) m.invoke(o, null) != null) {
@@ -289,13 +279,13 @@ public class JdbcUtilities {
                                 } else {
                                     query += camelToSql(name) + ",";
                                 }
-
                             }
                         }
                     }
                 }
             }
         } catch (Exception ex) {
+            Log.write(ex.toString());
             return 0;
         }
         query = query.substring(0, query.length() - 1);
@@ -337,7 +327,9 @@ public class JdbcUtilities {
                     name = String.valueOf(ca[0]).toLowerCase() + name.substring(1);
                     if (name.equals("id")) {
                         id = (int) m.invoke(o, null);
-                    } else if (m.getReturnType().equals(Number.class)) {
+
+                    } else if (m.getReturnType().equals(Number.class
+                    )) {
                         Number value = (Number) m.invoke(o, null);
                         if (value.doubleValue() >= 0) {
                             if (map.containsKey(name)) {
@@ -346,6 +338,7 @@ public class JdbcUtilities {
                                 query += camelToSql(name);
                             }
                             query += " = " + value.doubleValue() + ",";
+
                         }
                     } else if (m.getReturnType().equals(String.class) || m.getReturnType().equals(Date.class)) {
                         if ((Object) m.invoke(o, null) != null) {
@@ -374,6 +367,7 @@ public class JdbcUtilities {
                 }
             }
         } catch (Exception ex) {
+            Log.write(ex.toString());
             return 0;
         }
         query = query.substring(0, query.length() - 1);
@@ -407,6 +401,7 @@ public class JdbcUtilities {
                         String name = m.getName().substring(3);
                         char[] ca = name.toCharArray();
                         name = String.valueOf(ca[0]).toLowerCase() + name.substring(1);
+
                         if (m.getReturnType().equals(Number.class)) {
                             Number value = (Number) m.invoke(o, null);
                             if (value.doubleValue() >= 0) {
@@ -416,8 +411,10 @@ public class JdbcUtilities {
                                     query += camelToSql(name);
                                 }
                                 query += " = " + value.doubleValue() + " and ";
+
                             }
-                        } else if (m.getReturnType().equals(String.class) || m.getReturnType().equals(Date.class)) {
+                        } else if (m.getReturnType().equals(String.class) || m.getReturnType().equals(Date.class
+                        )) {
                             if ((Object) m.invoke(o, null) != null) {
                                 if (map.containsKey(name)) {
                                     query += map.get(name);
@@ -425,9 +422,10 @@ public class JdbcUtilities {
                                     query += camelToSql(name);
                                 }
                                 query += " = '" + m.invoke(o, null) + "' and ";
+
                             }
                         } else if (IdOwner.class.isAssignableFrom(m.getReturnType())) {
-                            IdOwner i= (IdOwner) m.invoke(o, null);
+                            IdOwner i = (IdOwner) m.invoke(o, null);
                             if (i != null) {
                                 if (map.containsKey(name)) {
                                     query += map.get(name);
@@ -442,6 +440,7 @@ public class JdbcUtilities {
                     }
                 }
             } catch (Exception ex) {
+                Log.write(ex.toString());
                 return 0;
             }
             query = query.substring(0, query.length() - 1);
