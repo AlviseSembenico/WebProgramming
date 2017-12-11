@@ -2,16 +2,19 @@ package Dao.entities;
 
 import java.util.LinkedList;
 
-public class Cart extends IdOwnerComparable{
+public class Cart extends IdOwnerComparable {
+
     private User user;
     private LinkedList<Product> products;
+    private LinkedList<Product> oldProducts=null;
 
-    public Cart(){
-        products=new  LinkedList<Product>();
+    public Cart() {
+        products = new LinkedList<Product>();
     }
-    public Cart(User user){
+
+    public Cart(User user) {
         setUser(user);
-        products=new  LinkedList<Product>();
+        products = new LinkedList<Product>();
     }
     
     public User getUser() {
@@ -26,20 +29,43 @@ public class Cart extends IdOwnerComparable{
         return products;
     }
     
-    public void AddProducts(Product product){
+    public void addProduct(Product product) {
+        if(getOldStatus()==null)
+            setStatus(products);
         this.products.add(product);
     }
 
+    public boolean removeProduct(Product product) {
+        if(getOldStatus()==null)
+            setStatus(products);
+        return this.products.remove(product);
+    }
+
     public void setProducts(LinkedList<Product> products) {
+        if(getOldStatus()==null)
+            setStatus(products);
         this.products = products;
     }
     
-    public int countProduct(Product product){
-        int res=0;
-        for(Product p:products)
-            if(p.equals(product))
-                res++;
+    public void flush(){
+        setStatus(null);
+    }
+
+    public int countProduct(Product product) {
+        int res = 0;
+        for (Product p : products) {
+            if (p.equals(product)) 
+                res++;  
+        }
         return res;
+    }
+
+    public LinkedList<Product> getOldStatus() {
+        return oldProducts;
+    }
+
+    public void setStatus(LinkedList<Product> oldProducts) {
+        this.oldProducts = oldProducts;
     }
     
     public double getTotal()

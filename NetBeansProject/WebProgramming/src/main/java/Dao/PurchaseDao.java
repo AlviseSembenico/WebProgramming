@@ -16,6 +16,7 @@ import java.util.LinkedList;
  */
 public interface PurchaseDao extends  DefaultDao,GetById{
     public Purchase getPurchaseById(int id) throws Exception;
+    public Purchase getPurchaseByIdAndUser(int id,User user) throws Exception;
     public LinkedList<Purchase> getPurchaseByUser(User user) throws Exception;
     public Purchase getPurchaseByIdAndUser(int id,User user) throws Exception;
 }

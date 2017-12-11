@@ -73,10 +73,10 @@
                                                 <div class="card-content">
                                                     <h4 class="card-title">
                                                     </h4>
-                                                    
+
                                                     <div class="footer">
                                                         <div class="price-container">
-                                                            
+
                                                         </div>
                                                         <div class="stats">
                                                         </div>
@@ -93,7 +93,7 @@
                                         </div>
                                     </div>
 
-                                  
+
                                 </div>
                                 <div class="col-md-5 text-center">
                                     <div class="social text-center">
@@ -139,4 +139,19 @@
                     </div>
                 </div>
             </div>  
+            
             <c:import url="../pageBuilder/footer.jsp"/> 
+            <c:if test="${!(empty param.result) && param.result eq 'true'}">
+                <script>
+                    $(document).ready(function () {
+                        $("#successModal").modal("show");
+                    });
+                </script>
+            </c:if>
+            <c:if test="${!(empty param.result) && param.result eq 'false'}">
+                <script>
+                    $(document).ready(function () {
+                        $("#errorModal").modal("show");
+                    });
+                </script>
+            </c:if>

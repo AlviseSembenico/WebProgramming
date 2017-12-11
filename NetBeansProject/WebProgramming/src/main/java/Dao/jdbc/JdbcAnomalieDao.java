@@ -23,9 +23,14 @@ public class JdbcAnomalieDao  extends JdbcUtilities implements AnomaliesDao{
     HashMap<String, String> map;
     private String tableName="anomalies";
     
+    public JdbcAnomalieDao(){
+        map=new HashMap<String, String>();
+        map.put("purchase", "purchase_id");
+    }
+    
     
     @Override
-    public LinkedList<Anomalies> getAnomaliesByPurchase(Purchase p) throws  Exception  {
+    public LinkedList<Anomalies> getAnomaliesByPurchase(Purchase p) throws Exception {
         HashMap<Object,String> mappa=new HashMap<Object,String>();
         mappa.put(p.getId(),"purchase_id" );
         LinkedList<Anomalies> res=new LinkedList<Anomalies> ();
@@ -37,17 +42,17 @@ public class JdbcAnomalieDao  extends JdbcUtilities implements AnomaliesDao{
     
     @Override
     public int insertDao(Object o) throws SQLException {
-       return super.updateDao(o, null, tableName);
+       return super.insertDao(o, map, tableName);
     }
 
     @Override
     public int updateDao(IdOwner o) throws SQLException {
-        return super.updateDao(o, null, tableName);
+        return super.updateDao(o, map, tableName);
     }
 
     @Override
     public int deleteDao(Object o) throws SQLException {
-        return super.updateDao(o, null, tableName);
+        return super.updateDao(o, map, tableName);
     }
 
     @Override

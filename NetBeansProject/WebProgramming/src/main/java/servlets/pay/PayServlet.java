@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package servlets.pay.servlet;
+package servlets.pay;
 
 import Dao.UserDao;
 import Dao.entities.User;
+<<<<<<< HEAD:NetBeansProject/WebProgramming/src/main/java/servlets/pay/servlet/PayServlet.java
 import Dao.CartDao;
 import Dao.ProductDao;
 import Dao.PurchaseDao;
@@ -16,19 +17,23 @@ import Dao.entities.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+=======
+;
+import Dao.*;
+import Dao.entities.*;
+>>>>>>> Solo-borto:NetBeansProject/WebProgramming/src/main/java/servlets/pay/PayServlet.java
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import system.Log;
 import java.io.IOException;
+<<<<<<< HEAD:NetBeansProject/WebProgramming/src/main/java/servlets/pay/servlet/PayServlet.java
 import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 import java.util.LinkedList;
+=======
+import java.util.Date;
+>>>>>>> Solo-borto:NetBeansProject/WebProgramming/src/main/java/servlets/pay/PayServlet.java
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -44,8 +49,15 @@ import system.Log;
 public class PayServlet extends HttpServlet {
 
     private CartDao cartDao;
+<<<<<<< HEAD:NetBeansProject/WebProgramming/src/main/java/servlets/pay/servlet/PayServlet.java
     private PurchaseDao purchaseDao;
     
+=======
+    private UserDao userDao;
+    private PurchaseDao purchaseDao;
+    private int id;
+
+>>>>>>> Solo-borto:NetBeansProject/WebProgramming/src/main/java/servlets/pay/PayServlet.java
     @Override
     public void init() throws ServletException {
         cartDao = (CartDao) super.getServletContext().getAttribute("cartDao");
@@ -53,6 +65,10 @@ public class PayServlet extends HttpServlet {
             throw new ServletException("Impossible to get dao factory for user storage system");
         }
         purchaseDao = (PurchaseDao)super.getServletContext().getAttribute("purchaseDao");
+        if (purchaseDao == null) {
+            throw new ServletException("Impossible to get dao factory for user storage system");
+        }
+        purchaseDao = (PurchaseDao) super.getServletContext().getAttribute("purchaseDao");
         if (purchaseDao == null) {
             throw new ServletException("Impossible to get dao factory for user storage system");
         }
@@ -77,13 +93,8 @@ public class PayServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        String contextPath = getServletContext().getContextPath();
-        if (!contextPath.endsWith("/")) {
-            contextPath += "/";
-        }
-
         try {
+<<<<<<< HEAD:NetBeansProject/WebProgramming/src/main/java/servlets/pay/servlet/PayServlet.java
             HttpSession session = request.getSession(false);
             Cart cart = (Cart)session.getAttribute("cart");
             User user = (User)session.getAttribute("user");
@@ -142,9 +153,50 @@ public class PayServlet extends HttpServlet {
                 response.sendRedirect(response.encodeRedirectURL(contextPath + "Purchase"));
             }
             
+=======
+            User user = (User) request.getAttribute("user");
+            Cart cart = (Cart) request.getAttribute("cart");
+            RequestDispatcher reqDes = request.getRequestDispatcher("/loggedUsers/payment.jsp");
+            reqDes.forward(request, response);
+>>>>>>> Solo-borto:NetBeansProject/WebProgramming/src/main/java/servlets/pay/PayServlet.java
         } catch (Exception e) {
-
             Log.write(e.toString());
+        }
+
+    }
+    
+     @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+         RequestDispatcher reqDes = null;
+        try {
+            HttpSession session = request.getSession();
+            User user = (User) session.getAttribute("user");
+            Cart cart=(Cart) session.getAttribute("cart");
+            if(cart==null || cart.getProducts().size()==0){
+                 reqDes = request.getRequestDispatcher("/loggedUsers/payment.jsp?result=false");
+                 throw new Exception();
+            }
+            
+            if(cart!=null){
+                for(Product p:cart.getProducts()){
+                    Purchase purchase=new Purchase();
+                    purchase.setDate(new Date());
+                    purchase.setPrice(p.getPrice());
+                    purchase.setProduct(p);
+                    purchase.setUser(user);
+                    purchase.setStatus(1);
+                    purchaseDao.insertDao(purchase);
+                }
+            }
+            cartDao.deleteDao(cart);
+            session.setAttribute("cart", new Cart());
+            
+            reqDes = request.getRequestDispatcher("/loggedUsers/payment.jsp?result=true");
+        } catch (Exception ex) {
+            reqDes = request.getRequestDispatcher("/loggedUsers/payment.jsp?result=false");
+        } finally {
+            reqDes.forward(request, response);
         }
 
     }

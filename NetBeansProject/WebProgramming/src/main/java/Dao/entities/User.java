@@ -11,7 +11,7 @@ public final class User extends IdOwnerComparable{
     private String email;
     private String password;
     private String avatarPath;
-    
+    private String privileges;
     
     public User(){}
     
@@ -68,6 +68,14 @@ public final class User extends IdOwnerComparable{
     
     public String getPassword() {
         return password;
+    }
+
+    public String getPrivileges() {
+        return privileges;
+    }
+
+    public void setPrivileges(String privileges) {
+        this.privileges = privileges;
     }
     
 }

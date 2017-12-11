@@ -64,7 +64,7 @@ public class AddReviewServlet extends HttpServlet {
             User user = (User) session.getAttribute("user");
             Purchase purchase = purchaseDao.getPurchaseByIdAndUser(Integer.valueOf(request.getParameter("id")), user);
             request.setAttribute("purchase", purchase);
-            //request.setAttribute("picture", pictureDao.getPictureByProduct(purchase.getProduct()));
+            request.setAttribute("picture", pictureDao.getPictureByProduct(purchase.getProduct()));
             RequestDispatcher reqDes = request.getRequestDispatcher("/loggedUsers/addReview.jsp");
             reqDes.forward(request, response);
         } catch (Exception ex) {

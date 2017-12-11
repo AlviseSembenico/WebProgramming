@@ -9,14 +9,14 @@
 <!DOCTYPE html>
 <!doctype html>
 <html>
-    <c:import url="pageBuilder/header.jsp"/>
+    <c:import url="/pageBuilder/header.jsp"/>
     <body class="login-page">
         <div class="page-header header-filter" style="background-image: url('http://demos.creative-tim.com/material-kit-pro/assets/img/bg7.jpg'); background-size: cover; background-position: top center;">
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
                         <div class="card card-signup">
-                            <form  method="POST" action="utils/login">
+                            <form  method="POST" action="login">
                                 <div class="header header-primary text-center">
                                     <h4 class="card-title">Log in</h4>
                                     <div class="social-line">
@@ -75,7 +75,7 @@
                                 </div>
                             </form>
                             <div class="footer text-center">
-                                <a href="#pablo" class="btn btn-primary btn-simple btn-wd btn-sm">Recover your password</a>
+                                <a href="recover.jsp" class="btn btn-primary btn-simple btn-wd btn-sm">Recover your password</a>
                             </div>
                             </form>
                         </div>
@@ -85,5 +85,5 @@
             
             
             
-            <c:import url="pageBuilder/footer.jsp"/>
+            <c:import url="/pageBuilder/footer.jsp"/>
 

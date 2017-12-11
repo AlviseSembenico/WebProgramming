@@ -22,12 +22,13 @@ public interface ProductDao extends  DefaultDao, GetById{
     LinkedList<Product> getProductByCategory(String category) throws Exception;
     LinkedList<Product> getProductByReview(double min,double max) throws Exception;
 
-    public LinkedList<Product> DoQwery(String name, String region, String city, String radius, String minPrice, String maxPrice, String minRew, String maxRew, String star, String order) throws Exception;
+    public LinkedList<Product> doQwery(String name, String region, String city, String radius, String minPrice, String maxPrice, String minRew, String maxRew, String star, String order) throws Exception;
     LinkedList<Product> getProductByShop(Shop shop) throws Exception;
 
-    public LinkedList<Product> All()throws Exception;
+    public LinkedList<Product> getAllProduct()throws Exception;
 
-    public LinkedList<Product> getSimil(String category,String name);
-
+    public LinkedList<Product> getSimilar(String category,String name) throws Exception;
+    public LinkedList<Product> getCompleteName(String name) throws Exception;
+    
     public Double getStarByProduct(Product product);
 }
