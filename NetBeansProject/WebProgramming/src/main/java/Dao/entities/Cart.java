@@ -48,7 +48,7 @@ public class Cart extends IdOwnerComparable {
     }
     
     public void flush(){
-        setStatus(null);
+        oldProducts=null;
     }
 
     public int countProduct(Product product) {
@@ -64,8 +64,12 @@ public class Cart extends IdOwnerComparable {
         return oldProducts;
     }
 
-    public void setStatus(LinkedList<Product> oldProducts) {
-        this.oldProducts = oldProducts;
+    public void setStatus(LinkedList<Product> Products) {
+        
+        oldProducts = new LinkedList<Product>();
+        Products.forEach((item)->{
+            oldProducts.add(item);
+        });
     }
     
     public double getTotal()

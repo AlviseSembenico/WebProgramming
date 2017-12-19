@@ -63,9 +63,11 @@ public class CartServlet extends HttpServlet {
         try {
             HttpSession session = request.getSession();
             User user = (User) session.getAttribute("user");
-            Cart cart = (Cart) session.getAttribute("cart");
+            Cart cart = null;
+                if (user != null) 
+                    cart = cartDao.getByUser(user);
 
-            if (cart == null) 
+                if (cart == null) 
                 if (user != null) 
                     cart = cartDao.getByUser(user);
                 else 
@@ -104,7 +106,6 @@ public class CartServlet extends HttpServlet {
                     newCart = true;
                 }
                 cart.addProduct(product);
-                session.setAttribute("cart", cart);
                 if (user != null) {
                     if (newCart) {
                         cartDao.insertDao(cart);

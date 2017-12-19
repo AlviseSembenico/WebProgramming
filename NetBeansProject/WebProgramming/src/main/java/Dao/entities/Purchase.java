@@ -83,21 +83,12 @@ public class Purchase extends IdOwnerComparable{
     public void setPrice(double price) {
         this.price = price;
     }
-    
-    public Date getDate()
-    {
-        return data;
-    }
-    
-    public void setDate(Date data)
-    {
-        this.data = data;
-    }
+
     
     public String strDate()
     {
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        Date da = data;
+        Date da = date;
         return df.format(da);
     }
     

@@ -83,7 +83,8 @@ public class LoginServlet extends HttpServlet {
                         }
                         cartDao.updateDao(userCart);
                         request.getSession().setAttribute("cart", userCart);
-                    }
+                    }else
+                        cartDao.insertDao(userCart);
                 }
                 response.sendRedirect("index");
             }

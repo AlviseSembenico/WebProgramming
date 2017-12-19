@@ -32,73 +32,269 @@ Author     : Alvise
     </head>
 
     <c:import url="pageBuilder/header.jsp?trasparent=true"/>
-    <div class="wrapper">
-        <div class="page-header header-filter" style="background-image: url('assets/img/bg2.jpeg');">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        <div class="brand">
-                            <h1>Yes, we have it</h1>
-                            <h3>Whatever you look for ... we have it</h3>
+
+    <div class="header-3">
+
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <div class="carousel slide" data-ride="carousel">
+
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <div class="page-header header-filter" style="background-image: url('assets/img/dg1.jpg');">
+
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-6 text-left">
+                                        <h1 class="title">Material Kit PRO</h1>
+                                        <h4>Dolce & Gabbana is a luxury Italian fashion house founded in 1985 in Legnano by Italian designers Domenico Dolce and Stefano Gabbana. The two met in Milan in 1980 and designed for the same fashion house.</h4>
+                                        <br />
+
+                                        <div class="buttons">
+                                            <a href="#pablo" class="btn btn-primary btn-lg">
+                                                Read More
+                                            </a>
+                                            <a href="#pablo" class="btn btn-just-icon btn-white btn-simple btn-lg">
+                                                <i class="fa fa-twitter"></i>
+                                            </a>
+                                            <a href="#pablo" class="btn btn-just-icon btn-white btn-simple btn-lg">
+                                                <i class="fa fa-facebook-square"></i>
+                                            </a>
+                                            <a href="#pablo" class="btn btn-just-icon btn-white btn-simple btn-lg">
+                                                <i class="fa fa-get-pocket"></i>
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+
                     </div>
-                </div>
-            </div>
-        </div>
+                    <div class="item">
+                        <div class="page-header header-filter" style="background-image: url('assets/img/dg2.jpg');">
 
-        <!-- Carousel -->
-        <div class="wrapper">
-            <div class="" style="background-color: black">
-                <div class="section" id="carousel">
-                    <h2 style="color: white">Let you be inspired by us </h2>
-                    <div class="container" style="padding-top: 40px;">
-                        <div class="row">
-                            <div class="col-md-8 col-md-offset-2">
-
-                                <!-- Carousel Card -->
-                                <div class="card card-raised card-carousel">
-                                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                                        <div class="carousel slide" data-ride="carousel">
-
-                                            <!-- Indicators -->
-
-                                            <ol class="carousel-indicators">
-                                                <c:forEach var="i" begin="0" end="9">
-                                                    <li data-target="#carousel-example-generic" data-slide-to="${i}" <c:if test="${i == 0}"> class="active"</c:if>></li>
-                                                </c:forEach> </ol>
-
-                                            <!-- Wrapper for slides -->
-                                            <div class="carousel-inner">
-                                                <c:forEach var="i" begin="0" end="9">
-                                                    <div class="item <c:if test='${i == 0}'> active </c:if>" >
-                                                        <c:set var="picture" value="${pictureDao.getPictureByProduct(product.get(i))}"/>
-                                                        <img src="<c:out value='${picture.get(0).getPath()}'/>" style="height: 250px; width: 500px;padding-left: 250px;">
-                                                        <div class="carousel-caption"  style="padding-bottom: 150px;">
-                                                            <a href="product?id=${product.get(i).getId()}"><i class="material-icons" style="color: black">touch_app</i><h4 style="color: black"><c:out value="${product.get(i).getName()}"/></h4></a>
-                                                        </div>
-                                                    </div>
-                                                </c:forEach>
-                                            </div>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-8 col-md-offset-2 text-center">
+                                        <h1 class="title">Material Kit PRO</h1>
+                                        <h4>Dolce & Gabbana is a luxury Italian fashion house founded in 1985 in Legnano by Italian designers Domenico Dolce and Stefano Gabbana. The two met in Milan in 1980 and designed for the same fashion house.</h4>
+                                        <h6>Connect with us on:</h6>
+                                        <br />
+                                        <h6>Connect with us on:</h6>
+                                        <div class="buttons">
+                                            <a href="#pablo" class="btn btn-just-icon btn-white btn-simple btn-lg">
+                                                <i class="fa fa-twitter"></i>
+                                            </a>
+                                            <a href="#pablo" class="btn btn-just-icon btn-white btn-simple btn-lg">
+                                                <i class="fa fa-facebook-square"></i>
+                                            </a>
+                                            <a href="#pablo" class="btn btn-just-icon btn-white btn-simple btn-lg">
+                                                <i class="fa fa-google-plus"></i>
+                                            </a>
+                                            <a href="#pablo" class="btn btn-just-icon btn-white btn-simple btn-lg">
+                                                <i class="fa fa-instagram"></i>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
 
+                        </div>
 
-                                <!-- Controls -->
-                                <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                                    <i class="material-icons">keyboard_arrow_left</i>
-                                </a>
-                                <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                                    <i class="material-icons">keyboard_arrow_right</i>
+                    </div>
+                    <div class="item">
+                        <div class="page-header header-filter" style="background-image: url('assets/img/dg2.jpg');">
+
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-8 col-md-offset-2 text-center">
+                                        <h1 class="title">Material Kit PRO</h1>
+                                        <h4>Dolce & Gabbana is a luxury Italian fashion house founded in 1985 in Legnano by Italian designers Domenico Dolce and Stefano Gabbana. The two met in Milan in 1980 and designed for the same fashion house.</h4>
+                                        <br />
+                                        <h6>Connect with us on:</h6>
+                                        <div class="buttons">
+                                            <a href="#pablo" class="btn btn-just-icon btn-white btn-simple btn-lg">
+                                                <i class="fa fa-twitter"></i>
+                                            </a>
+                                            <a href="#pablo" class="btn btn-just-icon btn-white btn-simple btn-lg">
+                                                <i class="fa fa-facebook-square"></i>
+                                            </a>
+                                            <a href="#pablo" class="btn btn-just-icon btn-white btn-simple btn-lg">
+                                                <i class="fa fa-google-plus"></i>
+                                            </a>
+                                            <a href="#pablo" class="btn btn-just-icon btn-white btn-simple btn-lg">
+                                                <i class="fa fa-instagram"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="item">
+                        <div class="page-header header-filter" style="background-image: url('http://www.tecnologici.net/wp-content/uploads/2017/09/re.png');">
+
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-7 col-md-offset-5 text-right">
+                                        <h1 class="title">Meet new Zenfone 4</h1>
+                                        <h4>Best smartphone's camera</h4>
+                                        <br />
+
+                                        <div class="buttons">
+                                            <a href="#pablo" class="btn btn-white btn-simple btn-lg">
+                                                <i class="material-icons">share</i> Share Offer
+                                            </a>
+                                            <a href="#pablo" class="btn btn-danger btn-lg">
+                                                <i class="material-icons">shopping_cart</i> Shop Now
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="item">
+                        <div class="page-header header-filter" style="background-image: url('https://9to5toys.files.wordpress.com/2017/01/dyson-am09-sale-01.jpg?quality=82&strip=all&strip=all');">
+
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-7 col-md-offset-5 text-right">
+                                        <h1 class="title">Refresh you life</h1>
+                                        <h4>Try new Dyson fanless humidifier</h4>
+                                        <br />
+
+                                        <div class="buttons">
+                                            <a href="#pablo" class="btn btn-white btn-simple btn-lg">
+                                                <i class="material-icons">share</i> Share Offer
+                                            </a>
+                                            <a href="#pablo" class="btn btn-danger btn-lg">
+                                                <i class="material-icons">shopping_cart</i> Shop Now
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Controls -->
+                <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                    <i class="material-icons">keyboard_arrow_left</i>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                    <i class="material-icons">keyboard_arrow_right</i>
+                </a>
+            </div>
+        </div>
+
+    </div>
+    <div class="testimonials-1 section-gray" >
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 text-center">
+                    <h2 class="title">Our Clients Love Us</h2>
+                    <h5 class="description">You need more information? Check what other persons are saying about our product. They are very happy with their purchase.</h5>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card card-testimonial">
+                        <div class="icon">
+                            <i class="material-icons">format_quote</i>
+                        </div>
+                        <div class="card-content">
+                            <h5 class="card-description">
+                                Your products, all the kits that I have downloaded from your site and worked with are sooo cool! I love the color mixtures, cards... everything. Keep up the great work!
+                            </h5>
+                        </div>
+
+                        <div class="footer">
+                            <h4 class="card-title">Alec Thompson</h4>
+                            <h6 class="category">@alecthompson</h6>
+                            <div class="card-avatar">
+                                <a href="#pablo">
+                                    <img class="img" src="assets/img/faces/card-profile1-square.jpg">
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- End Carousel Card -->
+
+                <div class="col-md-4">
+                    <div class="card card-testimonial">
+                        <div class="icon">
+                            <i class="material-icons">format_quote</i>
+                        </div>
+                        <div class="card-content">
+                            <h5 class="card-description">
+                                "Don't be scared of the truth because we need to restart the human foundation in truth. That's why I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is not so attractive"
+                            </h5>
+                        </div>
+
+                        <div class="footer">
+                            <h4 class="card-title">Gina Andrew</h4>
+                            <h6 class="category">@ginaandrew</h6>
+                            <div class="card-avatar">
+                                <a href="#pablo">
+                                    <img class="img" src="assets/img/faces/card-profile4-square.jpg">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card card-testimonial">
+                        <div class="icon">
+                            <i class="material-icons">format_quote</i>
+                        </div>
+                        <div class="card-content">
+                            <h5 class="card-description">
+                                "Your products, all the kits that I have downloaded from your site and worked with are sooo cool! I love the color mixtures, cards... everything. Keep up the great work!"
+                            </h5>
+                        </div>
+
+                        <div class="footer">
+                            <h4 class="card-title">George West</h4>
+                            <h6 class="category">@georgewest</h6>
+                            <div class="card-avatar">
+                                <a href="#pablo">
+                                    <img class="img" src="assets/img/faces/card-profile2-square.jpg">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
+
         </div>
     </div>
+
 
 
 

@@ -17,7 +17,7 @@
                         <img src="https://yt3.ggpht.com/-M2f5Vvz_KKk/AAAAAAAAAAI/AAAAAAAAAAA/uO5F4ZduJQA/s900-c-k-no-mo-rj-c0xffffff/photo.jpg" class="img img-raised img-rounded" alt="" />
                         <img src="https://lh3.googleusercontent.com/YtXTsa-6SaaMl02-OUo8iRztlX5Thu4aCLavunIV1M5hm9y4ySTPpMjpY44fL4ayz7Se=w300" class="img img-raised img-rounded" alt="" />
                         <img src="https://lh5.ggpht.com/SUe5jqmdPJoayDWQ8jhFaH3ElGAphr66djomgxixm36gG1qWiI3SlPR4DANdBRpRikXw=w170" class="img img-raised img-rounded" alt="" />
-                        <img src="https://assets.aftership.com/couriers/svg/italy-sda.svg" class="img img-raised img-rounded" alt="" />
+                        <img src="/assets/img/logo/sda.png" class="img img-raised img-rounded" alt="" />
                     </div>
                 </div>
                 <div class="col-md-3">

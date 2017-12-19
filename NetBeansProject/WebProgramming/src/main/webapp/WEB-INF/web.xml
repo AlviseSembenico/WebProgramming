@@ -54,8 +54,6 @@
     <servlet>
         <servlet-name>Payment</servlet-name>
         <servlet-class>servlets.pay.servlet.PayServlet</servlet-class>
-        <servlet-name>addReview</servlet-name>
-        <servlet-class>servlets.addReview.AddReviewServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>payServlet</servlet-name>
@@ -64,10 +62,6 @@
     <servlet>
         <servlet-name>Purchases</servlet-name>
         <servlet-class>servlets.purchase.PurchaseServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>AddAnomaly</servlet-name>
-        <servlet-class>servlets.addAnomaly.AddAnomalyServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AddReview</servlet-name>
@@ -124,11 +118,9 @@
     <servlet-mapping>
         <servlet-name>AddAnomaly</servlet-name>
         <url-pattern>/AddAnomaly</url-pattern>
-        <servlet-name>AddAnomaly</servlet-name>
-        <url-pattern>/addAnomaly</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>addReview</servlet-name>
+        <servlet-name>AddReview</servlet-name>
         <url-pattern>/addReview</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
