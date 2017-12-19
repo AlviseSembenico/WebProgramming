@@ -280,7 +280,9 @@
                                                 </div>
                                             </div>
                                             <c:if test="${(i+1)%3==0 && i != begin}"> </div> <div class="row"></c:if>
-                                        </c:forEach>  
+                                        </c:forEach> 
+                                        </div>
+                                        <div class="row">                                             
                                         <u class="pagination pagination-info">
                                             <li><a <c:if test="${(begin-9)>=0}">href="result?name=<c:out value="${name}"/>&begin=<c:out value="${begin-9}"/>"</c:if> style="color: black" >&lt; prev</a></li>
                                                 <c:forEach var="i" begin="0" end="${len}">
@@ -290,6 +292,7 @@
                                                 </c:forEach>
                                             <li><a <c:if test="${(begin+9)< len}">href="result?name=<c:out value="${name}"/>&begin=<c:out value="${begin+9}"/>"</c:if> style="color: black">next &gt;</a></li>
                                             </u>
+                                        </div>
                                     </c:when>
                                     <c:otherwise>
                                         <h2 class="section-title text-center"style="margin-top: 150px;"> There is no Product with it's name</h2>
