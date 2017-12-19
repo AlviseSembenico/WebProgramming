@@ -77,7 +77,7 @@
     </servlet>
     <servlet>
         <servlet-name>AddAnomaly</servlet-name>
-        <servlet-class>servlets.addReview.AddAnomalyServlet</servlet-class>
+        <servlet-class>servlets.addAnomaly.AddAnomalyServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>addReview</servlet-name>
@@ -94,6 +94,26 @@
     <servlet>
         <servlet-name>resetServlet</servlet-name>
         <servlet-class>servlets.resetpass.resetServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Notifiche</servlet-name>
+        <servlet-class>servlet.notifiche.Notifiche</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>resolve</servlet-name>
+        <servlet-class>servlets.resolveAnomaly.resolve</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>confirm</servlet-name>
+        <servlet-class>servlets.register.confirm</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>reject</servlet-name>
+        <servlet-class>servlets.resolveAnomaly.reject</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>updateReadReview</servlet-name>
+        <servlet-class>servlet.readReviews.updateReadReview</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -162,6 +182,26 @@
     <servlet-mapping>
         <servlet-name>resetServlet</servlet-name>
         <url-pattern>/reset</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Notifiche</servlet-name>
+        <url-pattern>/notifiche</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>resolve</servlet-name>
+        <url-pattern>/resolve</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>confirm</servlet-name>
+        <url-pattern>/confirm</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>reject</servlet-name>
+        <url-pattern>/reject</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>updateReadReview</servlet-name>
+        <url-pattern>/readReview</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

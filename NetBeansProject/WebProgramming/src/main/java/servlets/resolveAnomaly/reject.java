@@ -3,42 +3,70 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package servlets.recover;
+package servlets.resolveAnomaly;
 
+import Dao.AnomaliesDao;
 import Dao.UserDao;
 import Dao.entities.User;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.mail.MessagingException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import servlets.recover.recover;
 import system.eMailSender;
 
 /**
  *
  * @author zappi
  */
-@WebServlet(name = "recover", urlPatterns = {"/recover"})
-public class recover extends HttpServlet {
+public class reject extends HttpServlet {
 
+    private AnomaliesDao anomaliesDao;
     private UserDao userDao;
-    private eMailSender sender;
 
     @Override
     public void init() throws ServletException {
-        sender = new eMailSender();
+        anomaliesDao = (AnomaliesDao) super.getServletContext().getAttribute("anomaliesDao");
+        if (anomaliesDao == null) {
+            throw new ServletException("Impossible to get dao factory for user storage system");
+        }
         userDao = (UserDao) super.getServletContext().getAttribute("userDao");
         if (userDao == null) {
             throw new ServletException("Impossible to get dao factory for user storage system");
         }
     }
 
+    /*
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        User user = null;
+        try {
+            user = userDao.getUserById(id);
+        } catch (Exception ex) {
+            Logger.getLogger(reject.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        RequestDispatcher reqDes = null;
+        request.setAttribute("u", user);
+        request.setAttribute("mode", "reject");
+        reqDes = request.getRequestDispatcher("/email.jsp");
+        reqDes.forward(request, response);
+    }
+    
+    private eMailSender sender = new eMailSender();
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -58,12 +86,8 @@ public class recover extends HttpServlet {
             user = null;
         }
         if (user != null) {
-            String link = request.getRequestURL().toString();
-            link = link.substring(0, 36);
             try {
-                sender.sendRecoverLink(user.getId(), link, user.getEmail());
-            } catch (UnsupportedEncodingException ex) {
-                Logger.getLogger(recover.class.getName()).log(Level.SEVERE, null, ex);
+                sender.sendCustomMessage(user.getEmail(), request.getParameter("object"), request.getParameter("message"));
             } catch (MessagingException ex) {
                 Logger.getLogger(recover.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -74,6 +98,7 @@ public class recover extends HttpServlet {
         }
 
         reqDes.forward(request, response);
+
     }
 
     /**

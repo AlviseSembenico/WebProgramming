@@ -22,6 +22,7 @@ public class LoginServlet extends HttpServlet {
 
     private UserDao userDao;
     private CartDao cartDao;
+
     @Override
     public void init() throws ServletException {
         userDao = (UserDao) super.getServletContext().getAttribute("userDao");
@@ -57,18 +58,23 @@ public class LoginServlet extends HttpServlet {
             if (user == null) {
                 response.sendRedirect(response.encodeRedirectURL(contextPath + "login" + "?error=true"));
             } else {
-                request.getSession().setAttribute("user", user);
-                Cart cart = (Cart) request.getSession().getAttribute("cart");
-                if (cart != null) {
-                    cart.setUser(user);
-                    request.getSession().setAttribute("cart", cart);
+                if (user.getConferma().equals("SI")) {
+                    request.getSession().setAttribute("user", user);
+                    Cart cart = (Cart) request.getSession().getAttribute("cart");
+                    if (cart != null) {
+                        cart.setUser(user);
+                        request.getSession().setAttribute("cart", cart);
+                    }
+                    response.sendRedirect(response.encodeRedirectURL(contextPath + "index"));
                 }
-                response.sendRedirect(response.encodeRedirectURL(contextPath+"index"));
+                else
+                    response.sendRedirect(response.encodeRedirectURL(contextPath + "login" + "?error=true"));
             }
         } catch (Exception e) {
             Log.write(e.toString());
         }
     }
+
     /**
      * Returns a short description of the servlet.
      *

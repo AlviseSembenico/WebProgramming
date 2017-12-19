@@ -73,10 +73,10 @@
                                                 <div class="card-content">
                                                     <h4 class="card-title">
                                                     </h4>
-                                                    
+
                                                     <div class="footer">
                                                         <div class="price-container">
-                                                            
+
                                                         </div>
                                                         <div class="stats">
                                                         </div>
@@ -93,7 +93,7 @@
                                         </div>
                                     </div>
 
-                                  
+
                                 </div>
                                 <div class="col-md-5 text-center">
                                     <div class="social text-center">
@@ -101,19 +101,18 @@
                                     </div>
                                     <form action="addAnomaly" method="POST">
                                         <div class="card-content">
-
                                             <div class=" text-center">
                                                 <select class="selectpicker" name="tag" data-style="btn btn-primary btn-round" title="Single Select" data-size="7">
                                                     <option disabled selected>Choose problem</option>
-                                                    <option value="1">Where is my order?</option>
-                                                    <option value="2">Problem with my order</option>
-                                                    <option value="3">Modify an order</option>
-                                                    <option value="4">Return or refund</option>
-                                                    <option value="5">Isgreat</option>
-                                                    <option value="6">Payments</option>
-                                                    <option value="7">Invoice request</option>
-                                                    <option value="8">Sale voucher</option>
-                                                    <option value="9">Other questions</option>
+                                                    <option value="Where is my order?">Where is my order?</option>
+                                                    <option value="Problem with my order">Problem with my order</option>
+                                                    <option value="Modify an order">Modify an order</option>
+                                                    <option value="Return or refund">Return or refund</option>
+                                                    <option value="Isgreat">Isgreat</option>
+                                                    <option value="Payments">Payments</option>
+                                                    <option value="Invoice request">Invoice request</option>
+                                                    <option value="Sale voucher">Sale voucher</option>
+                                                    <option value="Other questions">Other questions</option>
                                                 </select>
                                             </div>
                                             <div class="row text-center">

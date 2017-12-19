@@ -9,13 +9,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import system.Log;
+import system.eMailSender;
 
 public class RegisterServlet extends HttpServlet {
 
     private UserDao userDao;
+    private eMailSender sender;
 
     @Override
     public void init() throws ServletException {
+        sender = new eMailSender();
         userDao = (UserDao) super.getServletContext().getAttribute("userDao");
         if (userDao == null) {
             throw new ServletException("Impossible to get dao factory for user storage system");
@@ -43,12 +46,15 @@ public class RegisterServlet extends HttpServlet {
                 contextPath += "/";
             }
             try {
-                User user = new User(firstName, lastName, email, password);
+                User user = new User(firstName, lastName, email, password, "NO");
                 int res = userDao.insertDao(user);
                 if (res == 0) {
                     response.sendRedirect(response.encodeRedirectURL(contextPath + "/register" + "?error=true"));
                 } else {
-                    request.getSession().setAttribute("user", user);
+                    user = userDao.getUserByEmail(email);
+                    String link = request.getRequestURL().toString();
+                    link = link.substring(0, 36);
+                    sender.sendLinkConfirm(user.getId(), link, email);
                     response.sendRedirect(response.encodeRedirectURL(contextPath + "index"));
                 }
             } catch (Exception e) {

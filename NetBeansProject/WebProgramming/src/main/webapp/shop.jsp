@@ -1,9 +1,3 @@
-<%@page import="Dao.entities.Shop"%>
-<%@page import="Dao.ShopDao"%>
-<%@page import="Dao.entities.Picture"%>
-<%@page import="Dao.PictureDao"%>
-<%@page import="Dao.ProductDao" %>
-<%@page import="Dao.entities.Product"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -53,7 +47,7 @@
 
                                                             </c:otherwise>
                                                         </c:choose>
-                                                         <i class="a-icon a-icon-star a-star-${reviews[i].getQuality()}"></i>
+                                                        <i class="a-icon a-icon-star a-star-${reviews[i].getQuality()}"></i>
                                                         <h6 class="text-muted">Sul prodotto: <br/>${reviews[i].getProduct().getName()}</h6>
                                                         <p>${reviews[i].getDescription()}</p>
                                                     </div>
@@ -114,3 +108,6 @@
             </div>
         </div> 
         <c:import url="pageBuilder/footer.jsp"/>
+
+
+
