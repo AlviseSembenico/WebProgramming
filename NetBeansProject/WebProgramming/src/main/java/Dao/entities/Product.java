@@ -12,6 +12,7 @@ public class Product extends IdOwnerComparable {
     private double price;
     private String category;
     private Shop shop;
+    private int retractable;
 
     public String getName() {
         return name;
@@ -52,6 +53,17 @@ public class Product extends IdOwnerComparable {
     public void setShop(Shop shop) {
         this.shop = shop;
     }
+    
+    public void setRetractable(int r)
+    {
+        retractable = r;
+    }
+    
+    public int getRetractable()
+    {
+        return retractable;
+    }
+
     
     @Override
     public boolean equals(Object o){

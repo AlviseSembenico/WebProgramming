@@ -1,5 +1,7 @@
 package Dao.entities;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
@@ -14,6 +16,20 @@ public class Purchase extends IdOwnerComparable{
     private Date date;
     private double price;
 
+    public Purchase()
+    {
+        
+    }
+    
+    
+    public Purchase(Product p,User u, int s, Date d)
+    {
+        setProduct(p);
+        setUser(u);
+        setStatus(s);
+        setDate(d);
+    }
+    
     public int getId() {
         return id;
     }
@@ -68,7 +84,35 @@ public class Purchase extends IdOwnerComparable{
         this.price = price;
     }
     
+    public Date getDate()
+    {
+        return data;
+    }
     
+    public void setDate(Date data)
+    {
+        this.data = data;
+    }
     
+    public String strDate()
+    {
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        Date da = data;
+        return df.format(da);
+    }
     
+    public String strStatus()
+    {
+        String stts="";
+        
+        switch(status)
+        {
+            case 0: stts = "Ordered"; break;
+            case 1: stts = "Sent"; break;
+            case 2: stts = "Arrived"; break;
+            case 3: stts = "In Shop"; break;
+        }
+        
+        return stts;
+    }
 }

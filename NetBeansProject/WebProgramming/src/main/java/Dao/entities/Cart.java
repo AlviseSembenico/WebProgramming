@@ -67,4 +67,30 @@ public class Cart extends IdOwnerComparable {
     public void setStatus(LinkedList<Product> oldProducts) {
         this.oldProducts = oldProducts;
     }
+    
+    public double getTotal()
+    {
+        double res = 0;
+        for(Product p:products)            
+            res+=p.getPrice();
+        return res;
+    }
+    
+    public void emptyCart()
+    {
+        products.clear();
+    }
+    
+    
+    public int getRetract()
+    {
+        
+        for(Product p:products)
+        {
+            if(!(p.getRetractable() > 0))
+                return 0;
+        }
+        return 1;
+    }
+    
 }
