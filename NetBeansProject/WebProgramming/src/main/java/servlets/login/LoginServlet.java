@@ -8,10 +8,14 @@ package servlets.login;
 import Dao.*;
 import Dao.entities.*;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import system.Log;
 
 /**
@@ -35,6 +39,19 @@ public class LoginServlet extends HttpServlet {
         }
     }
 
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        HttpSession session = request.getSession(false);
+        if (session.getAttribute("user") == null) {
+            RequestDispatcher reqDes = request.getRequestDispatcher("/publicUsers/login.jsp");
+            reqDes.forward(request, response);
+        } else {
+            response.sendRedirect("index");
+        }
+
+    }
+
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -49,29 +66,30 @@ public class LoginServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        String contextPath = getServletContext().getContextPath();
-        if (!contextPath.endsWith("/")) {
-            contextPath += "/";
-        }
+        User user = null;
         try {
-            User user = userDao.getUserByEmailPassword(email, password);
+            user = userDao.getUserByEmailPassword(email, password);
             if (user == null) {
-                response.sendRedirect(response.encodeRedirectURL(contextPath + "login" + "?error=true"));
+                response.sendRedirect(response.encodeRedirectURL("login" + "?error=true"));
             } else {
+                    Cart userCart = cartDao.getByUser(user);
+                    if (userCart != null) {
+                        sessCart.setUser(user);
+                        for (Product p : sessCart.getProducts()) {
+                            userCart.addProduct(p);
+                        }
+                        cartDao.updateDao(userCart);
+                        request.getSession().setAttribute("cart", userCart);
                 if (user.getConferma().equals("SI")) {
                     request.getSession().setAttribute("user", user);
                     Cart cart = (Cart) request.getSession().getAttribute("cart");
-                    if (cart != null) {
-                        cart.setUser(user);
-                        request.getSession().setAttribute("cart", cart);
-                    }
                     response.sendRedirect(response.encodeRedirectURL(contextPath + "index"));
                 }
                 else
                     response.sendRedirect(response.encodeRedirectURL(contextPath + "login" + "?error=true"));
             }
-        } catch (Exception e) {
-            Log.write(e.toString());
+        } catch (Exception ex) {
+            Log.write(ex.toString());
         }
     }
 

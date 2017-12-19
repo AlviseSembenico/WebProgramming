@@ -113,29 +113,8 @@
                                     </div>
                                 </div>
                             </div>
-
-
-
-                            <div class="row pick-size">
-                                <div class="col-md-6 col-sm-6">
-                                    <label>Select color</label>
-                                    <select class="selectpicker" data-style="select-with-transition" data-size="7">
-                                        <option value="1">Rose </option>
-                                        <option value="2">Gray</option>
-                                        <option value="3">White</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-6 col-sm-6">
-                                    <label>Select size</label>
-                                    <select class="selectpicker" data-style="select-with-transition" data-size="7">
-                                        <option value="1">Small </option>
-                                        <option value="2">Medium</option>
-                                        <option value="3">Large</option>
-                                    </select>
-                                </div>
-                            </div>
                             <div class="row text-right">
-                                <form method="POST" action="product">
+                                <form method="POST" action="cart">
                                     <input name="pid" style="visibility: hidden;" value="<c:out value="${product.getId()}"/>" />
                                     <button class="btn btn-rose btn-round" type="submit" >Add to Ca
                                         </div>
@@ -145,12 +124,69 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                    <div class="row">
+                        <div class="title-row" style="padding-top: 50px"> <h3>What people thinks about this product </h3></div></br>
 
-                <c:import url="pageBuilder/footer.jsp"/>
-                <script type="text/javascript">
-                    $(document).ready(function () {
-                    $("#flexiselDemo1").flexisel({
+                        <c:choose>
+                            <c:when test="${reviews[0] != null}">
+                                <c:forEach var="i" begin="${begin}" end="${end}">
+                                    <div class="col-md-4">                                
+                                        <div class="media-area">
+                                            <div class="media">
+                                                <a class="pull-left" href="">
+                                                    <div class="avatar">
+                                                        <img class="media-object" src="${reviews[i].getCreator().getAvatarPath()}">
+                                                    </div>
+                                                </a>
+                                                <div class="media-body">
+                                                    <c:choose>
+                                                        <c:when test="${reviews[i].getCreator().getId() == sessionScope.user.getId()}">
+                                                            <h4 class="media-heading">you  <small>· ${reviews[i].DiffTime()} days ago</small></h4>
+
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <h4 class="media-heading">${reviews[i].getCreator().getFirstName()} ${reviews[i].getCreator().getLastName()}  <small>· ${reviews[i].DiffTime()} days ago</small></h4>
+
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                    <i class="a-icon a-icon-star a-star-${reviews[i].getQuality()}"></i>
+                                                    <h6 class="text-muted">Sul prodotto: <br/>${reviews[i].getProduct().getName()}</h6>
+                                                    <p>${reviews[i].getDescription()}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <c:if test="${(i+1)%3==0 && i != begin}"> </div>  <hr/> <div class="row"> </c:if>
+
+                                </c:forEach>
+                            </c:when>
+                            <c:otherwise>
+                                <h2>Nessun commento...</h2>
+                            </c:otherwise>
+                        </c:choose>
+
+                    </div>
+                    <u class="pagination pagination-info">
+                        <li><a <c:if test="${(begin-11)>=0}">href="product?id=<c:out value="${id}"/>&begin=<c:out value="${begin-11}"/>"</c:if> style="color: black" >&lt; prev</a></li>
+                            <c:forEach var="i" begin="0" end="${len}">
+                                <c:if test="${i%11==0 && i != len}">
+                                <li><a href="product?id=<c:out value="${id}"/>&begin=<c:out value="${i}"/>" style="color: black"><c:out value="${Integer(i/11)+1}"/></a></li>
+                                </c:if>
+                            </c:forEach>
+
+                        <li><a <c:if test="${(begin+11)< len}">href="product?id=<c:out value="${id}"/>&begin=<c:out value="${begin+11}"/>"</c:if> style="color: black">next &gt;</a></li>
+                        </u>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        <c:import url="pageBuilder/footer.jsp"/>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#flexiselDemo1").flexisel({
                     visibleItems: 4,
                             itemsToScroll: 1,
                             animationSpeed: 400,

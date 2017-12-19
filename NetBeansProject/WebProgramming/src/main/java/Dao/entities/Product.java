@@ -52,6 +52,13 @@ public class Product extends IdOwnerComparable {
     public void setShop(Shop shop) {
         this.shop = shop;
     }
-
-
+    
+    @Override
+    public boolean equals(Object o){
+        if(!(o instanceof Product))
+            return false;
+        return this.id==((Product)o).getId();
+    }
+    
+    
 }

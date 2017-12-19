@@ -32,10 +32,10 @@ public class JdbcAnomalieDao extends JdbcUtilities implements AnomaliesDao {
 
     @Override
     public LinkedList<Anomalies> getAnomaliesByPurchase(Purchase p) throws Exception {
-        HashMap<Object, String> mappa = new HashMap<Object, String>();
-        mappa.put(p.getId(), "purchase_id");
-        LinkedList<Anomalies> res = new LinkedList<Anomalies>();
-        for (Object o : super.getObject(Anomalies.class, null, tableName, null)) {
+        HashMap<Object,String> mappa=new HashMap<Object,String>();
+        mappa.put(p.getId(),"purchase_id" );
+        LinkedList<Anomalies> res=new LinkedList<Anomalies> ();
+        for(Object o:super.getObject(Anomalies.class, null, tableName,null))
             res.add((Anomalies) o);
         }
         return res;

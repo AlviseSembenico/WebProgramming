@@ -5,7 +5,6 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 <footer class="footer footer-black footer-big">
     <div class="container">
 
@@ -109,11 +108,47 @@
             Copyright &copy;
             <script>
                 document.write(new Date().getFullYear())
-            </script> Creative Tim All Rights Reserved.
+            </script> Influencer All Rights Reserved.
         </div>
     </div>
 </footer>
-
+<div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    <i class="material-icons">clear</i>
+                </button>
+                <h4 class="modal-title">What did just happened?</h4>
+            </div>
+            <div class="modal-body">
+                <p>Something went wrong, please try not to hack our system, be careful we are Anonymous.   
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger btn-simple" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    <i class="material-icons">clear</i>
+                </button>
+                <h4 class="modal-title">Everything went smooth.</h4>
+            </div>
+            <div class="modal-body">
+                <p>Action completed successfully.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger btn-simple" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 </body>
@@ -146,8 +181,6 @@
 
 <!--    Plugin For Google Maps   -->
 <script  type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBz0hDYK6mqMcXqEx86quMQJzrgg3aFEPA "></script>
-<!--    Plugin for 3D images animation effect, full documentation here: https://github.com/drewwilson/atvImg    -->
-<script src="assets/js/atv-img-animation.js" type="text/javascript"></script>
 
 <!--    Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc    -->
 
@@ -156,5 +189,4 @@
 
 
 <script src="http://demos.creative-tim.com/material-kit-pro/assets/js/jquery.flexisel.js"></script>
-<script src="../assets/js/atv-img-animation.js" type="text/javascript"></script>
 <script src="assets/js/material-kit.js" type="text/javascript"></script>

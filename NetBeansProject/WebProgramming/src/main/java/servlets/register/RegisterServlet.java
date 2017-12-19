@@ -3,6 +3,7 @@ package servlets.register;
 import Dao.UserDao;
 import Dao.entities.User;
 import java.io.IOException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,6 +24,20 @@ public class RegisterServlet extends HttpServlet {
         if (userDao == null) {
             throw new ServletException("Impossible to get dao factory for user storage system");
         }
+    }
+    
+    
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        HttpSession session = request.getSession(false);
+        if (session.getAttribute("user") == null) {
+            RequestDispatcher reqDes = request.getRequestDispatcher("/publicUsers/register.jsp");
+            reqDes.forward(request, response);
+        } else {
+             response.sendRedirect("./index");
+        }
+
     }
 
     /**

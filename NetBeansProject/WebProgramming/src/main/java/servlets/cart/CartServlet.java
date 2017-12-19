@@ -5,10 +5,10 @@
  */
 package servlets.cart;
 
-import Dao.CartDao;
-import Dao.PictureDao;
-import Dao.ProductDao;
+import Dao.*;
 import Dao.entities.Cart;
+import Dao.entities.Product;
+import Dao.entities.User;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import servlets.product.ProductServlet;
+import system.Log;
 
 /**
  *
@@ -60,17 +61,20 @@ public class CartServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            HttpSession session = request.getSession(false);
-           // User user;
-            Cart cart;
-            //if (session != null) {
-               // user = (User) session.getAttribute("user");
-            //}
-            cart = (Cart) session.getAttribute("cart");
+            HttpSession session = request.getSession();
+            User user = (User) session.getAttribute("user");
+            Cart cart = (Cart) session.getAttribute("cart");
+
+            if (cart == null) 
+                if (user != null) 
+                    cart = cartDao.getByUser(user);
+                else 
+                    cart = new Cart();  
+            
             //request.setAttribute("cart", cart);
             request.setAttribute("pictureDao", pictureDao);
             request.setAttribute("productDao", productDao);
-            request.setAttribute("cart", cart);
+            session.setAttribute("cart", cart);
             RequestDispatcher reqDes = request.getRequestDispatcher("/cart.jsp");
             reqDes.forward(request, response);
 
@@ -79,6 +83,71 @@ public class CartServlet extends HttpServlet {
         }
     }
 
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        RequestDispatcher reqDes = null;
+        try {
+            HttpSession session = request.getSession();
+            User user = (User) session.getAttribute("user");
+            int pid = Integer.parseInt(request.getParameter("pid"));
+            if (request.getParameter("delete") != null) {
+                doDelete(request, response);
+                return;
+            }
+            Product product = productDao.getProductById(pid);
+            if (product != null) {
+                Cart cart = (Cart) session.getAttribute("cart");
+                boolean newCart = false;
+                if (cart == null) {
+                    cart = new Cart((User) request.getSession(false).getAttribute("user"));
+                    newCart = true;
+                }
+                cart.addProduct(product);
+                session.setAttribute("cart", cart);
+                if (user != null) {
+                    if (newCart) {
+                        cartDao.insertDao(cart);
+                    } else {
+                        cartDao.updateDao(cart);
+                    }
+                }
+            }
+            reqDes = request.getRequestDispatcher("/cart.jsp?result=true");
+        } catch (Exception ex) {
+            reqDes = request.getRequestDispatcher("/cart.jsp?result=false");
+        } finally {
+            reqDes.forward(request, response);
+        }
+    }
+
+    @Override
+    protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        RequestDispatcher reqDes = null;
+        try {
+            HttpSession session = request.getSession();
+            User user = (User) session.getAttribute("user");
+            int pid = Integer.parseInt(request.getParameter("pid"));
+            Product product = productDao.getProductById(pid);
+            if (product != null) {
+                Cart cart = (Cart) session.getAttribute("cart");
+                if (cart == null) {
+                    cart = new Cart((User) request.getSession(false).getAttribute("user"));
+                }
+                cart.removeProduct(product);
+                
+                if (user != null) {
+                    cartDao.updateDao(cart);
+                }
+            }
+            reqDes = request.getRequestDispatcher("/cart.jsp?result=true");
+        } catch (Exception ex) {
+            Log.write(ex.toString());
+            reqDes = request.getRequestDispatcher("/cart.jsp?result=false");
+        } finally {
+            reqDes.forward(request, response);
+        }
+    }
 
     /**
      * Returns a short description of the servlet.

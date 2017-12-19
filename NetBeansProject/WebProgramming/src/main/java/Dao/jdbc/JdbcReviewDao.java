@@ -55,10 +55,14 @@ public class JdbcReviewDao extends JdbcUtilities implements ReviewDao {
 
     @Override
     public LinkedList<Review> getRewiewByProduct(Product product) throws Exception {
-        HashMap<Object, String> mappa = new HashMap<Object, String>();
-        mappa.put(product.getId(), "products_id");
-        LinkedList<Review> res = new LinkedList<Review>();
-        for (Object o : super.getObject(Review.class, map, tableName, mappa)) {
+        if (!checkConnection()) {
+            return null;
+        }
+        LinkedList<Review> res = new LinkedList<>();
+        String query = "select distinct R.* from reviews R join products p on R.products_id = ? order by R.creation_date desc";
+        PreparedStatement stmt = connection.prepareStatement(query);
+        stmt.setDouble(1, product.getId());
+        for (Object o : super.fillResult(Review.class, map, stmt.executeQuery())) {
             res.add((Review) o);
         }
         return res;

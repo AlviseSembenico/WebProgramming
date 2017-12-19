@@ -86,4 +86,12 @@ public final class User extends IdOwnerComparable {
         return password;
     }
 
+    public String getPrivileges() {
+        return privileges;
+    }
+
+    public void setPrivileges(String privileges) {
+        this.privileges = privileges;
+    }
+    
 }

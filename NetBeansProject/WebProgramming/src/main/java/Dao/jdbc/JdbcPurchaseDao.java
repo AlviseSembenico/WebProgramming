@@ -53,7 +53,7 @@ public class JdbcPurchaseDao extends JdbcUtilities implements PurchaseDao{
     public LinkedList<Purchase> getPurchaseByUser(User user) throws Exception{
         LinkedList<Purchase> res=new LinkedList<Purchase> ();
         HashMap<Object,String> mappa=new HashMap<Object,String>();
-        mappa.put(user.getId(),"user_id");
+        mappa.put(user.getId(),"users_id");
         for(Object o:super.getObject(Purchase.class, map, tableName,mappa))
             res.add((Purchase) o);
         return res;

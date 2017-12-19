@@ -101,7 +101,7 @@
                             <div class="card card-profile card-plain">
                                 <div class="card-avatar">
                                     <a href="#pablo">
-                                        <img class="img" src="assets/img/Us/Franci.jpg" />
+                                        <img class="img" src="assets/img/Us/Franci-1.jpg" />
                                     </a>
                                 </div>
 
