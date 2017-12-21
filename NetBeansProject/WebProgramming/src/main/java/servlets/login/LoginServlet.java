@@ -65,13 +65,15 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-
         User user = null;
         try {
             user = userDao.getUserByEmailPassword(email, password);
             if (user == null) {
                 response.sendRedirect(response.encodeRedirectURL("login" + "?error=true"));
             } else {
+                if (user.getConferma().equals("SI")) {
+                    request.getSession().setAttribute("user", user);
+                    Cart sessCart = (Cart) request.getSession().getAttribute("cart");
                     Cart userCart = cartDao.getByUser(user);
                     if (userCart != null) {
                         sessCart.setUser(user);
@@ -80,13 +82,11 @@ public class LoginServlet extends HttpServlet {
                         }
                         cartDao.updateDao(userCart);
                         request.getSession().setAttribute("cart", userCart);
-                if (user.getConferma().equals("SI")) {
-                    request.getSession().setAttribute("user", user);
-                    Cart cart = (Cart) request.getSession().getAttribute("cart");
-                    response.sendRedirect(response.encodeRedirectURL(contextPath + "index"));
+                    }
+                    response.sendRedirect("index");
+                } else {
+                    response.sendRedirect("login" + "?error=true");
                 }
-                else
-                    response.sendRedirect(response.encodeRedirectURL(contextPath + "login" + "?error=true"));
             }
         } catch (Exception ex) {
             Log.write(ex.toString());

@@ -14,9 +14,6 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import Dao.entities.Product;
-import java.sql.PreparedStatement;
-import java.util.LinkedList;
 
 
 
@@ -69,7 +66,7 @@ public class JdbcShopDao extends JdbcUtilities implements ShopDao{
     public int deleteDao(Object o) throws SQLException {
         return super.deleteDao(o, map, tableName);
     }
-
+    
     @Override
     public int updateDao(IdOwner o) throws SQLException {
          return super.updateDao(o, map, tableName);
@@ -84,7 +81,5 @@ public class JdbcShopDao extends JdbcUtilities implements ShopDao{
         }
         return null;
     }
-
-
     
 }

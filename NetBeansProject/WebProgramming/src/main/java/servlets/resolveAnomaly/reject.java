@@ -17,7 +17,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import servlets.recover.recover;
+import servlets.recover.recoverPassword;
 import system.eMailSender;
 
 /**
@@ -89,7 +89,7 @@ public class reject extends HttpServlet {
             try {
                 sender.sendCustomMessage(user.getEmail(), request.getParameter("object"), request.getParameter("message"));
             } catch (MessagingException ex) {
-                Logger.getLogger(recover.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(recoverPassword.class.getName()).log(Level.SEVERE, null, ex);
             }
             reqDes = request.getRequestDispatcher("/success.jsp");
 

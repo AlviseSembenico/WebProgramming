@@ -73,7 +73,7 @@
     </servlet>
     <servlet>
         <servlet-name>Notifiche</servlet-name>
-        <servlet-class>servlet.notifiche.Notifiche</servlet-class>
+        <servlet-class>servlets.notifiche.Notifiche</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>resolve</servlet-name>
@@ -89,7 +89,11 @@
     </servlet>
     <servlet>
         <servlet-name>updateReadReview</servlet-name>
-        <servlet-class>servlet.readReviews.updateReadReview</servlet-class>
+        <servlet-class>servlets.readReviews.updateReadReview</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>loadImage</servlet-name>
+        <servlet-class>servlets.loadImage.loadImage</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ConctactUsServlet</servlet-name>
@@ -174,6 +178,10 @@
     <servlet-mapping>
         <servlet-name>payServlet</servlet-name>
         <url-pattern>/payment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>loadImage</servlet-name>
+        <url-pattern>/loadImage</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

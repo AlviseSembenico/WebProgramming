@@ -17,7 +17,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import servlets.resetpass.resetServlet;
+import servlets.resetpass.resetPasswordServlet;
 
 /**
  *
@@ -55,7 +55,7 @@ public class confirm extends HttpServlet {
             byte[] decode = Base64.getDecoder().decode(token);
             user = userDao.getUserById(Integer.parseInt(new String(decode, StandardCharsets.ISO_8859_1)));
         } catch (Exception ex) {
-            Logger.getLogger(resetServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(resetPasswordServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         user.setConferma("SI");
         try {

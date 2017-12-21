@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package servlet.notifiche;
+package servlets.notifiche;
 
 import Dao.AnomaliesDao;
 import Dao.ProductDao;
@@ -73,8 +73,7 @@ public class Notifiche extends HttpServlet {
             throws ServletException, IOException {
         RequestDispatcher reqDes = null;
         HttpSession session = request.getSession(false);
-        User user = (User) session.getAttribute("user");
-        
+        User user = (User) session.getAttribute("user");        
         id = user.getId();
         try {
             anomalie = anomaliesDao.getBySeller(id);
@@ -85,9 +84,10 @@ public class Notifiche extends HttpServlet {
                     reviewDao.updateDao(r);
                 }*/
             }
+            request.setAttribute("user", user);
             request.setAttribute("anomalie", anomalie);
             request.setAttribute("reviews", reviews);
-            reqDes = request.getRequestDispatcher("/notifiche.jsp");
+            reqDes = request.getRequestDispatcher("/loggedUsers/notifiche.jsp");
         } catch (Exception ex) {
             Logger.getLogger(Notifiche.class.getName()).log(Level.SEVERE, null, ex);
         }

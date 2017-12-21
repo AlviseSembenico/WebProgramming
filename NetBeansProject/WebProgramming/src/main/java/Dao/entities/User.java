@@ -11,24 +11,27 @@ public final class User extends IdOwnerComparable {
     private String password;
     private String avatarPath;
     private String conferma;
+    private String privileges;
 
     public User() {
     }
 
-    public User(String firstName, String lastName, String email, String password, String conferma) {
+    public User(String firstName, String lastName, String email, String password, String conferma , String pirvileges) {
         setFirstName(firstName);
         setLastName(lastName);
         setEmail(email);
         setPassword(password);
         setConferma(conferma);
+        setPrivileges(privileges);
     }
 
-    public User(String firstName, String lastName, String email, String password, String Conferma, String avatarPath) {
+    public User(String firstName, String lastName, String email, String password, String Conferma,String privileges ,String avatarPath) {
         setFirstName(firstName);
         setLastName(lastName);
         setEmail(email);
         setPassword(password);
         setConferma(Conferma);
+        setPrivileges(privileges);
         setAvatarPath(avatarPath);
     }
 
