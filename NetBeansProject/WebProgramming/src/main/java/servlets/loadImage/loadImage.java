@@ -60,7 +60,7 @@ public class loadImage extends HttpServlet {
             throws IOException, ServletException {
         try {
             ServletContext context = getServletContext();
-            MultipartRequest multi = new MultipartRequest(request, context.getRealPath("/assets/img/upload"), 10 * 1024 * 1024, "ISO-8859-1", new DefaultFileRenamePolicy());
+            MultipartRequest multi = new MultipartRequest(request, context.getRealPath(SAVE_DIR), 10 * 1024 * 1024, "ISO-8859-1", new DefaultFileRenamePolicy());
             Enumeration params = multi.getParameterNames();
             int id = 0;
             while (params.hasMoreElements()) {
