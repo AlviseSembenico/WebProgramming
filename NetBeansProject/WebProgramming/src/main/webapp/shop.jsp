@@ -193,7 +193,7 @@
                     processData: false,
                     method: 'POST',
                     success: function (data) {
-                        
+                        window.location.replace("shop?id=" + $("#sId").val());
                     },
                     fail: function (data) {
                     }

@@ -8,15 +8,20 @@ package servlets.loadImage;
 import Dao.PictureDao;
 import Dao.ShopDao;
 import Dao.UserDao;
+import Dao.entities.Picture;
+import Dao.entities.Shop;
 import com.google.common.io.Files;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.nio.file.LinkOption;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Enumeration;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
@@ -32,7 +37,7 @@ import system.Log;
 @MultipartConfig(location = "/img", fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 5, maxRequestSize = 1024 * 1024 * 5 * 5)
 public class loadImage extends HttpServlet {
 
-    private static final String SAVE_DIR = "img" + File.separator;
+    private static final String SAVE_DIR = "/assets/img/upload/";
     private int maxFileSize = 50 * 1024;
     private int maxMemSize = 4 * 1024;
     private ShopDao shopDao;
@@ -54,42 +59,38 @@ public class loadImage extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
         try {
-            MultipartRequest multi = new MultipartRequest(request, "C:\\Users\\Alvise\\Desktop\\fotoup", 10 * 1024 * 1024, "ISO-8859-1", new DefaultFileRenamePolicy());
+            ServletContext context = getServletContext();
+            MultipartRequest multi = new MultipartRequest(request, context.getRealPath("/assets/img/upload"), 10 * 1024 * 1024, "ISO-8859-1", new DefaultFileRenamePolicy());
             Enumeration params = multi.getParameterNames();
-            int id;
+            int id = 0;
             while (params.hasMoreElements()) {
                 String name = (String) params.nextElement();
                 String value = multi.getParameter(name);
-                if(name.equals("id"))
-                   id=Integer.parseInt(value);
+                if (name.equals("id")) {
+                    id = Integer.parseInt(value);
+                }
             }
 
             Enumeration files = multi.getFileNames();
+            Path path = null;
             while (files.hasMoreElements()) {
                 String name = (String) files.nextElement();
                 String filename = multi.getFilesystemName(name);
                 String originalFilename = multi.getOriginalFileName(name);
                 String type = multi.getContentType(name);
                 File f = multi.getFile(name);
-                Path path=Paths.get(SAVE_DIR+String.valueOf(f));
-                Files.write((CharSequence) path, f, Charset.forName("UTF-8"));
+                path = Paths.get(String.valueOf(f));
             }
+            Shop shop = (Shop) shopDao.getById(id);
+            Picture pic = pictureDao.getPictureShop(shop);
+            String dbPath = path.getFileName().toString();
+            pic.setPath("."+SAVE_DIR+dbPath);
+            pictureDao.updateDao(pic);
 
         } catch (Exception e) {
             Log.write(e.toString());
         }
     }
-/*
-    private String extractFileName(Part part) {
-        String contentDisp = part.getHeader("content-disposition");
-        String[] items = contentDisp.split(";");
-        for (String s : items) {
-            if (s.trim().startsWith("filename")) {
-                return s.substring(s.indexOf("=") + 2, s.length() - 1);
-            }
-        }
-        return "";
-    }*/
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
