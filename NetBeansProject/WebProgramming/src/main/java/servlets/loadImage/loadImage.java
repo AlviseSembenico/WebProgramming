@@ -15,11 +15,14 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.nio.charset.Charset;
 import java.nio.file.LinkOption;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Enumeration;
+import javax.json.Json;
+import javax.json.JsonObjectBuilder;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -27,7 +30,6 @@ import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
 import system.Log;
 
 /**
@@ -87,11 +89,19 @@ public class loadImage extends HttpServlet {
             pic.setPath("."+SAVE_DIR+dbPath);
             pictureDao.updateDao(pic);
 
+            setOk(response.getWriter());
         } catch (Exception e) {
             Log.write(e.toString());
         }
     }
 
+    
+    private void setOk(PrintWriter out){
+        JsonObjectBuilder j = Json.createObjectBuilder();
+        j.add("result", "success");
+        out.println(j.build());
+    }
+    
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, java.io.IOException {
