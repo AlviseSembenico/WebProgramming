@@ -183,8 +183,8 @@
             function send() {
                 var data;
                 data = new FormData();
-                data.append("file", $("#upImg").val());
-                data.append("id", $("sId").val());
+                data.append("file", $("#upImg").get(0).files[0]);
+                data.append("id", $("#sId").val());
                 jQuery.ajax({
                     url: 'loadImage',
                     data: data,
@@ -215,7 +215,7 @@
                     <div class="modal-body">
                         <form id="imageForm" method='post' action='loadImage' enctype='multipart/form-data'>
                             <input id="sId"type="text" value="${shop.getId()}" hidden="" name="id"/>
-                            <input  type='file' id="upImg" size="60" accept="image/*"/>
+                            <input  type='file' id="upImg"  accept="image/*"/>
                         </form>
                     </div>
                     <div class="modal-footer">

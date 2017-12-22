@@ -8,10 +8,14 @@ package servlets.loadImage;
 import Dao.PictureDao;
 import Dao.ShopDao;
 import Dao.UserDao;
+import com.google.common.io.Files;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Enumeration;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -67,6 +71,8 @@ public class loadImage extends HttpServlet {
                 String originalFilename = multi.getOriginalFileName(name);
                 String type = multi.getContentType(name);
                 File f = multi.getFile(name);
+                Path path=Paths.get(SAVE_DIR+String.valueOf(f));
+                Files.write((CharSequence) path, f, Charset.forName("UTF-8"));
             }
 
         } catch (Exception e) {
