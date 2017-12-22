@@ -6,7 +6,6 @@
 package servlets.notifiche;
 
 import Dao.AnomaliesDao;
-import Dao.ProductDao;
 import Dao.ReviewDao;
 import Dao.ShopDao;
 import Dao.UserDao;
@@ -14,6 +13,7 @@ import Dao.entities.Anomalies;
 import Dao.entities.Review;
 import Dao.entities.User;
 import java.io.IOException;
+import java.util.Enumeration;
 import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -73,17 +73,12 @@ public class Notifiche extends HttpServlet {
             throws ServletException, IOException {
         RequestDispatcher reqDes = null;
         HttpSession session = request.getSession(false);
-        User user = (User) session.getAttribute("user");        
+        User user = (User) session.getAttribute("user");
         id = user.getId();
         try {
             anomalie = anomaliesDao.getBySeller(id);
             reviews = reviewDao.getRecentReviewForShopForNotify(user);
-            if (reviews.get(0) != null) {
-                /*for (Review r : reviews) {
-                    r.setStatus("read");
-                    reviewDao.updateDao(r);
-                }*/
-            }
+
             request.setAttribute("user", user);
             request.setAttribute("anomalie", anomalie);
             request.setAttribute("reviews", reviews);
@@ -110,17 +105,30 @@ public class Notifiche extends HttpServlet {
         String s = request.getRequestURL().toString();
         String action = request.getParameter("action");
         s = s.substring(0, 36);
-        int i = Integer.parseInt(request.getParameter("index"));
-        if (action.contains("Reject")) {
-            s += "/reject?id=" + (anomalie.get(i).getPurchase().getUser()).getId();
-            response.sendRedirect(s);
+        if (action == null) {
+            Enumeration<String> names = request.getParameterNames();
+            while (names.hasMoreElements()) {
+                String name = names.nextElement();
+                try {
+                    this.reviews.get(Integer.parseInt(name)).setStatus("read");
+                    reviewDao.updateDao(reviews.get(Integer.parseInt(name)));
+                    s += "/notify";
+                    response.sendRedirect(s);
+                } catch (Exception ex) {
+                    Logger.getLogger(Notifiche.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         } else {
-            if (action.contains("Refound")) {
-                s += "/resolve?id=" + (anomalie.get(i).getPurchase().getUser()).getId();
+            if (action.contains("Reject")) {
+                int i = Integer.parseInt(request.getParameter("index"));
+                s += "/reject?id=" + (anomalie.get(i).getPurchase().getUser()).getId();
                 response.sendRedirect(s);
             } else {
-                String [] a = request.getRequestURL().toString().split("?");
-                String param = a[a.length-1];
+                if (action.contains("Refound")) {
+                    int i = Integer.parseInt(request.getParameter("index"));
+                    s += "/resolve?id=" + (anomalie.get(i).getPurchase().getUser()).getId();
+                    response.sendRedirect(s);
+                }
             }
         }
     }

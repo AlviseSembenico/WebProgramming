@@ -31,31 +31,37 @@
                 <div class="container">
                     <div class="row">
                         <c:choose>
-                            <c:when test="${user.getPrivileges().equals('admin')}">
-                                <c:choose>
-                                    <c:when test="${anomalie.get(0) != null}">
-                                        <div class="col-md-12">
-                                            <h1>Anomalies</h1>  
-                                            <div class="table-responsive">
-                                                <table class="table">
-                                                    <thead>
-                                                        <tr>
-                                                            <th class="text-center">#</th>
-                                                            <th>Product</th>
-                                                            <th>Description</th>
-                                                            <th>Date of purchase</th>
-                                                            <th>Problem</th>
+                            <c:when test="${anomalie.get(0) != null}">
+                                <div class="col-md-12">
+                                    <h1>Anomalies</h1>  
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center">#</th>
+                                                    <th>Product</th>
+                                                    <th>Description</th>                                                    
+                                                    <th>Status</th>
+                                                    <th>Date of purchase</th>
+                                                    <th>Problem</th>
+                                                        <c:choose>
+                                                            <c:when test="${user.getPrivileges().equals('admin')}">
                                                             <th class="text-right">Actions</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <c:forEach var="i" begin="0" end="${anomalie.size()-1}">                                                
-                                                            <tr>
-                                                                <td class="text-center">${i+1}</td>
-                                                                <td>${anomalie.get(i).getPurchase().getProduct().getName()}</td>
-                                                                <td>${anomalie.get(i).getDescription()}</td>
-                                                                <td>${anomalie.get(i).getPurchase().getDate()}</td>
-                                                                <td class="text-right">${anomalie.get(i).getTag()}</td>
+                                                            </c:when>
+                                                        </c:choose>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <c:forEach var="i" begin="0" end="${anomalie.size()-1}">                                                
+                                                    <tr>
+                                                        <td class="text-center">${i+1}</td>
+                                                        <td>${anomalie.get(i).getPurchase().getProduct().getName()}</td>
+                                                        <td>${anomalie.get(i).getDescription()}</td>
+                                                        <td>${anomalie.get(i).getStatus()}</td>
+                                                        <td>${anomalie.get(i).getPurchase().getDate()}</td>
+                                                        <td class="text-right">${anomalie.get(i).getTag()}</td>
+                                                        <c:choose>
+                                                            <c:when test="${user.getPrivileges().equals('admin')}">
                                                                 <td class="td-actions text-right">
                                                                     <form id="form" action="notify" method="POST">
                                                                         <input id="act" hidden="true" name="action"/>
@@ -73,18 +79,18 @@
                                                                         </button>
                                                                     </form>
                                                                 </td>
-                                                            </tr>
-                                                        </c:forEach>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <h2>There's no new Anomalies..</h2>
-                                    </c:otherwise>
-                                </c:choose>
+                                                            </c:when>
+                                                        </c:choose>
+                                                    </tr>
+                                                </c:forEach>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </c:when>
+                            <c:otherwise>
+                                <h2>There's no new Anomalies..</h2>
+                            </c:otherwise>
                         </c:choose>
                         <hr/>
                         <div class="row">
@@ -93,7 +99,7 @@
                                     <div class="col-md-12">
                                         <h1>Reviews</h1>
                                         <div class="table-responsive">
-                                            <form action="notifiche" method="get">
+                                            <form action="notify" method="post">
                                                 <table class="table table-striped">
                                                     <thead>
                                                         <tr>
