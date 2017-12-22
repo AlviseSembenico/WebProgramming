@@ -8,18 +8,24 @@ package servlets.loadImage;
 import Dao.PictureDao;
 import Dao.ShopDao;
 import Dao.UserDao;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import java.io.File;
 import java.io.IOException;
+import java.util.Enumeration;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+import system.Log;
 
 /**
  *
  * @author zappi
  */
+@MultipartConfig(location = "/img", fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 5, maxRequestSize = 1024 * 1024 * 5 * 5)
 public class loadImage extends HttpServlet {
 
     private static final String SAVE_DIR = "img" + File.separator;
@@ -43,26 +49,31 @@ public class loadImage extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
-        String appPath = request.getServletContext().getRealPath("");
+        try {
+            MultipartRequest multi = new MultipartRequest(request, "C:\\Users\\Alvise\\Desktop\\fotoup", 10 * 1024 * 1024, "ISO-8859-1", new DefaultFileRenamePolicy());
+            Enumeration params = multi.getParameterNames();
+            int id;
+            while (params.hasMoreElements()) {
+                String name = (String) params.nextElement();
+                String value = multi.getParameter(name);
+                if(name.equals("id"))
+                   id=Integer.parseInt(value);
+            }
 
-        int id = Integer.parseInt(request.getParameter("id"));
+            Enumeration files = multi.getFileNames();
+            while (files.hasMoreElements()) {
+                String name = (String) files.nextElement();
+                String filename = multi.getFilesystemName(name);
+                String originalFilename = multi.getOriginalFileName(name);
+                String type = multi.getContentType(name);
+                File f = multi.getFile(name);
+            }
 
-        String savePath = appPath + SAVE_DIR;
-
-        File fileSaveDir = new File(savePath);
-
-        if (!fileSaveDir.exists()) {
-            fileSaveDir.mkdir();
+        } catch (Exception e) {
+            Log.write(e.toString());
         }
-
-        Part part = request.getPart("file");
-        String fileName = extractFileName(part);
-
-        fileName = new File(fileName).getName();
-        part.write(savePath + fileName);
-
     }
-
+/*
     private String extractFileName(Part part) {
         String contentDisp = part.getHeader("content-disposition");
         String[] items = contentDisp.split(";");
@@ -72,7 +83,7 @@ public class loadImage extends HttpServlet {
             }
         }
         return "";
-    }
+    }*/
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
