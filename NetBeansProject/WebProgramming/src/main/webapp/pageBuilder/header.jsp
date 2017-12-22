@@ -27,15 +27,15 @@
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
             <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
             <link href="assets/css/ratingStar.css" rel="stylesheet" type="text/css"/>
-            
+
             <!-- CSS Files -->
             <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
             <link href="assets/css/demo.css" rel="stylesheet" />
             <link href="assets/css/style.css" rel="stylesheet" />
             <link href="assets/css/unminify.css" rel="stylesheet"/>
-           
-            
-            
+
+
+
         </head>
     <c:if test="${(empty param.trasparent) || param.trasparent eq 'true'     }">
         <nav class="navbar  navbar-transparent navbar-fixed-top navbar-color-on-scroll"  color-on-scroll=" " id="sectionsNav"> 
@@ -165,7 +165,7 @@
                                 <li>
                                     <form class="form form-newsletter card-content" method="get" action="result">
                                         <div class="form-group is-empty has-error" >
-                                            <input style=" color: black" type="text" name="name" class="pull-right form-control" placeholder="Search...">
+                                            <input class="form-control" id="autocomplete-5" style=" color: black" type="text" name="name" placeholder="Search..." >
                                             <span class="material-input"></span></div>
 
                                         <button type="submit" class="btn btn-primary btn-just-icon btn-danger">
@@ -186,7 +186,7 @@
 
                     <form class="navbar-form navbar-right" role="search" method="get" action="result" >
                         <div class="form-group form-white is-empty">
-                            <input style=" color: white" class="form-control " type="text" name="name" placeholder="">
+                            <input class="form-control" id="autocomplete-5" style=" color: black" name="name" placeholder="Search..." >
                             <span class="material-input"></span></div>
                         <button class="btn btn-white btn-raised btn-fab btn-fab-mini" type="submit"><i class="material-icons">search</i></button>
                     </form>
