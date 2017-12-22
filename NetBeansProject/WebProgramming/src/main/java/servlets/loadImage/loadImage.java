@@ -62,6 +62,18 @@ public class loadImage extends HttpServlet {
             throws IOException, ServletException {
         try {
             ServletContext context = getServletContext();
+
+            File theDir = new File(context.getRealPath(SAVE_DIR));
+            if (!theDir.exists()) {
+                boolean result = false;
+                try {
+                    theDir.mkdir();
+                    result = true;
+                } catch (SecurityException se) {
+                    //handle it
+                }
+            }
+
             MultipartRequest multi = new MultipartRequest(request, context.getRealPath(SAVE_DIR), 10 * 1024 * 1024, "ISO-8859-1", new DefaultFileRenamePolicy());
             Enumeration params = multi.getParameterNames();
             int id = 0;
@@ -86,22 +98,13 @@ public class loadImage extends HttpServlet {
             Shop shop = (Shop) shopDao.getById(id);
             Picture pic = pictureDao.getPictureShop(shop);
             String dbPath = path.getFileName().toString();
-            pic.setPath("."+SAVE_DIR+dbPath);
+            pic.setPath("." + SAVE_DIR + dbPath);
             pictureDao.updateDao(pic);
-
-            setOk(response.getWriter());
         } catch (Exception e) {
             Log.write(e.toString());
         }
     }
 
-    
-    private void setOk(PrintWriter out){
-        JsonObjectBuilder j = Json.createObjectBuilder();
-        j.add("result", "success");
-        out.println(j.build());
-    }
-    
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, java.io.IOException {

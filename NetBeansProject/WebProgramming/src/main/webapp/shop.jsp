@@ -97,9 +97,9 @@
                                             <a href="map.jsp?lat=${shop.getLatitude()}&long=${shop.getLongitude()}" class="btn btn-primary btn-round">Map</a>
                                         </p>
                                         <p id="modAdd" hidden="">
-                                            <input name="street" type="text"  value="${shop.getStreet()}"/>
-                                            <input name="city" type="text"  value="${shop.getCity()}"/>
-                                            <input name="region" type="text"  value="${shop.getRegion()}"/>
+                                            <input name="street" type="text" class="form-control"  value="${shop.getStreet()}"/>
+                                            <input name="city" type="text"class="form-control"  value="${shop.getCity()}"/>
+                                            <input name="region" type="text" class="form-control"  value="${shop.getRegion()}"/>
                                         </p>
                                     </div>
                                 </div>
@@ -111,7 +111,7 @@
                                         <h4 class="info-title">Conctact</h4>
                                         <p> <h6>Site:</h6>
                                         <a id="site" href="http://www.${shop.getWebSiteUrl()}">${shop.getWebSiteUrl()}</a><br>
-                                        <input id="modySite" name="site" type="text" hidden="" value="${shop.getWebSiteUrl()}"/>
+                                        <input id="modySite" name="site" class="form-control" type="text" hidden="" value="${shop.getWebSiteUrl()}"/>
                                         </p>
                                     </div>
                                 </div>
@@ -132,11 +132,11 @@
 
                                         <p id="modOpen" hidden="">
                                             <b>Open Time:</b><br/>
-                                            <input name="openT" type="text"  value=" ${shop.getOpenTime()}"/><br/>
+                                            <input name="openT" class="form-control" type="text"  value=" ${shop.getOpenTime()}"/><br/>
                                             <b>Close Time:</b><br/>
-                                            <input name="closeT" type="text"  value="${shop.getCloseTime()}"/><br/>
+                                            <input name="closeT" type="text" class="form-control"  value="${shop.getCloseTime()}"/><br/>
                                             <b>Close Day:</b> <br/>
-                                            <input name="closeD" type="text"  value="${shop.getCloseDay()}"/>
+                                            <input name="closeD" type="text"class="form-control"  value="${shop.getCloseDay()}"/>
                                         </p>
                                     </div>
                                 </div>
