@@ -9,7 +9,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>  
 <!DOCTYPE html>
 <html>
-    <c:import url="pageBuilder/header.jsp"/>
+    <c:import url="/pageBuilder/header.jsp"/>
     <div class="page-header header-filter header-small" data-parallax="true" style="">
         <div class="container"> 
             <div class="row">
@@ -52,4 +52,4 @@
             </div>
         </div>
     </div>
-    <c:import url="pageBuilder/footer.jsp"/>
+    <c:import url="/pageBuilder/footer.jsp"/>

@@ -145,7 +145,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Notifiche</servlet-name>
-        <url-pattern>/notifiche</url-pattern>
+        <url-pattern>/notify</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>resolve</servlet-name>

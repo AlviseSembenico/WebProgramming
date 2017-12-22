@@ -57,7 +57,7 @@
                                                                 <td>${anomalie.get(i).getPurchase().getDate()}</td>
                                                                 <td class="text-right">${anomalie.get(i).getTag()}</td>
                                                                 <td class="td-actions text-right">
-                                                                    <form id="form" action="notifiche" method="POST">
+                                                                    <form id="form" action="notify" method="POST">
                                                                         <input id="act" hidden="true" name="action"/>
                                                                         <input  hidden="true" name="index" value="${i}"/>
                                                                         <button type="submit" rel="tooltip" class="btn btn-success" data-original-title="" onclick="{
@@ -81,7 +81,7 @@
                                         </div>
                                     </c:when>
                                     <c:otherwise>
-                                        <h2>Non ci sono nuove anomalie...</h2>
+                                        <h2>There's no new Anomalies..</h2>
                                     </c:otherwise>
                                 </c:choose>
                             </c:when>
@@ -132,7 +132,7 @@
                                     </div>
                                 </c:when>
                                 <c:otherwise>
-                                    <h2>Nessuna nuova reviews...</h2>
+                                    <h2>There's no new reviews...</h2>
                                 </c:otherwise>
                             </c:choose>
                         </div>
