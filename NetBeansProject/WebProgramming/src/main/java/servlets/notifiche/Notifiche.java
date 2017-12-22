@@ -34,8 +34,8 @@ public class Notifiche extends HttpServlet {
     private UserDao userDao;
     private ReviewDao reviewDao;
     private ShopDao shopDao;
-    private LinkedList<Review> reviews;
-    private LinkedList<Anomalies> anomalie;
+    private static LinkedList<Review> reviews;
+    private static LinkedList<Anomalies> anomalie;
     private int id;
 
     @Override
@@ -87,7 +87,7 @@ public class Notifiche extends HttpServlet {
             request.setAttribute("user", user);
             request.setAttribute("anomalie", anomalie);
             request.setAttribute("reviews", reviews);
-            reqDes = request.getRequestDispatcher("/loggedUsers/notifiche.jsp");
+            reqDes = request.getRequestDispatcher("/loggedUsers/notify.jsp");
         } catch (Exception ex) {
             Logger.getLogger(Notifiche.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -111,7 +111,7 @@ public class Notifiche extends HttpServlet {
         String action = request.getParameter("action");
         s = s.substring(0, 36);
         int i = Integer.parseInt(request.getParameter("index"));
-        if (action.contains("Ignore")) {
+        if (action.contains("Reject")) {
             s += "/reject?id=" + (anomalie.get(i).getPurchase().getUser()).getId();
             response.sendRedirect(s);
         } else {

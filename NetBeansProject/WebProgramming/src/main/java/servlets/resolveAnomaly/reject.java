@@ -62,7 +62,7 @@ public class reject extends HttpServlet {
         RequestDispatcher reqDes = null;
         request.setAttribute("u", user);
         request.setAttribute("mode", "reject");
-        reqDes = request.getRequestDispatcher("/email.jsp");
+        reqDes = request.getRequestDispatcher("/loggedUsers/email.jsp");
         reqDes.forward(request, response);
     }
     

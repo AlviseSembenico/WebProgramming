@@ -184,7 +184,7 @@
                 var data;
                 data = new FormData();
                 data.append("file", $("#upImg").val());
-                data.append("id", $("sId").val());
+                data.append("id", $("#sId").val());
                 jQuery.ajax({
                     url: 'loadImage',
                     data: data,
