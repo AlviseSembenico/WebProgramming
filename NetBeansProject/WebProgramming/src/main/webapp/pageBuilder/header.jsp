@@ -157,7 +157,7 @@
                                 </li>
                             </c:otherwise>
                         </c:choose>
-                        <li class="dropdown">
+                        <li class="dropdown" id="search-mobile">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="material-icons">search</i>Search
                                 <b class="caret"></b>

@@ -7,6 +7,12 @@ and open the template in the editor.
     Created on : Sep 9, 2017, 6:52:37 PM
     Author     : Alvise
 */
+@media (min-width:760px) {
+    #search-mobile{
+        display: none;
+    }
+}
+
 .add-object .middle{
     text-align: center;
 }
