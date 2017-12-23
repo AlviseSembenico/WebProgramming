@@ -75,13 +75,7 @@
                                         </c:forEach>
 
                                     </div>
-                                </div>
-                    <form class="form" method="post" action="payment">
-                        <div class="row-content">                        
-                            <div class="col-md-12">
-                                <div class="row">                                
-
-                                </div>
+                                </div>               
 
                                 <div class="row">
                                     <div class="col-sm-3">
@@ -105,12 +99,7 @@
                                                         <input id="bonifico" type="radio" name="optionsRadios" onchange="ChangeMode()"><span class="circle"></span><span class="check"></span>
                                                         <p>Bank transfer</p>
                                                 </label>
-                                        </div>                                        
-                                            <label style="color:black">
-                                                <input id="bonifico" type="radio" name="optionsRadios" onchange="ChangeMode()"><span class="circle"></span><span class="check"></span>
-                                                <p>Bank transfer</p>
-                                            </label>
-                                        </div>
+                                        </div>                                            
                                     </div>
                                 </div>
                                 <br/>
@@ -231,49 +220,10 @@
                                             {
                                                 document.forms.myForm.submit();
                                             }
-                                        }  
-                                                                              
+                                        }                                                                                
 
-                                    } 
+                                    }                                     
                                     
-                                    function ChangeMode()
-                                    {
-                                       var credito = document.getElementById('credito').checked;
-                                       var paypal = document.getElementById('paypal').checked;
-                                       var bonifico = document.getElementById('bonifico').checked;                                       
-
-                                       if(credito == true)
-                                       {
-                                           document.getElementById('CC').style.display = "block";
-                                           document.getElementById('PP').style.display = "none";
-                                           document.getElementById('BB').style.display = "none";
-                                          
-                                       }
-                                       if(paypal == true)
-                                       {
-                                           document.getElementById('CC').style.display = "none";
-                                           document.getElementById('PP').style.display = "block";
-                                           document.getElementById('BB').style.display = "none";
-                                           document.getElementById('ritiro').checked = false;
-                                       }
-                                       if(bonifico == true)
-                                       {
-                                           document.getElementById('CC').style.display = "none";
-                                           document.getElementById('PP').style.display = "none";
-                                           document.getElementById('BB').style.display = "block";
-                                          
-                   
-                                       }
-                                       if(ritiro == true)
-                                       {
-                                           document.getElementById('CC').style.display = "none";
-                                           document.getElementById('PP').style.display = "none";
-                                           document.getElementById('BB').style.display = "none";
-                                           
-                                       }
-                                        }
-
-                                    }
                                     function ChangeMode()
                                     {
                                         var credito = document.getElementById('credito').checked;

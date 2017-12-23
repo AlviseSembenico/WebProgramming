@@ -65,7 +65,7 @@ public class PayServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         RequestDispatcher RequestDispatcherObj = null;        
-        RequestDispatcherObj = request.getRequestDispatcher("payment.jsp");
+        RequestDispatcherObj = request.getRequestDispatcher("loggedUsers/payment.jsp");
         RequestDispatcherObj.forward(request, response);
     }
     
@@ -106,7 +106,7 @@ public class PayServlet extends HttpServlet {
             
             for(Product p:prodotti)
             {    
-                interroga = "ritiro" + Integer.toString(rt);
+                interroga = "ritiro" + Integer.toString(counter);
                 ritiro = request.getParameter(interroga);
                 if(p.getRetractable() > 0)
                 {
@@ -114,8 +114,7 @@ public class PayServlet extends HttpServlet {
                     {
                         if(ritiro.equals("on"))
                         {
-                            rt = 3;
-                            counter++;
+                            rt = 3;                            
                         }
                         else
                         {
@@ -125,19 +124,18 @@ public class PayServlet extends HttpServlet {
                     else
                     {
                         rt = 0;
-                    }
+                    }                    
                 }
                 else
                     rt = 0;
                 Purchase purc = new Purchase(p,user,rt, dt);
                 res = purchaseDao.insertDao(purc);
-                
+                counter++;
             }
+           
+            res = cartDao.deleteDao(cart);
             
-            cart.emptyCart();
-            res = cartDao.updateDao(cart);
-            
-            if(res > 0)
+            if(res == 0)
                 response.sendRedirect(response.encodeRedirectURL(contextPath + "payment"+"?error=true"));
             else{
                 session.setAttribute("user", user);
