@@ -89,11 +89,14 @@ public class AddReviewServlet extends HttpServlet {
             User user = (User) session.getAttribute("user");
             int id = Integer.valueOf(request.getParameter("id"));
             Purchase purchase = purchaseDao.getPurchaseByIdAndUser(Integer.valueOf(request.getParameter("id")), user);
+            
+            if(reviewDao.getRewiewByCreatorAndProduct(user, purchase.getProduct()).get(0)!=null)
+                throw new Exception("Review already created");
+                        
+                
             int global = Integer.valueOf(request.getParameter("star"));
             int service = Integer.valueOf(request.getParameter("stars"));
             String description = request.getParameter("description");
-            //for(int i=1;i<=5;i++)
-            //  if(Integer.valueOf(request.getParameter("star"+i))==;
             Review rw = new Review();
             rw.setQuality(global);
             rw.setService(service);
@@ -103,9 +106,9 @@ public class AddReviewServlet extends HttpServlet {
             rw.setCreator(user);
             rw.setProduct(purchase.getProduct());
             reviewDao.insertDao(rw);
-            reqDes = request.getRequestDispatcher("/success.jsp");
+            reqDes = request.getRequestDispatcher("loggedUsers/addReview.jsp?result=true");
         } catch (Exception ex) {
-            reqDes = request.getRequestDispatcher("/error.jsp");
+            reqDes = request.getRequestDispatcher("loggedUsers/addReview.jsp?result=true");
         } finally {
             reqDes.forward(request, response);
         }

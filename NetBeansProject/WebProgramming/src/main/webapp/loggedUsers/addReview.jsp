@@ -125,16 +125,16 @@
                                             <input class="star star-1" id="star-s1" type="radio" name="stars"value="1"/>
                                             <label class="star star-1" for="star-s1"></label>
                                         </div>
-                                        
-                                        
-                                            <h4 class="info-title">Description</h4>
-                                            <div class="">
-                                                <div class="form-group label-floating is-empty">
-                                                    <label class="control-label">Please help us with further informations.</label>
-                                                    <textarea name="description" class="form-control" rows="5"></textarea>
-                                                    <span class="material-input"></span>
-                                                </div>
+
+
+                                        <h4 class="info-title">Description</h4>
+                                        <div class="">
+                                            <div class="form-group label-floating is-empty">
+                                                <label class="control-label">Please help us with further informations.</label>
+                                                <textarea name="description" class="form-control" rows="5"></textarea>
+                                                <span class="material-input"></span>
                                             </div>
+                                        </div>
                                         <div class="row text-center">
                                             <input type="text" hidden="true" name="id" value="<c:out value='${purchase.getId()}'/>"/>
                                             <input type="submit" text="aaa" class="btn btn-success" value="Send Request"/>
@@ -148,3 +148,17 @@
                 </div>
             </div>  
             <c:import url="../pageBuilder/footer.jsp"/> 
+            <c:if test="${!(empty param.result) && param.result eq 'true'}">
+                <script>
+                    $(document).ready(function () {
+                        $("#successModal").modal("show");
+                    });
+                </script>
+            </c:if>
+            <c:if test="${!(empty param.result) && param.result eq 'false'}">
+                <script>
+                    $(document).ready(function () {
+                        $("#errorModal").modal("show");
+                    });
+                </script>
+            </c:if>

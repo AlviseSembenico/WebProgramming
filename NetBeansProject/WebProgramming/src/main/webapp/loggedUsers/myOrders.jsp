@@ -67,7 +67,12 @@
                                             <a href="./shop?id=<c:out value='${i.getProduct().getShop().getId()}'/>"><c:out value="${i.getProduct().getShop().getName()}"/></a>    
                                         </div>
                                         <div class="col-md-2 col-name text-center"> 
-                                            <a href="./addAnomaly?id=<c:out value='${i.getProduct().getId()}'/>">Add anomaly</a>    
+                                            <div class="row">                                                    
+                                                    <a href="./addReview?id=<c:out value="${i.getId()}"/>">AddReview</a>                             
+                                                </div>
+                                                <div class="row">
+                                                    <a href="./addAnomaly?id=<c:out value="${i.getId()}"/>">AddAnomaly</a>             
+                                                </div>
                                         </div>
 
                                     </div>
