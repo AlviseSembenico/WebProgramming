@@ -213,6 +213,7 @@ Author     : Alvise
     <div class="testimonials-1 section-gray" >
 
         <div class="container">
+           
             <div class="row">
                 <div class="col-md-6 col-md-offset-3 text-center">
                     <h2 class="title">Our Clients Love Us</h2>

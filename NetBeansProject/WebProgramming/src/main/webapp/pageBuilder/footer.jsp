@@ -190,3 +190,39 @@
 
 <script src="http://demos.creative-tim.com/material-kit-pro/assets/js/jquery.flexisel.js"></script>
 <script src="assets/js/material-kit.js" type="text/javascript"></script>
+
+
+<script src="http://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js" integrity="sha256-DI6NdAhhFRnO2k51mumYeDShet3I8AKCQf/tf7ARNhI=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script>
+                /*$("#autocomplete-5").autocomplete({
+                    source: "http://localhost:8084/Exercise1/services/languages",
+                    minLength: 2,
+                    delay: 500
+                });*/
+                
+                
+                 $("#autocomplete").autocomplete({
+                 source: function (request, response) {
+                 $.ajax({
+                 contentType: "application/json",
+                 type: "GET",
+                 url: "http://localhost:8080/WebProgramming/services/complete",
+                 data: {
+                 name: request.term
+                 },
+                 success: function (data, textStatus, jqXHR) {
+                 response(data);
+                 },
+                 error: function (jqXHR, textStatus, errorThrown) {
+                 jqXHR;
+                 }
+                 });
+                 },
+                 minLength: 2,
+                 delay: 500
+                 });
+</script>

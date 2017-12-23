@@ -8,8 +8,11 @@ package services;
 import Dao.ProductDao;
 import Dao.entities.Product;
 import Dao.jdbc.JdbcProductDao;
+import com.google.gson.Gson;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Consumes;
@@ -51,13 +54,12 @@ public class AutoComplete {
     @Produces(MediaType.APPLICATION_JSON)
     public String getJson(@QueryParam("name") String name) throws Exception{
         LinkedList<Product> ll=productDao.getCompleteName(name);
-        JsonObjectBuilder j=Json.createObjectBuilder();
-        JsonArrayBuilder ar=Json.createArrayBuilder();
+        Gson gson = new Gson();
+        List<String> res=new ArrayList<String>();
         ll.forEach((product)->{
-            ar.add(product.getName());
+            res.add(product.getName());
         });
-        j.add("names", ar);
-        return j.build().toString();
+        return gson.toJson(res);
     }
     
 }

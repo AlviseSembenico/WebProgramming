@@ -18,7 +18,8 @@
             <title>Influencer</title>
 
             <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-
+            <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
+            <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
             <!-- Canonical SEO -->
             <link rel="canonical" href="http://www.creative-tim.com/product/material-kit-pro" />
 
@@ -185,8 +186,8 @@
                     </ul>
 
                     <form class="navbar-form navbar-right" role="search" method="get" action="result" >
-                        <div class="form-group form-white is-empty">
-                            <input class="form-control" id="autocomplete-5" style=" color: black" name="name" placeholder="Search..." >
+                        <div class="form-group form-white is-empty ui-widget">
+                            <input class="form-control" id="autocomplete" style="color: white" name="name" placeholder="Search..." >
                             <span class="material-input"></span></div>
                         <button class="btn btn-white btn-raised btn-fab btn-fab-mini" type="submit"><i class="material-icons">search</i></button>
                     </form>
