@@ -99,6 +99,7 @@ public class PayServlet extends HttpServlet {
             dt = (java.util.Date)d;
             
             int counter = 0;
+            
             int rt = 0;
             
             String ritiro;
