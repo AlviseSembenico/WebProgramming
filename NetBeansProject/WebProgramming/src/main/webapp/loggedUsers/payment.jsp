@@ -17,8 +17,7 @@
         <div class="main main-raised">
             <div class="profile-content">
                 <div class="container">
-<<<<<<< HEAD:NetBeansProject/WebProgramming/src/main/webapp/payment.jsp
-                    <form class="form" name="myForm" method="POST" action="PayServlet">
+                    <form class="form" name="myForm" method="POST" action="payment">
                         <div class="row-content">                        
                             <div class="col-md-12">
                                 <div class="row">                                
@@ -77,7 +76,6 @@
 
                                     </div>
                                 </div>
-=======
                     <form class="form" method="post" action="payment">
                         <div class="row-content">                        
                             <div class="col-md-12">
@@ -85,7 +83,6 @@
 
                                 </div>
 
->>>>>>> Solo-borto:NetBeansProject/WebProgramming/src/main/webapp/loggedUsers/payment.jsp
                                 <div class="row">
                                     <div class="col-sm-3">
                                         <div class="title">
@@ -104,19 +101,16 @@
                                             </label>
                                         </div>
                                         <div class="radio">
-<<<<<<< HEAD:NetBeansProject/WebProgramming/src/main/webapp/payment.jsp
                                                 <label style="color:black">
                                                         <input id="bonifico" type="radio" name="optionsRadios" onchange="ChangeMode()"><span class="circle"></span><span class="check"></span>
                                                         <p>Bank transfer</p>
                                                 </label>
                                         </div>                                        
-=======
                                             <label style="color:black">
                                                 <input id="bonifico" type="radio" name="optionsRadios" onchange="ChangeMode()"><span class="circle"></span><span class="check"></span>
                                                 <p>Bank transfer</p>
                                             </label>
                                         </div>
->>>>>>> Solo-borto:NetBeansProject/WebProgramming/src/main/webapp/loggedUsers/payment.jsp
                                     </div>
                                 </div>
                                 <br/>
@@ -212,11 +206,8 @@
                                                 alert("One or more Credit Card fields are empty");
                                             } else
                                             {
-<<<<<<< HEAD:NetBeansProject/WebProgramming/src/main/webapp/payment.jsp
                                                 document.forms.myForm.submit();                                                                                          
-=======
                                                 btnpay.removeAttribute("disabled");
->>>>>>> Solo-borto:NetBeansProject/WebProgramming/src/main/webapp/loggedUsers/payment.jsp
                                             }
                                         }
 
@@ -240,7 +231,6 @@
                                             {
                                                 document.forms.myForm.submit();
                                             }
-<<<<<<< HEAD:NetBeansProject/WebProgramming/src/main/webapp/payment.jsp
                                         }  
                                                                               
 
@@ -281,7 +271,6 @@
                                            document.getElementById('BB').style.display = "none";
                                            
                                        }
-=======
                                         }
 
                                     }
@@ -309,7 +298,6 @@
                                             document.getElementById('PP').style.display = "none";
                                             document.getElementById('BB').style.display = "block";
                                         }
->>>>>>> Solo-borto:NetBeansProject/WebProgramming/src/main/webapp/loggedUsers/payment.jsp
                                     }
                                 </script>
                                 <div class="row">

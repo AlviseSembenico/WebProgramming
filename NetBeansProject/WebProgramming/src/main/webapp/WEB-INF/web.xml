@@ -56,7 +56,7 @@
         <servlet-class>servlets.addReview.AddReviewServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>payServlet</servlet-name>
+        <servlet-name>PayServlet</servlet-name>
         <servlet-class>servlets.pay.PayServlet</servlet-class>
     </servlet>
     <servlet>
@@ -70,6 +70,34 @@
     <servlet>
         <servlet-name>MyOrders</servlet-name>
         <servlet-class>servlets.myOrders.MyOrdersServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Notifiche</servlet-name>
+        <servlet-class>servlets.notifiche.Notifiche</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>resolve</servlet-name>
+        <servlet-class>servlets.resolveAnomaly.resolve</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>confirm</servlet-name>
+        <servlet-class>servlets.register.confirm</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>reject</servlet-name>
+        <servlet-class>servlets.resolveAnomaly.reject</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>updateReadReview</servlet-name>
+        <servlet-class>servlets.readReviews.updateReadReview</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>loadImage</servlet-name>
+        <servlet-class>servlets.loadImage.loadImage</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ModifyServlet</servlet-name>
+        <servlet-class>servlets.modify.servlet.ModifyServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ConctactUsServlet</servlet-name>
@@ -120,6 +148,26 @@
         <url-pattern>/reset</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>Notifiche</servlet-name>
+        <url-pattern>/notify</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>resolve</servlet-name>
+        <url-pattern>/resolve</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>confirm</servlet-name>
+        <url-pattern>/confirm</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>reject</servlet-name>
+        <url-pattern>/reject</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>updateReadReview</servlet-name>
+        <url-pattern>/readReview</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>MyOrders</servlet-name>
         <url-pattern>/myOrders</url-pattern>
     </servlet-mapping>
@@ -132,24 +180,16 @@
         <url-pattern>/register</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>payServlet</servlet-name>
+        <servlet-name>loadImage</servlet-name>
+        <url-pattern>/loadImage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModifyServlet</servlet-name>
+        <url-pattern>/ModifyServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PayServlet</servlet-name>
         <url-pattern>/payment</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>AddReview</servlet-name>
-        <url-pattern>/AddReview</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Purchases</servlet-name>
-        <url-pattern>/Purchases</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Payment</servlet-name>
-        <url-pattern>/Payment</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>UserProfile</servlet-name>
-        <url-pattern>/UserProfile</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
