@@ -67,14 +67,14 @@ public class eMailSender {
                 .append("  <a href=\"" + link + "\">" + link + "</a>")
                 .append("  <br/><br/>")
                 .append("  Thanks,<br/>")
-                .append("  SodhanaLibrary Team")
+                .append("  Influencer Team")
                 .append("</div>");
         Message message = new MimeMessage(session);
 
         message.setFrom(new InternetAddress(SMTP_USER));
 
         message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(userMail));
-        message.setSubject("Reset Password");
+        message.setSubject("Confirm registration");
         message.setContent(bodyText.toString(), "text/html; charset=utf-8");
         send(message);
     }
@@ -90,7 +90,7 @@ public class eMailSender {
                 .append("  <a href=\"" + link + "\">" + link + "</a>")
                 .append("  <br/><br/>")
                 .append("  Thanks,<br/>")
-                .append("  SodhanaLibrary Team")
+                .append("  Influencer Team")
                 .append("</div>");
         Message message = new MimeMessage(session);
 

@@ -70,7 +70,7 @@ public class RegisterServlet extends HttpServlet {
                     String link = request.getRequestURL().toString();
                     link = link.substring(0, 36);
                     sender.sendLinkConfirm(user.getId(), link, email);
-                    response.sendRedirect(response.encodeRedirectURL(contextPath + "index"));
+                    response.sendRedirect(response.encodeRedirectURL(contextPath + "confirmRegistration.jsp"));
                 }
             } catch (Exception e) {
                 Log.write(e.toString());
