@@ -62,6 +62,8 @@
     <servlet>
         <servlet-name>UserProfile</servlet-name>
         <servlet-class>servlets.modify.servlet.ModifyServlet</servlet-class>
+        <servlet-name>PayServlet</servlet-name>
+        <servlet-class>servlets.pay.PayServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>recover</servlet-name>
@@ -74,6 +76,34 @@
     <servlet>
         <servlet-name>MyOrders</servlet-name>
         <servlet-class>servlets.myOrders.MyOrdersServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Notifiche</servlet-name>
+        <servlet-class>servlets.notifiche.Notifiche</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>resolve</servlet-name>
+        <servlet-class>servlets.resolveAnomaly.resolve</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>confirm</servlet-name>
+        <servlet-class>servlets.register.confirm</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>reject</servlet-name>
+        <servlet-class>servlets.resolveAnomaly.reject</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>updateReadReview</servlet-name>
+        <servlet-class>servlets.readReviews.updateReadReview</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>loadImage</servlet-name>
+        <servlet-class>servlets.loadImage.loadImage</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ModifyServlet</servlet-name>
+        <servlet-class>servlets.modify.servlet.ModifyServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ConctactUsServlet</servlet-name>
@@ -108,12 +138,40 @@
         <url-pattern>/addObject</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>AddAnomaly</servlet-name>
+        <url-pattern>/addAnomaly</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addReview</servlet-name>
+        <url-pattern>/addReview</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>recover</servlet-name>
         <url-pattern>/recover</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>resetServlet</servlet-name>
         <url-pattern>/reset</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Notifiche</servlet-name>
+        <url-pattern>/notify</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>resolve</servlet-name>
+        <url-pattern>/resolve</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>confirm</servlet-name>
+        <url-pattern>/confirm</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>reject</servlet-name>
+        <url-pattern>/reject</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>updateReadReview</servlet-name>
+        <url-pattern>/readReview</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>MyOrders</servlet-name>
@@ -130,14 +188,20 @@
     <servlet-mapping>
         <servlet-name>payServlet</servlet-name>
         <url-pattern>/payment</url-pattern>
+        <servlet-name>loadImage</servlet-name>
+        <url-pattern>/loadImage</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>UserProfile</servlet-name>
         <url-pattern>/UserProfile</url-pattern>
+        <servlet-name>ModifyServlet</servlet-name>
+        <url-pattern>/ModifyServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AddAnomaly</servlet-name>
         <url-pattern>/addAnomaly</url-pattern>
+        <servlet-name>PayServlet</servlet-name>
+        <url-pattern>/payment</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AddReview</servlet-name>

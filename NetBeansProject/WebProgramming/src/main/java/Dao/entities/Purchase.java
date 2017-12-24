@@ -63,11 +63,11 @@ public class Purchase extends IdOwnerComparable{
     }
 
     public Date getDate() {
-        return date;
+        return data;
     }
 
     public void setDate(Date date) {
-        this.date = date;
+        this.data = date;
     }
 
     /**

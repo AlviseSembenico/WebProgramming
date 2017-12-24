@@ -130,7 +130,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="UserProfile">
+                                            <a href="ModifyServlet">
                                                 <i class="material-icons">settings</i> Profilo
                                             </a>
                                         </li>

@@ -17,12 +17,65 @@
         <div class="main main-raised">
             <div class="profile-content">
                 <div class="container">
-                    <form class="form" method="post" action="payment">
+                    <form class="form" name="myForm" method="POST" action="payment">
                         <div class="row-content">                        
                             <div class="col-md-12">
                                 <div class="row">                                
-
+                                    <h3>Totale: <c:out value="${cart.getTotal()}"/></h3>
                                 </div>
+                                <br/>
+                                <h4>Those products can be retreated in shop:</h4>
+                                <br/>
+                                <div class="row">
+                                    <div class="col-md-10 col-md-offset-1">
+                                        <div class="row">
+                                            <div class="col-md-2 text-center"> 
+                                                PRODUCT
+                                            </div>
+                                            <div class="col-md-3 text-center"> 
+                                                NAME
+                                            </div>
+                                            <div class="col-md-2 th-description"> 
+                                                DESCRIPTION
+                                            </div>
+                                            <div class="col-md-2 text-center"> 
+                                                PRICE
+                                            </div>
+
+                                            <div class="col-md-3 text-center"> 
+                                                RETREAT IN SHOP
+                                            </div>                                            
+                                        </div>
+                                        <hr/>                                        
+                                        <c:forEach var="i" items="${cart.getProducts()}"  varStatus="index">
+                                            
+                                            <c:if test="${i.getRetractable() > 0}">
+                                                <div class="row">
+                                                    <div class="col-md-2 td-name"> 
+                                                        <div class="img-container" style="width: 100%; max-width: 120px; max-height: 120px">
+                                                            <img alt="..." src="<c:out value='${pictureDao.getPictureByProduct(i).get(0).getPath()}'/>">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3 col-main text-center">
+                                                        <a href="../product?id=<c:out value='${i.getId()}'/>"><c:out value="${i.getName()}"/></a>
+
+                                                    </div>
+                                                    <div class="col-md-2 col-name "> 
+                                                        <c:out value="${i.getDescription()}"/>
+                                                    </div>
+                                                    <div class="col-md-2  col-number text-right"> 
+                                                        <small>€</small><c:out value="${i.getPrice()}"/>
+                                                    </div>
+                                                    <div class="col-md-3 col-name text-center" >
+                                                        <input type="checkbox" id="rt" name="ritiro<c:out value="${index.index}"/>" />
+                                                    </div>                                                
+                                                </div>
+                                                <hr/>
+                                            </c:if>
+                                        </c:forEach>
+
+                                    </div>
+                                </div>               
 
                                 <div class="row">
                                     <div class="col-sm-3">
@@ -42,11 +95,11 @@
                                             </label>
                                         </div>
                                         <div class="radio">
-                                            <label style="color:black">
-                                                <input id="bonifico" type="radio" name="optionsRadios" onchange="ChangeMode()"><span class="circle"></span><span class="check"></span>
-                                                <p>Bank transfer</p>
-                                            </label>
-                                        </div>
+                                                <label style="color:black">
+                                                        <input id="bonifico" type="radio" name="optionsRadios" onchange="ChangeMode()"><span class="circle"></span><span class="check"></span>
+                                                        <p>Bank transfer</p>
+                                                </label>
+                                        </div>                                            
                                     </div>
                                 </div>
                                 <br/>
@@ -142,6 +195,7 @@
                                                 alert("One or more Credit Card fields are empty");
                                             } else
                                             {
+                                                document.forms.myForm.submit();                                                                                          
                                                 btnpay.removeAttribute("disabled");
                                             }
                                         }
@@ -166,9 +220,10 @@
                                             {
                                                 btnpay.removeAttribute("disabled");
                                             }
-                                        }
+                                        }                                                                                
 
-                                    }
+                                    }                                     
+                                    
                                     function ChangeMode()
                                     {
                                         var credito = document.getElementById('credito').checked;
