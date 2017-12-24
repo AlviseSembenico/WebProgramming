@@ -22,8 +22,7 @@ public class RegisterServlet extends HttpServlet {
             throw new ServletException("Impossible to get dao factory for user storage system");
         }
     }
-    
-    
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -32,7 +31,7 @@ public class RegisterServlet extends HttpServlet {
             RequestDispatcher reqDes = request.getRequestDispatcher("/publicUsers/register.jsp");
             reqDes.forward(request, response);
         } else {
-             response.sendRedirect("./index");
+            response.sendRedirect("/index");
         }
 
     }
@@ -48,27 +47,34 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        RequestDispatcher reqDes = null;
         String lastName = request.getParameter("lastname");
         String firstName = request.getParameter("firstname");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        if (lastName.length() > 0) {
-            String contextPath = getServletContext().getContextPath();
-            if (!contextPath.endsWith("/")) {
-                contextPath += "/";
-            }
-            try {
+        try {
+            if(userDao.getUserByEmail(email)!=null)
+                throw new Exception("email already used!");
+            
+            if (lastName.length() > 0) {
+                String contextPath = getServletContext().getContextPath();
+                if (!contextPath.endsWith("/")) {
+                    contextPath += "/";
+                }
+
                 User user = new User(firstName, lastName, email, password);
                 int res = userDao.insertDao(user);
                 if (res == 0) {
-                    response.sendRedirect(response.encodeRedirectURL(contextPath + "/register" + "?error=true"));
+                    reqDes = request.getRequestDispatcher("/publicUsers/register.jsp?result=false");
                 } else {
                     request.getSession().setAttribute("user", user);
-                    response.sendRedirect(response.encodeRedirectURL(contextPath + "index"));
+                    reqDes = request.getRequestDispatcher("/publicUsers/register.jsp?result=true");
                 }
-            } catch (Exception e) {
-                Log.write(e.toString());
             }
+        } catch (Exception e) {
+            reqDes = request.getRequestDispatcher("/publicUsers/register.jsp?result=false");
+        } finally {
+            reqDes.forward(request, response);
         }
 
     }

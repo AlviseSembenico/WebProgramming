@@ -44,30 +44,30 @@
                                             <b>Login Error:</b> Check your credentials
                                         </div>
                                     </div>
-                                    
+
                                 </c:if>
                                 <div class="card-content">
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">email</i>
-                                            </span>
-                                            <input type="text" class="form-control" name="email" placeholder="Email...">
-                                        </div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="material-icons">email</i>
+                                        </span>
+                                        <div class="form-group is-empty"><input type="text" class="form-control" name="email" placeholder="Email..."></div>
+                                    </div>
 
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">lock_outline</i>
-                                            </span>
-                                            <input type="password" name="password" placeholder="Password..." class="form-control" />
-                                        </div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="material-icons">lock_outline</i>
+                                        </span>
+                                        <div class="form-group is-empty"><input type="password" name="password" placeholder="Password..." class="form-control" /></div>
+                                    </div>
 
-                                        
-                                        <div class="checkbox">
-                                                <label>
-                                                        <input type="checkbox" name="optionsCheckboxes" checked>
-                                                        Remember Me
-                                                </label>
-                                        </div> 
+
+                                    <div class="checkbox">
+                                        <label>
+                                            <input name="optionsCheckboxes" type="checkbox" ><span class="checkbox-material"><span class="check"></span></span>
+                                            Remember me
+                                        </label>
+                                    </div> 
                                 </div>
                                 <div class="text-center">
                                     <input type="submit" class="btn btn-primary" value="Log in"/>
@@ -82,8 +82,8 @@
                     </div>
                 </div>
             </div>
-            
-            
-            
+
+
+
             <c:import url="/pageBuilder/footer.jsp"/>
 

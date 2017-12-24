@@ -64,15 +64,19 @@ public class CartServlet extends HttpServlet {
             HttpSession session = request.getSession();
             User user = (User) session.getAttribute("user");
             Cart cart = null;
-                if (user != null) 
-                    cart = cartDao.getByUser(user);
+            if (user != null) 
+                cart = cartDao.getByUser(user);
+            else
+                cart = (Cart) session.getAttribute("cart");
 
-                if (cart == null) 
-                if (user != null) 
+            if (cart == null) {
+                if (user != null) {
                     cart = cartDao.getByUser(user);
-                else 
-                    cart = new Cart();  
-            
+                } else {
+                    cart = new Cart();
+                }
+            }
+
             //request.setAttribute("cart", cart);
             request.setAttribute("pictureDao", pictureDao);
             request.setAttribute("productDao", productDao);
@@ -113,6 +117,7 @@ public class CartServlet extends HttpServlet {
                         cartDao.updateDao(cart);
                     }
                 }
+                session.setAttribute("cart", cart);
             }
             reqDes = request.getRequestDispatcher("/cart.jsp?result=true");
         } catch (Exception ex) {
@@ -136,7 +141,7 @@ public class CartServlet extends HttpServlet {
                     cart = new Cart((User) request.getSession(false).getAttribute("user"));
                 }
                 cart.removeProduct(product);
-                
+
                 if (user != null) {
                     cartDao.updateDao(cart);
                 }
