@@ -37,10 +37,10 @@ import system.Log;
  *
  * @author skat96
  */
-@WebServlet(name = "PayServlet", urlPatterns = {"/payment"})
 public class PayServlet extends HttpServlet {
 
     private CartDao cartDao;
+    private UserDao userDao;
     private PurchaseDao purchaseDao;
     private int id;
 
@@ -78,7 +78,7 @@ public class PayServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
             

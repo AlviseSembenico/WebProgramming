@@ -51,10 +51,7 @@
         <servlet-name>AddAnomaly</servlet-name>
         <servlet-class>servlets.addAnomaly.AddAnomalyServlet</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>payServlet</servlet-name>
-        <servlet-class>servlets.pay.PayServlet</servlet-class>
-    </servlet>
+   
     <servlet>
         <servlet-name>AddReview</servlet-name>
         <servlet-class>servlets.addReview.AddReviewServlet</servlet-class>
@@ -62,6 +59,10 @@
     <servlet>
         <servlet-name>UserProfile</servlet-name>
         <servlet-class>servlets.modify.servlet.ModifyServlet</servlet-class>
+        
+    </servlet>
+    
+    <servlet>
         <servlet-name>PayServlet</servlet-name>
         <servlet-class>servlets.pay.PayServlet</servlet-class>
     </servlet>
@@ -142,7 +143,7 @@
         <url-pattern>/addAnomaly</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>addReview</servlet-name>
+        <servlet-name>AddReview</servlet-name>
         <url-pattern>/addReview</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
@@ -186,26 +187,24 @@
         <url-pattern>/register</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>payServlet</servlet-name>
-        <url-pattern>/payment</url-pattern>
+        <servlet-name>UserProfile</servlet-name>
+        <url-pattern>/UserProfile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>   
+        <servlet-name>ModifyServlet</servlet-name>
+        <url-pattern>/ModifyServlet</url-pattern>
+    </servlet-mapping> 
+    <servlet-mapping>   
         <servlet-name>loadImage</servlet-name>
         <url-pattern>/loadImage</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>UserProfile</servlet-name>
-        <url-pattern>/UserProfile</url-pattern>
-        <servlet-name>ModifyServlet</servlet-name>
-        <url-pattern>/ModifyServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>AddAnomaly</servlet-name>
-        <url-pattern>/addAnomaly</url-pattern>
+    <servlet-mapping>   
         <servlet-name>PayServlet</servlet-name>
         <url-pattern>/payment</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>AddReview</servlet-name>
-        <url-pattern>/addReview</url-pattern>
+        <servlet-name>AddAnomaly</servlet-name>
+        <url-pattern>/addAnomaly</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
