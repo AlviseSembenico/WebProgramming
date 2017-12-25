@@ -15,4 +15,5 @@ import java.util.LinkedList;
  */
 public interface AnomaliesDao extends  DefaultDao,GetById{
     public LinkedList<Anomalies> getAnomaliesByPurchase(Purchase p)  throws  Exception ;
+    public LinkedList<Anomalies> getBySeller(int id) throws Exception;
 }

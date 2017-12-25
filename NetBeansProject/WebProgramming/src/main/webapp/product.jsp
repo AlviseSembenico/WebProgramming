@@ -116,7 +116,10 @@
                             <div class="row text-right">
                                 <form method="POST" action="cart">
                                     <input name="pid" style="visibility: hidden;" value="<c:out value="${product.getId()}"/>" />
-                                    <button class="btn btn-rose btn-round" type="submit" >Add to Cart &nbsp;<i class="material-icons">shopping_cart</i></button>
+                                    <button class="btn btn-rose btn-round" type="submit" >Add to Ca
+                                        </div>
+
+                                        </div>
                                 </form>
                             </div>
                         </div>
@@ -185,24 +188,31 @@
             $(document).ready(function () {
                 $("#flexiselDemo1").flexisel({
                     visibleItems: 4,
-                    itemsToScroll: 1,
-                    animationSpeed: 400,
-                    enableResponsiveBreakpoints: true,
-                    responsiveBreakpoints: {
-                        portrait: {
+                            itemsToScroll: 1,
+                            animationSpeed: 400,
+                            enableResponsiveBreakpoints: true,
+                            responsiveBreakpoints: {
+                            portrait: {
                             changePoint: 480,
-                            visibleItems: 3
+                                    visibleItems: 3
+                            },
+                                    landscape: {rt & nbsp; <i class="material-icons">shopping_cart</i> < /button>
+                </form>
+                </div>
+                </div>
+                </div>
+                </div>
+            
+            
+                    changePoint: 640,
+                        visibleItems: 3
                         },
-                        landscape: {
-                            changePoint: 640,
-                            visibleItems: 3
-                        },
-                        tablet: {
-                            changePoint: 768,
-                            visibleItems: 3
+                    tablet: {
+                                            changePoint: 768,
+                                            visibleItems: 3
                         }
-                    }
-                });
-            });
-        </script>
-</html>
+                        }
+                        });
+                            });
+                </script>
+                </html>

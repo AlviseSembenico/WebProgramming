@@ -14,6 +14,7 @@ public class Review extends IdOwnerComparable {
     private Date creationDate;
     private User creator;
     private Product product;
+    private String status;
 
     public int getGlobalValue() {
         return globalValue;
@@ -69,6 +70,14 @@ public class Review extends IdOwnerComparable {
 
     public void setProduct(Product product) {
         this.product = product;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+    
+    public String getStatus() {
+        return this.status;
     }
 
     public int DiffTime() {

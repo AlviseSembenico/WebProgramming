@@ -19,4 +19,7 @@ public interface ReviewDao extends DefaultDao, GetById {
     public LinkedList<Review> getRewiewByCreatorAndProduct(User user,Product product) throws Exception;
     public Review getReviewById(int id) throws Exception;
     public LinkedList<Review> getRecentReviewForShop(Shop shop) throws Exception;
+    
+    
+    public LinkedList<Review> getRecentReviewForShopForNotify(User user) throws Exception;
 }

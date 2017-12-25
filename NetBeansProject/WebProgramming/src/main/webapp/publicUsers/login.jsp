@@ -75,7 +75,7 @@
                                 </div>
                             </form>
                             <div class="footer text-center">
-                                <a href="recover.jsp" class="btn btn-primary btn-simple btn-wd btn-sm">Recover your password</a>
+                                <a href="recover" class="btn btn-primary btn-simple btn-wd btn-sm">Recover your password</a>
                             </div>
                             </form>
                         </div>

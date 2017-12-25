@@ -8,8 +8,10 @@ package servlets.resetpass;
 import Dao.UserDao;
 import Dao.entities.User;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.util.logging.Level;
+import java.util.Base64;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -47,7 +49,9 @@ public class resetPasswordServlet extends HttpServlet {
             throws ServletException, IOException {
         User user = null;
         try {
-            user = userDao.getUserById(Integer.parseInt(request.getParameter("id")));
+            String token = URLDecoder.decode(request.getParameter("token"), "ISO-8859-1");
+            byte [] decode = Base64.getDecoder().decode(token);
+            user = userDao.getUserById(Integer.parseInt(new String(decode,StandardCharsets.ISO_8859_1)));
         } catch (Exception ex) {
             Logger.getLogger(resetPasswordServlet.class.getName()).log(Level.SEVERE, null, ex);
         }

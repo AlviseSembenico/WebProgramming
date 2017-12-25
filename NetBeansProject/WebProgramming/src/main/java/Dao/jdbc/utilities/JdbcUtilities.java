@@ -165,6 +165,13 @@ public class JdbcUtilities {
                             } else {
                                 m.invoke(o, rs.getString(s));
                             }
+                        } else if (m.getParameterTypes()[0].equals(Time.class)) {
+                            String s = map.get(name);
+                            if (s == null) {
+                                m.invoke(o, rs.getTime(camelToSql(name)));
+                            } else {
+                                m.invoke(o, rs.getString(s));
+                            }
                         } else if (m.getParameterTypes()[0].equals(double.class)) {
                             String s = map.get(name);
                             if (s == null) {

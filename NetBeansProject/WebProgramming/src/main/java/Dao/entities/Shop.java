@@ -1,8 +1,6 @@
 package Dao.entities;
 
 import java.sql.Time;
-import system.Log;
-
 
 /**
 * @generated
