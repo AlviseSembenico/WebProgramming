@@ -27,12 +27,12 @@
             <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
             <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+            
             <link href="assets/css/ratingStar.css" rel="stylesheet" type="text/css"/>
-
             <!-- CSS Files -->
             <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
             <link href="assets/css/demo.css" rel="stylesheet" />
-            <link href="../assets/css/style.css" rel="stylesheet" type="text/css"/>
+            <link href="assets/css/style.css" rel="stylesheet" type="text/css"/>
             <link href="assets/css/unminify.css" rel="stylesheet"/>
 
 
@@ -126,32 +126,18 @@
                                     </a>
                                     <ul class="dropdown-menu dropdown-with-icons">
                                         <li>
-                                            <a href="Purchase">
-                                                <i class="material-icons">shopping_cart</i> Acquisti
+                                            <a href="myOrders">
+                                                <i class="material-icons">shopping_cart</i> Purchases
                                             </a>
                                         </li>
                                         <li>
                                             <a href="ModifyServlet">
-                                                <i class="material-icons">settings</i> Profilo
+                                                <i class="material-icons">settings</i> Profile
                                             </a>
                                         </li>
                                         <li>
                                             <a href="logout">
                                                 <i class="material-icons">power_settings_new</i> Logout
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                        <i class="material-icons">reorder</i>Account
-                                        <b class="caret"></b>
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-with-icons">
-                                        <li>
-                                            <a href="myOrders">
-                                                <i class="material-icons">archive</i>My Orders
                                             </a>
                                         </li>
                                     </ul>
