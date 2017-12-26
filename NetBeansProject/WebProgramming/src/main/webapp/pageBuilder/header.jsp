@@ -38,11 +38,12 @@
 
 
         </head>
+        <body >
     <c:if test="${(empty param.trasparent) || param.trasparent eq 'true'     }">
-        <nav class="navbar  navbar-transparent navbar-fixed-top navbar-color-on-scroll"  color-on-scroll=" " id="sectionsNav"> 
+        <nav class="navbar navbar-default navbar-transparent navbar-fixed-top navbar-color-on-scroll"  id="sectionsNav"> 
         </c:if>
         <c:if test="${param.trasparent eq 'false'}">
-            <nav class="navbar navbar-fixed-top    "id="sectionsNav">
+            <nav class="navbar navbar-fixed-top" id="sectionsNav">
             </c:if>
             <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
@@ -79,7 +80,7 @@
                             </a>
                             <ul class="dropdown-menu dropdown-with-icons">
                                 <li>
-                                    <a href="AboutUs.jsp">
+                                    <a href="aboutUs.jsp">
                                         <i class="material-icons">event_seat</i> About Us
                                     </a>
                                 </li>
@@ -197,3 +198,4 @@
                 </div>
             </div>
         </nav>
+         

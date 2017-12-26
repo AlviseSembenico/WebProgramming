@@ -199,30 +199,41 @@
 
 <script>
                 /*$("#autocomplete-5").autocomplete({
-                    source: "http://localhost:8084/Exercise1/services/languages",
-                    minLength: 2,
-                    delay: 500
-                });*/
-                
-                
-                 $("#autocomplete").autocomplete({
-                 source: function (request, response) {
-                 $.ajax({
-                 contentType: "application/json",
-                 type: "GET",
-                 url: "http://localhost:8080/WebProgramming/services/complete",
-                 data: {
-                 name: request.term
-                 },
-                 success: function (data, textStatus, jqXHR) {
-                 response(data);
-                 },
-                 error: function (jqXHR, textStatus, errorThrown) {
-                 jqXHR;
-                 }
-                 });
-                 },
+                 source: "http://localhost:8084/Exercise1/services/languages",
                  minLength: 2,
                  delay: 500
-                 });
+                 });*/
+
+
+                $("#autocomplete").autocomplete({
+                    source: function (request, response) {
+                        $.ajax({
+                            contentType: "application/json",
+                            type: "GET",
+                            url: "http://localhost:8080/WebProgramming/services/complete",
+                            data: {
+                                name: request.term
+                            },
+                            success: function (data, textStatus, jqXHR) {
+                                response(data);
+                            },
+                            error: function (jqXHR, textStatus, errorThrown) {
+                                jqXHR;
+                            }
+                        });
+                    },
+                    minLength: 2,
+                    delay: 500
+                });
+
+
+                $(window).scroll(function () {
+                    if ($(this).scrollTop() == 0)
+                        $("#sectionsNav").addClass("navbar-transparent");
+                    else
+                        $("#sectionsNav").removeClass("navbar-transparent");
+                });
+
+
+
 </script>

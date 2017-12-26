@@ -55,7 +55,7 @@ Author     : Alvise
                             <div class="container">
                                 <div class="row">
                                     <div class="col-md-6 text-left">
-                                        <h1 class="title">Material Kit PRO</h1>
+                                        <h1 class="title">Check out the new bands NOW online</h1>
                                         <h4>Dolce & Gabbana is a luxury Italian fashion house founded in 1985 in Legnano by Italian designers Domenico Dolce and Stefano Gabbana. The two met in Milan in 1980 and designed for the same fashion house.</h4>
                                         <br />
 
@@ -86,9 +86,8 @@ Author     : Alvise
                             <div class="container">
                                 <div class="row">
                                     <div class="col-md-8 col-md-offset-2 text-center">
-                                        <h1 class="title">Material Kit PRO</h1>
-                                        <h4>Dolce & Gabbana is a luxury Italian fashion house founded in 1985 in Legnano by Italian designers Domenico Dolce and Stefano Gabbana. The two met in Milan in 1980 and designed for the same fashion house.</h4>
-                                        <h6>Connect with us on:</h6>
+                                        <h1 class="title">Style has new name: INFLUENCER</h1>
+                                        <h4>The BOXING weeb event is here: up to 50% OFF</h4>
                                         <br />
                                         <h6>Connect with us on:</h6>
                                         <div class="buttons">
@@ -110,7 +109,6 @@ Author     : Alvise
                             </div>
 
                         </div>
-
                     </div>
                     <div class="item">
                         <div class="page-header header-filter" style="background-image: url('assets/img/dg2.jpg');">
@@ -118,8 +116,8 @@ Author     : Alvise
                             <div class="container">
                                 <div class="row">
                                     <div class="col-md-8 col-md-offset-2 text-center">
-                                        <h1 class="title">Material Kit PRO</h1>
-                                        <h4>Dolce & Gabbana is a luxury Italian fashion house founded in 1985 in Legnano by Italian designers Domenico Dolce and Stefano Gabbana. The two met in Milan in 1980 and designed for the same fashion house.</h4>
+                                        <h1 class="title">Dress your ENTIRE family just in one CLICK</h1>
+                                        <h4>Shop high street to high end, and order with ease thanks to free delivery and returns</h4>
                                         <br />
                                         <h6>Connect with us on:</h6>
                                         <div class="buttons">
@@ -150,7 +148,7 @@ Author     : Alvise
                             <div class="container">
                                 <div class="row">
                                     <div class="col-md-7 col-md-offset-5 text-right">
-                                        <h1 class="title">Meet new Zenfone 4</h1>
+                                        <h1 class="title">Meet new Zenfone 4 where PHOTO is almost a MAGIC</h1>
                                         <h4>Best smartphone's camera</h4>
                                         <br />
 
@@ -176,7 +174,7 @@ Author     : Alvise
                             <div class="container">
                                 <div class="row">
                                     <div class="col-md-7 col-md-offset-5 text-right">
-                                        <h1 class="title">Refresh you life</h1>
+                                        <h1 class="title">Refresh you life in less time you drink a coffee</h1>
                                         <h4>Try new Dyson fanless humidifier</h4>
                                         <br />
 
