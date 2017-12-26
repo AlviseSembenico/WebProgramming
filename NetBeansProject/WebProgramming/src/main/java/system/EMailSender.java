@@ -23,14 +23,14 @@ import javax.mail.internet.MimeMessage;
  *
  * @author zappi
  */
-public class eMailSender {
+public class EMailSender {
 
     private final String SMTP_HOST = "smtp.gmail.com";
     private final String SMTP_USER = "noreply.webproject@gmail.com";
     private final String SMTP_PASSWD = "Sistemi2";
     Session session;
 
-    public eMailSender() {
+    public EMailSender() {
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");

@@ -3,6 +3,8 @@ package servlets.register;
 import Dao.UserDao;
 import Dao.entities.User;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,16 +12,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import system.Log;
-import system.eMailSender;
+import system.EMailSender;
 
 public class RegisterServlet extends HttpServlet {
 
     private UserDao userDao;
-    private eMailSender sender;
+    private EMailSender sender;
 
     @Override
     public void init() throws ServletException {
-        sender = new eMailSender();
+        sender = new EMailSender();
         userDao = (UserDao) super.getServletContext().getAttribute("userDao");
         if (userDao == null) {
             throw new ServletException("Impossible to get dao factory for user storage system");
@@ -55,22 +57,19 @@ public class RegisterServlet extends HttpServlet {
         String firstName = request.getParameter("firstname");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        if (lastName.length() > 0) {
-            String contextPath = getServletContext().getContextPath();
-            if (!contextPath.endsWith("/")) {
-                contextPath += "/";
-            }
-            try {
-                User user = new User(firstName, lastName, email, password, "NO","client");
+        
+        try {
+            if (lastName.length() > 0) {
+                String contextPath = getServletPath(request);
+
+                User user = new User(firstName, lastName, email, password, "NO", "client");
                 int res = userDao.insertDao(user);
                 if (res == 0) {
                     reqDes = request.getRequestDispatcher("/publicUsers/register.jsp?result=false");
                 } else {
                     user = userDao.getUserByEmail(email);
-                    String link = request.getRequestURL().toString();
-                    link = link.substring(0, 36);
-                    sender.sendLinkConfirm(user.getId(), link, email);
-                    response.sendRedirect(response.encodeRedirectURL(contextPath + "confirmRegistration.jsp"));
+                    sender.sendLinkConfirm(user.getId(), contextPath, email);
+                    reqDes = request.getRequestDispatcher("/publicUsers/confirmRegistration.jsp");
                 }
             }
         } catch (Exception e) {
@@ -79,6 +78,13 @@ public class RegisterServlet extends HttpServlet {
             reqDes.forward(request, response);
         }
 
+    }
+    
+    private String getServletPath(HttpServletRequest request) throws MalformedURLException{
+        URL aUrl=new URL(request.getRequestURL().toString());
+        String contextPath = request.getServletContext().getContextPath();
+        contextPath=aUrl.getProtocol()+"://"+aUrl.getHost()+":"+aUrl.getPort()+contextPath;
+        return contextPath;
     }
 
     /**

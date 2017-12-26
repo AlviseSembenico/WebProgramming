@@ -13,7 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import system.eMailSender;
+import system.EMailSender;
 
 /**
  *
@@ -23,11 +23,11 @@ import system.eMailSender;
 public class recoverPassword extends HttpServlet {
 
     private UserDao userDao;
-    private eMailSender sender;
+    private EMailSender sender;
 
     @Override
     public void init() throws ServletException {
-        sender = new eMailSender();
+        sender = new EMailSender();
         userDao = (UserDao) super.getServletContext().getAttribute("userDao");
         if (userDao == null) {
             throw new ServletException("Impossible to get dao factory for user storage system");

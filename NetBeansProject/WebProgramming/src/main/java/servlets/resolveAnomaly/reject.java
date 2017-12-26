@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import servlets.recover.recoverPassword;
-import system.eMailSender;
+import system.EMailSender;
 
 /**
  *
@@ -66,7 +66,7 @@ public class reject extends HttpServlet {
         reqDes.forward(request, response);
     }
     
-    private eMailSender sender = new eMailSender();
+    private EMailSender sender = new EMailSender();
     /**
      * Handles the HTTP <code>POST</code> method.
      *

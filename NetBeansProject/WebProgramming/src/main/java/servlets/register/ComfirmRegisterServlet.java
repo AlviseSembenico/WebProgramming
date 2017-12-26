@@ -23,7 +23,7 @@ import servlets.resetpass.resetPasswordServlet;
  *
  * @author zappi
  */
-public class confirm extends HttpServlet {
+public class ComfirmRegisterServlet extends HttpServlet {
 
     private UserDao userDao;
 
@@ -62,7 +62,7 @@ public class confirm extends HttpServlet {
             userDao.updateDao(user);
             request.getSession().setAttribute("user", user);
         } catch (Exception ex) {
-            Logger.getLogger(confirm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ComfirmRegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         response.sendRedirect(response.encodeRedirectURL(contextPath + "/index"));
     }
