@@ -61,6 +61,8 @@ public class Cart extends IdOwnerComparable {
     }
 
     public LinkedList<Product> getOldStatus() {
+        if(oldProducts==null)
+            return products;
         return oldProducts;
     }
 

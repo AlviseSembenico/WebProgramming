@@ -74,6 +74,9 @@ public class LoginServlet extends HttpServlet {
                 if (user.getConferma().equals("SI")) {
                     request.getSession().setAttribute("user", user);
                     Cart sessCart = (Cart) request.getSession().getAttribute("cart");
+                    if (sessCart == null) {
+                        sessCart = new Cart();
+                    }
                     Cart userCart = cartDao.getByUser(user);
                     if (userCart != null) {
                         sessCart.setUser(user);
@@ -82,12 +85,13 @@ public class LoginServlet extends HttpServlet {
                         }
                         cartDao.updateDao(userCart);
                         request.getSession().setAttribute("cart", userCart);
-                    }else
+                    } else {
                         cartDao.insertDao(userCart);
+                    }
+                } else {
+                    response.sendRedirect(response.encodeRedirectURL("login" + "?error=true"));
                 }
-                else{
-                response.sendRedirect(response.encodeRedirectURL("login" + "?error=true"));
-                }
+                response.sendRedirect(response.encodeRedirectURL("index"));
             }
         } catch (Exception ex) {
             Log.write(ex.toString());

@@ -32,7 +32,7 @@
             <!-- CSS Files -->
             <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
             <link href="assets/css/demo.css" rel="stylesheet" />
-            <link href="assets/css/style.css" rel="stylesheet" />
+            <link href="../assets/css/style.css" rel="stylesheet" type="text/css"/>
             <link href="assets/css/unminify.css" rel="stylesheet"/>
 
 
@@ -167,7 +167,7 @@
                                 <li>
                                     <form class="form form-newsletter card-content" method="get" action="result">
                                         <div class="form-group is-empty has-error" >
-                                            <input class="form-control" id="autocomplete-5" style=" color: black" type="text" name="name" placeholder="Search..." >
+                                            <input class="form-control"  style=" color: black" type="text" name="name" placeholder="Search..." >
                                             <span class="material-input"></span></div>
 
                                         <button type="submit" class="btn btn-primary btn-just-icon btn-danger">
@@ -188,7 +188,7 @@
 
                     <form class="navbar-form navbar-right" role="search" method="get" action="result" >
                         <div class="form-group form-white is-empty ui-widget">
-                            <input class="form-control" id="autocomplete" style="color: white" name="name" placeholder="Search..." >
+                            <input class="form-control" id="autocomplete" style="color: white" name="name" >
                             <span class="material-input"></span></div>
                         <button class="btn btn-white btn-raised btn-fab btn-fab-mini" type="submit"><i class="material-icons">search</i></button>
                     </form>
