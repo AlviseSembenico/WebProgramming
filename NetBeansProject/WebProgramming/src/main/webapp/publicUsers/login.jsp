@@ -64,7 +64,7 @@
 
                                     <div class="checkbox">
                                         <label>
-                                            <input name="optionsCheckboxes" type="checkbox" ><span class="checkbox-material"><span class="check"></span></span>
+                                            <input name="optionsCheckboxes" type="checkbox" />
                                             Remember me
                                         </label>
                                     </div> 

@@ -71,7 +71,7 @@ public class LoginServlet extends HttpServlet {
             if (user == null) {
                 response.sendRedirect(response.encodeRedirectURL("login" + "?error=true"));
             } else {
-                if (user.getConferma().equals("SI")) {
+                if (user.getConfirm().equals("SI")) {
                     request.getSession().setAttribute("user", user);
                     Cart sessCart = (Cart) request.getSession().getAttribute("cart");
                     if (sessCart == null) {
