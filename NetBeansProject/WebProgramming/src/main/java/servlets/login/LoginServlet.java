@@ -85,6 +85,9 @@ public class LoginServlet extends HttpServlet {
                     }else
                         cartDao.insertDao(userCart);
                 }
+                else{
+                response.sendRedirect(response.encodeRedirectURL("login" + "?error=true"));
+                }
             }
         } catch (Exception ex) {
             Log.write(ex.toString());
