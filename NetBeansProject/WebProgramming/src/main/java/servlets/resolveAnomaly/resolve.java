@@ -60,7 +60,7 @@ public class resolve extends HttpServlet {
         RequestDispatcher reqDes = null;
         request.setAttribute("u", user);
         request.setAttribute("mode", "refound");
-        reqDes = request.getRequestDispatcher("/email.jsp");
+        reqDes = request.getRequestDispatcher("/loggedUsers/email.jsp");
         reqDes.forward(request, response);
     }
 

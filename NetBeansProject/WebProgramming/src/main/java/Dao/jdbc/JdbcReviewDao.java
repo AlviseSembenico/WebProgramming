@@ -114,7 +114,7 @@ public class JdbcReviewDao extends JdbcUtilities implements ReviewDao {
             return null;
         }
         LinkedList<Review> res = new LinkedList<>();
-        String query = "SELECT reviews.* FROM web.reviews join products on reviews.products_id = products.id join shops on products.shops_id = shops.id join users on shops.owner_id = users.id where status = 'not read' and users.id = ? and users.privileges = 'seller' or users.privileges = 'admin'";
+        String query = "SELECT R.* FROM web.reviews R join products P on R.products_id = P.id join shops S on P.shops_id = S.id join users U on U.id = S.owner_id where R.status like 'not read' and U.id = ?";
         PreparedStatement stmt = connection.prepareStatement(query);
         stmt.setInt(1, user.getId());
         for (Object o : super.fillResult(Review.class, map, stmt.executeQuery())) {

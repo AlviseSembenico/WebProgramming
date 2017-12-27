@@ -74,7 +74,7 @@
 
                                                                         <button type="submit" rel="tooltip" class="btn btn-danger" data-original-title="" onclick="{
                                                                                     document.getElementById('act').value = 'Reject';
-                                                                                }"  title="Ignore">
+                                                                                }"  title="Reject">
                                                                             <i class="material-icons">close</i>
                                                                         </button>
                                                                     </form>

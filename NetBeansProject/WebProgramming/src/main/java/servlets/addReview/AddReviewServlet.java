@@ -8,7 +8,6 @@ package servlets.addReview;
 import Dao.entities.*;
 import Dao.*;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -91,9 +90,7 @@ public class AddReviewServlet extends HttpServlet {
             Purchase purchase = purchaseDao.getPurchaseByIdAndUser(Integer.valueOf(request.getParameter("id")), user);
             
             if(reviewDao.getRewiewByCreatorAndProduct(user, purchase.getProduct()).get(0)!=null)
-                throw new Exception("Review already created");
-                        
-                
+                throw new Exception("Review already created");    
             int global = Integer.valueOf(request.getParameter("star"));
             int service = Integer.valueOf(request.getParameter("stars"));
             String description = request.getParameter("description");
@@ -103,6 +100,7 @@ public class AddReviewServlet extends HttpServlet {
             rw.setDescription(description);
             rw.setCreationDate(new Date());
             rw.setGlobalValue(666);
+            rw.setStatus("not read");
             rw.setCreator(user);
             rw.setProduct(purchase.getProduct());
             reviewDao.insertDao(rw);

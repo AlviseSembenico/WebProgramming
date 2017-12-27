@@ -105,33 +105,38 @@ public class Notifiche extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         RequestDispatcher reqDes = null;
-        String s = request.getServletContext().getContextPath();
-        String action = request.getParameter("action");
-        if (action == null) {
-            Enumeration<String> names = request.getParameterNames();
-            while (names.hasMoreElements()) {
-                String name = names.nextElement();
-                try {
+        try {
+            String s = request.getServletContext().getContextPath();
+            String action = request.getParameter("action");
+            if (action == null) {
+                Enumeration<String> names = request.getParameterNames();
+                while (names.hasMoreElements()) {
+                    String name = names.nextElement();
+
                     this.reviews.get(Integer.parseInt(name)).setStatus("read");
                     reviewDao.updateDao(reviews.get(Integer.parseInt(name)));
                     s += "/notify";
                     response.sendRedirect(s);
-                } catch (Exception ex) {
-                    Logger.getLogger(Notifiche.class.getName()).log(Level.SEVERE, null, ex);
+
                 }
-            }
-        } else {
-            if (action.contains("Reject")) {
-                int i = Integer.parseInt(request.getParameter("index"));
-                s += "/reject?id=" + (anomalie.get(i).getPurchase().getUser()).getId();
-                response.sendRedirect(s);
             } else {
-                if (action.contains("Refound")) {
-                    int i = Integer.parseInt(request.getParameter("index"));
-                    s += "/resolve?id=" + (anomalie.get(i).getPurchase().getUser()).getId();
+
+                int i = Integer.parseInt(request.getParameter("index"));
+                anomalie.get(i).setStatus("verified");
+                anomaliesDao.updateDao(anomalie.get(i));
+
+                if (action.contains("Reject")) {
+                    s += "/reject?id=" + (anomalie.get(i).getPurchase().getUser()).getId();
                     response.sendRedirect(s);
+                } else {
+                    if (action.contains("Resolve")) {
+                        s += "/resolve?id=" + (anomalie.get(i).getPurchase().getUser()).getId();
+                        response.sendRedirect(s);
+                    }
                 }
             }
+        } catch (Exception ex) {
+            Logger.getLogger(Notifiche.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
