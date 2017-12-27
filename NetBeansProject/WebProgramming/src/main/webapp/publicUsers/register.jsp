@@ -101,7 +101,7 @@
                                         <div class="checkbox">
                                             <label>
                                                 <input type="checkbox" name="optionsCheckboxes" checked>
-                                                I agree to the <a href="#something">terms and conditions</a>.
+                                                I agree to the <a href="https://termsfeed.com/terms-conditions/857598a221312549db3b704c63e394b8">terms and conditions</a>.
                                             </label>
                                         </div>
                                     </div>
