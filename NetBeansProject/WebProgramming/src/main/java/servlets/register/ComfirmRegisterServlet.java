@@ -9,8 +9,6 @@ import Dao.UserDao;
 import Dao.entities.User;
 import java.io.IOException;
 import java.net.URLDecoder;
-import java.nio.charset.StandardCharsets;
-import java.util.Base64;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -18,6 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import servlets.resetpass.resetPasswordServlet;
+import system.Encrypt;
 
 /**
  *
@@ -46,25 +45,27 @@ public class ComfirmRegisterServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         String contextPath = getServletContext().getContextPath();
-
         User user = null;
         try {
             String token = URLDecoder.decode(request.getParameter("token"), "ISO-8859-1");
-            byte[] decode = Base64.getDecoder().decode(token);
-            user = userDao.getUserById(Integer.parseInt(new String(decode, StandardCharsets.ISO_8859_1)));
+            user = userDao.getUserById(new Encrypt().decode(token));
         } catch (Exception ex) {
             Logger.getLogger(resetPasswordServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        user.setConfirm("SI");
-        try {
-            userDao.updateDao(user);
-            request.getSession().setAttribute("user", user);
-        } catch (Exception ex) {
-            Logger.getLogger(ComfirmRegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
+        if (user != null) {
+
+            user.setConfirm("SI");
+            try {
+                userDao.updateDao(user);
+                request.getSession().setAttribute("user", user);
+            } catch (Exception ex) {
+                Logger.getLogger(ComfirmRegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            response.sendRedirect(response.encodeRedirectURL(contextPath + "/index"));
         }
-        response.sendRedirect(response.encodeRedirectURL(contextPath + "/index"));
+        response.sendRedirect(response.encodeRedirectURL(contextPath + "/error.jsp"));
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

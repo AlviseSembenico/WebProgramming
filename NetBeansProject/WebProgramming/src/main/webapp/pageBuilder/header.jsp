@@ -179,15 +179,12 @@
                             </li>
                             <c:if test="${!(empty user) && ((user.getPrivileges() eq 'seller')||(user.getPrivileges() eq 'admin')) }">
                                 <li>
-                                <a class="btn btn-rose btn-raised btn-fab btn-fab-mini" href="notify" style="margin-top: 0px;">
-                                    <i class="material-icons" style="padding-left: 3px">email</i>
+                                    <a class="btn btn-rose btn-raised btn-fab btn-fab-mini" href="notify" style="margin-top: 0px;">
+                                        <i class="material-icons" style="padding-left: 3px">email</i>
                                     </a>
                                 </li>
                             </c:if>
                         </ul>
-
-
-
                     </div>
                 </div>
             </nav>

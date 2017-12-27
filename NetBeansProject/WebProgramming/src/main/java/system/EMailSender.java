@@ -57,7 +57,7 @@ public class EMailSender {
     }
 
     public void sendLinkConfirm(int id, String link, String userMail) throws UnsupportedEncodingException, AddressException, MessagingException {
-        byte[] token = Integer.toString(id).getBytes(StandardCharsets.ISO_8859_1);
+        byte[] token = new Encrypt().encode(id);
         link = link + "/confirm?token=" + URLEncoder.encode(Base64.getEncoder().encodeToString(token), "ISO-8859-1");
         StringBuilder bodyText = new StringBuilder();
         bodyText.append("<div>")
@@ -80,7 +80,7 @@ public class EMailSender {
     }
 
     public void sendRecoverLink(int id, String link, String usermail) throws UnsupportedEncodingException, AddressException, MessagingException {
-        byte[] token = Integer.toString(id).getBytes(StandardCharsets.ISO_8859_1);
+        byte[] token = new Encrypt().encode(id);
         link = link + "/reset?token=" + URLEncoder.encode(Base64.getEncoder().encodeToString(token), "ISO-8859-1");
         StringBuilder bodyText = new StringBuilder();
         bodyText.append("<div>")

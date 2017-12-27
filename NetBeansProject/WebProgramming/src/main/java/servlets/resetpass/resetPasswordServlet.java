@@ -18,6 +18,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import system.Encrypt;
 
 /**
  *
@@ -35,6 +36,7 @@ public class resetPasswordServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     private UserDao userDao;
+    private Encrypt encrypter;
 
     @Override
     public void init() throws ServletException {
@@ -50,8 +52,7 @@ public class resetPasswordServlet extends HttpServlet {
         User user = null;
         try {
             String token = URLDecoder.decode(request.getParameter("token"), "ISO-8859-1");
-            byte [] decode = Base64.getDecoder().decode(token);
-            user = userDao.getUserById(Integer.parseInt(new String(decode,StandardCharsets.ISO_8859_1)));
+            user = userDao.getUserById(new Encrypt().decode(token));
         } catch (Exception ex) {
             Logger.getLogger(resetPasswordServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -77,32 +78,30 @@ public class resetPasswordServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        User user = null;
+        RequestDispatcher reqDes = null;
         try {
-            user = userDao.getUserById(Integer.parseInt(request.getParameter("id")));
-        } catch (Exception ex) {
-            Logger.getLogger(resetPasswordServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        if (user != null) {
+            User user = null;
 
-            String password = request.getParameter("password");
-            String conferma = request.getParameter("conferma");
-            if (password.equals(conferma)) {
-                user.setPassword(password);
-                try {
+            user = userDao.getUserById(Integer.parseInt(request.getParameter("id")));
+
+            if (user != null) {
+                String password = request.getParameter("password");
+                String conferma = request.getParameter("conferma");
+                if (password.equals(conferma)) {
+                    user.setPassword(password);
                     userDao.updateDao(user);
-                } catch (Exception ex) {
-                    Logger.getLogger(resetPasswordServlet.class.getName()).log(Level.SEVERE, null, ex);
+                    reqDes = request.getRequestDispatcher("/login?result=true");
+                    reqDes.forward(request, response);
+                } else {
+                    reqDes = request.getRequestDispatcher("/index?result=false");
+                    reqDes.forward(request, response);
                 }
-                RequestDispatcher reqDes = request.getRequestDispatcher("login?result=true");
-                reqDes.forward(request, response);
             } else {
-                RequestDispatcher reqDes = request.getRequestDispatcher("index?result=false");
+                reqDes = request.getRequestDispatcher("/error.jsp");
                 reqDes.forward(request, response);
             }
-        } else {
-            RequestDispatcher reqDes = request.getRequestDispatcher("/error.jsp");
-            reqDes.forward(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(resetPasswordServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
