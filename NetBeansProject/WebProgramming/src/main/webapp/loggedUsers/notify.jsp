@@ -20,7 +20,7 @@
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
                         <div class="brand">
-                            <h1 class="title text-center">Notifiche</h1>                                
+                            <h1 class="title text-center">Notify</h1>                                
                         </div>
                     </div>
                 </div>

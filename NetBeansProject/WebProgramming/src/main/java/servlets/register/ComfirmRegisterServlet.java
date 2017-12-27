@@ -57,7 +57,7 @@ public class ComfirmRegisterServlet extends HttpServlet {
         } catch (Exception ex) {
             Logger.getLogger(resetPasswordServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        user.setConferma("SI");
+        user.setConfirm("SI");
         try {
             userDao.updateDao(user);
             request.getSession().setAttribute("user", user);

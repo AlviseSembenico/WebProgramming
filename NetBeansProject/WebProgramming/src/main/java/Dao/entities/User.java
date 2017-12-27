@@ -21,7 +21,7 @@ public final class User extends IdOwnerComparable {
         setLastName(lastName);
         setEmail(email);
         setPassword(password);
-        setConferma(conferma);
+        setConfirm(conferma);
         setPrivileges(privileges);
     }
 
@@ -30,7 +30,7 @@ public final class User extends IdOwnerComparable {
         setLastName(lastName);
         setEmail(email);
         setPassword(password);
-        setConferma(Conferma);
+        setConfirm(Conferma);
         setPrivileges(privileges);
         setAvatarPath(avatarPath);
     }
@@ -38,14 +38,14 @@ public final class User extends IdOwnerComparable {
     /**
      * @return the conferma
      */
-    public String getConferma() {
+    public String getConfirm() {
         return conferma;
     }
 
     /**
      * @param conferma the conferma to set
      */
-    public void setConferma(String conferma) {
+    public void setConfirm(String conferma) {
         this.conferma = conferma;
     }
 

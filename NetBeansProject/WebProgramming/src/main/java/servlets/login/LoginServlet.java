@@ -71,7 +71,7 @@ public class LoginServlet extends HttpServlet {
             if (user == null) {
                 response.sendRedirect(response.encodeRedirectURL("login" + "?error=true"));
             } else {
-                if (user.getConferma().equals("SI")) {
+                if (user.getConfirm().equals("SI")) {
                     request.getSession().setAttribute("user", user);
                     Cart sessCart = (Cart) request.getSession().getAttribute("cart");
                     if (sessCart == null) {
@@ -86,6 +86,8 @@ public class LoginServlet extends HttpServlet {
                         cartDao.updateDao(userCart);
                         request.getSession().setAttribute("cart", userCart);
                     } else {
+                        userCart = new Cart();
+                        userCart.setUser(user);
                         cartDao.insertDao(userCart);
                     }
                 } else {

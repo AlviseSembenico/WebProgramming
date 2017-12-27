@@ -75,16 +75,19 @@ public class Notifiche extends HttpServlet {
         HttpSession session = request.getSession(false);
         User user = (User) session.getAttribute("user");
         id = user.getId();
-        try {
-            anomalie = anomaliesDao.getBySeller(id);
-            reviews = reviewDao.getRecentReviewForShopForNotify(user);
+        if (user.getPrivileges().equals("seller") || user.getPrivileges().equals("admin")) {
 
-            request.setAttribute("user", user);
-            request.setAttribute("anomalie", anomalie);
-            request.setAttribute("reviews", reviews);
-            reqDes = request.getRequestDispatcher("/loggedUsers/notify.jsp");
-        } catch (Exception ex) {
-            Logger.getLogger(Notifiche.class.getName()).log(Level.SEVERE, null, ex);
+            try {
+                anomalie = anomaliesDao.getBySeller(id);
+                reviews = reviewDao.getRecentReviewForShopForNotify(user);
+
+                request.setAttribute("user", user);
+                request.setAttribute("anomalie", anomalie);
+                request.setAttribute("reviews", reviews);
+                reqDes = request.getRequestDispatcher("/loggedUsers/notify.jsp");
+            } catch (Exception ex) {
+                Logger.getLogger(Notifiche.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         reqDes.forward(request, response);
 
@@ -102,9 +105,8 @@ public class Notifiche extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         RequestDispatcher reqDes = null;
-        String s = request.getRequestURL().toString();
+        String s = request.getServletContext().getContextPath();
         String action = request.getParameter("action");
-        s = s.substring(0, 36);
         if (action == null) {
             Enumeration<String> names = request.getParameterNames();
             while (names.hasMoreElements()) {

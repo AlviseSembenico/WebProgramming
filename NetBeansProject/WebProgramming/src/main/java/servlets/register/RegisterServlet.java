@@ -61,7 +61,6 @@ public class RegisterServlet extends HttpServlet {
         try {
             if (lastName.length() > 0) {
                 String contextPath = getServletPath(request);
-
                 User user = new User(firstName, lastName, email, password, "NO", "client");
                 int res = userDao.insertDao(user);
                 if (res == 0) {
