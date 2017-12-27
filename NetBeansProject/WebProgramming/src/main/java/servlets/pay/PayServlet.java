@@ -8,22 +8,13 @@ package servlets.pay;
 import Dao.UserDao;
 import Dao.entities.User;
 import Dao.CartDao;
-import Dao.ProductDao;
 import Dao.PurchaseDao;
 import Dao.entities.Purchase;
 import Dao.entities.Cart;
 import Dao.entities.Product;
-import java.io.IOException;
-import java.io.PrintWriter;
-import javax.servlet.ServletException;
-import Dao.*;
-import Dao.entities.*;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Date;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 
 import java.util.LinkedList;
 import javax.servlet.ServletException;
@@ -44,7 +35,6 @@ public class PayServlet extends HttpServlet {
     private PurchaseDao purchaseDao;
     private int id;
 
-
     @Override
     public void init() throws ServletException {
         cartDao = (CartDao) super.getServletContext().getAttribute("cartDao");
@@ -64,11 +54,11 @@ public class PayServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher RequestDispatcherObj = null;        
+        RequestDispatcher RequestDispatcherObj = null;
         RequestDispatcherObj = request.getRequestDispatcher("loggedUsers/payment.jsp");
         RequestDispatcherObj.forward(request, response);
     }
-    
+
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -81,76 +71,67 @@ public class PayServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            
+
             String contextPath = getServletContext().getContextPath();
             if (!contextPath.endsWith("/")) {
                 contextPath += "/";
             }
-            
+
             HttpSession session = request.getSession(false);
-            Cart cart = (Cart)session.getAttribute("cart");
-            User user = (User)session.getAttribute("user");
-            
-            LinkedList<Product> prodotti = (LinkedList<Product>)cart.getProducts();
-            
-            int res;          
+            Cart cart = (Cart) session.getAttribute("cart");
+            User user = (User) session.getAttribute("user");
+
+            LinkedList<Product> prodotti = (LinkedList<Product>) cart.getProducts();
+
+            int res;
             java.util.Date dt = new java.util.Date();
             Date d = new Date(dt.getTime());
-            dt = (java.util.Date)d;
-            
+            dt = (java.util.Date) d;
+
             int counter = 0;
-            
+
             int rt = 0;
-            
+
             String ritiro;
             String interroga;
-            
-            for(Product p:prodotti)
-            {    
+
+            for (Product p : prodotti) {
                 interroga = "ritiro" + Integer.toString(counter);
                 ritiro = request.getParameter(interroga);
-                if(p.getRetractable() > 0)
-                {
-                    if(ritiro != null)
-                    {
-                        if(ritiro.equals("on"))
-                        {
-                            rt = 3;                            
-                        }
-                        else
-                        {
+                if (p.getRetractable() > 0) {
+                    if (ritiro != null) {
+                        if (ritiro.equals("on")) {
+                            rt = 3;
+                        } else {
                             rt = 0;
-                        } 
-                    }
-                    else
-                    {
+                        }
+                    } else {
                         rt = 0;
-                    }                    
-                }
-                else
+                    }
+                } else {
                     rt = 0;
-                Purchase purc = new Purchase(p,user,rt, dt);
+                }
+                Purchase purc = new Purchase(p, user, rt, dt,cart.getTotal());
                 res = purchaseDao.insertDao(purc);
                 counter++;
             }
-           
+
             res = cartDao.deleteDao(cart);
-            
-            if(res == 0)
-                response.sendRedirect(response.encodeRedirectURL(contextPath + "payment"+"?error=true"));
-            else{
+
+            if (res == 0) {
+                response.sendRedirect(response.encodeRedirectURL(contextPath + "payment" + "?error=true"));
+            } else {
                 session.setAttribute("user", user);
                 session.setAttribute("cart", cart);
                 response.sendRedirect(response.encodeRedirectURL(contextPath + "Purchase"));
             }
-            
+
         } catch (Exception e) {
             Log.write(e.toString());
         }
 
     }
-    
-     
+
     @Override
     public String getServletInfo() {
         return "Short description";

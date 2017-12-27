@@ -246,7 +246,7 @@ public class JdbcUtilities {
                     char[] ca = name.toCharArray();
                     name = String.valueOf(ca[0]).toLowerCase() + name.substring(1);
 
-                    if (m.getReturnType().equals(Number.class) || m.getReturnType().equals(int.class)) {
+                    if (m.getReturnType().equals(Number.class) || m.getReturnType().equals(int.class) || m.getReturnType().equals(double.class) ) {
                         Number value = (Number) m.invoke(o, null);
                         if (value.doubleValue() >= 0) {
                             values += value.doubleValue() + ",";

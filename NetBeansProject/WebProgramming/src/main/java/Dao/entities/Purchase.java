@@ -20,11 +20,12 @@ public class Purchase extends IdOwnerComparable {
 
     }
 
-    public Purchase(Product p, User u, int s, Date d) {
+    public Purchase(Product p, User u, int s, Date d,double price) {
         setProduct(p);
         setUser(u);
         setStatus(s);
         setDate(d);
+        setPrice(price);
     }
 
     public int getId() {
