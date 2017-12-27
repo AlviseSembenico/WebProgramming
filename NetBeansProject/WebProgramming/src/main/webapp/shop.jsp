@@ -111,7 +111,9 @@
                                         <h4 class="info-title">Conctact</h4>
                                         <p> <h6>Site:</h6>
                                         <a id="site" href="http://www.${shop.getWebSiteUrl()}">${shop.getWebSiteUrl()}</a><br>
-                                        <input id="modySite" name="site" class="form-control" type="text" hidden="" value="${shop.getWebSiteUrl()}"/>
+                                        <p hidden id="modySite">
+                                        <input  name="site" class="form-control" type="text"  value="${shop.getWebSiteUrl()}"/>
+                                        </p>
                                         </p>
                                     </div>
                                 </div>
