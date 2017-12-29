@@ -7,23 +7,15 @@ package servlets.loadImage;
 
 import Dao.PictureDao;
 import Dao.ShopDao;
-import Dao.UserDao;
 import Dao.entities.Picture;
 import Dao.entities.Shop;
-import com.google.common.io.Files;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.nio.charset.Charset;
-import java.nio.file.LinkOption;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Enumeration;
-import javax.json.Json;
-import javax.json.JsonObjectBuilder;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -66,12 +58,8 @@ public class loadImage extends HttpServlet {
             File theDir = new File(context.getRealPath(SAVE_DIR));
             if (!theDir.exists()) {
                 boolean result = false;
-                try {
-                    theDir.mkdir();
-                    result = true;
-                } catch (SecurityException se) {
-                    //handle it
-                }
+                theDir.mkdir();
+                result = true;
             }
 
             MultipartRequest multi = new MultipartRequest(request, context.getRealPath(SAVE_DIR), 10 * 1024 * 1024, "ISO-8859-1", new DefaultFileRenamePolicy());
@@ -104,7 +92,7 @@ public class loadImage extends HttpServlet {
             Log.write(e.toString());
         }
     }
-
+    
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, java.io.IOException {

@@ -66,14 +66,16 @@
                                                                     <form id="form" action="notify" method="POST">
                                                                         <input id="act" hidden="true" name="action"/>
                                                                         <input  hidden="true" name="index" value="${i}"/>
-                                                                        <button type="submit" rel="tooltip" class="btn btn-success" data-original-title="" onclick="{
-                                                                                    document.getElementById('act').value = 'Resolve';
+                                                                        <button type="button" rel="tooltip" class="btn btn-success" data-original-title="" onclick="{
+                                                                                    document.getElementById('act').value = 'Resolve';                                                                                    
+                                                                                    document.getElementById('form').submit();
                                                                                 }" title="Refound">
                                                                             <i class="material-icons">edit</i>
                                                                         </button>
 
-                                                                        <button type="submit" rel="tooltip" class="btn btn-danger" data-original-title="" onclick="{
+                                                                        <button type="button" rel="tooltip" class="btn btn-danger" data-original-title="" onclick="{
                                                                                     document.getElementById('act').value = 'Reject';
+                                                                                    document.getElementById('form').submit();
                                                                                 }"  title="Reject">
                                                                             <i class="material-icons">close</i>
                                                                         </button>

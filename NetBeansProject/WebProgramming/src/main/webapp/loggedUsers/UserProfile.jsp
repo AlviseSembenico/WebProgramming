@@ -19,7 +19,7 @@
                         <div class="col-xs-6 col-xs-offset-3">
                             <div class="profile">
                                 <div class="avatar">
-                                    <img src="<c:out value="${user.getAvatarPath()}"/>" alt="Circle Image" class="img-circle img-responsive img-raised">
+                                    <img src="<c:choose><c:when test="${user.getAvatarPath() != null}"><c:out value="${user.getAvatarPath()}"/></c:when><c:otherwise><c:out value="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"/></c:otherwise></c:choose>" alt="Circle Image" class="img-circle img-responsive img-raised">
                                 </div>
                                 <div class="name">
                                     <h3 class="title"><c:out value="${user.getFirstName()} ${user.getLastName()}"/></h3>                                    

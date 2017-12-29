@@ -43,7 +43,7 @@
                                                 <div class="media">
                                                     <a class="pull-left" href="">
                                                         <div class="avatar">
-                                                            <img class="media-object" src="${reviews[i].getCreator().getAvatarPath()}">
+                                                            <img class="media-object" src="<c:choose><c:when test="${reviews[i].getCreator().getAvatarPath() != null}"><c:out value="${reviews[i].getCreator().getAvatarPath()}"/></c:when><c:otherwise><c:out value="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"/></c:otherwise></c:choose>">
                                                         </div>
                                                     </a>
                                                     <div class="media-body">
