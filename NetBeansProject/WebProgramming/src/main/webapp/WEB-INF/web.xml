@@ -76,8 +76,8 @@
         <servlet-class>servlets.myOrders.MyOrdersServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Notifiche</servlet-name>
-        <servlet-class>servlets.notifiche.Notifiche</servlet-class>
+        <servlet-name>Notify</servlet-name>
+        <servlet-class>servlets.notify.Notify</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>resolve</servlet-name>
@@ -152,7 +152,7 @@
         <url-pattern>/reset</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Notifiche</servlet-name>
+        <servlet-name>Notify</servlet-name>
         <url-pattern>/notify</url-pattern>
     </servlet-mapping>
     <servlet-mapping>

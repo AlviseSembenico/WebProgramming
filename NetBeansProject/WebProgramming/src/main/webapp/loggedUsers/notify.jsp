@@ -140,7 +140,7 @@
                                     </div>
                                 </c:when>
                                 <c:otherwise>
-                                    <h2>There's no new anomalies...</h2>
+                                    <h2>There's no new Reviews...</h2>
                                 </c:otherwise>
                             </c:choose>
                         </div>

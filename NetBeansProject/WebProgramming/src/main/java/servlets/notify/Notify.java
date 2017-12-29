@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package servlets.notifiche;
+package servlets.notify;
 
 import Dao.AnomaliesDao;
 import Dao.ReviewDao;
@@ -28,7 +28,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author zappi
  */
-public class Notifiche extends HttpServlet {
+public class Notify extends HttpServlet {
 
     private AnomaliesDao anomaliesDao;
     private UserDao userDao;
@@ -74,23 +74,24 @@ public class Notifiche extends HttpServlet {
         RequestDispatcher reqDes = null;
         HttpSession session = request.getSession(false);
         User user = (User) session.getAttribute("user");
-        id = user.getId();
-        if (user.getPrivileges().equals("seller") || user.getPrivileges().equals("admin")) {
-
-            try {
-                anomalie = anomaliesDao.getBySeller(id);
-                reviews = reviewDao.getRecentReviewForShopForNotify(user);
-
-                request.setAttribute("user", user);
-                request.setAttribute("anomalie", anomalie);
-                request.setAttribute("reviews", reviews);
-                reqDes = request.getRequestDispatcher("/loggedUsers/notify.jsp");
-            } catch (Exception ex) {
-                Logger.getLogger(Notifiche.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        try {
+            if (user != null) {
+                if (user.getPrivileges().equals("seller") || user.getPrivileges().equals("admin")) {
+                    anomalie = anomaliesDao.getBySeller(user);
+                    reviews = reviewDao.getRecentReviewForShopForNotify(user);
+                    request.setAttribute("user", user);
+                    request.setAttribute("anomalie", anomalie);
+                    request.setAttribute("reviews", reviews);
+                    reqDes = request.getRequestDispatcher("/loggedUsers/notify.jsp");
+                } else 
+                    throw new SecurityException("user has no access to this resource");
+                
+            }else 
+                throw new SecurityException("user has no access to this resource");
+        } catch (Exception ex) {
+            reqDes = request.getRequestDispatcher("/index");
         }
         reqDes.forward(request, response);
-
     }
 
     /**
@@ -122,8 +123,9 @@ public class Notifiche extends HttpServlet {
             } else {
 
                 int i = Integer.parseInt(request.getParameter("index"));
-                anomalie.get(i).setStatus("verified");
-                anomaliesDao.updateDao(anomalie.get(i));
+                Anomalies a=(Anomalies) anomaliesDao.getById(i);
+                 a.setStatus("verified");
+                anomaliesDao.updateDao(a);
 
                 if (action.contains("Reject")) {
                     s += "/reject?id=" + (anomalie.get(i).getPurchase().getUser()).getId();
@@ -136,7 +138,7 @@ public class Notifiche extends HttpServlet {
                 }
             }
         } catch (Exception ex) {
-            Logger.getLogger(Notifiche.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Notify.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
