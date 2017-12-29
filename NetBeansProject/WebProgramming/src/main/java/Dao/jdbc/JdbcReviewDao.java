@@ -75,7 +75,7 @@ public class JdbcReviewDao extends JdbcUtilities implements ReviewDao {
 
     @Override
     public int deleteDao(Object o) throws SQLException {
-        return super.deleteDao(o, map, tableName);
+        return super.deleteDao(o, map, tableName, 0);
     }
 
     @Override

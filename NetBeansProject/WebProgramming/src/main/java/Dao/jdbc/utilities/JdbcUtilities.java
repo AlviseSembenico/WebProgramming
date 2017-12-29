@@ -391,7 +391,7 @@ public class JdbcUtilities {
         return stmt.executeUpdate();
     }
 
-    protected int deleteDao(Object o, HashMap<String, String> map, String tableName) throws SQLException {
+    protected int deleteDao(Object o, HashMap<String, String> map, String tableName, int limit) throws SQLException {
         if (!checkConnection()) {
             return 0;
         }
@@ -458,6 +458,8 @@ public class JdbcUtilities {
             }
             query = query.substring(0, query.length() - 4);
         }
+        if(limit>0)
+            query+=" limit "+limit;
         PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
         return stmt.executeUpdate();

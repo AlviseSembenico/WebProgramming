@@ -30,19 +30,19 @@ public class Cart extends IdOwnerComparable {
     }
     
     public void addProduct(Product product) {
-        if(getOldStatus()==null)
+       if(oldProducts==null)
             setStatus(products);
         this.products.add(product);
     }
 
     public boolean removeProduct(Product product) {
-        if(getOldStatus()==null)
+        if(oldProducts==null)
             setStatus(products);
         return this.products.remove(product);
     }
 
     public void setProducts(LinkedList<Product> products) {
-        if(getOldStatus()==null)
+        if(oldProducts==null)
             setStatus(products);
         this.products = products;
     }
@@ -67,7 +67,6 @@ public class Cart extends IdOwnerComparable {
     }
 
     public void setStatus(LinkedList<Product> Products) {
-        
         oldProducts = new LinkedList<Product>();
         Products.forEach((item)->{
             oldProducts.add(item);

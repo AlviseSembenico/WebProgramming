@@ -73,7 +73,7 @@ public class JdbcPurchaseDao extends JdbcUtilities implements PurchaseDao{
 
     @Override
     public int deleteDao(Object o) throws SQLException {
-        return super.deleteDao(o, map, tableName);
+        return super.deleteDao(o, map, tableName, 0);
     }
 
     @Override

@@ -64,7 +64,7 @@ public class JdbcShopDao extends JdbcUtilities implements ShopDao{
 
     @Override
     public int deleteDao(Object o) throws SQLException {
-        return super.deleteDao(o, map, tableName);
+        return super.deleteDao(o, map, tableName, 0);
     }
     
     @Override

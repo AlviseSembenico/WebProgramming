@@ -208,7 +208,7 @@ public class JdbcProductDao extends JdbcUtilities implements ProductDao {
 
     @Override
     public int deleteDao(Object o) throws SQLException {
-        return super.deleteDao(o, map, tableName);
+        return super.deleteDao(o, map, tableName, 0);
     }
 
     @Override

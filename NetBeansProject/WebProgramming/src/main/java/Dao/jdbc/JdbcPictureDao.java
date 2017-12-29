@@ -83,7 +83,7 @@ public class JdbcPictureDao extends JdbcUtilities implements PictureDao {
 
     @Override
     public int deleteDao(Object o) throws SQLException {
-        return super.deleteDao(o, map, tableName);
+        return super.deleteDao(o, map, tableName, 0);
     }
 
     @Override
