@@ -36,7 +36,6 @@ public class Notify extends HttpServlet {
     private ShopDao shopDao;
     private static LinkedList<Review> reviews;
     private static LinkedList<Anomalies> anomalie;
-    private int id;
 
     @Override
     public void init() throws ServletException {
