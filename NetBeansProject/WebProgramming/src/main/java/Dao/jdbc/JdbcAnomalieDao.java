@@ -69,20 +69,18 @@ public class JdbcAnomalieDao extends JdbcUtilities implements AnomaliesDao {
     }
 
     @Override
-    public LinkedList<Anomalies> getBySeller(int id) {
+    public LinkedList<Anomalies> getBySeller(User u) {
         if (!checkConnection()) {
             return null;
         }
         LinkedList<Anomalies> res = new LinkedList<Anomalies>();
         try {
-            String query = "SELECT A.* FROM web.anomalies A join web.purchases B on A.purchase_id = B.id join products P on P.id = B.products_id join shops S on S.id = P.shops_id  join users U on U.id = S.owner_id where A.status like 'not verified' and U.id = ?";
+            String query = "SELECT A.* FROM anomalies A join purchases B on A.purchase_id = B.id join products P on P.id = B.products_id join shops S on S.id = P.shops_id  join users U on U.id = S.owner_id where  U.id = ?";
             PreparedStatement stmt = connection.prepareStatement(query);
-            stmt.setInt(1, id);
+            stmt.setInt(1, u.getId());
             for (Object o : super.fillResult(Anomalies.class, map, stmt.executeQuery())) {
                 res.add((Anomalies) o);
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(JdbcProductDao.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception ex) {
             Logger.getLogger(JdbcProductDao.class.getName()).log(Level.SEVERE, null, ex);
         }
