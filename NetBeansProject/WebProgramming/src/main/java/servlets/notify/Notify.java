@@ -123,8 +123,8 @@ public class Notify extends HttpServlet {
             } else {
 
                 int i = Integer.parseInt(request.getParameter("index"));
-                Anomalies a=(Anomalies) anomaliesDao.getById(i);
-                 a.setStatus("verified");
+                Anomalies a = anomalie.get(i);
+                a.setStatus("verified"); 
                 anomaliesDao.updateDao(a);
 
                 if (action.contains("Reject")) {
