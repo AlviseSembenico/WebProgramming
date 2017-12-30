@@ -82,11 +82,13 @@ public class NotifyServlet extends HttpServlet {
                     request.setAttribute("anomalie", anomalie);
                     request.setAttribute("reviews", reviews);
                     reqDes = request.getRequestDispatcher("/loggedUsers/notify.jsp");
-                } else 
+                } else {
                     throw new SecurityException("user has no access to this resource");
-                
-            }else 
+                }
+
+            } else {
                 throw new SecurityException("user has no access to this resource");
+            }
         } catch (Exception ex) {
             reqDes = request.getRequestDispatcher("/index");
         }
@@ -113,29 +115,36 @@ public class NotifyServlet extends HttpServlet {
                 while (names.hasMoreElements()) {
                     String name = names.nextElement();
 
-                    this.reviews.get(Integer.parseInt(name)).setStatus("read");
+                    reviews.get(Integer.parseInt(name)).setStatus("read");
                     reviewDao.updateDao(reviews.get(Integer.parseInt(name)));
                     s += "/notify";
                     response.sendRedirect(s);
 
                 }
             } else {
-
                 int i = Integer.parseInt(request.getParameter("index"));
                 Anomalies a = anomalie.get(i);
-                a.setStatus("verified"); 
-                anomaliesDao.updateDao(a);
-
+                a.setStatus("verified");
+                User user = anomalie.get(i).getPurchase().getUser();
                 if (action.contains("Reject")) {
-                    s += "/reject?id=" + (anomalie.get(i).getPurchase().getUser()).getId();
+                    request.setAttribute("u", user);
+                    request.setAttribute("mode", "reject");
+                    reqDes = request.getRequestDispatcher("/loggedUsers/email.jsp");
+                    a.setSolution("Rejected");
+                    anomaliesDao.updateDao(a);
+                    reqDes.forward(request, response);
+                } else if (action.contains("Resolve")) {
+                    request.setAttribute("u", user);
+                    request.setAttribute("mode", "refound");
+                    a.setSolution("Refounded");
+                    anomaliesDao.updateDao(a);
+                    reqDes = request.getRequestDispatcher("/loggedUsers/email.jsp");
+                    reqDes.forward(request, response);
+                } else if (action.contains("Review")) {
+                    s += "/addReview?id=" + (anomalie.get(i).getPurchase().getUser()).getId();
+                    a.setSolution("Added a negative Review");
+                    anomaliesDao.updateDao(a);
                     response.sendRedirect(s);
-                } else if(action.contains("Resolve")){
-                        s += "/resolve?id=" + (anomalie.get(i).getPurchase().getUser()).getId();
-                        response.sendRedirect(s); 
-                } else if(action.contains("Review")){
-                        s += "/resolve?id=" + (anomalie.get(i).getPurchase().getUser()).getId();
-                        response.sendRedirect(s);
-                    
                 }
             }
         } catch (Exception ex) {

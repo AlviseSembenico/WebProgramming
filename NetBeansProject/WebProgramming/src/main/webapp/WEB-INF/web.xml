@@ -88,10 +88,6 @@
         <servlet-class>servlets.register.ComfirmRegisterServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>reject</servlet-name>
-        <servlet-class>servlets.resolveAnomaly.RejectAnomalyServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>updateReadReview</servlet-name>
         <servlet-class>servlets.readReviews.updateReadReview</servlet-class>
     </servlet>
@@ -102,6 +98,10 @@
     <servlet>
         <servlet-name>ModifyServlet</servlet-name>
         <servlet-class>servlets.modify.servlet.ModifyServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TextMailSenderServlet</servlet-name>
+        <servlet-class>servlets.mailSender.TextMailSenderServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ConctactUsServlet</servlet-name>
@@ -164,10 +164,6 @@
         <url-pattern>/confirm</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>reject</servlet-name>
-        <url-pattern>/reject</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>updateReadReview</servlet-name>
         <url-pattern>/readReview</url-pattern>
     </servlet-mapping>
@@ -198,6 +194,10 @@
     <servlet-mapping>
         <servlet-name>PayServlet</servlet-name>
         <url-pattern>/payment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TextMailSenderServlet</servlet-name>
+        <url-pattern>/sendEmail</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

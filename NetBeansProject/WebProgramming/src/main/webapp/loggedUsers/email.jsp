@@ -30,7 +30,7 @@
                             <c:otherwise><h4>Send an email for the refound.</h4></c:otherwise>
                             </c:choose><br><br>
                         </p>
-                        <form role="form" id="contact-form" method="post" action="reject">
+                        <form role="form" id="contact-form" method="post" action="sendEmail">
                             <div class="form-group label-floating is-empty">
                                 <label class="control-label">Email address</label>
                                 <input type="email" name="email" class="form-control" value="${u.getEmail()}">

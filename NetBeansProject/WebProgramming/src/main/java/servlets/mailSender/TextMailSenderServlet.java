@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package servlets.resolveAnomaly;
+package servlets.mailSender;
 
-import Dao.AnomaliesDao;
 import Dao.UserDao;
 import Dao.entities.User;
 import java.io.IOException;
@@ -24,49 +23,20 @@ import system.EMailSender;
  *
  * @author zappi
  */
-public class RejectAnomalyServlet extends HttpServlet {
+public class TextMailSenderServlet extends HttpServlet {
 
-    private AnomaliesDao anomaliesDao;
     private UserDao userDao;
 
     @Override
     public void init() throws ServletException {
-        anomaliesDao = (AnomaliesDao) super.getServletContext().getAttribute("anomaliesDao");
-        if (anomaliesDao == null) {
-            throw new ServletException("Impossible to get dao factory for user storage system");
-        }
         userDao = (UserDao) super.getServletContext().getAttribute("userDao");
         if (userDao == null) {
             throw new ServletException("Impossible to get dao factory for user storage system");
         }
     }
 
-    /*
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("id"));
-        User user = null;
-        try {
-            user = userDao.getUserById(id);
-        } catch (Exception ex) {
-            Logger.getLogger(RejectAnomalyServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        RequestDispatcher reqDes = null;
-        request.setAttribute("u", user);
-        request.setAttribute("mode", "reject");
-        reqDes = request.getRequestDispatcher("/loggedUsers/email.jsp");
-        reqDes.forward(request, response);
-    }
-    
     private EMailSender sender = new EMailSender();
+
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -89,12 +59,13 @@ public class RejectAnomalyServlet extends HttpServlet {
             try {
                 sender.sendCustomMessage(user.getEmail(), request.getParameter("object"), request.getParameter("message"));
             } catch (MessagingException ex) {
+                reqDes = request.getRequestDispatcher("loggedUsers/notify.jsp?result=false");
                 Logger.getLogger(recoverPassword.class.getName()).log(Level.SEVERE, null, ex);
             }
-            reqDes = request.getRequestDispatcher("/success.jsp");
+            reqDes = request.getRequestDispatcher("loggedUsers/notify.jsp?result=true");
 
         } else {
-            reqDes = request.getRequestDispatcher("/error.jsp");
+            reqDes = request.getRequestDispatcher("loggedUsers/notify.jsp?result=false");
         }
 
         reqDes.forward(request, response);

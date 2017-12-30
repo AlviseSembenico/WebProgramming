@@ -106,7 +106,7 @@ public class AddReviewServlet extends HttpServlet {
             reviewDao.insertDao(rw);
             reqDes = request.getRequestDispatcher("loggedUsers/addReview.jsp?result=true");
         } catch (Exception ex) {
-            reqDes = request.getRequestDispatcher("loggedUsers/addReview.jsp?result=true");
+            reqDes = request.getRequestDispatcher("loggedUsers/addReview.jsp?result=false");
         } finally {
             reqDes.forward(request, response);
         }

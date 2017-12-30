@@ -42,6 +42,7 @@
                                                     <th>Product</th>
                                                     <th>Description</th>                                                    
                                                     <th>Status</th>
+                                                    <th>Solution</th>
                                                     <th>Date of purchase</th>
                                                     <th>Problem</th>
                                                         <c:choose>
@@ -58,39 +59,40 @@
                                                         <td>${anomalie.get(i).getPurchase().getProduct().getName()}</td>
                                                         <td>${anomalie.get(i).getDescription()}</td>
                                                         <td>${anomalie.get(i).getStatus()}</td>
+                                                        <td>${anomalie.get(i).getSolution()}</td>
                                                         <td>${anomalie.get(i).getPurchase().getDate()}</td>
                                                         <td class="text-right">${anomalie.get(i).getTag()}</td>
                                                         <c:choose>
-                                                            <c:when test="${user.getPrivileges().equals('admin')}">
+                                                            <c:when test="${user.getPrivileges().equals('admin') and anomalie.get(i).getStatus().equals('not verified')}">
                                                                 <td class="td-actions text-right">
-                                                                    <form id="form" action="notify" method="POST">
-                                                                        <input id="act" hidden="true" name="action"/>
+                                                                    <form id="form${i}" action="notify" method="POST">
+                                                                        <input id="act${i}" hidden="true" name="action"/>
                                                                         <input  hidden="true" name="index" value="${i}"/>
                                                                         <button type="button" rel="tooltip" class="btn btn-success" data-original-title="" onclick="{
-                                                                                    document.getElementById('act').value = 'Resolve';
-                                                                                    document.getElementById('form').submit();
+                                                                                    document.getElementById('act${i}').value = 'Resolve';
+                                                                                    document.getElementById('form${i}').submit();
                                                                                 }" title="Refound">
-                                                                            <i class="material-icons">edit</i>
+                                                                            <i class="material-icons">attach_money</i>
                                                                         </button>
 
                                                                         <button type="button" rel="tooltip" class="btn btn-danger" data-original-title="" onclick="{
-                                                                                    document.getElementById('act').value = 'Reject';
-                                                                                    document.getElementById('form').submit();
+                                                                                    document.getElementById('act${i}').value = 'Reject';
+                                                                                    document.getElementById('form${i}').submit();
                                                                                 }"  title="Reject">
                                                                             <i class="material-icons">close</i>
                                                                         </button>
-                                                                        <button type="button" rel="tooltip" class="btn btn-danger" data-original-title="" onclick="{
-                                                                                    document.getElementById('act').value = 'Review';
-                                                                                    document.getElementById('form').submit();
-                                                                                }"  title="Reject">
-                                                                            <i class="material-icons">close</i>
-                                                                        </button>
-                                                                        <a href="addReview?id=<c:out value="${anomalie.get(i).getPurchase().getId()}" />"  rel="tooltip" title="Add negative review" class="btn btn-rose ">
+                                                                        <button type="button" rel="tooltip" class="btn btn-rose" data-original-title="" onclick="{
+                                                                                    document.getElementById('act${i}').value = 'Review';
+                                                                                    document.getElementById('form${i}').submit();
+                                                                                }"  title="Add negative review">
                                                                             <i class="material-icons">launch</i>
-                                                                        </a>
+                                                                        </button>
                                                                     </form>
                                                                 </td>
                                                             </c:when>
+                                                            <c:otherwise>
+                                                                <td></td>
+                                                            </c:otherwise>
                                                         </c:choose>
                                                     </tr>
                                                 </c:forEach>
@@ -158,3 +160,17 @@
             </div>
         </div>
         <c:import url="/pageBuilder/footer.jsp"/>
+        <c:if test="${!(empty param.result) && param.result eq 'true'}">
+            <script>
+                $(document).ready(function () {
+                    $("#successModal").modal("show");
+                });
+            </script>
+        </c:if>
+        <c:if test="${!(empty param.result) && param.result eq 'false'}">
+            <script>
+                $(document).ready(function () {
+                    $("#errorModal").modal("show");
+                });
+            </script>
+        </c:if>
