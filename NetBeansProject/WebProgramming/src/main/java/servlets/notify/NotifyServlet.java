@@ -28,7 +28,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author zappi
  */
-public class Notify extends HttpServlet {
+public class NotifyServlet extends HttpServlet {
 
     private AnomaliesDao anomaliesDao;
     private UserDao userDao;
@@ -129,15 +129,17 @@ public class Notify extends HttpServlet {
                 if (action.contains("Reject")) {
                     s += "/reject?id=" + (anomalie.get(i).getPurchase().getUser()).getId();
                     response.sendRedirect(s);
-                } else {
-                    if (action.contains("Resolve")) {
+                } else if(action.contains("Resolve")){
+                        s += "/resolve?id=" + (anomalie.get(i).getPurchase().getUser()).getId();
+                        response.sendRedirect(s); 
+                } else if(action.contains("Review")){
                         s += "/resolve?id=" + (anomalie.get(i).getPurchase().getUser()).getId();
                         response.sendRedirect(s);
-                    }
+                    
                 }
             }
         } catch (Exception ex) {
-            Logger.getLogger(Notify.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(NotifyServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

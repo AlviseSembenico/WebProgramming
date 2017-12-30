@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author zappi
  */
-public class resolve extends HttpServlet {
+public class ReviewAnomalyServlet extends HttpServlet {
 
     private AnomaliesDao anomaliesDao;
     private UserDao userDao;
@@ -55,13 +55,12 @@ public class resolve extends HttpServlet {
         try {
             user = userDao.getUserById(id);
         } catch (Exception ex) {
-            Logger.getLogger(reject.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RejectAnomalyServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         RequestDispatcher reqDes = null;
         request.setAttribute("u", user);
         request.setAttribute("mode", "refound");
-        reqDes = request.getRequestDispatcher("/loggedUsers/email.jsp");
-        reqDes.forward(request, response);
+       response.sendRedirect("addReview");
     }
 
     /**

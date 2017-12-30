@@ -24,7 +24,7 @@ import system.EMailSender;
  *
  * @author zappi
  */
-public class reject extends HttpServlet {
+public class RejectAnomalyServlet extends HttpServlet {
 
     private AnomaliesDao anomaliesDao;
     private UserDao userDao;
@@ -57,7 +57,7 @@ public class reject extends HttpServlet {
         try {
             user = userDao.getUserById(id);
         } catch (Exception ex) {
-            Logger.getLogger(reject.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RejectAnomalyServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         RequestDispatcher reqDes = null;
         request.setAttribute("u", user);

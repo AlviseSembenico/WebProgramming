@@ -15,8 +15,8 @@
 <html>
     <c:import url="/pageBuilder/header.jsp"/>
     <body class="contact-page">        
-        <div class="page-header header-filter header-small" data-parallax="true" style="background-image: url('');">
-            <div class="container"> 
+        <div class="page-header header-filter " data-parallax="true" style="background-image: url('https://www.changeboard.com/images/7167/default/feedback-1-.jpg'); height: 40vh; min-height: 40vh;">
+            <div class="container" style="padding-top: 150px">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
                         <div class="brand">
@@ -67,7 +67,7 @@
                                                                         <input id="act" hidden="true" name="action"/>
                                                                         <input  hidden="true" name="index" value="${i}"/>
                                                                         <button type="button" rel="tooltip" class="btn btn-success" data-original-title="" onclick="{
-                                                                                    document.getElementById('act').value = 'Resolve';                                                                                    
+                                                                                    document.getElementById('act').value = 'Resolve';
                                                                                     document.getElementById('form').submit();
                                                                                 }" title="Refound">
                                                                             <i class="material-icons">edit</i>
@@ -79,6 +79,15 @@
                                                                                 }"  title="Reject">
                                                                             <i class="material-icons">close</i>
                                                                         </button>
+                                                                        <button type="button" rel="tooltip" class="btn btn-danger" data-original-title="" onclick="{
+                                                                                    document.getElementById('act').value = 'Review';
+                                                                                    document.getElementById('form').submit();
+                                                                                }"  title="Reject">
+                                                                            <i class="material-icons">close</i>
+                                                                        </button>
+                                                                        <a href="addReview?id=<c:out value="${anomalie.get(i).getPurchase().getId()}" />"  rel="tooltip" title="Add negative review" class="btn btn-rose ">
+                                                                            <i class="material-icons">launch</i>
+                                                                        </a>
                                                                     </form>
                                                                 </td>
                                                             </c:when>

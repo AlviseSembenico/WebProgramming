@@ -77,11 +77,11 @@
     </servlet>
     <servlet>
         <servlet-name>Notify</servlet-name>
-        <servlet-class>servlets.notify.Notify</servlet-class>
+        <servlet-class>servlets.notify.NotifyServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>resolve</servlet-name>
-        <servlet-class>servlets.resolveAnomaly.resolve</servlet-class>
+        <servlet-class>servlets.resolveAnomaly.ResolveAnomalyServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>confirm</servlet-name>
@@ -89,7 +89,7 @@
     </servlet>
     <servlet>
         <servlet-name>reject</servlet-name>
-        <servlet-class>servlets.resolveAnomaly.reject</servlet-class>
+        <servlet-class>servlets.resolveAnomaly.RejectAnomalyServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>updateReadReview</servlet-name>
