@@ -29,9 +29,9 @@ import system.Log;
  * @author zappi
  */
 @MultipartConfig(location = "/img", fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 5, maxRequestSize = 1024 * 1024 * 5 * 5)
-public class loadImage extends HttpServlet {
+public class loadImageServlet extends HttpServlet {
 
-    private static final String SAVE_DIR = "/assets/img/upload/";
+    private static final String SAVE_DIR = "assets/img/upload/";
     private int maxFileSize = 50 * 1024;
     private int maxMemSize = 4 * 1024;
     private ShopDao shopDao;
@@ -39,6 +39,7 @@ public class loadImage extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
+
         shopDao = (ShopDao) super.getServletContext().getAttribute("shopDao");
         if (shopDao == null) {
             throw new ServletException("Impossible to get dao factory for user storage system");
@@ -49,18 +50,25 @@ public class loadImage extends HttpServlet {
         }
     }
 
+    private boolean checkFolder(ServletContext context) {
+        String path = context.getRealPath(SAVE_DIR);
+        if (path == null) {
+            File theDir = new File(context.getRealPath("") + SAVE_DIR);
+            if (!theDir.exists()) 
+                return theDir.mkdir();
+            else 
+                return false;
+            
+        } else 
+            return true;
+    }
+
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
         try {
             ServletContext context = getServletContext();
-
-            File theDir = new File(context.getRealPath(SAVE_DIR));
-            if (!theDir.exists()) {
-                boolean result = false;
-                theDir.mkdir();
-                result = true;
-            }
+            checkFolder(context);
 
             MultipartRequest multi = new MultipartRequest(request, context.getRealPath(SAVE_DIR), 10 * 1024 * 1024, "ISO-8859-1", new DefaultFileRenamePolicy());
             Enumeration params = multi.getParameterNames();
@@ -86,13 +94,13 @@ public class loadImage extends HttpServlet {
             Shop shop = (Shop) shopDao.getById(id);
             Picture pic = pictureDao.getPictureShop(shop);
             String dbPath = path.getFileName().toString();
-            pic.setPath("." + SAVE_DIR + dbPath);
+            pic.setPath(+ SAVE_DIR + dbPath);
             pictureDao.updateDao(pic);
         } catch (Exception e) {
             Log.write(e.toString());
         }
     }
-    
+
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, java.io.IOException {
