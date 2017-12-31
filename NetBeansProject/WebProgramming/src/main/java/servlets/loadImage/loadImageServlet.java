@@ -94,7 +94,7 @@ public class loadImageServlet extends HttpServlet {
             Shop shop = (Shop) shopDao.getById(id);
             Picture pic = pictureDao.getPictureShop(shop);
             String dbPath = path.getFileName().toString();
-            pic.setPath(+ SAVE_DIR + dbPath);
+            pic.setPath(SAVE_DIR + dbPath);
             pictureDao.updateDao(pic);
         } catch (Exception e) {
             Log.write(e.toString());

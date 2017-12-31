@@ -44,9 +44,9 @@
                                                     <a class="pull-left" href="">
                                                         <div class="avatar">
                                                             <img class="media-object" src="<c:choose><c:when test="${reviews[i].getCreator().getAvatarPath() != null}"><c:out value="${reviews[i].getCreator().getAvatarPath()}"/></c:when><c:otherwise><c:out value="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"/></c:otherwise></c:choose>">
-                                                        </div>
-                                                    </a>
-                                                    <div class="media-body">
+                                                                </div>
+                                                            </a>
+                                                            <div class="media-body">
                                                         <c:choose>
                                                             <c:when test="${reviews[i].getCreator().getId() == sessionScope.user.getId()}">
                                                                 <h4 class="media-heading">you  <small>· ${reviews[i].DiffTime()} days ago</small></h4>
@@ -112,7 +112,7 @@
                                         <p> <h6>Site:</h6>
                                         <a id="site" href="http://www.${shop.getWebSiteUrl()}">${shop.getWebSiteUrl()}</a><br>
                                         <p hidden id="modySite">
-                                        <input  name="site" class="form-control" type="text"  value="${shop.getWebSiteUrl()}"/>
+                                            <input  name="site" class="form-control" type="text"  value="${shop.getWebSiteUrl()}"/>
                                         </p>
                                         </p>
                                     </div>
@@ -214,10 +214,23 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
+                    <div class="modal-body text-center">
                         <form id="imageForm" method='post' action='loadImage' enctype='multipart/form-data'>
+                            <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                                <div class="fileinput-new thumbnail img-raised">
+                                    <img alt="..." src="assets/img/image_placeholder.jpg">
+                                </div>
+                                <div class="fileinput-preview fileinput-exists thumbnail img-raised"></div>
+                                <div>
+                                    <span class="btn btn-raised btn-round btn-default btn-file">
+                                        <span class="fileinput-new">Select image</span>
+                                        <span class="fileinput-exists">Change</span>
+                                        <input type='file' id="upImg"  accept="image/*"/>
+                                    </span>
+                                    <a class="btn btn-danger btn-round fileinput-exists" href="#pablo" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
+                                </div>
+                            </div>
                             <input id="sId"type="text" value="${shop.getId()}" hidden="" name="id"/>
-                            <input  type='file' id="upImg"  accept="image/*"/>
                         </form>
                     </div>
                     <div class="modal-footer">
