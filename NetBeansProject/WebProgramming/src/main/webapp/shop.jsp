@@ -53,7 +53,7 @@
                                                             <div class="media-body">
                                                         <c:choose>
                                                             <c:when test="${reviews[i].getCreator().getId() == sessionScope.user.getId()}">
-                                                                <h4 class="media-heading">you  <small>· ${reviews[i].DiffTime()} days ago</small></h4>
+                                                                <h4 class="media-heading">you  <small>· ${reviews[i].getDiffTime()} days ago</small></h4>
 
                                                             </c:when>
                                                             <c:otherwise>
@@ -61,15 +61,17 @@
                                                             </c:otherwise>
                                                         </c:choose>
                                                         <i class="a-icon a-icon-star a-star-${reviews[i].getQuality()}"></i>
-                                                        <h6 class="text-muted">Sul prodotto: <br/>${reviews[i].getProduct().getName()}</h6>
+                                                        <h6 class="text-muted">On product: <br/>${reviews[i].getProduct().getName()}</h6>
                                                         <p>${reviews[i].getDescription()}</p>
+                                                        <hr>
+                                                        <p>${reviews[i].getReply()}</p>
                                                     </div>
                                                 </div>
                                                 <hr/>
                                             </c:forEach>
                                         </c:when>
                                         <c:otherwise>
-                                            <h2>Nessun commento...</h2>
+                                            <h2>Nobody has commented yet.</h2>
                                         </c:otherwise>
                                     </c:choose>
                                 </div>
@@ -212,7 +214,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                        <h5 class="modal-title" id="exampleModalLongTitle">Photo upload</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>

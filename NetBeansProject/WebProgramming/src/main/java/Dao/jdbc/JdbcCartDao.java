@@ -55,10 +55,11 @@ public class JdbcCartDao extends JdbcUtilities implements CartDao {
     @Override
     public int insertDao(Object o) throws SQLException {
         Cart c = (Cart) o;
+        int res=0;
         for (Product p : c.getProducts()) {
-            return super.insertDao(new CartContainer(c.getUser(), p), map, tableName);
+            res+= super.insertDao(new CartContainer(c.getUser(), p), map, tableName);
         }
-        return 0;
+        return res;
     }
 
     @Override
