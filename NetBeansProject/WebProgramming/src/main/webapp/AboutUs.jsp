@@ -155,7 +155,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label class="control-label">Your Name</label>
-                                            <input type="email" class="form-control">
+                                            <input type="text" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
