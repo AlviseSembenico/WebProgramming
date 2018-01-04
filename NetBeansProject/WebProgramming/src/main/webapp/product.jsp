@@ -116,7 +116,7 @@
                             <div class="row text-right">
                                 <form method="POST" action="cart">
                                     <input name="pid" style="visibility: hidden;" value="<c:out value="${product.getId()}"/>" />
-                                    <button class="btn btn-rose btn-round" type="submit" >Add to Ca
+                                    <button class="btn btn-rose btn-round" type="submit" >Add to Cart
                                         </div>
 
                                         </div>
@@ -124,7 +124,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row" style="border-left-width: 15px;padding-left: 15px;padding-right: 15px;"
+">
                         <div class="title-row" style="padding-top: 50px"> <h3>What people thinks about this product </h3></div></br>
 
                         <c:choose>
@@ -163,7 +164,7 @@
                                 </c:forEach>
                             </c:when>
                             <c:otherwise>
-                                <h2>Nessun commento...</h2>
+                                <h2>There are no comments on this product yet</h2>
                             </c:otherwise>
                         </c:choose>
 
@@ -188,33 +189,33 @@
         <c:import url="pageBuilder/footer.jsp"/>
         <script type="text/javascript">
             $(document).ready(function () {
-                $("#flexiselDemo1").flexisel({
-                    visibleItems: 4,
-                            itemsToScroll: 1,
-                            animationSpeed: 400,
-                            enableResponsiveBreakpoints: true,
-                            responsiveBreakpoints: {
-                            portrait: {
-                            changePoint: 480,
+            $("#flexiselDemo1").flexisel({
+            visibleItems: 4,
+                    itemsToScroll: 1,
+                    animationSpeed: 400,
+                    enableResponsiveBreakpoints: true,
+                    responsiveBreakpoints: {
+                    portrait: {
+                    changePoint: 480,
+                            visibleItems: 3
+                    },
+                            landscape: {rt & nbsp; <i class="material-icons">shopping_cart</i> < /button>
+        </form>
+        </div>
+        </div>
+        </div>
+        </div>
+            
+            
+            changePoint: 640,
+                visibleItems: 3
+                },
+            tablet: {
+                                    changePoint: 768,
                                     visibleItems: 3
-                            },
-                                    landscape: {rt & nbsp; <i class="material-icons">shopping_cart</i> < /button>
-                </form>
-                </div>
-                </div>
-                </div>
-                </div>
-            
-            
-                    changePoint: 640,
-                        visibleItems: 3
-                        },
-                    tablet: {
-                                            changePoint: 768,
-                                            visibleItems: 3
-                        }
-                        }
-                        });
-                            });
-                </script>
+                }
+                }
+                });
+                    });
+                        </script>
                 </html>
