@@ -51,9 +51,8 @@ public class AutoComplete {
         LinkedList<Product> ll=productDao.getCompleteName(name);
         Gson gson = new Gson();
         List<String> res=new ArrayList<String>();
-        ll.forEach((product)->{
-            res.add(product.getName());
-        });
+        for(int i=0;i<ll.size()&&i<10;i++)
+            res.add(ll.get(i).getName());
         return gson.toJson(res);
     }
     

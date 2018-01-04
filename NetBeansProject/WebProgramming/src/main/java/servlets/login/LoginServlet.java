@@ -86,9 +86,8 @@ public class LoginServlet extends HttpServlet {
                         cartDao.updateDao(userCart);
                         request.getSession().setAttribute("cart", userCart);
                     } else {
-                        userCart = new Cart();
-                        userCart.setUser(user);
-                        cartDao.insertDao(userCart);
+                        sessCart.setUser(user);
+                        cartDao.insertDao(sessCart);
                     }
                 } else {
                     response.sendRedirect(response.encodeRedirectURL("login" + "?error=true"));
