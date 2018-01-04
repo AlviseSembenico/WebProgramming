@@ -18,4 +18,6 @@ public interface ShopDao extends  DefaultDao,GetById  {
     public Shop getShopById(int id)throws Exception;
     public Shop getShopByName(String name)throws Exception;
     public Shop getShopByOwner(User owner)throws Exception;
+
+    public int getShopGlobalValue(int id);
 }

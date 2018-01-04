@@ -28,6 +28,8 @@ public class AddReviewServlet extends HttpServlet {
     PurchaseDao purchaseDao;
     PictureDao pictureDao;
     ReviewDao reviewDao;
+    ShopDao shopDao;
+    ProductDao productDao;
 
     @Override
     public void init() throws ServletException {
@@ -40,6 +42,15 @@ public class AddReviewServlet extends HttpServlet {
             throw new ServletException("Impossible to get dao factory for picture storage system");
         }
         reviewDao = (ReviewDao) super.getServletContext().getAttribute("reviewDao");
+        if (reviewDao == null) {
+            throw new ServletException("Impossible to get dao factory for review storage system");
+        }
+
+        shopDao = (ShopDao) super.getServletContext().getAttribute("shopDao");
+        if (shopDao == null) {
+            throw new ServletException("Impossible to get dao factory for picture storage system");
+        }
+        productDao = (ProductDao) super.getServletContext().getAttribute("productDao");
         if (reviewDao == null) {
             throw new ServletException("Impossible to get dao factory for review storage system");
         }
@@ -88,9 +99,10 @@ public class AddReviewServlet extends HttpServlet {
             User user = (User) session.getAttribute("user");
             int id = Integer.valueOf(request.getParameter("id"));
             Purchase purchase = purchaseDao.getPurchaseByIdAndUser(Integer.valueOf(request.getParameter("id")), user);
-            
-            if(reviewDao.getRewiewByCreatorAndProduct(user, purchase.getProduct()).get(0)!=null)
-                throw new Exception("Review already created");    
+
+            if (reviewDao.getRewiewByCreatorAndProduct(user, purchase.getProduct()).get(0) != null) {
+                throw new Exception("Review already created");
+            }
             int global = Integer.valueOf(request.getParameter("star"));
             int service = Integer.valueOf(request.getParameter("stars"));
             String description = request.getParameter("description");
@@ -103,6 +115,17 @@ public class AddReviewServlet extends HttpServlet {
             rw.setStatus("not read");
             rw.setCreator(user);
             rw.setProduct(purchase.getProduct());
+
+            Shop shop = purchase.getProduct().getShop();
+            int sum = shop.getGlobalValue() + global;
+            shop.setGlobalValue(sum);
+
+            Product product = purchase.getProduct();
+            product.setNumberPeople(product.getNumberPeople() + 1);
+            product.setStarValue(global);
+
+            shopDao.updateDao(shop);
+            productDao.updateDao(product);
             reviewDao.insertDao(rw);
             reqDes = request.getRequestDispatcher("loggedUsers/addReview.jsp?result=true");
         } catch (Exception ex) {

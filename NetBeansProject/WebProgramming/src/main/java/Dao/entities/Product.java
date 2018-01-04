@@ -13,6 +13,8 @@ public class Product extends IdOwnerComparable {
     private String category;
     private Shop shop;
     private int retractable;
+    private int numberPeople;
+    private int starValue;
 
     public String getName() {
         return name;
@@ -53,24 +55,49 @@ public class Product extends IdOwnerComparable {
     public void setShop(Shop shop) {
         this.shop = shop;
     }
-    
-    public void setRetractable(int r)
-    {
+
+    public void setRetractable(int r) {
         retractable = r;
     }
-    
-    public int getRetractable()
-    {
+
+    public int getRetractable() {
         return retractable;
     }
 
-    
-    @Override
-    public boolean equals(Object o){
-        if(!(o instanceof Product))
-            return false;
-        return this.id==((Product)o).getId();
+    /**
+     * @return the numberPeople
+     */
+    public int getNumberPeople() {
+        return numberPeople;
     }
-    
-    
+
+    /**
+     * @param numberPeople the numberPeople to set
+     */
+    public void setNumberPeople(int numberPeople) {
+        this.numberPeople = numberPeople;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Product)) {
+            return false;
+        }
+        return this.id == ((Product) o).getId();
+    }
+
+    /**
+     * @return the starValue
+     */
+    public int getStarValue() {
+        return starValue;
+    }
+
+    /**
+     * @param starValue the starValue to set
+     */
+    public void setStarValue(int starValue) {
+        this.starValue = starValue;
+    }
+
 }

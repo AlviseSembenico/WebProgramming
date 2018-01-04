@@ -13,7 +13,11 @@
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
                         <div class="brand">
-                            <h1 class="title text-center">${shop.getName()}</h1>                                
+                            <h1 class="title text-center">${shop.getName()}
+                                <br/>
+                                <i class="a-icon a-icon-star a-star-${shopValue}"></i>
+                            </h1>
+
                         </div>
                     </div>
                 </div>
@@ -54,7 +58,6 @@
                                                             </c:when>
                                                             <c:otherwise>
                                                                 <h4 class="media-heading">${reviews[i].getCreator().getFirstName()} ${reviews[i].getCreator().getLastName()}  <small>· ${reviews[i].DiffTime()} days ago</small></h4>
-
                                                             </c:otherwise>
                                                         </c:choose>
                                                         <i class="a-icon a-icon-star a-star-${reviews[i].getQuality()}"></i>

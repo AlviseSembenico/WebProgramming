@@ -86,6 +86,8 @@ public class ShopServlet extends HttpServlet {
             }
             request.setAttribute("reviews", reviews);
             request.setAttribute("shop", shop);
+            int gb = shopDao.getShopGlobalValue(shop.getId());
+            request.setAttribute("shopValue", gb);
             request.setAttribute("len", len);
             if (Integer.parseInt(begin) + 3 < len) {
                 end = Integer.parseInt(begin) + 3;
