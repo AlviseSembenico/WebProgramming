@@ -162,7 +162,7 @@
                                 </c:forEach>
                             </c:when>
                             <c:otherwise>
-                                <h2>Nessun commento...</h2>
+                                <h2>There are no comments on this product yet</h2>
                             </c:otherwise>
                         </c:choose>
 
@@ -187,33 +187,33 @@
         <c:import url="pageBuilder/footer.jsp"/>
         <script type="text/javascript">
             $(document).ready(function () {
-                $("#flexiselDemo1").flexisel({
-                    visibleItems: 4,
-                            itemsToScroll: 1,
-                            animationSpeed: 400,
-                            enableResponsiveBreakpoints: true,
-                            responsiveBreakpoints: {
-                            portrait: {
-                            changePoint: 480,
+            $("#flexiselDemo1").flexisel({
+            visibleItems: 4,
+                    itemsToScroll: 1,
+                    animationSpeed: 400,
+                    enableResponsiveBreakpoints: true,
+                    responsiveBreakpoints: {
+                    portrait: {
+                    changePoint: 480,
+                            visibleItems: 3
+                    },
+                            landscape: {rt & nbsp; <i class="material-icons">shopping_cart</i> < /button>
+        </form>
+        </div>
+        </div>
+        </div>
+        </div>
+            
+            
+            changePoint: 640,
+                visibleItems: 3
+                },
+            tablet: {
+                                    changePoint: 768,
                                     visibleItems: 3
-                            },
-                                    landscape: {rt & nbsp; <i class="material-icons">shopping_cart</i> < /button>
-                </form>
-                </div>
-                </div>
-                </div>
-                </div>
-            
-            
-                    changePoint: 640,
-                        visibleItems: 3
-                        },
-                    tablet: {
-                                            changePoint: 768,
-                                            visibleItems: 3
-                        }
-                        }
-                        });
-                            });
-                </script>
+                }
+                }
+                });
+                    });
+                        </script>
                 </html>
