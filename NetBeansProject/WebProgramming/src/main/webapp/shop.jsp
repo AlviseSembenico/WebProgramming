@@ -49,17 +49,19 @@
                                                             <div class="media-body">
                                                         <c:choose>
                                                             <c:when test="${reviews[i].getCreator().getId() == sessionScope.user.getId()}">
-                                                                <h4 class="media-heading">you  <small>· ${reviews[i].DiffTime()} days ago</small></h4>
+                                                                <h4 class="media-heading">you  <small>· ${reviews[i].getDiffTime()} days ago</small></h4>
 
                                                             </c:when>
                                                             <c:otherwise>
-                                                                <h4 class="media-heading">${reviews[i].getCreator().getFirstName()} ${reviews[i].getCreator().getLastName()}  <small>· ${reviews[i].DiffTime()} days ago</small></h4>
+                                                                <h4 class="media-heading">${reviews[i].getCreator().getFirstName()} ${reviews[i].getCreator().getLastName()}  <small>· ${reviews[i].getDiffTime()} days ago</small></h4>
 
                                                             </c:otherwise>
                                                         </c:choose>
                                                         <i class="a-icon a-icon-star a-star-${reviews[i].getQuality()}"></i>
                                                         <h6 class="text-muted">Sul prodotto: <br/>${reviews[i].getProduct().getName()}</h6>
                                                         <p>${reviews[i].getDescription()}</p>
+                                                        <hr>
+                                                        <p>${reviews[i].getReply()}</p>
                                                     </div>
                                                 </div>
                                                 <hr/>
