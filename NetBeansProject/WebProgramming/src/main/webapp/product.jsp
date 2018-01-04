@@ -122,10 +122,7 @@
                                         </div>
                                 </form>
                             </div>
-                        </div>
-                    </div>
-                    <div class="row" style="border-left-width: 15px;padding-left: 15px;padding-right: 15px;"
-">
+                                    <div class="row" style="border-left-width: 15px;padding-left: 15px;padding-right: 15px;">
                         <div class="title-row" style="padding-top: 50px"> <h3>What people thinks about this product </h3></div></br>
 
                         <c:choose>
@@ -151,7 +148,7 @@
                                                         </c:otherwise>
                                                     </c:choose>
                                                     <i class="a-icon a-icon-star a-star-${reviews[i].getQuality()}"></i>
-                                                    <h6 class="text-muted">Sul prodotto: <br/>${reviews[i].getProduct().getName()}</h6>
+                                                    <h6 class="text-muted">On product: <br/>${reviews[i].getProduct().getName()}</h6>
                                                     <p>${reviews[i].getDescription()}</p>
                                                     <hr>
                                                     <p>${reviews[i].getReply()}</p>
@@ -159,7 +156,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <c:if test="${(i+1)%3==0 && i != begin}"> </div>  <hr/> <div class="row"> </c:if>
+                                    <c:if test="${(i+1)%3==0 && i != begin}"> 
+                                    </div>
+                                        <hr/> 
+                                        <div class="row"> </c:if>
 
                                 </c:forEach>
                             </c:when>
@@ -180,6 +180,9 @@
                         <li><a <c:if test="${(begin+11)< len}">href="product?id=<c:out value="${id}"/>&begin=<c:out value="${begin+11}"/>"</c:if> style="color: black">next &gt;</a></li>
                         </u>
                     </div>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
 
@@ -205,8 +208,8 @@
         </div>
         </div>
         </div>
-            
-            
+
+
             changePoint: 640,
                 visibleItems: 3
                 },

@@ -58,7 +58,7 @@
                                                             </c:otherwise>
                                                         </c:choose>
                                                         <i class="a-icon a-icon-star a-star-${reviews[i].getQuality()}"></i>
-                                                        <h6 class="text-muted">Sul prodotto: <br/>${reviews[i].getProduct().getName()}</h6>
+                                                        <h6 class="text-muted">On product: <br/>${reviews[i].getProduct().getName()}</h6>
                                                         <p>${reviews[i].getDescription()}</p>
                                                         <hr>
                                                         <p>${reviews[i].getReply()}</p>
@@ -68,7 +68,7 @@
                                             </c:forEach>
                                         </c:when>
                                         <c:otherwise>
-                                            <h2>Nessun commento...</h2>
+                                            <h2>Nobody has commented yet.</h2>
                                         </c:otherwise>
                                     </c:choose>
                                 </div>
