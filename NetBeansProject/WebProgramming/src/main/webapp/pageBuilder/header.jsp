@@ -76,7 +76,7 @@
                                 </a>
                                 <ul class="dropdown-menu dropdown-with-icons">
                                     <li>
-                                        <a href="aboutUs.jsp">
+                                        <a href="AboutUs.jsp">
                                             <i class="material-icons">event_seat</i> About Us
                                         </a>
                                     </li>
