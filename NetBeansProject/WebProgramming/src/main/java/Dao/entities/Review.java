@@ -15,6 +15,7 @@ public class Review extends IdOwnerComparable {
     private User creator;
     private Product product;
     private String status;
+    private String reply;
 
     public int getGlobalValue() {
         return globalValue;
@@ -80,13 +81,21 @@ public class Review extends IdOwnerComparable {
         return this.status;
     }
 
-    public int DiffTime() {
+    public int getDiffTime() {
         long time1 = this.creationDate.getTime();
         Date date = new Date();
         long time2 = date.getTime();
         long millisDiff = (time2 - time1);
         int days = (int) (millisDiff / 86400000);
         return days;
+    }
+
+    public String getReply() {
+        return reply;
+    }
+
+    public void setReply(String reply) {
+        this.reply = reply;
     }
 
 }
