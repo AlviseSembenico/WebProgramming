@@ -53,11 +53,11 @@
                                                             <div class="media-body">
                                                         <c:choose>
                                                             <c:when test="${reviews[i].getCreator().getId() == sessionScope.user.getId()}">
-                                                                <h4 class="media-heading">you  <small>· ${reviews[i].diffTime()} days ago</small></h4>
+                                                                <h4 class="media-heading">you  <small>· ${reviews[i].getDiffTime()} days ago</small></h4>
 
                                                             </c:when>
                                                             <c:otherwise>
-                                                                <h4 class="media-heading">${reviews[i].getCreator().getFirstName()} ${reviews[i].getCreator().getLastName()}  <small>· ${reviews[i].diffTime()} days ago</small></h4>
+                                                                <h4 class="media-heading">${reviews[i].getCreator().getFirstName()} ${reviews[i].getCreator().getLastName()}  <small>· ${reviews[i].getDiffTime()} days ago</small></h4>
                                                             </c:otherwise>
                                                         </c:choose>
                                                         <i class="a-icon a-icon-star a-star-${reviews[i].getQuality()}"></i>
