@@ -14,7 +14,6 @@
         <div class="container"> 
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
-                    Reply
                 </div>
             </div>
         </div>
@@ -33,7 +32,7 @@
                                             </div>
                                         </a>
                                         <div class="media-body">
-                                                <h4 class="media-heading">${reviews.getCreator().getFirstName()} ${reviews.getCreator().getLastName()}  <small>· ${reviews.diffTime()} days ago</small></h4>
+                                                <h4 class="media-heading">${reviews.getCreator().getFirstName()} ${reviews.getCreator().getLastName()}  <small>· ${reviews.getDiffTime()} days ago</small></h4>
                                     <i class="a-icon a-icon-star a-star-${reviews.getQuality()}"></i>
                                     <h6 class="text-muted">On product: <br/>${reviews.getProduct().getName()}</h6>
                                     <p>${reviews.getDescription()}</p>
