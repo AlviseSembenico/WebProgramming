@@ -127,7 +127,7 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="ModifyServlet">
+                                                <a href="userProfile">
                                                     <i class="material-icons">settings</i> Profile
                                                 </a>
                                             </li>

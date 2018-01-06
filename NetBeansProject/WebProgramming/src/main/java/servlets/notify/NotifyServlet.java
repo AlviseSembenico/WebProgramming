@@ -81,7 +81,7 @@ public class NotifyServlet extends HttpServlet {
                     request.setAttribute("user", user);
                     request.setAttribute("anomalie", anomalie);
                     request.setAttribute("reviews", reviews);
-                    reqDes = request.getRequestDispatcher("/loggedUsers/notify.jsp");
+                    reqDes = request.getRequestDispatcher("/adminUsers/notify.jsp");
                 } else {
                     throw new SecurityException("user has no access to this resource");
                 }
@@ -118,7 +118,7 @@ public class NotifyServlet extends HttpServlet {
             if (action.contains("Reject")) {
                 request.setAttribute("u", user);
                 request.setAttribute("mode", "reject");
-                reqDes = request.getRequestDispatcher("/loggedUsers/email.jsp");
+                reqDes = request.getRequestDispatcher("/adminUsers/email.jsp");
                 a.setSolution("Rejected");
                 anomaliesDao.updateDao(a);
                 reqDes.forward(request, response);
@@ -127,7 +127,7 @@ public class NotifyServlet extends HttpServlet {
                 request.setAttribute("mode", "refound");
                 a.setSolution("Refounded");
                 anomaliesDao.updateDao(a);
-                reqDes = request.getRequestDispatcher("/loggedUsers/email.jsp");
+                reqDes = request.getRequestDispatcher("/adminUsers/email.jsp");
                 reqDes.forward(request, response);
             } else if (action.contains("Review")) {
                 s += "/addReview?id=" + (anomalie.get(i).getPurchase().getUser()).getId();

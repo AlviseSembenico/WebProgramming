@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package servlets.modify.servlet;
+package servlets.modifyUser;
 
 import Dao.UserDao;
 import Dao.entities.User;
@@ -21,12 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import system.Log;
 
-/**
- *
- * @author skat96
- */
-@WebServlet(name = "ModifyServlet", urlPatterns = {"/ModifyServlet"})
-public class ModifyServlet extends HttpServlet {
+public class ModifyUserServlet extends HttpServlet {
 
     private UserDao userDao;
     private User user;
@@ -43,7 +38,7 @@ public class ModifyServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException     {
         RequestDispatcher RequestDispatcherObj = null;       
-        RequestDispatcherObj = request.getRequestDispatcher("/loggedUsers/UserProfile.jsp");
+        RequestDispatcherObj = request.getRequestDispatcher("/loggedUsers/userProfile.jsp");
         RequestDispatcherObj.forward(request, response);
     }
     

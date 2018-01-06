@@ -57,7 +57,7 @@
     </servlet>
     <servlet>
         <servlet-name>UserProfile</servlet-name>
-        <servlet-class>servlets.modify.servlet.ModifyServlet</servlet-class>
+        <servlet-class>servlets.modifyUser.ModifyUserServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>PayServlet</servlet-name>
@@ -94,10 +94,6 @@
     <servlet>
         <servlet-name>loadImage</servlet-name>
         <servlet-class>servlets.loadImage.loadImageServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ModifyServlet</servlet-name>
-        <servlet-class>servlets.modify.servlet.ModifyServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>TextMailSenderServlet</servlet-name>
@@ -185,11 +181,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>UserProfile</servlet-name>
-        <url-pattern>/UserProfile</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ModifyServlet</servlet-name>
-        <url-pattern>/ModifyServlet</url-pattern>
+        <url-pattern>/userProfile</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>loadImage</servlet-name>
