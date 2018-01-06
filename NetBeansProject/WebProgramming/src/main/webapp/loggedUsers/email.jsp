@@ -40,7 +40,7 @@
                                 <input type="text" name="object" class="form-control">
                                 <span class="material-input"></span></div>
                             <div class="form-group label-floating is-empty">
-                                <label class="control-label">Send email</label>
+                                <label class="control-label">Text email</label>
                                 <textarea name="message" class="form-control" id="message" rows="6"></textarea>
                                 <span class="material-input"></span></div>
                             <div class="submit text-center">

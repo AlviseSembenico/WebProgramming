@@ -103,6 +103,10 @@
         <servlet-name>TextMailSenderServlet</servlet-name>
         <servlet-class>servlets.mailSender.TextMailSenderServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ReviewsReplyServlet</servlet-name>
+        <servlet-class>servlets.reviewsResponse.ReviewsReplyServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ConctactUsServlet</servlet-name>
         <url-pattern>/conctactUs</url-pattern>
@@ -198,6 +202,10 @@
     <servlet-mapping>
         <servlet-name>TextMailSenderServlet</servlet-name>
         <url-pattern>/sendEmail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReviewsReplyServlet</servlet-name>
+        <url-pattern>/reviewsReply</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

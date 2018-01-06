@@ -61,7 +61,7 @@
                                                         <td>${anomalie.get(i).getStatus()}</td>
                                                         <td>${anomalie.get(i).getSolution()}</td>
                                                         <td>${anomalie.get(i).getPurchase().getDate()}</td>
-                                                        <td class="text-right">${anomalie.get(i).getTag()}</td>
+                                                        <td>${anomalie.get(i).getTag()}</td>
                                                         <c:choose>
                                                             <c:when test="${user.getPrivileges().equals('admin') and anomalie.get(i).getStatus().equals('not verified')}">
                                                                 <td class="td-actions text-right">
@@ -117,35 +117,32 @@
                                                     <thead>
                                                         <tr>
                                                             <th class="text-center">#</th>
-                                                            <th></th>
                                                             <th>Description</th>
                                                             <th>Rating</th>
                                                             <th>Reviewer</th>
                                                             <th class="text-right">Product</th>
                                                             <th class="text-right">Date</th>
+                                                            <th></th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         <c:forEach var="i" begin="0" end="${reviews.size()-1}">
                                                             <tr>
-                                                                <td class="text-center">${i+1}</td>
-                                                                <td>
-                                                                    <div class="checkbox">
-                                                                        <label>
-                                                                            <input type="checkbox" name="${i}" checked=""><span class="checkbox-material"></span>
-                                                                        </label>
-                                                                    </div>
-                                                                </td>
+                                                                <td class="text-center">${i+1}</td>                                                                
                                                                 <td>${reviews.get(i).getDescription()}</td>
                                                                 <td><i class="a-icon a-icon-star a-star-${reviews.get(i).getQuality()}"></i></td>
                                                                 <td>${reviews.get(i).getCreator().getLastName()} ${reviews.get(i).getCreator().getFirstName()} </td>
                                                                 <td class="text-right">${reviews.get(i).getProduct().getName()}</td>
                                                                 <td class="text-right">${reviews.get(i).getCreationDate()}</td>
+                                                                <td>
+                                                                    <a href="reviewsReply?id=${reviews.get(i).getId()}" class="btn btn-rose"  title="Reply review ">
+                                                                        <i class="material-icons">reply</i>
+                                                                    </a>
+                                                                </td>
                                                             </tr>
                                                         </c:forEach>                                                    
                                                     </tbody>                                              
                                                 </table>
-                                                <button type="submit" class="btn btn-primary btn-round" >Mark Read</button>
                                             </form>
                                         </div>
                                     </div>

@@ -110,42 +110,31 @@ public class NotifyServlet extends HttpServlet {
         try {
             String s = request.getServletContext().getContextPath();
             String action = request.getParameter("action");
-            if (action == null) {
-                Enumeration<String> names = request.getParameterNames();
-                while (names.hasMoreElements()) {
-                    String name = names.nextElement();
 
-                    reviews.get(Integer.parseInt(name)).setStatus("read");
-                    reviewDao.updateDao(reviews.get(Integer.parseInt(name)));
-                    s += "/notify";
-                    response.sendRedirect(s);
+            int i = Integer.parseInt(request.getParameter("index"));
+            Anomalies a = anomalie.get(i);
+            a.setStatus("verified");
+            User user = anomalie.get(i).getPurchase().getUser();
+            if (action.contains("Reject")) {
+                request.setAttribute("u", user);
+                request.setAttribute("mode", "reject");
+                reqDes = request.getRequestDispatcher("/loggedUsers/email.jsp");
+                a.setSolution("Rejected");
+                anomaliesDao.updateDao(a);
+                reqDes.forward(request, response);
+            } else if (action.contains("Resolve")) {
+                request.setAttribute("u", user);
+                request.setAttribute("mode", "refound");
+                a.setSolution("Refounded");
+                anomaliesDao.updateDao(a);
+                reqDes = request.getRequestDispatcher("/loggedUsers/email.jsp");
+                reqDes.forward(request, response);
+            } else if (action.contains("Review")) {
+                s += "/addReview?id=" + (anomalie.get(i).getPurchase().getUser()).getId();
+                a.setSolution("Added a negative Review");
+                anomaliesDao.updateDao(a);
+                response.sendRedirect(s);
 
-                }
-            } else {
-                int i = Integer.parseInt(request.getParameter("index"));
-                Anomalies a = anomalie.get(i);
-                a.setStatus("verified");
-                User user = anomalie.get(i).getPurchase().getUser();
-                if (action.contains("Reject")) {
-                    request.setAttribute("u", user);
-                    request.setAttribute("mode", "reject");
-                    reqDes = request.getRequestDispatcher("/loggedUsers/email.jsp");
-                    a.setSolution("Rejected");
-                    anomaliesDao.updateDao(a);
-                    reqDes.forward(request, response);
-                } else if (action.contains("Resolve")) {
-                    request.setAttribute("u", user);
-                    request.setAttribute("mode", "refound");
-                    a.setSolution("Refounded");
-                    anomaliesDao.updateDao(a);
-                    reqDes = request.getRequestDispatcher("/loggedUsers/email.jsp");
-                    reqDes.forward(request, response);
-                } else if (action.contains("Review")) {
-                    s += "/addReview?id=" + (anomalie.get(i).getPurchase().getUser()).getId();
-                    a.setSolution("Added a negative Review");
-                    anomaliesDao.updateDao(a);
-                    response.sendRedirect(s);
-                }
             }
         } catch (Exception ex) {
             Logger.getLogger(NotifyServlet.class.getName()).log(Level.SEVERE, null, ex);
