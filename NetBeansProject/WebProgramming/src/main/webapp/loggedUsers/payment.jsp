@@ -1,4 +1,4 @@
-<%-- 
+[21:32, 4/1/2018] Franci (Univer: <%-- 
     Document   : payment
     Created on : Oct 16, 2017, 10:40:46 AM
     Author     : skat96
@@ -175,8 +175,8 @@
                                     {
                                         var credito = document.getElementById('credito').checked;
                                         var paypal = document.getElementById('paypal').checked;
-                                        var bonifico = document.getElementById('bonifico').checked;
-
+                                        var bonifico = document.getElementById('bonifico').checked;  
+                                                                               
                                         var intestatario = document.getElementById('carduser').value;
                                         var numerocarta = document.getElementById('cardnumber').value;
                                         var datascadenza = document.getElementById('carddate').value;
@@ -207,7 +207,7 @@
                                                 alert("Username or password are missing");
                                             } else
                                             {
-                                                btnpay.removeAttribute("disabled");
+                                                document.forms.myForm.submit();
                                             }
                                         }
 
@@ -218,7 +218,7 @@
                                                 alert("Payment File is missing");
                                             } else
                                             {
-                                                btnpay.removeAttribute("disabled");
+                                                document.forms.myForm.submit();
                                             }
                                         }                                                                                
 
@@ -252,14 +252,9 @@
                                 </script>
                                 <div class="row">
                                     <div class="text-center">
-                                        <input type="button" class="btn btn-primary" value="Confirm" onclick='Paga()'/>
+                                        <input type="button" class="btn btn-primary" value="Confirm and Pay" onclick='Paga()'/>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="text-center">
-                                        <input id="pay" type="submit" value="Pay" class="btn btn-primary" disabled/>
-                                    </div>
-                                </div>
+                                </div>                                
                             </div>
                         </div>
                     </form>
