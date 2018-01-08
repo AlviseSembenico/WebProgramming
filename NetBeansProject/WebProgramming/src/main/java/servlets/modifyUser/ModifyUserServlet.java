@@ -99,7 +99,8 @@ public class ModifyUserServlet extends HttpServlet {
                     
 
                 }
-            }
+            } 
+                        response.sendRedirect("userProfile?result=false");
         }
 
     }

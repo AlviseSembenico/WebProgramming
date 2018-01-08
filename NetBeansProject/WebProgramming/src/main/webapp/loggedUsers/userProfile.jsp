@@ -73,29 +73,25 @@
         <div class="modal fade" id="cambiapw" tabindex="-1" role="dialog" aria-labelledby="changepw" aria-hidden="true" data-toggle="modal" >
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                            <i class="material-icons">clear</i>
-                        </button>
-                        <h4 class="modal-title">Change Password</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form acton="userProfile" id="form" method="post" name="pop">
+                    <form acton="userProfile" id="form" method="post" name="pop">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                <i class="material-icons">clear</i>
+                            </button>
+                            <h4 class="modal-title">Change Password</h4>
+                        </div>
+                        <div class="modal-body">
+
                             <input name="oldPw" type="Password" class="form-control" placeholder="Old Password">
                             <input name="newPw" type="Password" class="form-control" placeholder="New Password">
                             <input name="confirmNewPw" type="Password" class="form-control" placeholder="Confirm New Password">
-                            <br/>
-                            <br/>
-                            <div class="row">                                                                    
-                                <input type="submit" class="btn btn-primary btn-round"  value="submit"/>
-                            </div>
-                            <br/>
-                            <br/>                                                    
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger btn-simple" data-dismiss="modal">Close</button>
-                    </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <input type="submit" class="btn btn-primary btn-simple"  value="submit"/>
+                            <button type="button" class="btn btn-danger btn-simple" data-dismiss="modal">Close</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
