@@ -349,7 +349,8 @@ public class JdbcUtilities {
 
                         }
                     } else if (m.getReturnType().equals(String.class) || m.getReturnType().equals(Date.class)) {
-                        if ((Object) m.invoke(o, null) != null) {
+                        String s=(String)m.invoke(o, null);
+                        if (s != null) {
                             if (map.containsKey(name)) {
                                 query += map.get(name);
                             } else {

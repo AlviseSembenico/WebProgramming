@@ -8,7 +8,7 @@ public final class User extends IdOwnerComparable {
     private String firstName;
     private String lastName;
     private String email;
-    private String password;
+    private String password=null;
     private String avatarPath;
     private String conferma;
     private String privileges;

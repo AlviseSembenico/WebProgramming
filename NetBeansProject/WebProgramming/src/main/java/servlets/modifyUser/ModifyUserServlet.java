@@ -25,23 +25,23 @@ public class ModifyUserServlet extends HttpServlet {
 
     private UserDao userDao;
     private User user;
-    
+
     @Override
     public void init() throws ServletException {
-        userDao= (UserDao) super.getServletContext().getAttribute("userDao");
+        userDao = (UserDao) super.getServletContext().getAttribute("userDao");
         if (userDao == null) {
             throw new ServletException("Impossible to get dao factory for user storage system");
-        } 
+        }
     }
-    
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException     {
-        RequestDispatcher RequestDispatcherObj = null;       
+            throws ServletException, IOException {
+        RequestDispatcher RequestDispatcherObj = null;
         RequestDispatcherObj = request.getRequestDispatcher("/loggedUsers/userProfile.jsp");
         RequestDispatcherObj.forward(request, response);
     }
-    
+
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -53,37 +53,55 @@ public class ModifyUserServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession(false);
         String lastName = request.getParameter("lastname");
         String firstName = request.getParameter("firstname");
-        
         String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        if (lastName != "") {
+        user = (User) session.getAttribute("user");
+
+        if (lastName!=null && lastName != "" ) {
             String contextPath = getServletContext().getContextPath();
             if (!contextPath.endsWith("/")) {
                 contextPath += "/";
             }
-            try{
-                HttpSession session = request.getSession(false);
-                user = (User)session.getAttribute("user");
+            try {
+
                 user.setFirstName(firstName);
                 user.setLastName(lastName);
                 user.setEmail(email);
-                user.setPassword(password);
+                user.setPassword(null);
                 int res = userDao.updateDao(user);
-                if(res == 0)
-                    response.sendRedirect(response.encodeRedirectURL(contextPath + "/modify"+"?error=true"));
-                else{
-                    
-                    request.getSession().setAttribute("authenticatedUser", user);
-                    response.sendRedirect(response.encodeRedirectURL(contextPath + "index"));
+                if (res == 0) {
+                    response.sendRedirect(response.encodeRedirectURL(contextPath + "/modify" + "?error=true"));
+                } else {
+                    response.sendRedirect("userProfile?result=true");
                 }
-            }
-            catch(Exception e){
+
+            } catch (Exception e) {
                 Log.write(e.toString());
             }
+        } else {
+            String oldPw = request.getParameter("oldPw");
+            String newPw = request.getParameter("newPw");
+            String confirmNewPw = request.getParameter("confirmNewPw");
+            if (oldPw.equals(user.getPassword())) {
+                if (newPw.equals(confirmNewPw)) {
+                    user.setPassword(newPw);
+                    try{
+                    int res = userDao.updateDao(user);
+                    if (res == 0) 
+                        response.sendRedirect("userProfile?result=false");
+                     else 
+                        response.sendRedirect("userProfile?result=true");
+                    }catch(Exception e){
+                        response.sendRedirect("userProfile?result=false");
+                    }
+                    
+
+                }
+            }
         }
-        
+
     }
 
     /**
