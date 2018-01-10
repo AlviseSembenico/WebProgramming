@@ -22,29 +22,32 @@ import java.util.logging.Logger;
 public class JdbcUserDao extends JdbcUtilities implements UserDao{
     HashMap<String, String> map; 
     private String tableName="users";
+    private LinkedList<String> encrypted;
     
     public JdbcUserDao(){
         map=new HashMap<String, String>();
+        encrypted=new LinkedList<String>();
+        encrypted.add("password");
     }
     
     @Override
     public User getUserById(int id) throws  Exception {
         HashMap<Object,String> mappa=new HashMap<Object,String>();
         mappa.put(id,"id" );
-        return (User) super.getObject(User.class, null, tableName, mappa).get(0);
+        return (User) super.getObject(User.class, null, tableName, mappa, encrypted).get(0);
     }
 
     @Override
     public User getUserByEmail(String email) throws Exception {
         HashMap<Object,String> mappa=new HashMap<Object,String>();
         mappa.put(email,"email" );
-        return (User) super.getObject(User.class, null, tableName, mappa).get(0);
+        return (User) super.getObject(User.class, null, tableName, mappa, encrypted).get(0);
     }
 
     @Override
     public LinkedList<User> getAllUser() throws Exception {
         LinkedList<User> res=new LinkedList<User> ();
-        for(Object o:super.getObject(User.class, null, tableName,null))
+        for(Object o:super.getObject(User.class, null, tableName,null, encrypted))
             res.add((User) o);
         return res;
     }
@@ -54,14 +57,14 @@ public class JdbcUserDao extends JdbcUtilities implements UserDao{
         HashMap<Object,String> mappa=new HashMap<Object,String>();
         mappa.put(email,"email" );
         mappa.put(password,"password" );
-        return (User) super.getObject(User.class, null, tableName, mappa).get(0);
+        return (User) super.getObject(User.class, null, tableName, mappa, encrypted).get(0);
     }
   
 
     
     @Override
     public int insertDao(Object o) throws SQLException{
-        return super.insertDao(o, map, tableName);
+        return super.insertDao(o, map, tableName, encrypted);
     }
 
 
@@ -72,7 +75,7 @@ public class JdbcUserDao extends JdbcUtilities implements UserDao{
 
     @Override
     public int updateDao(IdOwner o) throws SQLException{
-        return super.updateDao(o, map, tableName);
+        return super.updateDao(o, map, tableName, encrypted);
     }
 
     @Override
@@ -84,6 +87,7 @@ public class JdbcUserDao extends JdbcUtilities implements UserDao{
         }
         return null;
     }
+
 
    
 }

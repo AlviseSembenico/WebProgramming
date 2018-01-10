@@ -38,7 +38,7 @@ public class JdbcReviewDao extends JdbcUtilities implements ReviewDao {
     public Review getReviewById(int id) throws Exception {
         HashMap<Object, String> mappa = new HashMap<Object, String>();
         mappa.put(id, "id");
-        Review res = (Review) super.getObject(Review.class, map, tableName, mappa).get(0);
+        Review res = (Review) super.getObject(Review.class, map, tableName, mappa, null).get(0);
         return res;
     }
 
@@ -47,7 +47,7 @@ public class JdbcReviewDao extends JdbcUtilities implements ReviewDao {
         HashMap<Object, String> mappa = new HashMap<Object, String>();
         mappa.put(user.getId(), "creator_id");
         LinkedList<Review> res = new LinkedList<Review>();
-        for (Object o : super.getObject(Review.class, map, tableName, mappa)) {
+        for (Object o : super.getObject(Review.class, map, tableName, mappa, null)) {
             res.add((Review) o);
         }
         return res;
@@ -70,7 +70,7 @@ public class JdbcReviewDao extends JdbcUtilities implements ReviewDao {
 
     @Override
     public int insertDao(Object o) throws SQLException {
-        return super.insertDao(o, map, tableName);
+        return super.insertDao(o, map, tableName, null);
     }
 
     @Override
@@ -80,7 +80,7 @@ public class JdbcReviewDao extends JdbcUtilities implements ReviewDao {
 
     @Override
     public int updateDao(IdOwner o) throws SQLException {
-        return super.updateDao(o, map, tableName);
+        return super.updateDao(o, map, tableName, null);
     }
 
     @Override
@@ -129,7 +129,7 @@ public class JdbcReviewDao extends JdbcUtilities implements ReviewDao {
         mappa.put(user.getId(), "creator_id");
         mappa.put(product.getId(), "products_id");
         LinkedList<Review> res = new LinkedList<Review>();
-        for (Object o : super.getObject(Review.class, map, tableName, mappa)) {
+        for (Object o : super.getObject(Review.class, map, tableName, mappa, null)) {
             res.add((Review) o);
         }
         return res;

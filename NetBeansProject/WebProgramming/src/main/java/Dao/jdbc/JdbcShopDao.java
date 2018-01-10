@@ -38,7 +38,7 @@ public class JdbcShopDao extends JdbcUtilities implements ShopDao {
     public Shop getShopById(int id) throws Exception {
         HashMap<Object, String> mappa = new HashMap<>();
         mappa.put(id, "id");
-        Shop res = (Shop) super.getObject(Shop.class, map, tableName, mappa).get(0);
+        Shop res = (Shop) super.getObject(Shop.class, map, tableName, mappa, null).get(0);
         return res;
     }
 
@@ -46,7 +46,7 @@ public class JdbcShopDao extends JdbcUtilities implements ShopDao {
     public Shop getShopByName(String name) throws Exception {
         HashMap<Object, String> mappa = new HashMap<Object, String>();
         mappa.put(name, "name");
-        Shop res = (Shop) super.getObject(Shop.class, map, tableName, mappa).get(0);
+        Shop res = (Shop) super.getObject(Shop.class, map, tableName, mappa, null).get(0);
         return res;
     }
 
@@ -54,13 +54,13 @@ public class JdbcShopDao extends JdbcUtilities implements ShopDao {
     public Shop getShopByOwner(User owner) throws Exception {
         HashMap<Object, String> mappa = new HashMap<Object, String>();
         mappa.put(owner.getId(), "owner_id");
-        Shop res = (Shop) super.getObject(Shop.class, map, tableName, mappa).get(0);
+        Shop res = (Shop) super.getObject(Shop.class, map, tableName, mappa, null).get(0);
         return res;
     }
 
     @Override
     public int insertDao(Object o) throws SQLException {
-        return super.insertDao(o, map, tableName);
+        return super.insertDao(o, map, tableName, null);
     }
 
     @Override
@@ -70,7 +70,7 @@ public class JdbcShopDao extends JdbcUtilities implements ShopDao {
 
     @Override
     public int updateDao(IdOwner o) throws SQLException {
-        return super.updateDao(o, map, tableName);
+        return super.updateDao(o, map, tableName, null);
     }
 
     @Override

@@ -36,7 +36,7 @@ public class JdbcPurchaseDao extends JdbcUtilities implements PurchaseDao{
     public Purchase getPurchaseById(int id) throws Exception{
         HashMap<Object,String> mappa=new HashMap<Object,String>();
         mappa.put(id,"id");
-        Purchase res=(Purchase)  super.getObject(Purchase.class, map, tableName, mappa).get(0);
+        Purchase res=(Purchase)  super.getObject(Purchase.class, map, tableName, mappa, null).get(0);
         return res;
     }
     
@@ -45,7 +45,7 @@ public class JdbcPurchaseDao extends JdbcUtilities implements PurchaseDao{
         HashMap<Object,String> mappa=new HashMap<Object,String>();
         mappa.put(id,"id");
         mappa.put(user.getId(),"users_id");
-        Purchase res=(Purchase)  super.getObject(Purchase.class, map, tableName, mappa).get(0);
+        Purchase res=(Purchase)  super.getObject(Purchase.class, map, tableName, mappa, null).get(0);
         return res;
     }
     
@@ -54,7 +54,7 @@ public class JdbcPurchaseDao extends JdbcUtilities implements PurchaseDao{
         LinkedList<Purchase> res=new LinkedList<Purchase> ();
         HashMap<Object,String> mappa=new HashMap<Object,String>();
         mappa.put(user.getId(),"users_id");
-        for(Object o:super.getObject(Purchase.class, map, tableName,mappa))
+        for(Object o:super.getObject(Purchase.class, map, tableName,mappa, null))
         {
             Purchase p = (Purchase)o;
             if(p != null)
@@ -68,7 +68,7 @@ public class JdbcPurchaseDao extends JdbcUtilities implements PurchaseDao{
   
     @Override
     public int insertDao(Object o) throws SQLException {
-        return super.insertDao(o, map, tableName);
+        return super.insertDao(o, map, tableName, null);
     }
 
     @Override
@@ -78,7 +78,7 @@ public class JdbcPurchaseDao extends JdbcUtilities implements PurchaseDao{
 
     @Override
     public int updateDao(IdOwner o) throws SQLException {
-         return super.updateDao(o, map, tableName);
+         return super.updateDao(o, map, tableName, null);
     }
 
     @Override

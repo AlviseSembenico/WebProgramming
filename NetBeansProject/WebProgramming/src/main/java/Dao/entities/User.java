@@ -86,6 +86,7 @@ public final class User extends IdOwnerComparable {
     }
 
     public String getPassword() {
+        
         return password;
     }
 

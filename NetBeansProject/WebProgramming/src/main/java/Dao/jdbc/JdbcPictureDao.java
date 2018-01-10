@@ -37,7 +37,7 @@ public class JdbcPictureDao extends JdbcUtilities implements PictureDao {
     public Picture getPictureById(int id) throws Exception {
         HashMap<Object, String> mappa = new HashMap<Object, String>();
         mappa.put(id, "id");
-        return (Picture) super.getObject(Picture.class, map, tableName, mappa).get(0);
+        return (Picture) super.getObject(Picture.class, map, tableName, mappa, null).get(0);
     }
 
     @Override
@@ -45,7 +45,7 @@ public class JdbcPictureDao extends JdbcUtilities implements PictureDao {
         HashMap<Object, String> mappa = new HashMap<Object, String>();
         mappa.put(product.getId(), "products_id");
         LinkedList<Picture> res = new LinkedList<Picture>();
-        for (Object o : super.getObject(Picture.class, map, tableName, mappa)) {
+        for (Object o : super.getObject(Picture.class, map, tableName, mappa, null)) {
             res.add((Picture) o);
         }
         return res;
@@ -56,7 +56,7 @@ public class JdbcPictureDao extends JdbcUtilities implements PictureDao {
         HashMap<Object, String> mappa = new HashMap<Object, String>();
         mappa.put(shop.getId(), "shops_id");
         LinkedList<Picture> res = new LinkedList<Picture>();
-        for (Object o : super.getObject(Picture.class, map, tableName, mappa)) {
+        for (Object o : super.getObject(Picture.class, map, tableName, mappa, null)) {
             res.add((Picture) o);
         }
         return res;
@@ -78,7 +78,7 @@ public class JdbcPictureDao extends JdbcUtilities implements PictureDao {
 
     @Override
     public int insertDao(Object o) throws SQLException {
-        return super.insertDao(o, map, tableName);
+        return super.insertDao(o, map, tableName, null);
     }
 
     @Override
@@ -88,7 +88,7 @@ public class JdbcPictureDao extends JdbcUtilities implements PictureDao {
 
     @Override
     public int updateDao(IdOwner o) throws SQLException {
-        return super.updateDao(o, map, tableName);
+        return super.updateDao(o, map, tableName, null);
     }
 
     @Override

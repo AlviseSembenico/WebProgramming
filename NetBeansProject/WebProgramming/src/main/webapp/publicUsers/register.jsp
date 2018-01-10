@@ -117,7 +117,26 @@
 
                 </div>
             </div>
-        </div>  
+        </div>
+        <div class="modal fade" id="errorModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            <i class="material-icons">clear</i>
+                        </button>
+                        <h4 class="modal-title">Check your email!</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Check if your email is correct or you don't have another account already registered.   
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger btn-simple" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <c:import url="/pageBuilder/footer.jsp"/>
         <c:if test="${!(empty param.result) && param.result eq 'true'}">
             <script>
@@ -129,7 +148,7 @@
         <c:if test="${!(empty param.result) && param.result eq 'false'}">
             <script>
                 $(document).ready(function () {
-                    $("#errorModal").modal("show");
+                    $("#errorModal2").modal("show");
                 });
             </script>
         </c:if>

@@ -40,7 +40,7 @@ public class JdbcCartDao extends JdbcUtilities implements CartDao {
         HashMap<Object, String> mappa = new HashMap<Object, String>();
         mappa.put(user.getId(), "users_id");
         Cart res = new Cart();
-        for (Object o : super.getObject(CartContainer.class, map, tableName, mappa)) {
+        for (Object o : super.getObject(CartContainer.class, map, tableName, mappa, null)) {
             if (o != null) {
                 CartContainer cc = (CartContainer) o;
                 res.setUser(cc.getUser());
@@ -57,7 +57,7 @@ public class JdbcCartDao extends JdbcUtilities implements CartDao {
         Cart c = (Cart) o;
         int res=0;
         for (Product p : c.getProducts()) {
-            res+= super.insertDao(new CartContainer(c.getUser(), p), map, tableName);
+            res+= super.insertDao(new CartContainer(c.getUser(), p), map, tableName, null);
         }
         return res;
     }
@@ -75,7 +75,7 @@ public class JdbcCartDao extends JdbcUtilities implements CartDao {
         }
         for (Product p : newP) {
             for(int i=0;i<countInList(newP,p)-countInList(oldP,p);i++)
-                res += super.insertDao(new CartContainer(c.getUser(), p), map, tableName);
+                res += super.insertDao(new CartContainer(c.getUser(), p), map, tableName, null);
         }
         c.flush();
         return res;

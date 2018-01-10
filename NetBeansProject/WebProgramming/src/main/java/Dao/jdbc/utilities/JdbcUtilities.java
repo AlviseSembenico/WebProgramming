@@ -90,15 +90,20 @@ public class JdbcUtilities {
      * @return a linkedList of the object indicated in C class
      * @throws Exception
      */
-    protected LinkedList<Object> getObject(Class<?> c, HashMap<String, String> map, String tableName, HashMap<Object, String> param) throws Exception {
+    protected LinkedList<Object> getObject(Class<?> c, HashMap<String, String> map, String tableName, HashMap<Object, String> param, LinkedList<String> encrypt) throws Exception {
 
         if (!checkConnection()) {
             return null;
         }
+        if(encrypt==null)
+            encrypt=new LinkedList<String>();
         String query = "select * from " + tableName;
         if (param != null) {
             query += " where ";
             for (Object par : param.keySet()) {
+                if(encrypt.contains(param.get(par)))
+                    query += param.get(par) + " = PASSWORD(?) and ";
+                else
                 query += param.get(par) + " = ? and ";
             }
             query = query.substring(0, query.length() - 5);
@@ -229,12 +234,15 @@ public class JdbcUtilities {
      * @return id value if it has id field
      * @throws SQLException
      */
-    protected int insertDao(Object o, HashMap<String, String> map, String tableName) throws SQLException {
+    protected int insertDao(Object o, HashMap<String, String> map, String tableName, LinkedList<String> encrypted) throws SQLException {
         if (!checkConnection()) {
             return 0;
         }
         if (map == null) {
             map = new <String, String>HashMap();
+        }
+        if (encrypted == null) {
+            encrypted = new LinkedList<String>();
         }
         String query = new String("insert into " + tableName + " (");
         String values = "values(";
@@ -258,12 +266,19 @@ public class JdbcUtilities {
                         }
                     } else if (m.getReturnType().equals(String.class)) {
                         if ((Object) m.invoke(o, null) != null) {
-                            values += "'" + m.invoke(o, null) + "',";
                             if (map.containsKey(name)) {
                                 query += map.get(name) + ",";
                             } else {
                                 query += camelToSql(name) + ",";
                             }
+                            
+                            if(encrypted.contains(name))
+                                    values += "PASSWORD('" + m.invoke(o, null) + "'),";   
+                            else
+                            values += "'" + m.invoke(o, null) + "',";    
+                            
+                            
+                            
                         }
                     } else if (m.getReturnType().equals(Date.class)) {
                         if ((Object) m.invoke(o, null) != null) {
@@ -317,7 +332,7 @@ public class JdbcUtilities {
      * @return the number of changed rows
      * @throws SQLException
      */
-    protected int updateDao(Object o, HashMap<String, String> map, String tableName) throws SQLException {
+    protected int updateDao(Object o, HashMap<String, String> map, String tableName, LinkedList<String> encrypted) throws SQLException {
         if (!checkConnection()) {
             return 0;
         }
@@ -356,7 +371,10 @@ public class JdbcUtilities {
                             } else {
                                 query += camelToSql(name);
                             }
-                            query += " = '" + m.invoke(o, null) + "',";
+                                if(encrypted.contains(name))
+                                    query += " = PASSWORD('" + m.invoke(o, null) + "'),";
+                                else
+                                    query += " = '" + m.invoke(o, null) + "',";
                         }
                     } else {
                         Object obj = m.invoke(o, null);

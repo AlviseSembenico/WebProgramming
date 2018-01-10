@@ -169,7 +169,7 @@ public class JdbcProductDao extends JdbcUtilities implements ProductDao {
         HashMap<Object, String> mappa = new HashMap<Object, String>();
         mappa.put(category, "category");
         LinkedList<Product> res = new LinkedList<Product>();
-        for (Object o : super.getObject(Product.class, map, tableName, mappa)) {
+        for (Object o : super.getObject(Product.class, map, tableName, mappa, null)) {
             res.add((Product) o);
         }
         return res;
@@ -195,7 +195,7 @@ public class JdbcProductDao extends JdbcUtilities implements ProductDao {
         HashMap<Object, String> mappa = new HashMap<Object, String>();
         mappa.put(shop.getId(), "shops_id");
         LinkedList<Product> res = new LinkedList<Product>();
-        for (Object o : super.getObject(Product.class, map, tableName, mappa)) {
+        for (Object o : super.getObject(Product.class, map, tableName, mappa, null)) {
             res.add((Product) o);
         }
         return res;
@@ -203,7 +203,7 @@ public class JdbcProductDao extends JdbcUtilities implements ProductDao {
 
     @Override
     public int insertDao(Object o) throws SQLException {
-        return super.insertDao(o, map, tableName);
+        return super.insertDao(o, map, tableName, null);
     }
 
     @Override
@@ -213,14 +213,14 @@ public class JdbcProductDao extends JdbcUtilities implements ProductDao {
 
     @Override
     public int updateDao(IdOwner o) throws SQLException {
-        return super.updateDao(o, map, tableName);
+        return super.updateDao(o, map, tableName, null);
     }
 
     @Override
     public Product getProductById(int id) throws Exception {
         HashMap<Object, String> mappa = new HashMap<Object, String>();
         mappa.put(id, "id");
-        return (Product) super.getObject(Product.class, map, tableName, mappa).get(0);
+        return (Product) super.getObject(Product.class, map, tableName, mappa, null).get(0);
     }
 
     @Override
@@ -240,7 +240,7 @@ public class JdbcProductDao extends JdbcUtilities implements ProductDao {
         }
         HashMap<Object, String> mappa = new HashMap<Object, String>();
         LinkedList<Product> res = new LinkedList<Product>();
-        for (Object o : super.getObject(Product.class, map, tableName, mappa)) {
+        for (Object o : super.getObject(Product.class, map, tableName, mappa, null)) {
             res.add((Product) o);
         }
         return res;
