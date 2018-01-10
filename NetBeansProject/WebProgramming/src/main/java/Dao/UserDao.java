@@ -6,6 +6,8 @@
 package Dao;
 
 import Dao.entities.User;
+import java.io.UnsupportedEncodingException;
+import java.sql.SQLException;
 import java.util.LinkedList;
 
 
@@ -19,4 +21,5 @@ public interface UserDao extends  DefaultDao, GetById{
     public User getUserByEmail(String email) throws Exception;
     public User getUserByEmailPassword(String email,String password) throws Exception;
     public LinkedList<User> getAllUser() throws Exception;
+    public String password(String s) throws UnsupportedEncodingException;
 }

@@ -7,6 +7,7 @@ package Dao.jdbc.utilities;
 
 import Dao.GetById;
 import Dao.IdOwner;
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.sql.Connection;
@@ -15,10 +16,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
-import java.sql.Timestamp;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
+import org.apache.commons.codec.digest.DigestUtils;
 import system.Log;
 
 /**
@@ -137,6 +138,11 @@ public class JdbcUtilities {
         return fillResult(c, null, rs);
     }
 
+    public String password(String plainText) throws UnsupportedEncodingException {
+        byte[] utf8 = plainText.getBytes("UTF-8");
+        return "*" + DigestUtils.shaHex(DigestUtils.sha(utf8)).toUpperCase();
+    }
+    
     protected LinkedList<Object> fillResult(Class<?> c, HashMap<String, String> map, ResultSet rs) throws Exception {
         LinkedList<Object> result = new LinkedList<Object>();
         if (!rs.first()) {
