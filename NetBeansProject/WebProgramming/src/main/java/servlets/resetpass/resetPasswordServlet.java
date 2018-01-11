@@ -62,7 +62,7 @@ public class resetPasswordServlet extends HttpServlet {
             RequestDispatcher reqDes = request.getRequestDispatcher("publicUsers/resetpassword.jsp");
             reqDes.forward(request, response);
         } else {
-            RequestDispatcher reqDes = request.getRequestDispatcher("/error.jsp");
+            RequestDispatcher reqDes = request.getRequestDispatcher("/index.jsp?result=false");
             reqDes.forward(request, response);
         }
     }
@@ -90,14 +90,14 @@ public class resetPasswordServlet extends HttpServlet {
                 if (password.equals(conferma)) {
                     user.setPassword(password);
                     userDao.updateDao(user);
-                    reqDes = request.getRequestDispatcher("/login?result=true");
+                    reqDes = request.getRequestDispatcher("publicUsers/login.jsp");
                     reqDes.forward(request, response);
                 } else {
-                    reqDes = request.getRequestDispatcher("/index?result=false");
+                    reqDes = request.getRequestDispatcher("/index.jsp?result=false");
                     reqDes.forward(request, response);
                 }
             } else {
-                reqDes = request.getRequestDispatcher("/error.jsp");
+                reqDes = request.getRequestDispatcher("/index.jsp?result=false");
                 reqDes.forward(request, response);
             }
         } catch (Exception ex) {

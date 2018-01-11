@@ -72,10 +72,10 @@ public class recoverPassword extends HttpServlet {
             } catch (MessagingException ex) {
                 Logger.getLogger(recoverPassword.class.getName()).log(Level.SEVERE, null, ex);
             }
-            reqDes = request.getRequestDispatcher("/success.jsp");
+            reqDes = request.getRequestDispatcher("/index.jsp?result=true");
 
         } else {
-            reqDes = request.getRequestDispatcher("/error.jsp");
+            reqDes = request.getRequestDispatcher("/index.jsp?result=false");
         }
 
         reqDes.forward(request, response);
