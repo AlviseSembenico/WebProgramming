@@ -273,4 +273,22 @@ Author     : Alvise
 
 <c:import url="pageBuilder/footer.jsp"/>
 
+<c:if test="${!(empty param.result) && param.result eq 'true'}">
+    <script>
+        $(document).ready(function () {
+            $("#successModal").modal("show");
+        });
+    </script>
+</c:if>
+<c:if test="${!(empty param.result) && param.result eq 'false'}">
+    <script>
+        $(document).ready(function () {
+            $("#errorModal").modal("show");
+        });
+    </script>
+</c:if>
+
+
+
+
 </html>

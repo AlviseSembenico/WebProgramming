@@ -68,7 +68,7 @@ public class RegisterServlet extends HttpServlet {
                 } else {
                     user = userDao.getUserByEmail(email);
                     sender.sendLinkConfirm(user.getId(), contextPath, email);
-                    reqDes = request.getRequestDispatcher("/publicUsers/confirmRegistration.jsp");
+                    reqDes = request.getRequestDispatcher("/publicUsers/register.jsp?result=true");
                 }
             }
         } catch (Exception e) {

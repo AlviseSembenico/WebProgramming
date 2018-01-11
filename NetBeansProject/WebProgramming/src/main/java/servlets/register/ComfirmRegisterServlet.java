@@ -62,10 +62,10 @@ public class ComfirmRegisterServlet extends HttpServlet {
             } catch (Exception ex) {
                 Logger.getLogger(ComfirmRegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
-            response.sendRedirect(response.encodeRedirectURL(contextPath + "/index"));
+            response.sendRedirect(response.encodeRedirectURL(contextPath + "/index?result=true"));
+        } else {
+            response.sendRedirect(response.encodeRedirectURL(contextPath + "/index?result=false"));
         }
-        response.sendRedirect(response.encodeRedirectURL(contextPath + "/error.jsp"));
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
