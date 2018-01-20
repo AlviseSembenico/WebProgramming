@@ -43,12 +43,9 @@ public class LoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession(false);
-        if (session.getAttribute("user") == null) {
             RequestDispatcher reqDes = request.getRequestDispatcher("/publicUsers/login.jsp");
             reqDes.forward(request, response);
-        } else {
-            response.sendRedirect("index");
-        }
+       
 
     }
 

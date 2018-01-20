@@ -27,7 +27,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Alvise
  */
-@WebFilter(filterName = "FilterUsers", urlPatterns = {"/loggedUsers/*"}, dispatcherTypes = {DispatcherType.FORWARD})
+//@WebFilter(filterName = "FilterUsers", urlPatterns = {"/loggedUsers/*"}, dispatcherTypes = {DispatcherType.FORWARD, DispatcherType.REQUEST})
 public class FilterLoggedUsers implements Filter {
     
     private static final boolean debug = true;

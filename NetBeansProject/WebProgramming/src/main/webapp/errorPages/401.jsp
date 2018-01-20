@@ -9,20 +9,23 @@
 <%@page import="Dao.*"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 
-
+<body class="landing-page">
 <c:import url="/pageBuilder/header.jsp"/>
-<body class="profile-page">
-    <div class="page-header header-filter" data-parallax="true" style="background-image: url('https://www.happywall.co.uk/uploads/galleri/1204/forest_landscape_gallery.jpg');">
+
+ <div class="page-header header-filter" style='background-image: url("../assets/img/bg8.jpg"); transform: translate3d(0px, 80px, 0px);' data-parallax="true">
         <div class="container">
-            <div class="row title-row">
-                <div class="col-md-4 col-md-offset-8">
-                    <button class="btn btn-white pull-right"><i class="material-icons">shopping_cart</i> <c:out value="${cart.getProducts().size()}"/> Items</button>
+            <div class="row">
+                <div class="col-md-6">
+                    <h1 class="title">Your Story Starts With Us.</h1>
+                    <h4>Every landing page needs a small description after the big bold title, that's why we added this text here. Add here all the information that can make you or your product create the first impression.</h4>
+                    <br>
+                    <a class="btn btn-danger btn-raised btn-lg" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">
+                        <i class="fa fa-play"></i> Watch video
+                    </a>
                 </div>
             </div>
         </div>
     </div>
-    <div class="main main-raised main-cart">
-
         <img src="https://i.ytimg.com/vi/HO8ctP_QNZc/maxresdefault.jpg"/>
     </div>
 

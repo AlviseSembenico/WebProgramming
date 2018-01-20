@@ -1,5 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <filter>
+        <filter-name>admin</filter-name>
+        <filter-class>filters.FilterAdminUsers</filter-class>
+    </filter>
+    <filter>
+        <filter-name>logged</filter-name>
+        <filter-class>filters.FilterLoggedUsers</filter-class>
+    </filter>
+    <filter>
+        <filter-name>public</filter-name>
+        <filter-class>filters.FilterPublicUsers</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>public</filter-name>
+        <url-pattern>/publicUsers/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>INCLUDE</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>logged</filter-name>
+        <url-pattern>/loggedUsers/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>INCLUDE</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>admin</filter-name>
+        <url-pattern>/adminUsers/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>INCLUDE</dispatcher>
+    </filter-mapping>
     <listener>
         <listener-class>loader.JdbcClassLoader</listener-class>
     </listener>
