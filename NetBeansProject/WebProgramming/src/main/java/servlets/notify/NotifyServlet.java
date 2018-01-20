@@ -82,13 +82,12 @@ public class NotifyServlet extends HttpServlet {
                     request.setAttribute("anomalie", anomalie);
                     request.setAttribute("reviews", reviews);
                     reqDes = request.getRequestDispatcher("/adminUsers/notify.jsp");
-                } else {
-                    throw new SecurityException("user has no access to this resource");
-                }
+                } else 
+                    response.sendError(403);
 
-            } else {
-                throw new SecurityException("user has no access to this resource");
-            }
+            } else   
+                response.sendError(403);
+
         } catch (Exception ex) {
             reqDes = request.getRequestDispatcher("/index");
         }

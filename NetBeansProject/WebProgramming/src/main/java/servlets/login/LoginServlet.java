@@ -90,7 +90,7 @@ public class LoginServlet extends HttpServlet {
                         cartDao.insertDao(sessCart);
                     }
                 } else {
-                    response.sendRedirect(response.encodeRedirectURL("login" + "?error=true"));
+                    response.sendError(401);
                 }
                 response.sendRedirect(response.encodeRedirectURL("index"));
             }

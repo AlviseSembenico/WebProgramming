@@ -59,16 +59,8 @@ public class IndexServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        LinkedList<Product> product;
         RequestDispatcher RequetsDispatcherObj =null;
-        try{
-            product = productDao.getAllProduct();
-            request.setAttribute("product", product);
-            RequetsDispatcherObj = request.getRequestDispatcher("/index.jsp");
-        } catch (Exception ex) {
-            RequetsDispatcherObj = request.getRequestDispatcher("/error.jsp");
-        }
-        
+        RequetsDispatcherObj = request.getRequestDispatcher("/index.jsp"); 
         RequetsDispatcherObj.forward(request, response);
     }
 

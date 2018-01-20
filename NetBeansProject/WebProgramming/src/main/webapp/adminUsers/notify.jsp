@@ -94,7 +94,7 @@
                                 </div>
                             </c:when>
                             <c:otherwise>
-                                <h2>There's no new Anomalies..</h2>
+                                <h3>There's no new Anomalies..</h3>
                             </c:otherwise>
                         </c:choose>
                     </div>

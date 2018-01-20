@@ -22,6 +22,7 @@ import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import system.Log;
 
 /**
@@ -67,6 +68,7 @@ public class loadImageServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
         try {
+            HttpSession session = request.getSession();
             ServletContext context = getServletContext();
             checkFolder(context);
 
@@ -80,7 +82,9 @@ public class loadImageServlet extends HttpServlet {
                     id = Integer.parseInt(value);
                 }
             }
-
+            if(!session.getAttribute("user").equals(shopDao.getShopById(id).getOwner()))
+                response.sendError(401);
+            
             Enumeration files = multi.getFileNames();
             Path path = null;
             while (files.hasMoreElements()) {

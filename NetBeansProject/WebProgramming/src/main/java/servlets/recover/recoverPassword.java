@@ -67,10 +67,8 @@ public class recoverPassword extends HttpServlet {
             link = link.substring(0, 36);
             try {
                 sender.sendRecoverLink(user.getId(), link, user.getEmail());
-            } catch (UnsupportedEncodingException ex) {
-                Logger.getLogger(recoverPassword.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (MessagingException ex) {
-                Logger.getLogger(recoverPassword.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception ex) {
+                reqDes = request.getRequestDispatcher("/index.jsp?result=false");
             }
             reqDes = request.getRequestDispatcher("/index.jsp?result=true");
 

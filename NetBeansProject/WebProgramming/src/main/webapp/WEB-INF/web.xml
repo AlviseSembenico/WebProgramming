@@ -204,4 +204,12 @@
             30
         </session-timeout>
     </session-config>
+    <error-page>
+        <error-code>401</error-code>
+        <location>/errorPages/401.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>403</error-code>
+        <location>/errorPages/403.jsp</location>
+    </error-page>
 </web-app>

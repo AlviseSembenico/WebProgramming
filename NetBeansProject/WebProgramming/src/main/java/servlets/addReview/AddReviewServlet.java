@@ -73,6 +73,8 @@ public class AddReviewServlet extends HttpServlet {
             HttpSession session = request.getSession(false);
             User user = (User) session.getAttribute("user");
             Purchase purchase = purchaseDao.getPurchaseByIdAndUser(Integer.valueOf(request.getParameter("id")), user);
+            if(purchase==null)
+                response.sendError(401);
             request.setAttribute("purchase", purchase);
             request.setAttribute("picture", pictureDao.getPictureByProduct(purchase.getProduct()));
             RequestDispatcher reqDes = request.getRequestDispatcher("/loggedUsers/addReview.jsp");
@@ -99,10 +101,10 @@ public class AddReviewServlet extends HttpServlet {
             User user = (User) session.getAttribute("user");
             int id = Integer.valueOf(request.getParameter("id"));
             Purchase purchase = purchaseDao.getPurchaseByIdAndUser(Integer.valueOf(request.getParameter("id")), user);
-
-            if (reviewDao.getRewiewByCreatorAndProduct(user, purchase.getProduct()).get(0) != null) {
-                throw new Exception("Review already created");
-            }
+            if(purchase==null)
+                response.sendError(401);
+            if (reviewDao.getRewiewByCreatorAndProduct(user, purchase.getProduct()).get(0) != null) 
+                response.sendError(403);
             int global = Integer.valueOf(request.getParameter("star"));
             int service = Integer.valueOf(request.getParameter("stars"));
             String description = request.getParameter("description");

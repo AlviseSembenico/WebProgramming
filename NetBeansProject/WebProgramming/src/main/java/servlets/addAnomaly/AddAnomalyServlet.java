@@ -67,6 +67,8 @@ public class AddAnomalyServlet extends HttpServlet {
             }
 
             Purchase purchase = purchaseDao.getPurchaseByIdAndUser(Integer.valueOf(request.getParameter("id")), user);
+            if(purchase==null)
+                response.sendError(401);
             request.setAttribute("purchase", purchase);
             request.setAttribute("picture", pictureDao.getPictureByProduct(purchase.getProduct()));
 
@@ -96,6 +98,8 @@ public class AddAnomalyServlet extends HttpServlet {
             String description = request.getParameter("description");
             int id = Integer.valueOf(request.getParameter("id"));
             Purchase purchase = purchaseDao.getPurchaseByIdAndUser(Integer.valueOf(request.getParameter("id")), user);
+            if(purchase==null)
+                response.sendError(401);
             Anomalies anomaly = new Anomalies();
             anomaly.setDescription(description);
             anomaly.setTag(tag);
