@@ -7,7 +7,7 @@
 <!doctype html>
 <html>
     <c:import url="pageBuilder/header.jsp"/>
-    <body class="contact-page">        
+    <body class="profile-page-page">        
         <div class="page-header header-filter header-small" data-parallax="true" style="background-image: url('${picture}');">
             <div class="container"> 
                 <div class="row">
@@ -25,7 +25,7 @@
                     <c:choose>
                         <c:when test="${user.getId() == shop.getOwner().getId()}">
                             <div class="col-md-offset-12">
-                                <button type="button" class="btn btn-primary btn-round" data-toggle="modal" data-target="#photoUpload"><i class="material-icons"> edit</i></button>
+                                <button type="button" style="bottom: 80px" class="btn btn-primary btn-round" data-toggle="modal" data-target="#photoUpload"><i class="material-icons"> edit</i></button>
                             </div>                            
                         </c:when>
                     </c:choose>
