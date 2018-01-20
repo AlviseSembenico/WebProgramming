@@ -47,7 +47,7 @@ public class FilterLoggedUsers implements Filter {
         HttpSession session=req.getSession();
         User user = (User) session.getAttribute("user");
         if(user==null)
-            res.sendRedirect("index");
+            ((HttpServletResponse)response).sendError(401);
     }    
     
     private void doAfterProcessing(ServletRequest request, ServletResponse response)
