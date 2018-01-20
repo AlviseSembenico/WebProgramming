@@ -25,7 +25,7 @@
                     <c:choose>
                         <c:when test="${user.getId() == shop.getOwner().getId()}">
                             <div class="col-md-offset-12">
-                                <button type="button" class="btn btn-primary btn-round" data-toggle="modal" data-target="#exampleModal"><i class="material-icons"> edit</i></button>
+                                <button type="button" class="btn btn-primary btn-round" data-toggle="modal" data-target="#photoUpload"><i class="material-icons"> edit</i></button>
                             </div>                            
                         </c:when>
                     </c:choose>
@@ -210,7 +210,7 @@
 
         </script>
         <!-- Modal -->
-        <div class="modal fade" style="top: 100px" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal fade" style="top: 100px" id="photoUpload" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">

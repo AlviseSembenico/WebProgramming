@@ -345,6 +345,10 @@ public class JdbcUtilities {
         if (map == null) {
             map = new <String, String>HashMap();
         }
+        
+        if (encrypted == null) {
+            encrypted = new LinkedList<String>();
+        }
         String query = new String("update " + tableName + " set ");
         Class<?> c = o.getClass();
         int id = 0;
