@@ -3,9 +3,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 
-<!DOCTYPE html>
-<!doctype html>
-<html>
+
     <c:import url="../pageBuilder/header.jsp"/>
 
     <body class="profile-page" waid71fa0d88-5390-4b5b-a2f4-e45fa93d85e2="SA password protect entry checker">

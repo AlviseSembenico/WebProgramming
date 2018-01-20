@@ -9,10 +9,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page session="true" %>
 
-<!DOCTYPE html>
-<!doctype html>
-<%@ page session="true" %>
-<html>
     <c:import url="/pageBuilder/header.jsp"/>
     <body class="contact-page">        
         <div class="page-header header-filter " data-parallax="true" style="background-image: url('https://www.changeboard.com/images/7167/default/feedback-1-.jpg'); height: 40vh; min-height: 40vh;">
@@ -102,7 +98,7 @@
                                 </div>
                             </c:when>
                             <c:otherwise>
-                                <h2>There's no new Anomalies..</h2>
+                                <h3>There's no new Anomalies..</h3>
                             </c:otherwise>
                         </c:choose>
                     </div>
