@@ -12,19 +12,11 @@
 <!DOCTYPE html>
 <!doctype html>
 <%@ page session="true" %>
-<html>
-    <c:import url="/pageBuilder/header.jsp"/>
-    <body class="contact-page">        
+<c:import url="/pageBuilder/header.jsp"/>
+
+    <body class="profile-page">        
         <div class="page-header header-filter " data-parallax="true" style="background-image: url('https://www.changeboard.com/images/7167/default/feedback-1-.jpg'); height: 40vh; min-height: 40vh;">
-            <div class="container" style="padding-top: 150px">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        <div class="brand">
-                            <h1 class="title text-center">Notify</h1>                                
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
         </div>
         <div id="notfy" class="main main-raised main-cart">
             <div class="contact-content">
