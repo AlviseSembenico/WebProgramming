@@ -26,7 +26,7 @@
                 </div>
             </div>
         </div>
-        <div id="notfy" class="main main-raised">
+        <div id="notfy" class="main main-raised main-cart">
             <div class="contact-content">
                 <div class="container">
                     <div class="row">
@@ -105,12 +105,14 @@
                                 <h2>There's no new Anomalies..</h2>
                             </c:otherwise>
                         </c:choose>
+                    </div>
                         <hr/>
                         <div class="row">
+                            <div class="col-md-12">
+                                        <h1>Reviews</h1>
                             <c:choose>
                                 <c:when test="${reviews.get(0) != null}">
-                                    <div class="col-md-12">
-                                        <h1>Reviews</h1>
+                                    
                                         <div class="table-responsive">
                                             <form action="notify" method="post">
                                                 <table class="table table-striped">
@@ -148,7 +150,7 @@
                                     </div>
                                 </c:when>
                                 <c:otherwise>
-                                    <h2>There's no new Reviews...</h2>
+                                    <h3>There are no new Reviews...</h3>
                                 </c:otherwise>
                             </c:choose>
                         </div>

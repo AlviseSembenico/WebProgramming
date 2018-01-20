@@ -12,17 +12,25 @@
         <div class="page-header header-filter" data-parallax="true" style="background-image: url(https://www.consumatori.it/wp-content/uploads/2015/09/venditore_consumatore_stretta-di-mano1.jpg); transform: translate3d(0px, 0px, 0px);">
         </div>
 
-        <div class="main main-raised">
+        <div class="main main-raised main-cart">
             <div class="profile-content">
                 <div class="container">                    
                     <div class="row">
                         <div class="col-xs-6 col-xs-offset-3">
                             <div class="profile">
                                 <div class="avatar">
-                                    <img src="<c:choose><c:when test="${user.getAvatarPath() != null}"><c:out value="${user.getAvatarPath()}"/></c:when><c:otherwise><c:out value="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"/></c:otherwise></c:choose>" alt="Circle Image" class="img-circle img-responsive img-raised">
-                                        </div>
-                                        <div class="name">
-                                                <h3 class="title"><c:out value="${user.getFirstName()} ${user.getLastName()}"/></h3>                                    
+                                    <img src="
+                                        <c:choose>
+                                            <c:when test="${user.getAvatarPath() != null}">
+                                                <c:out value="${user.getAvatarPath()}"/>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <c:out value="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"/>
+                                            </c:otherwise>
+                                        </c:choose>" alt="Circle Image" class="img-circle img-responsive img-raised">
+                                </div>
+                                <div class="name">
+                                    <h3 class="title"><c:out value="${user.getFirstName()} ${user.getLastName()}"/></h3>                                    
                                 </div>
                             </div>
                         </div>                        

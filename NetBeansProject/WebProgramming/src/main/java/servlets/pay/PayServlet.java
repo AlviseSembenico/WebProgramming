@@ -123,7 +123,7 @@ public class PayServlet extends HttpServlet {
             } else {
                 session.setAttribute("user", user);
                 session.setAttribute("cart", cart);
-                response.sendRedirect(response.encodeRedirectURL(contextPath + "myOrders"));
+                response.sendRedirect(response.encodeRedirectURL(contextPath + "myOrders?result=true"));
             }
 
         } catch (Exception e) {

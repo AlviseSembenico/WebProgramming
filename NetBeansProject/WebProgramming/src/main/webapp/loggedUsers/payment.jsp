@@ -1,4 +1,4 @@
-[21:32, 4/1/2018] Franci (Univer: <%-- 
+<%-- [21:32, 4/1/2018] Franci (Univer: 
     Document   : payment
     Created on : Oct 16, 2017, 10:40:46 AM
     Author     : skat96
@@ -21,7 +21,7 @@
                         <div class="row-content">                        
                             <div class="col-md-12">
                                 <div class="row">                                
-                                    <h3>Totale: <c:out value="${cart.getTotal()}"/></h3>
+                                    <h3>Total: <c:out value="${cart.getTotal()}"/>&euro;</h3>
                                 </div>
                                 <br/>
                                 <h4>Those products can be retreated in shop:</h4>
