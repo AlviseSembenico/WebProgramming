@@ -140,6 +140,25 @@
                                     </li>
                                 </c:otherwise>
                             </c:choose>
+                            <c:if test="${!(empty user) && (user.getPrivileges() eq 'seller') }">
+
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <i class="material-icons">shopping_basket</i>My Shops
+                                        <b class="caret"></b>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-with-icons">
+                                        <c:forEach var="i" items="${shopDao.getShopByOwner(user)}">
+                                            <li>
+                                                <a href="shop?id=<c:out value='${i.getId()}'/>">
+                                                    <i class="material-icons">shop</i><c:out value='${i.getName()}'/>
+                                                </a>
+                                            </li>
+                                        </c:forEach>
+                                    </ul>
+                                </li>
+                            </c:if>
+
                             <li class="dropdown" id="search-mobile">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <i class="material-icons">search</i>Search

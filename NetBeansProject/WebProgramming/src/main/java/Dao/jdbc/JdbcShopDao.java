@@ -51,10 +51,14 @@ public class JdbcShopDao extends JdbcUtilities implements ShopDao {
     }
 
     @Override
-    public Shop getShopByOwner(User owner) throws Exception {
+    public LinkedList<Shop> getShopByOwner(User owner) throws Exception {
         HashMap<Object, String> mappa = new HashMap<Object, String>();
         mappa.put(owner.getId(), "owner_id");
-        Shop res = (Shop) super.getObject(Shop.class, map, tableName, mappa, null).get(0);
+        LinkedList<Shop> res=new LinkedList<Shop> ();
+        for(Object o:super.getObject(Shop.class, map, tableName, mappa, null)){
+            if(o!=null)
+                res.add((Shop) o);
+        }
         return res;
     }
 

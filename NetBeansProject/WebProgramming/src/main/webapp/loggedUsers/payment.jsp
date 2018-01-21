@@ -14,7 +14,7 @@
     <body class="profile-page" waid71fa0d88-5390-4b5b-a2f4-e45fa93d85e2="SA password protect entry checker">
         <div class="page-header header-filter" data-parallax="true" style="background-image: url(https://www.consumatori.it/wp-content/uploads/2015/09/venditore_consumatore_stretta-di-mano1.jpg); transform: translate3d(0px, 0px, 0px);">
         </div>
-        <div class="main main-raised">
+        <div class="main main-raised main-cart">
             <div class="profile-content">
                 <div class="container">
                     <form class="form" name="myForm" method="POST" action="payment">
