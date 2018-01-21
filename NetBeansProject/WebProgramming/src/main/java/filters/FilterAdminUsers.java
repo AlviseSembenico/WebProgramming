@@ -5,7 +5,6 @@ package filters;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 import Dao.entities.User;
 import java.io.IOException;
 import java.io.PrintStream;
@@ -29,29 +28,33 @@ import javax.servlet.http.HttpSession;
  */
 //@WebFilter(filterName = "FilterAdminUsers", urlPatterns = {"/adminUsers/*"}, dispatcherTypes = {DispatcherType.FORWARD, DispatcherType.REQUEST})
 public class FilterAdminUsers implements Filter {
-    
+
     private static final boolean debug = true;
 
     // The filter configuration object we are associated with.  If
     // this value is null, this filter instance is not currently
     // configured. 
     private FilterConfig filterConfig = null;
-    
+
     public FilterAdminUsers() {
-    }    
-    
-    private void doBeforeProcessing(ServletRequest request, ServletResponse response)
+    }
+
+    private boolean doBeforeProcessing(ServletRequest request, ServletResponse response)
             throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
-        HttpSession session=req.getSession();
+        HttpSession session = req.getSession();
         User user = (User) session.getAttribute("user");
-        if(user==null)
-            ((HttpServletResponse)response).sendError(401);
-        else if(!user.getPrivileges().equals("admin"))
-            ((HttpServletResponse)response).sendError(403);
-    }    
-    
+        if (user == null) {
+            ((HttpServletResponse) response).sendError(401);
+            return false;
+        } else if (!user.getPrivileges().equals("admin")) {
+            ((HttpServletResponse) response).sendError(403);
+            return false;
+        }
+        return true;
+    }
+
     private void doAfterProcessing(ServletRequest request, ServletResponse response)
             throws IOException, ServletException {
         if (debug) {
@@ -89,36 +92,37 @@ public class FilterAdminUsers implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain)
             throws IOException, ServletException {
-        
+
         if (debug) {
             log("FilterUsers:doFilter()");
         }
-        
-        doBeforeProcessing(request, response);
-        
-        Throwable problem = null;
-        try {
-            chain.doFilter(request, response);
-        } catch (Throwable t) {
-            // If an exception is thrown somewhere down the filter chain,
-            // we still want to execute our after processing, and then
-            // rethrow the problem after that.
-            problem = t;
-            t.printStackTrace();
-        }
-        
-        doAfterProcessing(request, response);
 
-        // If there was a problem, we want to rethrow it if it is
-        // a known type, otherwise log it.
-        if (problem != null) {
-            if (problem instanceof ServletException) {
-                throw (ServletException) problem;
+        Throwable problem = null;
+        if (doBeforeProcessing(request, response)) {
+
+            try {
+                chain.doFilter(request, response);
+            } catch (Throwable t) {
+                // If an exception is thrown somewhere down the filter chain,
+                // we still want to execute our after processing, and then
+                // rethrow the problem after that.
+                problem = t;
+                t.printStackTrace();
             }
-            if (problem instanceof IOException) {
-                throw (IOException) problem;
+
+            doAfterProcessing(request, response);
+
+            // If there was a problem, we want to rethrow it if it is
+            // a known type, otherwise log it.
+            if (problem != null) {
+                if (problem instanceof ServletException) {
+                    throw (ServletException) problem;
+                }
+                if (problem instanceof IOException) {
+                    throw (IOException) problem;
+                }
+                sendProcessingError(problem, response);
             }
-            sendProcessingError(problem, response);
         }
     }
 
@@ -141,16 +145,16 @@ public class FilterAdminUsers implements Filter {
     /**
      * Destroy method for this filter
      */
-    public void destroy() {        
+    public void destroy() {
     }
 
     /**
      * Init method for this filter
      */
-    public void init(FilterConfig filterConfig) {        
+    public void init(FilterConfig filterConfig) {
         this.filterConfig = filterConfig;
         if (filterConfig != null) {
-            if (debug) {                
+            if (debug) {
                 log("FilterUsers:Initializing filter");
             }
         }
@@ -169,20 +173,20 @@ public class FilterAdminUsers implements Filter {
         sb.append(")");
         return (sb.toString());
     }
-    
+
     private void sendProcessingError(Throwable t, ServletResponse response) {
-        String stackTrace = getStackTrace(t);        
-        
+        String stackTrace = getStackTrace(t);
+
         if (stackTrace != null && !stackTrace.equals("")) {
             try {
                 response.setContentType("text/html");
                 PrintStream ps = new PrintStream(response.getOutputStream());
-                PrintWriter pw = new PrintWriter(ps);                
+                PrintWriter pw = new PrintWriter(ps);
                 pw.print("<html>\n<head>\n<title>Error</title>\n</head>\n<body>\n"); //NOI18N
 
                 // PENDING! Localize this for next official release
-                pw.print("<h1>The resource did not process correctly</h1>\n<pre>\n");                
-                pw.print(stackTrace);                
+                pw.print("<h1>The resource did not process correctly</h1>\n<pre>\n");
+                pw.print(stackTrace);
                 pw.print("</pre></body>\n</html>"); //NOI18N
                 pw.close();
                 ps.close();
@@ -199,7 +203,7 @@ public class FilterAdminUsers implements Filter {
             }
         }
     }
-    
+
     public static String getStackTrace(Throwable t) {
         String stackTrace = null;
         try {
@@ -213,9 +217,9 @@ public class FilterAdminUsers implements Filter {
         }
         return stackTrace;
     }
-    
+
     public void log(String msg) {
-        filterConfig.getServletContext().log(msg);        
+        filterConfig.getServletContext().log(msg);
     }
-    
+
 }

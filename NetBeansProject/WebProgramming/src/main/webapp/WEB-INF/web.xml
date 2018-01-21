@@ -136,6 +136,14 @@
         <servlet-name>ReviewsReplyServlet</servlet-name>
         <servlet-class>servlets.reviewsResponse.ReviewsReplyServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>403</servlet-name>
+        <jsp-file>/errorPages/403.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>401</servlet-name>
+        <jsp-file>/errorPages/401.jsp</jsp-file>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ConctactUsServlet</servlet-name>
         <url-pattern>/conctactUs</url-pattern>
@@ -232,17 +240,25 @@
         <servlet-name>ReviewsReplyServlet</servlet-name>
         <url-pattern>/reviewsReply</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>403</servlet-name>
+        <url-pattern>/403</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>401</servlet-name>
+        <url-pattern>/401</url-pattern>
+    </servlet-mapping>
+    <error-page>
+        <error-code>401</error-code>
+        <location>/401</location>
+    </error-page>
+    <error-page>
+        <error-code>403</error-code>
+        <location>/403</location>
+    </error-page>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
-    <error-page>
-        <error-code>401</error-code>
-        <location>/errorPages/401.jsp</location>
-    </error-page>
-    <error-page>
-        <error-code>403</error-code>
-        <location>/errorPages/403.jsp</location>
-    </error-page>
 </web-app>

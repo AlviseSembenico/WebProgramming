@@ -40,14 +40,17 @@ public class FilterLoggedUsers implements Filter {
     public FilterLoggedUsers() {
     }    
     
-    private void doBeforeProcessing(ServletRequest request, ServletResponse response)
+    private boolean doBeforeProcessing(ServletRequest request, ServletResponse response)
             throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
         HttpSession session=req.getSession();
         User user = (User) session.getAttribute("user");
-        if(user==null)
+        if(user==null){
             ((HttpServletResponse)response).sendError(401);
+            return false;
+        }
+        return true;
     }    
     
     private void doAfterProcessing(ServletRequest request, ServletResponse response)
@@ -91,10 +94,11 @@ public class FilterLoggedUsers implements Filter {
         if (debug) {
             log("FilterUsers:doFilter()");
         }
-        
-        doBeforeProcessing(request, response);
-        
         Throwable problem = null;
+        
+        if(doBeforeProcessing(request, response)){
+        
+        
         try {
             chain.doFilter(request, response);
         } catch (Throwable t) {
@@ -117,6 +121,7 @@ public class FilterLoggedUsers implements Filter {
                 throw (IOException) problem;
             }
             sendProcessingError(problem, response);
+        }
         }
     }
 
