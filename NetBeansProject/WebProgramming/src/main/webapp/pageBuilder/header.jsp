@@ -40,7 +40,7 @@
         </head>
         <body >
         <c:if test="${(empty param.trasparent) || param.trasparent eq 'true'     }">
-            <nav class="navbar navbar-default navbar-transparent navbar-fixed-top navbar-color-on-scroll"  id="sectionsNav"> 
+            <nav class="navbar navbar-default navbar-fixed-top navbar-color-on-scroll navbar-transparent"  id="sectionsNav"> 
             </c:if>
             <c:if test="${param.trasparent eq 'false'}">
                 <nav class="navbar navbar-fixed-top" id="sectionsNav">

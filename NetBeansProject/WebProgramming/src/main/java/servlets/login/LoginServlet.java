@@ -43,10 +43,8 @@ public class LoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession(false);
-            RequestDispatcher reqDes = request.getRequestDispatcher("/publicUsers/login.jsp");
-            reqDes.forward(request, response);
-       
-
+        RequestDispatcher reqDes = request.getRequestDispatcher("/publicUsers/login.jsp");
+        reqDes.forward(request, response);
     }
 
     /**
