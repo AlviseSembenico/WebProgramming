@@ -106,13 +106,11 @@ public class AddAnomalyServlet extends HttpServlet {
             anomaly.setPurchase(purchase);
             anomaly.setStatus("not verified");
             anomaliesDao.insertDao(anomaly);
-            reqDes = request.getRequestDispatcher("/loggedUsers/addAnomaly.jsp?result=true");
+            response.sendRedirect("myOrders?result=true");
 
         } catch (Exception ex) {
-            reqDes = request.getRequestDispatcher("/loggedUsers/addAnomaly.jsp?result=false");
-        } finally {
-            reqDes.forward(request, response);
-        }
+            response.sendRedirect("myOrders?result=false");
+        } 
     }
 
     /**

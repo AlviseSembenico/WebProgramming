@@ -129,12 +129,10 @@ public class AddReviewServlet extends HttpServlet {
             shopDao.updateDao(shop);
             productDao.updateDao(product);
             reviewDao.insertDao(rw);
-            reqDes = request.getRequestDispatcher("loggedUsers/addReview.jsp?result=true");
+            response.sendRedirect("myOrders?result=true");
         } catch (Exception ex) {
-            reqDes = request.getRequestDispatcher("loggedUsers/addReview.jsp?result=false");
-        } finally {
-            reqDes.forward(request, response);
-        }
+            response.sendRedirect("myOrders?result=false");
+        } 
     }
 
     /**

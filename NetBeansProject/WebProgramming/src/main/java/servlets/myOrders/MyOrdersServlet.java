@@ -63,7 +63,13 @@ public class MyOrdersServlet extends HttpServlet {
         } catch (Exception ex) {
             Logger.getLogger(ProductServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        RequestDispatcher reqDes = request.getRequestDispatcher("/loggedUsers/myOrders.jsp");
+        String url="/loggedUsers/myOrders.jsp";
+        String result=request.getParameter("result");
+        RequestDispatcher reqDes;
+        if(result!=null)
+            reqDes = request.getRequestDispatcher(url+"?result="+result);
+        else
+            reqDes = request.getRequestDispatcher(url);
         reqDes.forward(request, response);
 
     }
