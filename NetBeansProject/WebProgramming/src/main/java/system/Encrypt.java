@@ -17,12 +17,12 @@ public class Encrypt {
     public Encrypt() {
     }
 
-    public byte[] encode(int id) {
+    public static byte[] encode(int id) {
         byte[] token = Integer.toString(id).getBytes(StandardCharsets.ISO_8859_1);
         return token;
     }
 
-    public int decode(String token) {
+    public static int decode(String token) {
         byte[] decode = Base64.getDecoder().decode(token);
         return Integer.parseInt(new String(decode, StandardCharsets.ISO_8859_1));
     }

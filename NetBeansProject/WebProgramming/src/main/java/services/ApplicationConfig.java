@@ -30,6 +30,7 @@ public class ApplicationConfig extends Application {
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(services.AutoComplete.class);
+        resources.add(system.SystemLog.class);
     }
     
 }

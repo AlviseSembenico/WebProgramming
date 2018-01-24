@@ -52,7 +52,8 @@ public class AutoComplete {
         Gson gson = new Gson();
         List<String> res=new ArrayList<String>();
         for(int i=0;i<ll.size()&&i<10;i++)
-            res.add(ll.get(i).getName());
+            if(ll.get(i)!=null)
+                res.add(ll.get(i).getName());
         return gson.toJson(res);
     }
     

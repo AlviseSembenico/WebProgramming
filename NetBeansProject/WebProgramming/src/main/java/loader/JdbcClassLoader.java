@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
+import system.Log;
 
 /**
  * Web application lifecycle listener.
@@ -43,10 +44,10 @@ public class JdbcClassLoader implements ServletContextListener {
             sc.setAttribute("purchaseDao", new JdbcPurchaseDao());
             sc.setAttribute("reviewDao", new JdbcReviewDao());
             sc.setAttribute("shopDao", new JdbcShopDao());
-            //only for debugger
-            
+            Log.config(sce);
+            Log.write("System started up correctly");
         } catch (Exception ex) {
-
+            Log.write("Error while loading system");
         }
     }
 
