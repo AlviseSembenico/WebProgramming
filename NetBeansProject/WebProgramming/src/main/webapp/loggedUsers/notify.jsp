@@ -25,7 +25,7 @@
                         <c:choose>
                             <c:when test="${anomalie.get(0) != null}">
                                 <div class="col-md-12">
-                                    <h1>Anomalies</h1>  
+                                    <h2>Anomalies</h2>  
                                     <div class="table-responsive">
                                         <table class="table">
                                             <thead>
@@ -83,7 +83,9 @@
                                                                 </td>
                                                             </c:when>
                                                             <c:otherwise>
-                                                                <td></td>
+                                                                <td class="td-actions text-right">
+                                                                    <i class="material-icons" style="color: #00ff00">check</i>
+                                                                </td>
                                                             </c:otherwise>
                                                         </c:choose>
                                                     </tr>
@@ -101,7 +103,7 @@
                         <hr/>
                         <div class="row">
                             <div class="col-md-12">
-                                        <h1>Reviews</h1>
+                                        <h2>Reviews</h2>
                             <c:choose>
                                 <c:when test="${reviews.get(0) != null}">
                                     
