@@ -96,7 +96,14 @@
 
                         </div>
                     </c:forEach>
-                    <a href="payment" class="btn btn-primary btn-round"  ><i class="material-icons">shopping_cart </i> Pay </a>
+                    <c:choose>
+                        <c:when  test="${empty user}">
+                            <a href="login" class="btn btn-primary btn-round"  ><i class="material-icons">shopping_cart </i> Pay </a>
+                        </c:when>
+                        <c:otherwise>
+                            <a href="payment" class="btn btn-primary btn-round"  ><i class="material-icons">shopping_cart </i> Pay </a>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
             </div>
         </div>
