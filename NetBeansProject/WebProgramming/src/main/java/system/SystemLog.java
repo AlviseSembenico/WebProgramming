@@ -16,6 +16,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -26,6 +27,8 @@ import javax.ws.rs.core.MediaType;
 @Path("system")
 public class SystemLog {
 
+    String pwd="pernico";
+    
     @Context
     private UriInfo context;
 
@@ -42,7 +45,9 @@ public class SystemLog {
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String getJson() {
+    public String getJson(@QueryParam("pwd") String password) {
+        if(password ==null || !password.equals(pwd))
+            return "Password not correct";
         File f = Log.getLog();
         if (f == null) {
             return "ERROR 501, Log not exists yet!";
