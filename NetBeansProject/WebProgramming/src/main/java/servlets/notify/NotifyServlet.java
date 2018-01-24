@@ -81,7 +81,7 @@ public class NotifyServlet extends HttpServlet {
                     request.setAttribute("user", user);
                     request.setAttribute("anomalie", anomalie);
                     request.setAttribute("reviews", reviews);
-                    reqDes = request.getRequestDispatcher("/adminUsers/notify.jsp");
+                    reqDes = request.getRequestDispatcher("/loggedUsers/notify.jsp");
                 } else 
                     response.sendError(403);
 

@@ -40,7 +40,7 @@ public class ModifyUserServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         RequestDispatcher RequestDispatcherObj = null;
-        RequestDispatcherObj = request.getRequestDispatcher("/loggedUsers/userProfile.jsp");
+        RequestDispatcherObj = request.getRequestDispatcher("loggedUsers/userProfile.jsp");
         RequestDispatcherObj.forward(request, response);
     }
 
