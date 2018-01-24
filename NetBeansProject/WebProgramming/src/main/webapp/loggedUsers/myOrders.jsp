@@ -19,7 +19,7 @@
             <div id="tables">
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1">
-                        <h3 class="title">My Orders</h3>
+                        <h2>My Orders</h2>
                     </div>
                     <div class="col-md-10 col-md-offset-1">
                         <div class="row">

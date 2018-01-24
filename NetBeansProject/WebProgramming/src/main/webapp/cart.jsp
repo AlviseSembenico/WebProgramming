@@ -26,7 +26,7 @@
         <div id="tables">
             <div class="row container-xl">
                 <div class="col-md-10 col-md-offset-1">
-                    <h3 class="title">Shopping Cart</h3>
+                    <h2>Shopping Cart</h2>
                 </div>
                 <div class="col-md-10 col-md-offset-1">
                     <div class="row">
