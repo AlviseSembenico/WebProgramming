@@ -100,13 +100,13 @@
 
                                         <div class="checkbox">
                                             <label>
-                                                <input type="checkbox" name="optionsCheckboxes" checked>
+                                                <input id="checkCondition" type="checkbox" name="optionsCheckboxes" checked>
                                                 I agree to the <a href="https://termsfeed.com/terms-conditions/857598a221312549db3b704c63e394b8">terms and conditions</a>.
                                             </label>
                                         </div>
                                     </div>
                                     <div class="footer text-center">
-                                        <input type="submit" value="Register" class="btn btn-primary btn-round"/>
+                                        <input id="submit_register" type="submit" value="Register" class="btn btn-primary btn-round"/>
 
                                         <input type="button" onclick="history.go(-1)" value="Undo" class="btn btn-primary btn-round"/>
                                     </div>
@@ -137,7 +137,7 @@
                 </div>
             </div>
         </div>
-                <div class="modal fade" id="successModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal fade" id="successModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -156,6 +156,7 @@
                 </div>
             </div>
         </div>
+
         <c:import url="/pageBuilder/footer.jsp"/>
         <c:if test="${!(empty param.result) && param.result eq 'true'}">
             <script>
@@ -171,3 +172,14 @@
                 });
             </script>
         </c:if>
+        <script>
+            $('#checkCondition').change(function () {
+                // this will contain a reference to the checkbox   
+                if (!this.checked) {
+                    $('#submit_register').prop('disabled', true);
+                } else {
+                    
+                    $('#submit_register').prop('disabled', false);
+                }
+            });
+        </script>
