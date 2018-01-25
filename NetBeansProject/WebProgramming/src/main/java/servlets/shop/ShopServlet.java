@@ -22,7 +22,6 @@ import java.sql.Time;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -77,33 +76,41 @@ public class ShopServlet extends HttpServlet {
                 begin = "0";
             }
             shop = shopDao.getShopById(id);
-            LinkedList<Review> reviews = reviewDao.getRecentReviewForShop(shop);
-            len = reviews.size() - 1;
-            Picture picture = pictureDao.getPictureShop(shop);
-            User user = (User) request.getSession().getAttribute("user");
-            if (user != null) {
-                request.setAttribute("user", user);
+            if (shop != null) {
+
+                LinkedList<Review> reviews = reviewDao.getRecentReviewForShop(shop);
+                len = reviews.size() - 1;
+                Picture picture = pictureDao.getPictureShop(shop);
+                User user = (User) request.getSession().getAttribute("user");
+                if (user != null) {
+                    request.setAttribute("user", user);
+                }
+                request.setAttribute("reviews", reviews);
+                request.setAttribute("shop", shop);
+                int gb = shopDao.getShopGlobalValue(shop.getId());
+                request.setAttribute("shopValue", gb);
+                request.setAttribute("len", len);
+                if (Integer.parseInt(begin) + 3 < len) {
+                    end = Integer.parseInt(begin) + 3;
+                } else {
+                    end = len;
+                }
+                if (picture != null) {
+                    request.setAttribute("picture", picture.getPath());
+                } else {
+                    request.setAttribute("picture", "http://via.placeholder.com/350x150");
+                }
+                request.setAttribute("begin", begin);
+                request.setAttribute("end", end);
+                request.setAttribute("id", id);
+                reqDes = request.getRequestDispatcher("/shop.jsp");
+                reqDes.forward(request, response);
             }
-            request.setAttribute("reviews", reviews);
-            request.setAttribute("shop", shop);
-            int gb = shopDao.getShopGlobalValue(shop.getId());
-            request.setAttribute("shopValue", gb);
-            request.setAttribute("len", len);
-            if (Integer.parseInt(begin) + 3 < len) {
-                end = Integer.parseInt(begin) + 3;
-            } else {
-                end = len;
+            else
+            {
+                reqDes = request.getRequestDispatcher("/index.jsp?result=false");
+                reqDes.forward(request, response);
             }
-            if (picture != null) {
-                request.setAttribute("picture", picture.getPath());
-            } else {
-                request.setAttribute("picture", "http://via.placeholder.com/350x150");
-            }
-            request.setAttribute("begin", begin);
-            request.setAttribute("end", end);
-            request.setAttribute("id", id);
-            reqDes = request.getRequestDispatcher("/shop.jsp");
-            reqDes.forward(request, response);
 
         } catch (Exception ex) {
             Log.write(ex);
@@ -128,16 +135,16 @@ public class ShopServlet extends HttpServlet {
             shop.setCloseTime(ct);
         } catch (ParseException ex) {
             Logger.getLogger(ShopServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        }
         shop.setCloseDay(request.getParameter("closeD"));
-        
+
         try {
             shopDao.updateDao(shop);
         } catch (Exception ex) {
             Log.write(ex);
             Logger.getLogger(ShopServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         response.sendRedirect("shop?id=" + shop.getId());
 
     }

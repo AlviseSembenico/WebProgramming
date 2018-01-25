@@ -104,10 +104,12 @@ public class NotifyServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         RequestDispatcher reqDes = null;
+        
         try {
             String s = request.getServletContext().getContextPath();
             String action = request.getParameter("action");
@@ -131,7 +133,8 @@ public class NotifyServlet extends HttpServlet {
                 reqDes = request.getRequestDispatcher("/adminUsers/email.jsp");
                 reqDes.forward(request, response);
             } else if (action.contains("Review")) {
-                s += "/addReview?id=" + (anomalie.get(i).getPurchase().getUser()).getId();
+                User admin = (User) request.getSession().getAttribute("user");
+                s += "/addReview?id=" + admin.getId();
                 a.setSolution("Added a negative Review");
                 anomaliesDao.updateDao(a);
                 response.sendRedirect(s);

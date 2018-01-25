@@ -74,8 +74,9 @@ public class AddReviewServlet extends HttpServlet {
             HttpSession session = request.getSession(false);
             User user = (User) session.getAttribute("user");
             Purchase purchase = purchaseDao.getPurchaseByIdAndUser(Integer.valueOf(request.getParameter("id")), user);
-            if(purchase==null)
+            if (purchase == null) {
                 response.sendError(401);
+            }
             request.setAttribute("purchase", purchase);
             request.setAttribute("picture", pictureDao.getPictureByProduct(purchase.getProduct()));
             RequestDispatcher reqDes = request.getRequestDispatcher("/loggedUsers/addReview.jsp");
@@ -103,39 +104,41 @@ public class AddReviewServlet extends HttpServlet {
             User user = (User) session.getAttribute("user");
             int id = Integer.valueOf(request.getParameter("id"));
             Purchase purchase = purchaseDao.getPurchaseByIdAndUser(Integer.valueOf(request.getParameter("id")), user);
-            if(purchase==null)
+            if (purchase == null) {
                 response.sendError(401);
-            if (reviewDao.getRewiewByCreatorAndProduct(user, purchase.getProduct()).get(0) != null) 
+            } else if (reviewDao.getRewiewByCreatorAndProduct(user, purchase.getProduct()).get(0) != null) {
                 response.sendError(403);
-            int global = Integer.valueOf(request.getParameter("star"));
-            int service = Integer.valueOf(request.getParameter("stars"));
-            String description = request.getParameter("description");
-            Review rw = new Review();
-            rw.setQuality(global);
-            rw.setService(service);
-            rw.setDescription(description);
-            rw.setCreationDate(new Date());
-            rw.setGlobalValue(666);
-            rw.setStatus("not read");
-            rw.setCreator(user);
-            rw.setProduct(purchase.getProduct());
+            } else {
+                int global = Integer.valueOf(request.getParameter("star"));
+                int service = Integer.valueOf(request.getParameter("stars"));
+                String description = request.getParameter("description");
+                Review rw = new Review();
+                rw.setQuality(global);
+                rw.setService(service);
+                rw.setDescription(description);
+                rw.setCreationDate(new Date());
+                rw.setGlobalValue(666);
+                rw.setStatus("not read");
+                rw.setCreator(user);
+                rw.setProduct(purchase.getProduct());
 
-            Shop shop = purchase.getProduct().getShop();
-            int sum = shop.getGlobalValue() + global;
-            shop.setGlobalValue(sum);
+                Shop shop = purchase.getProduct().getShop();
+                int sum = shop.getGlobalValue() + global;
+                shop.setGlobalValue(sum);
 
-            Product product = purchase.getProduct();
-            product.setNumberPeople(product.getNumberPeople() + 1);
-            product.setStarValue(global);
+                Product product = purchase.getProduct();
+                product.setNumberPeople(product.getNumberPeople() + 1);
+                product.setStarValue(global);
 
-            shopDao.updateDao(shop);
-            productDao.updateDao(product);
-            reviewDao.insertDao(rw);
-            response.sendRedirect("myOrders?result=true");
+                shopDao.updateDao(shop);
+                productDao.updateDao(product);
+                reviewDao.insertDao(rw);
+                response.sendRedirect("myOrders?result=true");
+            }
         } catch (Exception ex) {
             Log.write(ex);
             response.sendRedirect("myOrders?result=false");
-        } 
+        }
     }
 
     /**

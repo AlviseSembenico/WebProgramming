@@ -32,10 +32,10 @@ public class JdbcAnomalieDao extends JdbcUtilities implements AnomaliesDao {
 
     @Override
     public LinkedList<Anomalies> getAnomaliesByPurchase(Purchase p) throws Exception {
-        HashMap<Object,String> mappa=new HashMap<Object,String>();
-        mappa.put(p.getId(),"purchase_id" );
-        LinkedList<Anomalies> res=new LinkedList<Anomalies> ();
-        for(Object o:super.getObject(Anomalies.class, null, tableName,null, null)){
+        HashMap<Object, String> mappa = new HashMap<Object, String>();
+        mappa.put(p.getId(), "purchase_id");
+        LinkedList<Anomalies> res = new LinkedList<Anomalies>();
+        for (Object o : super.getObject(Anomalies.class, null, tableName, null, null)) {
             res.add((Anomalies) o);
         }
         return res;
@@ -75,9 +75,19 @@ public class JdbcAnomalieDao extends JdbcUtilities implements AnomaliesDao {
         }
         LinkedList<Anomalies> res = new LinkedList<Anomalies>();
         try {
-            String query = "SELECT A.* FROM anomalies A join purchases B on A.purchase_id = B.id join products P on P.id = B.products_id join shops S on S.id = P.shops_id  join users U on U.id = S.owner_id where  U.id = ?";
+
+            String query;
+
+            if (!u.getPrivileges().equals("admin")) {
+                query = "SELECT A.* FROM anomalies A join purchases B on A.purchase_id = B.id join products P on P.id = B.products_id join shops S on S.id = P.shops_id  join users U on U.id = S.owner_id where  U.id = ?";
+
+            } else {
+                query = "SELECT * FROM anomalies";
+            }
             PreparedStatement stmt = connection.prepareStatement(query);
-            stmt.setInt(1, u.getId());
+            if (!u.getPrivileges().equals("admin")) {
+                stmt.setInt(1, u.getId());
+            }
             for (Object o : super.fillResult(Anomalies.class, map, stmt.executeQuery())) {
                 res.add((Anomalies) o);
             }
