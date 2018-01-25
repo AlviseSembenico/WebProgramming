@@ -18,6 +18,9 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import Dao.entities.Product;
+import java.sql.PreparedStatement;
+import java.util.LinkedList;
 
 /**
  *
@@ -61,6 +64,20 @@ public class JdbcShopDao extends JdbcUtilities implements ShopDao {
         }
         return res;
     }
+    
+    @Override
+    public Shop getShopByProduct(Product product) throws Exception {
+    String query = "select * from shops s join product p on s.id = ?";
+    PreparedStatement stmt = connection.prepareStatement(query);
+        stmt.setString(1, product.getName());
+        Shop res=new Shop();
+        for(Object o:super.fillResult(Shop.class, map, stmt.executeQuery()))
+            res = (Shop) o;
+        return res;
+    }
+    
+    
+    
 
     @Override
     public int insertDao(Object o) throws SQLException {
