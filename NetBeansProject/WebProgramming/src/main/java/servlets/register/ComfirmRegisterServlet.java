@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import servlets.resetpass.resetPasswordServlet;
 import system.Encrypt;
+import system.Log;
 
 /**
  *
@@ -51,6 +52,7 @@ public class ComfirmRegisterServlet extends HttpServlet {
             String token = URLDecoder.decode(request.getParameter("token"), "ISO-8859-1");
             user = userDao.getUserById(new Encrypt().decode(token));
         } catch (Exception ex) {
+            Log.write(ex);
             Logger.getLogger(resetPasswordServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         if (user != null) {
@@ -60,6 +62,7 @@ public class ComfirmRegisterServlet extends HttpServlet {
                 userDao.updateDao(user);
                 request.getSession().setAttribute("user", user);
             } catch (Exception ex) {
+                Log.write(ex);
                 Logger.getLogger(ComfirmRegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
             response.sendRedirect(response.encodeRedirectURL(contextPath + "/index?result=true"));

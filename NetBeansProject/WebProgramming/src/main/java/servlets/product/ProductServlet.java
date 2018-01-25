@@ -27,6 +27,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import system.Log;
 
 /**
  *
@@ -92,6 +93,7 @@ public class ProductServlet extends HttpServlet {
             reqDes = request.getRequestDispatcher("/product.jsp");
 
         } catch (Exception ex) {
+            Log.write(ex);
             reqDes = request.getRequestDispatcher("/error.jsp");
         }
         reqDes.forward(request, response);

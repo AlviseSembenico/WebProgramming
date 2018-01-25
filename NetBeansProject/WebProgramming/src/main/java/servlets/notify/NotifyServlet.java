@@ -23,6 +23,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import system.Log;
 
 /**
  *
@@ -89,6 +90,7 @@ public class NotifyServlet extends HttpServlet {
                 response.sendError(403);
 
         } catch (Exception ex) {
+            Log.write(ex);
             reqDes = request.getRequestDispatcher("/index");
         }
         reqDes.forward(request, response);
@@ -136,6 +138,7 @@ public class NotifyServlet extends HttpServlet {
 
             }
         } catch (Exception ex) {
+            Log.write(ex);
             Logger.getLogger(NotifyServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

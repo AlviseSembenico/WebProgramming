@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import system.Encrypt;
+import system.Log;
 
 /**
  *
@@ -54,6 +55,7 @@ public class resetPasswordServlet extends HttpServlet {
             String token = URLDecoder.decode(request.getParameter("token"), "ISO-8859-1");
             user = userDao.getUserById(new Encrypt().decode(token));
         } catch (Exception ex) {
+            Log.write(ex);
             Logger.getLogger(resetPasswordServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
 

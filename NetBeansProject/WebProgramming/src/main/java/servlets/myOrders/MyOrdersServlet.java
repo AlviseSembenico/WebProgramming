@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import servlets.product.ProductServlet;
+import system.Log;
 
 /**
  *
@@ -61,6 +62,7 @@ public class MyOrdersServlet extends HttpServlet {
             request.setAttribute("purchaseList", ll);
             request.setAttribute("pictureDao", pictureDao);
         } catch (Exception ex) {
+            Log.write(ex);
             Logger.getLogger(ProductServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         String url="/loggedUsers/myOrders.jsp";

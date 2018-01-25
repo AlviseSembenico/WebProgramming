@@ -59,7 +59,6 @@ public class loadImageServlet extends HttpServlet {
                 return theDir.mkdir();
             else 
                 return false;
-            
         } else 
             return true;
     }
@@ -101,7 +100,7 @@ public class loadImageServlet extends HttpServlet {
             pic.setPath(SAVE_DIR + dbPath);
             pictureDao.updateDao(pic);
         } catch (Exception e) {
-            Log.write(e.toString());
+            Log.write(e);
         }
     }
 

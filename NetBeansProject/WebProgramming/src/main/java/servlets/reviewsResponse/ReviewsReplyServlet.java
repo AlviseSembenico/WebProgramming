@@ -20,6 +20,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import system.Log;
 
 /**
  *
@@ -57,6 +58,7 @@ public class ReviewsReplyServlet extends HttpServlet {
             reqDes.forward(request, response);
 
         } catch (Exception ex) {
+            Log.write(ex);
             Logger.getLogger(ReviewsReplyServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
 
@@ -85,6 +87,7 @@ public class ReviewsReplyServlet extends HttpServlet {
             reqDes.forward(request, response);
 
         } catch (Exception ex) {
+            Log.write(ex);
             reqDes = request.getRequestDispatcher("loggedUsers/reviewReply.jsp?result=false");
             reqDes.forward(request, response);
         }

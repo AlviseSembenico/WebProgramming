@@ -79,8 +79,8 @@ public class ModifyUserServlet extends HttpServlet {
                     response.sendRedirect("userProfile?result=true");
                 }
 
-            } catch (Exception e) {
-                Log.write(e.toString());
+            } catch (Exception ex) {
+                Log.write(ex);
             }
         } else {
             String oldPw = request.getParameter("oldPw");
@@ -98,13 +98,15 @@ public class ModifyUserServlet extends HttpServlet {
                              else 
                                 response.sendRedirect("userProfile?result=true");
                             
-                        } catch (Exception e) {
+                        } catch (Exception ex) {
+                            Log.write(ex);
                             response.sendRedirect("userProfile?result=false");
                         }
 
                     }
                 }
             } catch (UnsupportedEncodingException ex) {
+                Log.write(ex);
                 Logger.getLogger(ModifyUserServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
 

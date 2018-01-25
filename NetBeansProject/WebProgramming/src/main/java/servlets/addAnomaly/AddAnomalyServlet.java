@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import servlets.product.ProductServlet;
+import system.Log;
 
 /**
  *
@@ -73,6 +74,7 @@ public class AddAnomalyServlet extends HttpServlet {
             request.setAttribute("picture", pictureDao.getPictureByProduct(purchase.getProduct()));
 
         } catch (Exception ex) {
+            Log.write(ex);
             Logger.getLogger(ProductServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         RequestDispatcher reqDes = request.getRequestDispatcher("/loggedUsers/addAnomaly.jsp");
@@ -109,6 +111,7 @@ public class AddAnomalyServlet extends HttpServlet {
             response.sendRedirect("myOrders?result=true");
 
         } catch (Exception ex) {
+            Log.write(ex);
             response.sendRedirect("myOrders?result=false");
         } 
     }

@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import system.EMailSender;
+import system.Log;
 
 /**
  *
@@ -38,9 +39,7 @@ public class recoverPassword extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         RequestDispatcher reqDes = null;
-        
         reqDes = request.getRequestDispatcher("/publicUsers/recover.jsp");
-        
         reqDes.forward(request, response);
     }
 
@@ -60,6 +59,7 @@ public class recoverPassword extends HttpServlet {
         try {
             user = userDao.getUserByEmail((String) request.getParameter("email"));
         } catch (Exception ex) {
+            Log.write(ex);
             user = null;
         }
         if (user != null) {
@@ -68,6 +68,7 @@ public class recoverPassword extends HttpServlet {
             try {
                 sender.sendRecoverLink(user.getId(), link, user.getEmail());
             } catch (Exception ex) {
+                Log.write(ex);
                 reqDes = request.getRequestDispatcher("/index.jsp?result=false");
             }
             reqDes = request.getRequestDispatcher("/index.jsp?result=true");

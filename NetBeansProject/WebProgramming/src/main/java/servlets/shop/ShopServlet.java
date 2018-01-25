@@ -105,8 +105,8 @@ public class ShopServlet extends HttpServlet {
             reqDes = request.getRequestDispatcher("/shop.jsp");
             reqDes.forward(request, response);
 
-        } catch (Exception e) {
-            Log.write(e.toString());
+        } catch (Exception ex) {
+            Log.write(ex);
         }
 
         reqDes = request.getRequestDispatcher("/shop.jsp");
@@ -134,6 +134,7 @@ public class ShopServlet extends HttpServlet {
         try {
             shopDao.updateDao(shop);
         } catch (Exception ex) {
+            Log.write(ex);
             Logger.getLogger(ShopServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         

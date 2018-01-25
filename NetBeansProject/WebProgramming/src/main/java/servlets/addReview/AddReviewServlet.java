@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import servlets.product.ProductServlet;
+import system.Log;
 
 /**
  *
@@ -80,6 +81,7 @@ public class AddReviewServlet extends HttpServlet {
             RequestDispatcher reqDes = request.getRequestDispatcher("/loggedUsers/addReview.jsp");
             reqDes.forward(request, response);
         } catch (Exception ex) {
+            Log.write(ex);
             Logger.getLogger(ProductServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -131,6 +133,7 @@ public class AddReviewServlet extends HttpServlet {
             reviewDao.insertDao(rw);
             response.sendRedirect("myOrders?result=true");
         } catch (Exception ex) {
+            Log.write(ex);
             response.sendRedirect("myOrders?result=false");
         } 
     }

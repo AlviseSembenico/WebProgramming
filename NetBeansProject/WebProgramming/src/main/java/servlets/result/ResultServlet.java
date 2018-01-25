@@ -19,6 +19,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import system.Log;
 
 /**
  *
@@ -102,6 +103,7 @@ public class ResultServlet extends HttpServlet {
             }
             RequetsDispatcherObj = request.getRequestDispatcher("/result.jsp");
         } catch (Exception ex) {
+            Log.write(ex);
             RequetsDispatcherObj = request.getRequestDispatcher("/error.jsp");
         }
 

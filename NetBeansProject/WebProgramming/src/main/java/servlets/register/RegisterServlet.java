@@ -68,7 +68,8 @@ public class RegisterServlet extends HttpServlet {
                     reqDes = request.getRequestDispatcher("/publicUsers/register.jsp?result=true");
                 }
             }
-        } catch (Exception e) {
+        } catch (Exception ex) {
+            Log.write(ex);
             reqDes = request.getRequestDispatcher("/publicUsers/register.jsp?result=false");
         } finally {
             reqDes.forward(request, response);

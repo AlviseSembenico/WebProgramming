@@ -76,8 +76,6 @@ public class CartServlet extends HttpServlet {
                     cart = new Cart();
                 }
             }
-
-            //request.setAttribute("cart", cart);
             request.setAttribute("pictureDao", pictureDao);
             request.setAttribute("productDao", productDao);
             session.setAttribute("cart", cart);
@@ -85,6 +83,7 @@ public class CartServlet extends HttpServlet {
             reqDes.forward(request, response);
 
         } catch (Exception ex) {
+            Log.write(ex);
             Logger.getLogger(ProductServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -121,6 +120,7 @@ public class CartServlet extends HttpServlet {
             }
             reqDes = request.getRequestDispatcher("/cart.jsp?result=true");
         } catch (Exception ex) {
+            Log.write(ex);
             reqDes = request.getRequestDispatcher("/cart.jsp?result=false");
         } finally {
             reqDes.forward(request, response);
@@ -148,7 +148,7 @@ public class CartServlet extends HttpServlet {
             }
             reqDes = request.getRequestDispatcher("/cart.jsp?result=true");
         } catch (Exception ex) {
-            Log.write(ex.toString());
+            Log.write(ex);
             reqDes = request.getRequestDispatcher("/cart.jsp?result=false");
         } finally {
             reqDes.forward(request, response);

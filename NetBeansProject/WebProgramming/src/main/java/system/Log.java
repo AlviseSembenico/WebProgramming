@@ -76,7 +76,10 @@ public class Log {
                 Logger.getLogger(Log.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-
+    }
+    
+    public static void write(Exception e){
+        write(e.toString());
     }
 
 }

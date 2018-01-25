@@ -127,7 +127,7 @@ public class PayServlet extends HttpServlet {
             }
 
         } catch (Exception e) {
-            Log.write(e.toString());
+            Log.write(e);
         }
 
     }

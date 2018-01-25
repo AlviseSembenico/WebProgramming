@@ -17,6 +17,7 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import java.io.File;
 import javax.servlet.RequestDispatcher;
+import system.Log;
 
 /**
  *
@@ -83,6 +84,7 @@ public class AddObjectServlet extends HttpServlet {
                 out.println();
             }
         } catch (IOException lEx) {
+            Log.write(lEx);
             this.getServletContext().log(lEx, "error reading or saving file");
         }
     }

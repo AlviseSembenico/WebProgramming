@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import servlets.recover.recoverPassword;
 import system.EMailSender;
+import system.Log;
 
 /**
  *
@@ -53,6 +54,7 @@ public class TextMailSenderServlet extends HttpServlet {
         try {
             user = userDao.getUserByEmail((String) request.getParameter("email"));
         } catch (Exception ex) {
+            Log.write(ex);
             user = null;
         }
         if (user != null) {

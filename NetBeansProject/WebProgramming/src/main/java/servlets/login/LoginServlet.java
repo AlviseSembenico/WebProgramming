@@ -90,7 +90,7 @@ public class LoginServlet extends HttpServlet {
                 response.sendRedirect(response.encodeRedirectURL("index"));
             }
         } catch (Exception ex) {
-            Log.write(ex.toString());
+            Log.write(ex);
         }
     }
 
