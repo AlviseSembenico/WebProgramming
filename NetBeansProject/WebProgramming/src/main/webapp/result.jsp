@@ -295,7 +295,7 @@
                                         </div>
                                     </c:when>
                                     <c:otherwise>
-                                        <h2 class="section-title text-center"style="margin-top: 150px;"> There is no Product with it's name</h2>
+                                        <h3 class="section-title text-center"style="margin-top: 150px;"> There is no Product with it's name</h3>
                                     </c:otherwise>
                                 </c:choose>
                             </div>
@@ -306,7 +306,7 @@
             </div><!-- section -->
             <div class="section" style="padding-bottom: 0px;">
                 <div class="container">
-                    <h2 class="section-title">You can also be interested in</h2>
+                    <h1 class="section-title">You can also be interested in</h1>
                     <div class="row">
                         <c:choose>
                             <c:when test="${simil.get(0)!=null}">
@@ -357,7 +357,7 @@
                                 </c:forEach>  
                             </c:when>
                             <c:otherwise>
-                                <h2 class="section-title text-center"style="margin-top: 150px;"> There is no Product with it's name</h2>
+                                <h3 class="section-title text-center"style="margin-top: 150px;"> There is no Product with it's name</h3>
                             </c:otherwise>
                         </c:choose>
                     </div>

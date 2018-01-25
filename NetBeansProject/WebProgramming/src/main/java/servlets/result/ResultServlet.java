@@ -56,6 +56,7 @@ public class ResultServlet extends HttpServlet {
         String star = null;
         String order = null;
         String begin = null;
+        String cate = null;
         Integer end;
         Integer len;
         String category;
@@ -71,15 +72,20 @@ public class ResultServlet extends HttpServlet {
         star = request.getParameter("star");
         order = request.getParameter("order");
         begin = request.getParameter("begin");
+        cate = request.getParameter("category");
         if (begin == null) {
             begin = "0";
         }
         LinkedList<Product> product;
         LinkedList<Product> similProd;
         RequestDispatcher RequetsDispatcherObj = null;
-
+        
+        
         try {
-            product = productDao.doQwery(name, region, city, radius, minPrice, maxPrice, minRew, maxRew, star, order);
+            if(cate == null)
+                product = productDao.doQwery(name, region, city, radius, minPrice, maxPrice, minRew, maxRew, star, order);
+            else
+                product = productDao.getProductByCategory(cate);
             if (product.get(0) != null) {
                 request.setAttribute("product", product);
                 len = product.size() - 1;
@@ -101,6 +107,7 @@ public class ResultServlet extends HttpServlet {
                 request.setAttribute("begin", begin);
                 request.setAttribute("end", end);
             }
+                       
             RequetsDispatcherObj = request.getRequestDispatcher("/result.jsp");
         } catch (Exception ex) {
             Log.write(ex);
