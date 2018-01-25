@@ -70,6 +70,7 @@ public class Log {
                 Bw.newLine();
                 Bw.append(d + ": ");
                 Bw.append(s);
+                Bw.append("----\n");
                 Bw.close();
                 Bw = null;
             } catch (IOException ex) {

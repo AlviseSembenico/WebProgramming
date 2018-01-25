@@ -70,9 +70,15 @@ public class JdbcUtilities {
             try {
                 connection = JdbcConnector.connect();
             } catch (SQLException ex) {
-                Log.write(ex.toString());
+                Log.write(ex);
                 return false;
             }
+        }
+        try {
+            if (connection.isClosed()) 
+                connection = JdbcConnector.connect();
+        } catch (Exception e) {
+            Log.write(e);
         }
         return connection != null;
     }
@@ -96,16 +102,18 @@ public class JdbcUtilities {
         if (!checkConnection()) {
             return null;
         }
-        if(encrypt==null)
-            encrypt=new LinkedList<String>();
+        if (encrypt == null) {
+            encrypt = new LinkedList<String>();
+        }
         String query = "select * from " + tableName;
         if (param != null) {
             query += " where ";
             for (Object par : param.keySet()) {
-                if(encrypt.contains(param.get(par)))
+                if (encrypt.contains(param.get(par))) {
                     query += param.get(par) + " = PASSWORD(?) and ";
-                else
-                query += param.get(par) + " = ? and ";
+                } else {
+                    query += param.get(par) + " = ? and ";
+                }
             }
             query = query.substring(0, query.length() - 5);
         }
@@ -142,7 +150,7 @@ public class JdbcUtilities {
         byte[] utf8 = plainText.getBytes("UTF-8");
         return "*" + DigestUtils.shaHex(DigestUtils.sha(utf8)).toUpperCase();
     }
-    
+
     protected LinkedList<Object> fillResult(Class<?> c, HashMap<String, String> map, ResultSet rs) throws Exception {
         LinkedList<Object> result = new LinkedList<Object>();
         if (!rs.first()) {
@@ -163,7 +171,7 @@ public class JdbcUtilities {
                         if (m.getParameterTypes()[0].equals(String.class)) {
                             String s;
                             s = map.get(name);
-                            
+
                             if (s == null) {
                                 m.invoke(o, rs.getString(camelToSql(name)));
                             } else {
@@ -260,7 +268,7 @@ public class JdbcUtilities {
                     char[] ca = name.toCharArray();
                     name = String.valueOf(ca[0]).toLowerCase() + name.substring(1);
 
-                    if (m.getReturnType().equals(Number.class) || m.getReturnType().equals(int.class) || m.getReturnType().equals(double.class) ) {
+                    if (m.getReturnType().equals(Number.class) || m.getReturnType().equals(int.class) || m.getReturnType().equals(double.class)) {
                         Number value = (Number) m.invoke(o, null);
                         if (value.doubleValue() >= 0) {
                             values += value.doubleValue() + ",";
@@ -277,14 +285,13 @@ public class JdbcUtilities {
                             } else {
                                 query += camelToSql(name) + ",";
                             }
-                            
-                            if(encrypted.contains(name))
-                                    values += "PASSWORD('" + m.invoke(o, null) + "'),";   
-                            else
-                            values += "'" + m.invoke(o, null) + "',";    
-                            
-                            
-                            
+
+                            if (encrypted.contains(name)) {
+                                values += "PASSWORD('" + m.invoke(o, null) + "'),";
+                            } else {
+                                values += "'" + m.invoke(o, null) + "',";
+                            }
+
                         }
                     } else if (m.getReturnType().equals(Date.class)) {
                         if ((Object) m.invoke(o, null) != null) {
@@ -345,7 +352,7 @@ public class JdbcUtilities {
         if (map == null) {
             map = new <String, String>HashMap();
         }
-        
+
         if (encrypted == null) {
             encrypted = new LinkedList<String>();
         }
@@ -374,17 +381,18 @@ public class JdbcUtilities {
 
                         }
                     } else if (m.getReturnType().equals(String.class) || m.getReturnType().equals(Date.class)) {
-                        String s=(String)m.invoke(o, null);
+                        String s = (String) m.invoke(o, null);
                         if (s != null) {
                             if (map.containsKey(name)) {
                                 query += map.get(name);
                             } else {
                                 query += camelToSql(name);
                             }
-                                if(encrypted.contains(name))
-                                    query += " = PASSWORD('" + m.invoke(o, null) + "'),";
-                                else
-                                    query += " = '" + m.invoke(o, null) + "',";
+                            if (encrypted.contains(name)) {
+                                query += " = PASSWORD('" + m.invoke(o, null) + "'),";
+                            } else {
+                                query += " = '" + m.invoke(o, null) + "',";
+                            }
                         }
                     } else {
                         Object obj = m.invoke(o, null);
@@ -487,8 +495,9 @@ public class JdbcUtilities {
             }
             query = query.substring(0, query.length() - 4);
         }
-        if(limit>0)
-            query+=" limit "+limit;
+        if (limit > 0) {
+            query += " limit " + limit;
+        }
         PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
         return stmt.executeUpdate();
