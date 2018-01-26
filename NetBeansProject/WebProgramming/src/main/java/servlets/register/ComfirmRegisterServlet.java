@@ -58,6 +58,7 @@ public class ComfirmRegisterServlet extends HttpServlet {
         if (user != null) {
 
             user.setConfirm("SI");
+            user.setPassword(null);
             try {
                 userDao.updateDao(user);
                 request.getSession().setAttribute("user", user);
