@@ -185,25 +185,20 @@
                                     <i class="material-icons">shopping_cart</i>Cart
                                 </a>
                             </li>
-                            <li  style="padding-bottom: 10px;border-bottom-width: 10px;  margin-bottom: 10px; bottom: 5px;left: 5px;">
-                                <form method="GET" action="result">
-                                    <div class=" text-center" >
-                                        <select class="selectpicker" name="category" data-style="btn btn-primary btn-round;" title="Category" data-size="7">
-                                            <option value="Electronic">Electronic</option>
-                                            <option value="Shoes">Shoes</option>
-                                            <option value="Clothing">Clothing</option>
-                                            <option value="Music">Music</option>
-                                            <option value="Accessories">Accessories</option>
-                                            <option value="Jewels">Jewels</option>
-                                            <option value="Watches">Watches</option>
-                                        </select>
-                                    </div>
-
+                            <li>
+                                <form method="GET" action="result" style="margin-left: 10px; margin-top: -7px;">
+                                    <select class="selectpicker" name="category" data-style="btn btn-default btn-round;" title="Category" data-size="7" onchange="this.form.submit()">
+                                        <option value="Electronic">Electronic</option>
+                                        <option value="Shoes">Shoes</option>
+                                        <option value="Clothing">Clothing</option>
+                                        <option value="Music">Music</option>
+                                        <option value="Accessories">Accessories</option>
+                                        <option value="Jewels">Jewels</option>
+                                        <option value="Watches">Watches</option>
+                                    </select>
+                                </form>
                             </li>
-                            <button class="btn btn-default btn-primary" type= submit" rel="tooltip" title="Search" style="padding-left: 12px;padding-right: 12px;padding-top: 12px;padding-bottom: 12px;margin-left: 10px;border-top-width: 3 px;margin-top: 5px;">
-                                <i class="material-icons">done</i>
-                            </button>
-                            </form>
+
 
                         </ul>
 
