@@ -70,14 +70,14 @@ public class JdbcProductDao extends JdbcUtilities implements ProductDao {
         if (cate != null && cate != "" ) {
             cat = " and p.category = ?";
         }
-        if (order == null && "price".equals(order)) {
+        if (order == null || "price".equals(order)) {
             ord = " order by price";
         } else if ("star".equals(order)) {
             ord = " order by (starValue/numberPeople) desc";
         } else if ("category".equals(order)) {
             ord = " order by catgory";
         }
-        PreparedStatement stmt = connection.prepareStatement(query + place + price + rew + str + cat + ord);
+        PreparedStatement stmt = connection.prepareStatement(query + place + reg + price + rew + str + cat + ord);
         Integer i = new Integer(0);
         if (name != "" && name != null) {
             i++;

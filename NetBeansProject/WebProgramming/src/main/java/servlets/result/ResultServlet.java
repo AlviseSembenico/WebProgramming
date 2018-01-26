@@ -83,7 +83,7 @@ public class ResultServlet extends HttpServlet {
         
         try {
 
-                product = productDao.doQwery(name, region, city, radius, minPrice, maxPrice, minRew, maxRew, star, order, cate);
+                product = productDao.doQwery(name, city, region, radius, minPrice, maxPrice, minRew, maxRew, star, order, cate);
             if (product.get(0) != null) {
                 request.setAttribute("product", product);
                 len = product.size() - 1;
