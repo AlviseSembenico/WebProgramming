@@ -97,8 +97,11 @@
                         </div>
                     </c:forEach>
                     <c:choose>
-                        <c:when  test="${empty user}">
+                        <c:when  test="${empty user }">
                             <a href="login" class="btn btn-primary btn-round"  ><i class="material-icons">shopping_cart </i> Pay </a>
+                        </c:when>
+                        <c:when  test="${ empty cart  || cart.getProducts().size()==0}">
+                            <a href="#" class="btn btn-default btn-round"  disable><i class="material-icons">shopping_cart </i> Cart empty </a>
                         </c:when>
                         <c:otherwise>
                             <a href="payment" class="btn btn-primary btn-round"  ><i class="material-icons">shopping_cart </i> Pay </a>

@@ -119,7 +119,7 @@ public class JdbcUtilities {
             }
             query = query.substring(0, query.length() - 5);
         }
-
+        Log.writeQuery(query);
         PreparedStatement stmt = connection.prepareStatement(query);
         if (param != null) {
             int point = 1;
@@ -143,6 +143,7 @@ public class JdbcUtilities {
         if (!checkConnection()) {
             return null;
         }
+        Log.writeQuery(query);
         PreparedStatement stmt = connection.prepareStatement(query);
         ResultSet rs = stmt.executeQuery();
         return fillResult(c, null, rs);
@@ -331,6 +332,7 @@ public class JdbcUtilities {
         values = values.substring(0, values.length() - 1);
         values += ") ;";
         query += values;
+        Log.writeQuery(query);
         PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
         stmt.executeUpdate();
         ResultSet rs = stmt.getGeneratedKeys();
@@ -449,6 +451,7 @@ public class JdbcUtilities {
         if (id > 0) {
             query += " where id =" + id;
         }
+        Log.writeQuery(query);
         PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
         return stmt.executeUpdate();
@@ -524,6 +527,7 @@ public class JdbcUtilities {
         if (limit > 0) {
             query += " limit " + limit;
         }
+        Log.writeQuery(query);
         PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
         return stmt.executeUpdate();

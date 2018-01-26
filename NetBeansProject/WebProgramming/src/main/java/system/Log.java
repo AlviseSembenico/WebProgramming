@@ -59,7 +59,9 @@ public class Log {
         File f = new File(getPath(FILE_NAME));
         return f;
     }
-    
+    public static void writeQuery(String s){
+        write("New Query submitted: "+s);
+    }
     public static void write(String s) {
         if (Bw == null) {
             try {
