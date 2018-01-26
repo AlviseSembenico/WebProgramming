@@ -396,6 +396,17 @@ public class JdbcUtilities {
                                 query += " = '" + m.invoke(o, null) + "',";
                             }
                         }
+                    }else if ( m.getReturnType().equals(Time.class)) {
+                        Time s = (Time) m.invoke(o, null);
+                        if (s != null) {
+                            if (map.containsKey(name)) {
+                                query += map.get(name);
+                            } else {
+                                query += camelToSql(name);
+                            }
+                            query += " = '" + s + "',";
+                            
+                        }
                     } 
                     else if ( m.getReturnType().equals(Date.class)) {
                         Date s = (Date) m.invoke(o, null);
