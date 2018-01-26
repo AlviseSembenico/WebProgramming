@@ -10,7 +10,8 @@
 <!DOCTYPE html>
 <html>
     <c:import url="/pageBuilder/header.jsp"/>
-    <div class="page-header header-filter header-small" data-parallax="true" style="">
+    <div class="page-header header-filter" style="background-image: url('https://d26a57ydsghvgx.cloudfront.net/content/blog/BlogImage_Chat.jpg'); background-size: cover; background-position: top center;">
+      
     </div>
 <div class="main main-raised" style="bottom: 150px;">
     <div class="profile-content">
