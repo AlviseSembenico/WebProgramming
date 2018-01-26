@@ -35,55 +35,59 @@ public class JdbcProductDao extends JdbcUtilities implements ProductDao {
         map.put("shop", "shops_id");
     }
 
-    public LinkedList<Product> doQwery(String name, String city, String region, String radius, String minPrice, String maxPrice, String maxRew, String minRew, String star, String order) throws SQLException, Exception {
+    public LinkedList<Product> doQwery(String name, String city, String region, String radius, String minPrice, String maxPrice, String maxRew, String minRew, String star, String order,String cate) throws SQLException, Exception {
         if (!checkConnection()) {
             return null;
         }
         String query = new String("");
-        String place = new String(" ");
-        String reg = new String(" ");
-        String price = new String(" ");
-        String rew = new String(" ");
-        String str = new String(" ");
-        String ord = new String(" ");
-        if (name == "") {
+        String place = new String("");
+        String reg = new String("");
+        String price = new String("");
+        String rew = new String("");
+        String str = new String("");
+        String cat = new String("");
+        String ord = new String("");
+        if (name == "" || name == null) {
             query = "select * from "+tableName+" p join shops s on p.shops_id=s.id";
         } else {
             query = "select p.* from "+tableName+" p join shops s on p.shops_id=s.id where soundex(p.name)=soundex(?)";
         }
-        if (city != null) {
+        if (city != null && city != "") {
             place = " and s.city=?";
         }
-        if (region != null) {
+        if (region != null && region != "") {
             reg = " and s.region=?";
         }
         if (maxPrice != null && !"".equals(maxPrice)) {
             price = " and (p.price>=? and p.price<=?)";
         }
-        if (maxRew != null) {
+        if (maxRew != null && maxRew != "") {
             rew = " and ((select avg(r.global_value) from reviews r where r.products_id=o.id)>=? and (select avg(r.global_value) from reviews r where r.products_id=o.id)<=?)";
         }
-        if (star != null) {
+        if (star != null && star != "") {
             str = " and (p.starValue/p.numberPeople)>=?";
         }
-        if (order == null || "price".equals(order)) {
+        if (cate != null && cate != "" ) {
+            cat = " and p.category = ?";
+        }
+        if (order == null && "price".equals(order)) {
             ord = " order by price";
         } else if ("star".equals(order)) {
             ord = " order by (starValue/numberPeople) desc";
         } else if ("category".equals(order)) {
             ord = " order by catgory";
         }
-        PreparedStatement stmt = connection.prepareStatement(query + place + price + rew + str + ord);
+        PreparedStatement stmt = connection.prepareStatement(query + place + price + rew + str + cat + ord);
         Integer i = new Integer(0);
-        if (name != "") {
+        if (name != "" && name != null) {
             i++;
             stmt.setString(i, name);
         }
-        if (city != null) {
+        if (city != null && city != "") {
             i++;
             stmt.setString(i, city);
         }
-        if (region != null) {
+        if (region != null && region != "") {
             i++;
             stmt.setString(i, region);
         }
@@ -93,15 +97,19 @@ public class JdbcProductDao extends JdbcUtilities implements ProductDao {
             i++;
             stmt.setDouble(i, Double.parseDouble(maxPrice));
         }
-        if (maxRew != null) {
+        if (maxRew != null && maxRew != "") {
             i++;
             stmt.setDouble(i, Double.parseDouble(minRew));
             i++;
             stmt.setDouble(i, Double.parseDouble(maxRew));
         }
-        if (star != null) {
+        if (star != null && star != "") {
             i++;
             stmt.setDouble(i, Double.parseDouble(star));
+        }
+        if (cate != null && cate != ""){
+            i++;
+            stmt.setString(i, cate);
         }
         LinkedList<Product> res = new LinkedList<Product>();
         for (Object o : super.fillResult(Product.class, map, stmt.executeQuery())) {

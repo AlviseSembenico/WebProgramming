@@ -50,14 +50,7 @@
                             <div class="col-md-3">
                                 <h3 class="section-title">Find what you need</h3>
                                 <input type="text" value="<c:out value="${name}"/>" hidden="false" name="name">
-                                <input type="text" value="<c:out value="${City}"/>" hidden="false" name="City">
-                                <input type="text" value="<c:out value="${Region}"/>" hidden="false" name="Region">
-                                <input type="text" value="<c:out value="${minPrice}"/>" hidden="false" name="minPrice">
-                                <input type="text" value="<c:out value="${maxPrice}"/>" hidden="false" name="maxPrice">
-                                <input type="text" value="<c:out value="${minRew}"/>" hidden="false" name="minRew">
-                                <input type="text" value="<c:out value="${star}"/>" hidden="false" name="star">
-                                <input type="text" value="<c:out value="${order}"/>" hidden="false" name="order">
-                                <input type="text" value="<c:out value="${category}"/>" hidden="false" name="category">
+                                <input type="text" value="<c:out value="${category}"/>" hidden="true" name="category">
                             <div class="card card-refine card-plain">
                                 <div class="card-content">
                                     <div class="row">
@@ -275,15 +268,15 @@
                                     </div>
                                     <div class="row">                                             
                                         <u class="pagination pagination-info">
-                                            <li><a <c:if test="${(begin-9)>=0}">href="result?name=<c:out value="${name}"/>&begin=<c:out value="${begin-9}"/>&City=<c:out value="${City}"/>&Region=<c:out value="${Region}"/>&minPrice=<c:out value="${minPrice}"/>&maxPrice=<c:out value="${maxPrice}"/>&minRew=<c:out value="${minRew}"/>&star=<c:out value="${star}"/>&order=<c:out value="${order}"/>&category=<c:out value="${category}"/>"</c:if> style="color: black" >&lt; prev</a></li>
+                                            <li><a <c:if test="${(begin-9)>=0}">href="result?name=<c:out value="${name}"/>&begin=<c:out value="${begin-9}"/><c:if test='${!City.isEmpty()}'>&City=<c:out value="${City}"/></c:if><c:if test='${!Region.isEmpty()}'>&Region=<c:out value="${Region}"/></c:if><c:if test='${!minPrice.isEmpty()}'>&minPrice=<c:out value="${minPrice}"/></c:if><c:if test='${!maxPrice.isEmpty()}'>&maxPrice=<c:out value="${maxPrice}"/></c:if><c:if test='${!minRew.isEmpty()}'>&minRew=<c:out value="${minRew}"/></c:if><c:if test='${!star.isEmpty()}'>&star=<c:out value="${star}"/></c:if><c:if test='${!order.isEmpty()}'>&order=<c:out value="${order}"/></c:if><c:if test='${!category.isEmpty()}'>&category=<c:out value="${category}"/></c:if>"</c:if> style="color: black" >&lt; prev</a></li>
                                                 <c:forEach var="i" begin="0" end="${len}">
                                                     <c:if test="${i%9==0 && i != len}">
-                                                    <li><a href="result?name=<c:out value="${name}"/>&begin=<c:out value="${i}"/>&City=<c:out value="${City}"/>&Region=<c:out value="${Region}"/>&minPrice=<c:out value="${minPrice}"/>&maxPrice=<c:out value="${maxPrice}"/>&minRew=<c:out value="${minRew}"/>&star=<c:out value="${star}"/>&order=<c:out value="${order}"/>&category=<c:out value="${category}"/>" style="color: black"><c:out value="${Integer(i/9)+1}"/></a></li>
+                                                    <li><a href="result?name=<c:out value="${name}"/>&begin=<c:out value="${i}"/><c:if test='${!City.isEmpty()}'>&City=<c:out value="${City}"/></c:if><c:if test='${!Region.isEmpty()}'>&Region=<c:out value="${Region}"/></c:if><c:if test='${!minPrice.isEmpty()}'>&minPrice=<c:out value="${minPrice}"/></c:if><c:if test='${!maxPrice.isEmpty()}'>&maxPrice=<c:out value="${maxPrice}"/></c:if><c:if test='${!minRew.isEmpty()}'>&minRew=<c:out value="${minRew}"/></c:if><c:if test='${!star.isEmpty()}'>&star=<c:out value="${star}"/></c:if><c:if test='${!order.isEmpty()}'>&order=<c:out value="${order}"/></c:if><c:if test='${!category.isEmpty()}'>&category=<c:out value="${category}"/></c:if>" style="color: black"><c:out value="${Integer(i/9)+1}"/></a></li>
                                                     </c:if>
                                                 </c:forEach>
-                                            <li><a <c:if test="${(begin+9)< len}">href="result?name=<c:out value="${name}"/>&begin=<c:out value="${begin+9}"/>&City=<c:out value="${City}"/>&Region=<c:out value="${Region}"/>&minPrice=<c:out value="${minPrice}"/>&maxPrice=<c:out value="${maxPrice}"/>&minRew=<c:out value="${minRew}"/>&star=<c:out value="${star}"/>&order=<c:out value="${order}"/>&category=<c:out value="${category}"/>"</c:if> style="color: black">next &gt;</a></li>
-                                            </u>
-                                        </div>
+                                            <li><a <c:if test="${(begin+9)< len}">href="result?name=<c:out value="${name}"/>&begin=<c:out value="${begin-9}"/><c:if test='${!City.isEmpty()}'>&City=<c:out value="${City}"/></c:if><c:if test='${!Region.isEmpty()}'>&Region=<c:out value="${Region}"/></c:if><c:if test='${!minPrice.isEmpty()}'>&minPrice=<c:out value="${minPrice}"/></c:if><c:if test='${!maxPrice.isEmpty()}'>&maxPrice=<c:out value="${maxPrice}"/></c:if><c:if test='${!minRew.isEmpty()}'>&minRew=<c:out value="${minRew}"/></c:if><c:if test='${!star.isEmpty()}'>&star=<c:out value="${star}"/></c:if><c:if test='${!order.isEmpty()}'>&order=<c:out value="${order}"/></c:if><c:if test='${!category.isEmpty()}'>&category=<c:out value="${category}"/></c:if>"</c:if> style="color: black">next &gt;</a></li>
+                                                </u>
+                                            </div>
                                 </c:when>
                                 <c:otherwise>
                                     <h3 class="section-title text-center"style="margin-top: 150px;"> There is no Product with it's name</h3>

@@ -82,10 +82,8 @@ public class ResultServlet extends HttpServlet {
         
         
         try {
-            if(cate == null)
-                product = productDao.doQwery(name, region, city, radius, minPrice, maxPrice, minRew, maxRew, star, order);
-            else
-                product = productDao.getProductByCategory(cate);
+
+                product = productDao.doQwery(name, region, city, radius, minPrice, maxPrice, minRew, maxRew, star, order, cate);
             if (product.get(0) != null) {
                 request.setAttribute("product", product);
                 len = product.size() - 1;
@@ -114,6 +112,7 @@ public class ResultServlet extends HttpServlet {
                 request.setAttribute("order", order);
                 request.setAttribute("end", end);
                 request.setAttribute("category", category);
+                request.setAttribute("star",star);
                 
             }
                        
