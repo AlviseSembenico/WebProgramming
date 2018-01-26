@@ -50,6 +50,14 @@
                             <div class="col-md-3">
                                 <h3 class="section-title">Find what you need</h3>
                                 <input type="text" value="<c:out value="${name}"/>" hidden="false" name="name">
+                                <input type="text" value="<c:out value="${City}"/>" hidden="false" name="City">
+                                <input type="text" value="<c:out value="${Region}"/>" hidden="false" name="Region">
+                                <input type="text" value="<c:out value="${minPrice}"/>" hidden="false" name="minPrice">
+                                <input type="text" value="<c:out value="${maxPrice}"/>" hidden="false" name="maxPrice">
+                                <input type="text" value="<c:out value="${minRew}"/>" hidden="false" name="minRew">
+                                <input type="text" value="<c:out value="${star}"/>" hidden="false" name="star">
+                                <input type="text" value="<c:out value="${order}"/>" hidden="false" name="order">
+                                <input type="text" value="<c:out value="${category}"/>" hidden="false" name="category">
                             <div class="card card-refine card-plain">
                                 <div class="card-content">
                                     <div class="row">
@@ -92,28 +100,11 @@
                                                 <form action="">
                                                     <fieldset>
                                                         <legend>Region</legend>
-                                                        <input type="radio" name="Region" value=""/> Everything <br>
-                                                        <input type="radio" name="Region" value="Valle da Osta"/> Valle da Osta<br>
-                                                        <input type="radio" name="Region" value="Piemonte"/> Piemonte<br>
-                                                        <input type="radio" name="Region" value="Liguria"/> Liguria<br>
-                                                        <input type="radio" name="Region" value="Lombardia"/> Lombardia<br>
-                                                        <input type="radio" name="Region" value="Trentino-Alto Adige"/> Trentino-Alto Adige<br>
-                                                        <input type="radio" name="Region" value="Veneto"/> Veneto<br>
-                                                        <input type="radio" name="Region" value="Friuli-Venezia Giulia"/> Friuli-Venezia Giulia <br>
-                                                        <input type="radio" name="Region" value="Emilia-Romagna"/> Emilia-Romagna<br>
-                                                        <input type="radio" name="Region" value="Toscana"/> Toscana<br>
-                                                        <input type="radio" name="Region" value="Marche"/> Marche<br>
-                                                        <input type="radio" name="Region" value="Umbria"/> Umbria<br>
-                                                        <input type="radio" name="Region" value="Lazio"/> Lazio<br>
-                                                        <input type="radio" name="Region" value="Abruzzo"/> Abruzzo<br>
-                                                        <input type="radio" name="Region" value="Molise"/> Molise<br>
-                                                        <input type="radio" name="Region" value="Campania"/> Campania<br>
-                                                        <input type="radio" name="Region" value="Basilicata"/> Basilicata<br>
-                                                        <input type="radio" name="Region" value="Puglia"/> Puglia<br>
-                                                        <input type="radio" name="Region" value="Calabria"/> Calabria<br>
-                                                        <input type="radio" name="Region" value="Sicilia"/> Sicilia<br>
-                                                        <input type="radio" name="Region" value="Sardegna"/> Sardegna<br>
-
+                                                        <input type="radio" name="region" value=""/> Everything <br>
+                                                        <input type="radio" name="region" value="Italy"/>Italy<br>
+                                                        <input type="radio" name="region" value="Germany"/> Germany <br>
+                                                        <input type="radio" name="region" value="England"/> England<br>
+                                                        <input type="radio" name="region" value="France"/> France<br>
                                                     </fieldset>
 
                                             </div>
@@ -132,26 +123,26 @@
                                                 <fieldset>
                                                     <legend>City</legend>
                                                     <input type="radio" name="City" value=""/> Everything <br>
-                                                    <input type="radio" name="City" value="Aosta"/> Aosta<br>
-                                                    <input type="radio" name="City" value="Torino"/> Torino<br>
-                                                    <input type="radio" name="City" value="Genova"/> Genova<br>
-                                                    <input type="radio" name="City" value="Milano"/> Milano<br>
                                                     <input type="radio" name="City" value="Trento"/> Trento<br>
-                                                    <input type="radio" name="City" value="Venezia"/> Venezia<br>
-                                                    <input type="radio" name="City" value="Trieste"/> Trieste<br>
                                                     <input type="radio" name="City" value="Bologna"/> Bologna<br>
-                                                    <input type="radio" name="City" value="Firenze"/> Firenze<br>
-                                                    <input type="radio" name="City" value="Ancona"/> Ancona<br>
-                                                    <input type="radio" name="City" value="Perugia"/> Perugia<br>
-                                                    <input type="radio" name="City" value="Roma"/> Roma<br>
-                                                    <input type="radio" name="City" value="L'Aquila"/> L'Aquila<br>
-                                                    <input type="radio" name="City" value="Campobasso"/> Campobasso<br>
-                                                    <input type="radio" name="City" value="Napoli"/> Napoli<br>
-                                                    <input type="radio" name="City" value="Potenza"/> Potenza<br>
-                                                    <input type="radio" name="City" value="Bari"/> Bari<br>
-                                                    <input type="radio" name="City" value="Catanzaro"/> Catanzaro<br>
-                                                    <input type="radio" name="City" value="Palermo"/> Palermo<br>
-                                                    <input type="radio" name="City" value="Cagliari"/> Cagliari<br>
+                                                    <input type="radio" name="City" value="Turin"/> Turin<br>
+                                                    <input type="radio" name="City" value="Rome"/> Rome<br>
+                                                    <input type="radio" name="City" value="Milan"/> Milan<br>
+                                                    <input type="radio" name="City" value="Munich"/> Munich<br>
+                                                    <input type="radio" name="City" value="Hanover"/> Hanover<br>
+                                                    <input type="radio" name="City" value="Bonn"/> Bonn<br>
+                                                    <input type="radio" name="City" value="Berlin"/> Berlin<br>
+                                                    <input type="radio" name="City" value="Frankfurt"/> Frankfurt<br>
+                                                    <input type="radio" name="City" value="London"/> London<br>
+                                                    <input type="radio" name="City" value="Birmingham"/> Birmingham<br>
+                                                    <input type="radio" name="City" value="Liverpool"/> Liverpool<br>
+                                                    <input type="radio" name="City" value="Manchester"/> Manchester<br>
+                                                    <input type="radio" name="City" value="Leeds"/> Leeds<br>
+                                                    <input type="radio" name="City" value="Lyon"/> Lyon<br>
+                                                    <input type="radio" name="City" value="Paris"/> Paris<br>
+                                                    <input type="radio" name="City" value="Marseille"/> Marseille<br>
+                                                    <input type="radio" name="City" value="Nantes"/> Nantes<br>
+                                                    <input type="radio" name="City" value="Toulouse"/> Toulouse<br>
                                                 </fieldset>
 
                                             </div>
@@ -281,125 +272,125 @@
                                             </div>
                                             <c:if test="${(i+1)%3==0 && i != begin}"> </div> <div class="row"></c:if>
                                         </c:forEach> 
-                                        </div>
-                                        <div class="row">                                             
+                                    </div>
+                                    <div class="row">                                             
                                         <u class="pagination pagination-info">
-                                            <li><a <c:if test="${(begin-9)>=0}">href="result?name=<c:out value="${name}"/>&begin=<c:out value="${begin-9}"/>"</c:if> style="color: black" >&lt; prev</a></li>
+                                            <li><a <c:if test="${(begin-9)>=0}">href="result?name=<c:out value="${name}"/>&begin=<c:out value="${begin-9}"/>&City=<c:out value="${City}"/>&Region=<c:out value="${Region}"/>&minPrice=<c:out value="${minPrice}"/>&maxPrice=<c:out value="${maxPrice}"/>&minRew=<c:out value="${minRew}"/>&star=<c:out value="${star}"/>&order=<c:out value="${order}"/>&category=<c:out value="${category}"/>"</c:if> style="color: black" >&lt; prev</a></li>
                                                 <c:forEach var="i" begin="0" end="${len}">
                                                     <c:if test="${i%9==0 && i != len}">
-                                                    <li><a href="result?name=<c:out value="${name}"/>&begin=<c:out value="${i}"/>" style="color: black"><c:out value="${Integer(i/9)+1}"/></a></li>
+                                                    <li><a href="result?name=<c:out value="${name}"/>&begin=<c:out value="${i}"/>&City=<c:out value="${City}"/>&Region=<c:out value="${Region}"/>&minPrice=<c:out value="${minPrice}"/>&maxPrice=<c:out value="${maxPrice}"/>&minRew=<c:out value="${minRew}"/>&star=<c:out value="${star}"/>&order=<c:out value="${order}"/>&category=<c:out value="${category}"/>" style="color: black"><c:out value="${Integer(i/9)+1}"/></a></li>
                                                     </c:if>
                                                 </c:forEach>
-                                            <li><a <c:if test="${(begin+9)< len}">href="result?name=<c:out value="${name}"/>&begin=<c:out value="${begin+9}"/>"</c:if> style="color: black">next &gt;</a></li>
+                                            <li><a <c:if test="${(begin+9)< len}">href="result?name=<c:out value="${name}"/>&begin=<c:out value="${begin+9}"/>&City=<c:out value="${City}"/>&Region=<c:out value="${Region}"/>&minPrice=<c:out value="${minPrice}"/>&maxPrice=<c:out value="${maxPrice}"/>&minRew=<c:out value="${minRew}"/>&star=<c:out value="${star}"/>&order=<c:out value="${order}"/>&category=<c:out value="${category}"/>"</c:if> style="color: black">next &gt;</a></li>
                                             </u>
                                         </div>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <h3 class="section-title text-center"style="margin-top: 150px;"> There is no Product with it's name</h3>
-                                    </c:otherwise>
-                                </c:choose>
-                            </div>
-
+                                </c:when>
+                                <c:otherwise>
+                                    <h3 class="section-title text-center"style="margin-top: 150px;"> There is no Product with it's name</h3>
+                                </c:otherwise>
+                            </c:choose>
                         </div>
+
                     </div>
-                </form>
-            </div><!-- section -->
-            <div class="section" style="padding-bottom: 0px;">
-                <div class="container">
-                    <h1 class="section-title">You can also be interested in</h1>
-                    <div class="row">
-                        <c:choose>
-                            <c:when test="${simil.get(0)!=null}">
-                                <c:forEach var="i" items='${simil}' begin="0" end="3">
-                                    <div class="col-md-3">
-                                        <div class="card card-product card-plain card-rotate">
-                                            <div class="rotating-card-container">
-                                                <div class="card-image">
-                                                    <div class="front">
-                                                        <c:set var="picture" value="${pictureDao.getPictureByProduct(i)}"></c:set>
-                                                        <img src="<c:out value='${picture.get(0).getPath()}'/>" style="width:250px;height:190px;">
-                                                    </div>
+            </div>
+            </form>
+        </div><!-- section -->
+        <div class="section" style="padding-bottom: 0px;">
+            <div class="container">
+                <h1 class="section-title">You can also be interested in</h1>
+                <div class="row">
+                    <c:choose>
+                        <c:when test="${simil.get(0)!=null}">
+                            <c:forEach var="i" items='${simil}' begin="0" end="3">
+                                <div class="col-md-3">
+                                    <div class="card card-product card-plain card-rotate">
+                                        <div class="rotating-card-container">
+                                            <div class="card-image">
+                                                <div class="front">
+                                                    <c:set var="picture" value="${pictureDao.getPictureByProduct(i)}"></c:set>
+                                                    <img src="<c:out value='${picture.get(0).getPath()}'/>" style="width:250px;height:190px;">
+                                                </div>
 
-                                                    <div class="back back-background">
-                                                        <div class="card-content">
-                                                            <h5 class="card-title">
-                                                                Quick Actions...
-                                                            </h5>
-                                                            <div class="footer text-center">
-                                                                <a href="product?id=<c:out value="${i.getId()}"/>" class="btn btn-round btn-white">
-                                                                    <i class="material-icons">info</i> Details
-                                                                </a>
-                                                                <form method="POST" action="product">
-                                                                    <input name="pid" style="visibility: hidden;" value="<c:out value="${i.getId()}"/>" />
-                                                                    <button class="btn btn-rose btn-round" type="submit" style="padding-top: 012px;top: -15px;">Add to Cart &nbsp;<i class="material-icons">shopping_cart</i></button>
-                                                                </form>
+                                                <div class="back back-background">
+                                                    <div class="card-content">
+                                                        <h5 class="card-title">
+                                                            Quick Actions...
+                                                        </h5>
+                                                        <div class="footer text-center">
+                                                            <a href="product?id=<c:out value="${i.getId()}"/>" class="btn btn-round btn-white">
+                                                                <i class="material-icons">info</i> Details
+                                                            </a>
+                                                            <form method="POST" action="product">
+                                                                <input name="pid" style="visibility: hidden;" value="<c:out value="${i.getId()}"/>" />
+                                                                <button class="btn btn-rose btn-round" type="submit" style="padding-top: 012px;top: -15px;">Add to Cart &nbsp;<i class="material-icons">shopping_cart</i></button>
+                                                            </form>
 
-                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                        </div>
 
-                                            <div class="card-content " style="width: 200px;height: 70px">
-                                                <h6 class="card-title">
-                                                    <h6 class="card-title"><c:out value="${i.getName()}"/></h6>
-                                                </h6>
+                                        <div class="card-content " style="width: 200px;height: 70px">
+                                            <h6 class="card-title">
+                                                <h6 class="card-title"><c:out value="${i.getName()}"/></h6>
+                                            </h6>
 
-                                                <div class="footer">
-                                                    <div class="price-container">
-                                                        <span class="price price-new">&euro;<c:out value="${i.getPrice()}"/></span>
-                                                    </div>
+                                            <div class="footer">
+                                                <div class="price-container">
+                                                    <span class="price price-new">&euro;<c:out value="${i.getPrice()}"/></span>
                                                 </div>
                                             </div>
                                         </div>
-
                                     </div>
-                                </c:forEach>  
-                            </c:when>
-                            <c:otherwise>
-                                <h3 class="section-title text-center"style="margin-top: 150px;"> There is no Product with it's name</h3>
-                            </c:otherwise>
-                        </c:choose>
-                    </div>
+
+                                </div>
+                            </c:forEach>  
+                        </c:when>
+                        <c:otherwise>
+                            <h3 class="section-title text-center"style="margin-top: 150px;"> There is no Product with it's name</h3>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
-            </div><!-- section -->
-        </div> <!-- end-main-raised -->
+            </div>
+        </div><!-- section -->
+    </div> <!-- end-main-raised -->
 
 
 
-        <c:import url="pageBuilder/footer.jsp"/>
-        <script type="text/javascript">
-            $(document).ready(function () {
+    <c:import url="pageBuilder/footer.jsp"/>
+    <script type="text/javascript">
+        $(document).ready(function () {
 
-                var slider2 = document.getElementById('sliderRefine');
+            var slider2 = document.getElementById('sliderRefine');
 
-                noUiSlider.create(slider2, {
-                    start: [50, 750],
-                    connect: true,
-                    range: {
-                        'min': [0],
-                        'max': [1500]
-                    }
-                });
-
-                var limitFieldMin = document.getElementById('price-left');
-                var limitFieldMax = document.getElementById('price-right');
-
-                slider2.noUiSlider.on('update', function (values, handle) {
-                    if (handle) {
-
-                        limitFieldMax.innerHTML = $('#price-right').data('currency') + Math.round(values[handle]);
-                    } else {
-                        limitFieldMin.innerHTML = $('#price-left').data('currency') + Math.round(values[handle]);
-                    }
-                });
-
-                slider2.noUiSlider.on('change', function (values, handle) {
-                    document.getElementById('minPrice').setAttribute("value", values[0]);
-                    document.getElementById('maxPrice').setAttribute("value", values[1]);
-                })
-
+            noUiSlider.create(slider2, {
+                start: [50, 750],
+                connect: true,
+                range: {
+                    'min': [0],
+                    'max': [1500]
+                }
             });
-        </script>
+
+            var limitFieldMin = document.getElementById('price-left');
+            var limitFieldMax = document.getElementById('price-right');
+
+            slider2.noUiSlider.on('update', function (values, handle) {
+                if (handle) {
+
+                    limitFieldMax.innerHTML = $('#price-right').data('currency') + Math.round(values[handle]);
+                } else {
+                    limitFieldMin.innerHTML = $('#price-left').data('currency') + Math.round(values[handle]);
+                }
+            });
+
+            slider2.noUiSlider.on('change', function (values, handle) {
+                document.getElementById('minPrice').setAttribute("value", values[0]);
+                document.getElementById('maxPrice').setAttribute("value", values[1]);
+            })
+
+        });
+    </script>
 
 </html>

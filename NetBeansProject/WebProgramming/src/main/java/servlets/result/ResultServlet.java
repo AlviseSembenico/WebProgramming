@@ -105,7 +105,16 @@ public class ResultServlet extends HttpServlet {
                 request.setAttribute("stelle", stelle);
                 request.setAttribute("name", name);
                 request.setAttribute("begin", begin);
+                request.setAttribute("City", city);
+                request.setAttribute("Region", region);
+                request.setAttribute("minPrice", minPrice);
+                request.setAttribute("maxPrice", maxPrice);
+                request.setAttribute("minRew", minRew);
+                request.setAttribute("maxRew", maxRew);
+                request.setAttribute("order", order);
                 request.setAttribute("end", end);
+                request.setAttribute("category", category);
+                
             }
                        
             RequetsDispatcherObj = request.getRequestDispatcher("/result.jsp");
