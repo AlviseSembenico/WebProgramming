@@ -93,11 +93,11 @@
                                                 <form action="">
                                                     <fieldset>
                                                         <legend>Region</legend>
-                                                        <input type="radio" name="region" value=""/> Everything <br>
-                                                        <input type="radio" name="region" value="Italy"/>Italy<br>
-                                                        <input type="radio" name="region" value="Germany"/> Germany <br>
-                                                        <input type="radio" name="region" value="England"/> England<br>
-                                                        <input type="radio" name="region" value="France"/> France<br>
+                                                        <input type="radio" name="Region" value=""/> Everything <br>
+                                                        <input type="radio" name="Region" value="Italy"/>Italy<br>
+                                                        <input type="radio" name="Region" value="Germany"/> Germany <br>
+                                                        <input type="radio" name="Region" value="England"/> England<br>
+                                                        <input type="radio" name="Region" value="France"/> France<br>
                                                     </fieldset>
 
                                             </div>
