@@ -16,6 +16,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -380,7 +382,7 @@ public class JdbcUtilities {
                             query += " = " + value.doubleValue() + ",";
 
                         }
-                    } else if (m.getReturnType().equals(String.class) || m.getReturnType().equals(Date.class)) {
+                    } else if (m.getReturnType().equals(String.class)) {
                         String s = (String) m.invoke(o, null);
                         if (s != null) {
                             if (map.containsKey(name)) {
@@ -394,7 +396,20 @@ public class JdbcUtilities {
                                 query += " = '" + m.invoke(o, null) + "',";
                             }
                         }
-                    } else {
+                    } 
+                    else if ( m.getReturnType().equals(Date.class)) {
+                        Date s = (Date) m.invoke(o, null);
+                        DateFormat df = new SimpleDateFormat("yyy-MM-dd HH:mm:ss");
+                        if (s != null) {
+                            if (map.containsKey(name)) {
+                                query += map.get(name);
+                            } else {
+                                query += camelToSql(name);
+                            }
+                            query += " = '" + df.format(s) + "',";
+                            
+                        }
+                    }else {
                         Object obj = m.invoke(o, null);
                         if (obj != null) {
                             if (obj instanceof IdOwner) {
