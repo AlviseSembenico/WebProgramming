@@ -102,11 +102,11 @@
                     </div>
                         <hr/>
                         <div class="row">
-                            <div class="col-md-12">
-                                        <h2>Reviews</h2>
+                            
                             <c:choose>
                                 <c:when test="${reviews.get(0) != null}">
-                                    
+                                    <div class="col-md-12">
+                                        <h2>Reviews</h2>
                                         <div class="table-responsive">
                                             <form action="notify" method="post">
                                                 <table class="table table-striped">
