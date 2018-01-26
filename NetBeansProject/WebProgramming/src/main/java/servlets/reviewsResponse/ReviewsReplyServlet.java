@@ -5,14 +5,10 @@
  */
 package servlets.reviewsResponse;
 
-import Dao.AnomaliesDao;
 import Dao.ReviewDao;
-import Dao.ShopDao;
 import Dao.UserDao;
-import Dao.entities.Anomalies;
 import Dao.entities.Review;
 import java.io.IOException;
-import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -54,7 +50,7 @@ public class ReviewsReplyServlet extends HttpServlet {
             RequestDispatcher reqDes = null;
             request.setAttribute("reviews", reviews);
 
-            reqDes = request.getRequestDispatcher("loggedUsers/reviewReply.jsp");
+            reqDes = request.getRequestDispatcher("/loggedUsers/reviewReply.jsp");
             reqDes.forward(request, response);
 
         } catch (Exception ex) {
@@ -83,12 +79,12 @@ public class ReviewsReplyServlet extends HttpServlet {
             reviews.setReply(text);
             reviews.setStatus("read");
             reviewDao.updateDao(reviews);
-            reqDes = request.getRequestDispatcher("loggedUsers/reviewReply.jsp?result=true");
+            reqDes = request.getRequestDispatcher("/index.jsp?result=true");
             reqDes.forward(request, response);
 
         } catch (Exception ex) {
             Log.write(ex);
-            reqDes = request.getRequestDispatcher("loggedUsers/reviewReply.jsp?result=false");
+            reqDes = request.getRequestDispatcher("/index.jsp?result=false");
             reqDes.forward(request, response);
         }
 
