@@ -188,7 +188,7 @@
                             <li  style="padding-bottom: 10px;border-bottom-width: 10px;  margin-bottom: 10px; bottom: 5px;left: 5px;">
                                 <form method="GET" action="result">
                                     <div class=" text-center" >
-                                        <select class="selectpicker" name="category" data-style="btn btn-primary btn-round;" title="Search category" data-size="7">
+                                        <select class="selectpicker" name="category" data-style="btn btn-primary btn-round;" title="Category" data-size="7">
                                             <option value="Electronic">Electronic</option>
                                             <option value="Shoes">Shoes</option>
                                             <option value="Clothing">Clothing</option>
