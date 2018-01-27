@@ -29,6 +29,7 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
+        resources.add(org.glassfish.jersey.server.wadl.internal.WadlResource.class);
         resources.add(services.AutoComplete.class);
         resources.add(system.SystemLog.class);
     }

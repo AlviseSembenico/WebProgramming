@@ -144,6 +144,14 @@
         <servlet-name>401</servlet-name>
         <jsp-file>/errorPages/401.jsp</jsp-file>
     </servlet>
+    <servlet>
+        <servlet-name>500</servlet-name>
+        <jsp-file>/errorPages/500.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>500</servlet-name>
+        <url-pattern>/500</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ConctactUsServlet</servlet-name>
         <url-pattern>/conctactUs</url-pattern>
@@ -255,6 +263,10 @@
     <error-page>
         <error-code>403</error-code>
         <location>/403</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/500</location>
     </error-page>
     <session-config>
         <session-timeout>

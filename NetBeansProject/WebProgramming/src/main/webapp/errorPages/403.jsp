@@ -12,8 +12,8 @@
         <div class="page-header header-filter" style='background-image: url("https://i.ytimg.com/vi/HO8ctP_QNZc/maxresdefault.jpg"); transform: translate3d(0px, 80px, 0px);' data-parallax="true">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6">a
-                        <h1 class="title">We are smarter than you (Errora 403)</h1>
+                    <div class="col-md-6">
+                        <h1 class="title">We are smarter than you (Error 403)</h1>
                         <h4>You are trying to hack our system, FBI is on you trace right now!</h4>
                         <br>
                         <a class="btn btn-danger btn-raised btn-lg" href="javascript:history.back()" target="_blank">

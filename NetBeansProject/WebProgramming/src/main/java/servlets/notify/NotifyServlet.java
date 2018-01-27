@@ -83,11 +83,15 @@ public class NotifyServlet extends HttpServlet {
                     request.setAttribute("anomalie", anomalie);
                     request.setAttribute("reviews", reviews);
                     reqDes = request.getRequestDispatcher("/loggedUsers/notify.jsp");
-                } else 
+                } else {
                     response.sendError(403);
+                    return;
+                }
 
-            } else   
-                response.sendError(403);
+            } else {
+                    response.sendError(403);
+                    return;
+                }
 
         } catch (Exception ex) {
             Log.write(ex);
