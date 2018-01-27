@@ -16,7 +16,6 @@
             width: 100%;
         }
     </style>
-    <body class="contact-page">
         <div class="page-header header-filter header-small" data-parallax="true" style="background-color: #E5E5E5">
             <div class="container">
                 <div class="row">
