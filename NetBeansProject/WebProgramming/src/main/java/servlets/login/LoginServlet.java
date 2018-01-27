@@ -7,9 +7,7 @@ package servlets.login;
 
 import Dao.*;
 import Dao.entities.*;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.io.IOException;;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -93,6 +91,7 @@ public class LoginServlet extends HttpServlet {
             Log.write(ex);
         }
     }
+    
 
     /**
      * Returns a short description of the servlet.
