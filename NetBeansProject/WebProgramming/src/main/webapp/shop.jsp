@@ -69,6 +69,16 @@
                                                 </div>
                                                 <hr/>
                                             </c:forEach>
+                                            <u class="pagination pagination-info">
+                                                <li><a <c:if test="${(begin-3)>=0}">href="shop?id=<c:out value="${id}"/>&begin=<c:out value="${begin-3}"/>"</c:if> style="color: black" >&lt; prev</a></li>
+                                                    <c:forEach var="i" begin="0" end="${len}">
+                                                        <c:if test="${i%3==0 && i != len}">
+                                                        <li><a href="shop?id=<c:out value="${id}"/>&begin=<c:out value="${i}"/>" style="color: black"><c:out value="${Integer(i/3)+1}"/></a></li>
+                                                        </c:if>
+                                                    </c:forEach>
+
+                                                <li><a <c:if test="${(begin+3)< len}">href="shop?id=<c:out value="${id}"/>&begin=<c:out value="${begin+3}"/>"</c:if> style="color: black">next &gt;</a></li>
+                                                </u>
                                         </c:when>
                                         <c:otherwise>
                                             <h2>Nobody has commented yet.</h2>
@@ -76,27 +86,18 @@
                                     </c:choose>
                                 </div>
                             </div>
-                            <u class="pagination pagination-info">
-                                <li><a <c:if test="${(begin-3)>=0}">href="shop?id=<c:out value="${id}"/>&begin=<c:out value="${begin-3}"/>"</c:if> style="color: black" >&lt; prev</a></li>
-                                    <c:forEach var="i" begin="0" end="${len}">
-                                        <c:if test="${i%3==0 && i != len}">
-                                        <li><a href="shop?id=<c:out value="${id}"/>&begin=<c:out value="${i}"/>" style="color: black"><c:out value="${Integer(i/3)+1}"/></a></li>
-                                        </c:if>
-                                    </c:forEach>
 
-                                <li><a <c:if test="${(begin+3)< len}">href="shop?id=<c:out value="${id}"/>&begin=<c:out value="${begin+3}"/>"</c:if> style="color: black">next &gt;</a></li>
-                                </u>
-                            </div>
-                            <div class="col-md-4 col-md-offset-2">
-                                <form method="post" action="shop">
-                                    <div class="info info-horizontal">
-                                        <div class="icon icon-primary">
-                                            <i class="material-icons">pin_drop</i>
-                                        </div>
+                        </div>
+                        <div class="col-md-4 col-md-offset-2">
+                            <form method="post" action="shop">
+                                <div class="info info-horizontal">
+                                    <div class="icon icon-primary">
+                                        <i class="material-icons">pin_drop</i>
+                                    </div>
 
-                                        <div class="description">
-                                            <h4 class="info-title">Address</h4>
-                                            <p id="address">${shop.getStreet()}<br>
+                                    <div class="description">
+                                        <h4 class="info-title">Address</h4>
+                                        <p id="address">${shop.getStreet()}<br>
                                             ${shop.getCity()}<br>
                                             ${shop.getRegion()}<br>
                                             <a href="map.jsp?lat=${shop.getLatitude()}&long=${shop.getLongitude()}" class="btn btn-primary btn-round">Map</a>
