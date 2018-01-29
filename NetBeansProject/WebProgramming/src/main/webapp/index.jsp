@@ -34,17 +34,8 @@ Author     : Alvise
                                     <br />
 
                                     <div class="buttons">
-                                        <a href="#pablo" class="btn btn-primary btn-lg">
+                                        <a href="result?category=Clothing" class="btn btn-primary btn-lg">
                                             Read More
-                                        </a>
-                                        <a href="#pablo" class="btn btn-just-icon btn-white btn-simple btn-lg">
-                                            <i class="fa fa-twitter"></i>
-                                        </a>
-                                        <a href="#pablo" class="btn btn-just-icon btn-white btn-simple btn-lg">
-                                            <i class="fa fa-facebook-square"></i>
-                                        </a>
-                                        <a href="#pablo" class="btn btn-just-icon btn-white btn-simple btn-lg">
-                                            <i class="fa fa-get-pocket"></i>
                                         </a>
                                     </div>
 
@@ -65,17 +56,8 @@ Author     : Alvise
                                     <br />
                                     <h6>Connect with us on:</h6>
                                     <div class="buttons">
-                                        <a href="#pablo" class="btn btn-just-icon btn-white btn-simple btn-lg">
+                                        <a href="result?category=Clothing" class="btn btn-just-icon btn-white btn-simple btn-lg">
                                             <i class="fa fa-twitter"></i>
-                                        </a>
-                                        <a href="#pablo" class="btn btn-just-icon btn-white btn-simple btn-lg">
-                                            <i class="fa fa-facebook-square"></i>
-                                        </a>
-                                        <a href="#pablo" class="btn btn-just-icon btn-white btn-simple btn-lg">
-                                            <i class="fa fa-google-plus"></i>
-                                        </a>
-                                        <a href="#pablo" class="btn btn-just-icon btn-white btn-simple btn-lg">
-                                            <i class="fa fa-instagram"></i>
                                         </a>
                                     </div>
                                 </div>
@@ -95,17 +77,8 @@ Author     : Alvise
                                     <br />
                                     <h6>Connect with us on:</h6>
                                     <div class="buttons">
-                                        <a href="#pablo" class="btn btn-just-icon btn-white btn-simple btn-lg">
+                                        <a href="result?category=Clothing" class="btn btn-just-icon btn-white btn-simple btn-lg">
                                             <i class="fa fa-twitter"></i>
-                                        </a>
-                                        <a href="#pablo" class="btn btn-just-icon btn-white btn-simple btn-lg">
-                                            <i class="fa fa-facebook-square"></i>
-                                        </a>
-                                        <a href="#pablo" class="btn btn-just-icon btn-white btn-simple btn-lg">
-                                            <i class="fa fa-google-plus"></i>
-                                        </a>
-                                        <a href="#pablo" class="btn btn-just-icon btn-white btn-simple btn-lg">
-                                            <i class="fa fa-instagram"></i>
                                         </a>
                                     </div>
                                 </div>
@@ -127,10 +100,10 @@ Author     : Alvise
                                     <br />
 
                                     <div class="buttons">
-                                        <a href="#pablo" class="btn btn-white btn-simple btn-lg">
+                                        <a href="product?id=835" class="btn btn-white btn-simple btn-lg">
                                             <i class="material-icons">share</i> Share Offer
                                         </a>
-                                        <a href="#pablo" class="btn btn-danger btn-lg">
+                                        <a href="product?id=835" class="btn btn-danger btn-lg">
                                             <i class="material-icons">shopping_cart</i> Shop Now
                                         </a>
                                     </div>
@@ -153,10 +126,10 @@ Author     : Alvise
                                     <br />
 
                                     <div class="buttons">
-                                        <a href="#pablo" class="btn btn-white btn-simple btn-lg">
+                                        <a href="product?id=834" class="btn btn-white btn-simple btn-lg">
                                             <i class="material-icons">share</i> Share Offer
                                         </a>
-                                        <a href="#pablo" class="btn btn-danger btn-lg">
+                                        <a href="product?id=834" class="btn btn-danger btn-lg">
                                             <i class="material-icons">shopping_cart</i> Shop Now
                                         </a>
                                     </div>
