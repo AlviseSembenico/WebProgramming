@@ -6,13 +6,11 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
-<!DOCTYPE html>
-<!doctype html>
-<html>
+    
     <c:import url="pageBuilder/header.jsp?trasparent=false"/>
     <body class="contact-page">
     <div id="contactUsMap" class="big-map"></div>
-    <div class="main main-raised">
+    <div class="main main-raised main-cart">
         <div class="contact-content">
             <div class="container">
                 <h2 class="title">Send us a message</h2>

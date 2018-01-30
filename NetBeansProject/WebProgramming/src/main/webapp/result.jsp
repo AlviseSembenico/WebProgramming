@@ -28,7 +28,7 @@
             </div>
         </div>
 
-        <div class="main main-raised">
+        <div class="main main-raised main-cart">
 
 
             <div class="section" style="padding-top: 0px;">

@@ -33,7 +33,7 @@
             </div>
 
         </div>
-        <div class="main main-raised">
+        <div class="main main-raised main-cart">
             <div class="contact-content">
                 <div class="container">
                     <div class="row">
@@ -81,7 +81,7 @@
                                                 </u>
                                         </c:when>
                                         <c:otherwise>
-                                            <h2>Nobody has commented yet.</h2>
+                                            <h4>Nobody has commented yet.</h4>
                                         </c:otherwise>
                                     </c:choose>
                                 </div>

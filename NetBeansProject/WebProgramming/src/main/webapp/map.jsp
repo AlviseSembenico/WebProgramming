@@ -16,7 +16,7 @@
             width: 100%;
         }
     </style>
-        <div class="page-header header-filter header-small" data-parallax="true" style="background-color: #E5E5E5">
+        <div class="page-header header-filter header-small" data-parallax="true" style="background-image: url(https://i.ytimg.com/vi/uVArSvHKtBI/maxresdefault.jpg)">
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
@@ -25,7 +25,7 @@
                 </div>
             </div>
         </div>
-        <div class="main main-raised">
+        <div class="main main-raised main-cart">
             <div id="map"></div>
         </div>
         <c:import url="pageBuilder/footer.jsp"/>
