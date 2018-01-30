@@ -104,9 +104,7 @@ public class AddReviewServlet extends HttpServlet {
             User user = (User) session.getAttribute("user");
             int id = Integer.valueOf(request.getParameter("id"));
             Purchase purchase = purchaseDao.getPurchaseByIdAndUser(Integer.valueOf(request.getParameter("id")), user);
-            if (purchase == null) {
-                response.sendError(401);
-            } else if (reviewDao.getRewiewByCreatorAndProduct(user, purchase.getProduct()).get(0) != null) {
+            if (reviewDao.getRewiewByCreatorAndProduct(user, purchase.getProduct()).get(0) != null) {
                 response.sendError(403);
             } else {
                 int global = Integer.valueOf(request.getParameter("star"));
