@@ -73,7 +73,7 @@ public class AddReviewServlet extends HttpServlet {
         try {
             HttpSession session = request.getSession(false);
             User user = (User) session.getAttribute("user");
-            Purchase purchase = purchaseDao.getPurchaseByIdAndUser(Integer.valueOf(request.getParameter("id")), user);
+            Purchase purchase = purchaseDao.getPurchaseById(Integer.valueOf(request.getParameter("id")));
             if (purchase == null) {
                 response.sendError(401);
             }
@@ -103,7 +103,7 @@ public class AddReviewServlet extends HttpServlet {
             HttpSession session = request.getSession(false);
             User user = (User) session.getAttribute("user");
             int id = Integer.valueOf(request.getParameter("id"));
-            Purchase purchase = purchaseDao.getPurchaseByIdAndUser(Integer.valueOf(request.getParameter("id")), user);
+            Purchase purchase = purchaseDao.getPurchaseById(Integer.valueOf(request.getParameter("id")));
             if (reviewDao.getRewiewByCreatorAndProduct(user, purchase.getProduct()).get(0) != null) {
                 response.sendError(403);
             } else {
