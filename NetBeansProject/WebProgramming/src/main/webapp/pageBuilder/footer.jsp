@@ -206,7 +206,7 @@
                         $.ajax({
                             contentType: "application/json",
                             type: "GET",
-                            url: "http://localhost:8080/WebProgramming/services/complete",
+                            url: "${pageContext.servletContext.contextPath}/services/complete",
                             data: {
                                 name: request.term
                             },
