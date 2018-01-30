@@ -109,8 +109,6 @@ public class ModifyUserServlet extends HttpServlet {
                 Log.write(ex);
                 Logger.getLogger(ModifyUserServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
-
-            response.sendRedirect("userProfile?result=false");
         }
 
     }
