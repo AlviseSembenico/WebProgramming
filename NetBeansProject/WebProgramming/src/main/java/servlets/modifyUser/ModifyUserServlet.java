@@ -67,20 +67,20 @@ public class ModifyUserServlet extends HttpServlet {
                 contextPath += "/";
             }
             try {
-
                 user.setFirstName(firstName);
                 user.setLastName(lastName);
                 user.setEmail(email);
                 user.setPassword(null);
                 int res = userDao.updateDao(user);
                 if (res == 0) {
-                    response.sendRedirect(response.encodeRedirectURL(contextPath + "/modify" + "?error=true"));
+                    response.sendRedirect(response.encodeRedirectURL(contextPath + "/userProfile?error=true"));
                 } else {
                     response.sendRedirect("userProfile?result=true");
                 }
 
             } catch (Exception ex) {
                 Log.write(ex);
+                response.sendRedirect("userProfile?result=false");
             }
         } else {
             String oldPw = request.getParameter("oldPw");
@@ -90,24 +90,20 @@ public class ModifyUserServlet extends HttpServlet {
                 if (userDao.password(oldPw).equals(user.getPassword())) {
                     if (newPw.equals(confirmNewPw)) {
                         user.setPassword(newPw);
-                        try {
-                            int res = userDao.updateDao(user);
-                            user.setPassword(userDao.password(newPw));
-                            if (res == 0) 
-                                response.sendRedirect("userProfile?result=false");
-                             else 
-                                response.sendRedirect("userProfile?result=true");
-                            
-                        } catch (Exception ex) {
-                            Log.write(ex);
+                        int res = userDao.updateDao(user);
+                        user.setPassword(userDao.password(newPw));
+                        if (res == 0) {
                             response.sendRedirect("userProfile?result=false");
+                        } else {
+                            response.sendRedirect("userProfile?result=true");
                         }
-
                     }
                 }
-            } catch (UnsupportedEncodingException ex) {
+            } catch (Exception ex) {
                 Log.write(ex);
-                Logger.getLogger(ModifyUserServlet.class.getName()).log(Level.SEVERE, null, ex);
+                response.sendRedirect("userProfile?result=false");
+            } finally{
+                response.sendRedirect("userProfile?result=false");
             }
         }
 
