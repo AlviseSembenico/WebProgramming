@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html>
     <c:import url="/pageBuilder/header.jsp"/>
-    <div class="page-header header-filter header-small" data-parallax="true" style="">
+    <div class="page-header header-filter header-small" data-parallax="true" style="background-image: url(https://www.nucanoe.com/wp-content/uploads/2017/09/email.png)">
         <div class="container"> 
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
@@ -18,7 +18,7 @@
             </div>
         </div>
     </div>
-    <div class="main main-raised">
+    <div class="main main-raised main-cart  ">
         <div class="contact-content">
             <div class="container">
                 <h2 class="title text-center">Send email</h2>
