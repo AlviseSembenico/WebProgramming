@@ -94,7 +94,7 @@
                                                     <fieldset>
                                                         <legend>Region</legend>
                                                         <input type="radio" name="Region" value=""/> Everything <br>
-                                                        <input type="radio" name="Region" value="Italy"/>Italy<br>
+                                                        <input type="radio" name="Region" value="Italy"/> Italy<br>
                                                         <input type="radio" name="Region" value="Germany"/> Germany <br>
                                                         <input type="radio" name="Region" value="England"/> England<br>
                                                         <input type="radio" name="Region" value="France"/> France<br>
@@ -290,7 +290,7 @@
         </div><!-- section -->
         <div class="section" style="padding-bottom: 0px;">
             <div class="container">
-                <h1 class="section-title">You can also be interested in</h1>
+                <h3 class="section-title">You can also be interested in</h3>
                 <div class="row">
                     <c:choose>
                         <c:when test="${simil.get(0)!=null}">
