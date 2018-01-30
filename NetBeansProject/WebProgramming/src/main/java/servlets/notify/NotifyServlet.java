@@ -137,8 +137,7 @@ public class NotifyServlet extends HttpServlet {
                 reqDes = request.getRequestDispatcher("/adminUsers/email.jsp");
                 reqDes.forward(request, response);
             } else if (action.contains("Review")) {
-                User admin = (User) request.getSession().getAttribute("user");
-                s += "/addReview?id=" + admin.getId();
+                s += "/addReview?id=" + anomalie.get(i).getPurchase().getId();
                 a.setSolution("Added a negative Review");
                 anomaliesDao.updateDao(a);
                 response.sendRedirect(s);
