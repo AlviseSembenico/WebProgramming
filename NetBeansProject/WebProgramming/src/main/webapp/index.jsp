@@ -46,20 +46,14 @@ Author     : Alvise
 
                 </div>
                 <div class="item">
-                    <div class="page-header header-filter" style="background-image: url('assets/img/dg2.jpg');">
+                    <div class="page-header header-filter" style="background-image: url(http://sm.askmen.com/askmen_me/article/j/jim-chapma/jim-chapman-style-tips_zjm1.jpg);">
 
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-8 col-md-offset-2 text-center">
                                     <h1 class="title">Style has new name: INFLUENCER</h1>
-                                    <h4>The BOXING weeb event is here: up to 50% OFF</h4>
+                                    <h4>The BOXING web event is here: up to 50% OFF</h4>
                                     <br />
-                                    <h6>Connect with us on:</h6>
-                                    <div class="buttons">
-                                        <a href="result?category=Clothing" class="btn btn-just-icon btn-white btn-simple btn-lg">
-                                            <i class="fa fa-twitter"></i>
-                                        </a>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -75,12 +69,6 @@ Author     : Alvise
                                     <h1 class="title">Dress your ENTIRE family just in one CLICK</h1>
                                     <h4>Shop high street to high end, and order with ease thanks to free delivery and returns</h4>
                                     <br />
-                                    <h6>Connect with us on:</h6>
-                                    <div class="buttons">
-                                        <a href="result?category=Clothing" class="btn btn-just-icon btn-white btn-simple btn-lg">
-                                            <i class="fa fa-twitter"></i>
-                                        </a>
-                                    </div>
                                 </div>
                             </div>
                         </div>
