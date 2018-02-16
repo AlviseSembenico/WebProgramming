@@ -31,14 +31,14 @@ public class AutoComplete {
     @Context
     private UriInfo context;
     private ProductDao productDao;
-
     /**
      * Creates a new instance of GenericResource
      */
     public AutoComplete() {
-        productDao = new JdbcProductDao();
+        productDao=new JdbcProductDao();
     }
 
+    
     /**
      *
      * @param name
@@ -47,19 +47,14 @@ public class AutoComplete {
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String getJson(@QueryParam("name") String name) throws Exception {
-        LinkedList<Product> ll = productDao.getCompleteName(name);
+    public String getJson(@QueryParam("name") String name) throws Exception{
+        LinkedList<Product> ll=productDao.getCompleteName(name);
         Gson gson = new Gson();
-        List<String> res = new ArrayList<String>();
-        for (int i = 0; i < ll.size() && i < 10; i++) {
-            if (ll.get(i) != null) {
+        List<String> res=new ArrayList<String>();
+        for(int i=0;i<ll.size()&&i<10;i++)
+            if(ll.get(i)!=null)
                 res.add(ll.get(i).getName());
-            }
-        }
-        if (ll.get(0) == null) {
-            res.add("No product found.");
-        }
         return gson.toJson(res);
     }
-
+    
 }
